@@ -1,6 +1,6 @@
 # WIP Playground for layouts
 
-This is a playground DevEx is using to try out the new layouts and routing. You can find more information in [Notion](https://www.notion.so/vercel/Update-learn-and-docs-for-Layouts-and-Routing-dd39d46fc8054972b08e3711c4345f6e). 
+This is a playground DevEx is using to try out the new layouts and routing. You can find more information on [Notion](https://www.notion.so/vercel/Update-learn-and-docs-for-Layouts-and-Routing-dd39d46fc8054972b08e3711c4345f6e). 
 
 ## To run it locally:
 
