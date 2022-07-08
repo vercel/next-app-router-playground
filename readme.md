@@ -1,6 +1,16 @@
 # WIP Playground for layouts
 
-Primarily for my learning and a sandpit for writing docs. But possibly as an external demo if polished.
+This is a playground DevEx is using to try out the new layouts and routing. You can find more information in [Notion](https://www.notion.so/vercel/Update-learn-and-docs-for-Layouts-and-Routing-dd39d46fc8054972b08e3711c4345f6e). 
+
+## To run it locally:
+
+-  Terminal 1: Run `yarn` and `yarn dev`
+-  Terminal 2: Run Tailwind CLI in watch mode:
+
+```bash
+npx tailwindcss -i ./styles/globals.css -o ./public/output.css --watch
+```
+
 
 ## Aim
 
@@ -14,13 +24,20 @@ Primarily for my learning and a sandpit for writing docs. But possibly as an ext
   - Component type (Server / Client)
   - Resulting URL paths
 
-# Errors I came across
+# Not implemented yet
 
-Unclear what is broken or simply not implemented yet.
+- There is no fast refresh, you have to manually reload
+- a11y features like route announcement and focus management
+- `getStaticProps` will work like `getServerSideProps`
+- No `getInitialProps`
+- Redirects will not work exactly right
+- No i18n routing
 
-### Fast Refresh
 
-HMR doesn't work yet
+# Errors we've found:
+
+Please note it's unclear what is broken or simply not implemented yet.
+
 
 ### Importing new hooks
 
