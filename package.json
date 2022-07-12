@@ -11,8 +11,8 @@
   "dependencies": {
     "clsx": "^1.2.1",
     "next": "^12.2.3-canary.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^0.0.0-experimental-dd2d65227-20220708",
+    "react-dom": "^0.0.0-experimental-dd2d65227-20220708"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.2",
