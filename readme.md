@@ -2,16 +2,12 @@
 
 This is a playground DevEx is using to try out the new layouts and routing. You can find more information on [Notion](https://www.notion.so/vercel/Update-learn-and-docs-for-Layouts-and-Routing-dd39d46fc8054972b08e3711c4345f6e).
 
+## Running Locally
+
+1. Install dependencies: `yarn`
+1. Start the dev server: `yarn dev`
+
 > **Note:** This examples requires the `react` and `react-dom` experimental version.
-
-## To run it locally:
-
-- Terminal 1: Run `yarn` and `yarn dev`
-- Terminal 2: Run Tailwind CLI in watch mode:
-
-```bash
-npx tailwindcss -i ./styles/globals.css -o ./public/output.css --watch
-```
 
 ## Aim
 
@@ -27,7 +23,6 @@ npx tailwindcss -i ./styles/globals.css -o ./public/output.css --watch
 
 # Not implemented yet
 
-- There is no fast refresh, you have to manually reload
 - a11y features like route announcement and focus management
 - `getStaticProps` will work like `getServerSideProps`
 - No `getInitialProps`

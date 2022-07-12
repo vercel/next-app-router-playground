@@ -1,13 +1,13 @@
-import { Info } from "@/ui/Info.server"
-import Link from "next/link"
+import { Info } from '@/ui/Info.server';
+import Link from 'next/link';
 
 export default function Root({ children, ...props }: { children: any }) {
   const menuItems = [
-    { slug: "/", title: "Home" },
-    { slug: "/categories", title: "Categories" },
-    { slug: "cart", title: "Cart" },
-    { slug: "checkout", title: "Checkout" },
-  ]
+    { slug: '/', title: 'Home' },
+    { slug: '/categories', title: 'Categories' },
+    { slug: 'cart', title: 'Cart' },
+    { slug: 'checkout', title: 'Checkout' },
+  ];
 
   return (
     <html>
@@ -18,7 +18,7 @@ export default function Root({ children, ...props }: { children: any }) {
       <body>
         <div className="mx-auto mt-12 w-full px-4 lg:max-w-screen-lg">
           <Info
-            path={["app", "(default)"]}
+            path={['app', '(default)']}
             kind="layout"
             type="server"
             data={{
@@ -43,5 +43,5 @@ export default function Root({ children, ...props }: { children: any }) {
         </div>
       </body>
     </html>
-  )
+  );
 }
