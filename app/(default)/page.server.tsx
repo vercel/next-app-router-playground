@@ -18,6 +18,7 @@ export default function Page(props: any) {
   const headers = useHeaders();
   const cookies = useCookies();
   const previewData = usePreviewData();
+
   return (
     <Info
       path={['app', '(default)']}
@@ -31,7 +32,7 @@ export default function Page(props: any) {
         usePreviewData: previewData,
       }}
     >
-      {/* <ClientCounter /> */}
+      <ClientCounter />
     </Info>
   );
 }

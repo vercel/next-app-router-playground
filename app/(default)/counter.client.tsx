@@ -9,7 +9,12 @@ export default function ClientCounter() {
   return (
     <>
       <h3>Count: {count}</h3>
-      <button onClick={() => setCount(count + 1)}>{count}</button>
+      <button
+        className="rounded bg-black px-8 py-2 text-white"
+        onClick={() => setCount(count + 1)}
+      >
+        Increment Count
+      </button>
     </>
   );
 }

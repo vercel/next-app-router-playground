@@ -11,47 +11,11 @@ This is a playground DevEx is using to try out the new layouts and routing. You 
 
 ## Supported Features
 
-- Routing / Linking
-  - `app` folder and defining routes
-  - Nested routes (layouts and pages)
-  - Dynamic segments
-  - Route Groups
-  - Page transitions with `next/link`
-  - Layout and Page Props
-- Server and Client Components
-  - Server Components currently require `.server.js` extension
-  - Client components using `useState`/`useEffect` require `.client.js` extension
-  - Reacy `lazy` loading client components
-  - Server and Client Component Hooks
-  - Importing client and server components
-- Data fetching
-  - `getServerSideProps`
-  - Nested data fetching
-- Client-side and server-side routing
-  - server-side routing?
-  - router.push, router.replace, router.reload
-- Loading UI
-- Styling
-  - Global styles
-  - Inline styles
-  - CSS Modules
-- Misc.
-  - Public folder
-  - Existing `/pages` directory can remain
-  - API routes
-  - Middleware
-
-[View e2e test suite](https://github.com/vercel/next.js/tree/canary/test/e2e/app-dir).
+Link to doc
 
 # Unsupported Features
 
-- a11y features like route announcement and focus management
-- `getStaticProps` will work like `getServerSideProps`
-- No `getInitialProps`
-- Redirects will not work exactly right yet
-- No i18n routing
-- Parallel Routes, Intercepting Routes, etc.
-- Error page handling
+Link to doc
 
 ## Aim
 
@@ -65,28 +29,6 @@ This is a playground DevEx is using to try out the new layouts and routing. You 
   - Component type (Server / Client)
   - Resulting URL paths
 
-# Errors we've found:
-
-Please note it's unclear what is broken or simply not implemented yet.
-
 ### Importing new hooks
 
 Looks like the new hooks are not exported yet, except from the `"next/dist/client/components/hooks-server"` folder which causes a context error.
-
-### Tailwind
-
-`import "../styles/globals.css"` doesn't work. Possibly to do with PostCSS.
-
-Temp workaround: Run Tailwind CLI in watch mode:
-
-```bash
-npx tailwindcss -i ./styles/globals.css -o ./public/output.css --watch
-```
-
-Then globally import the generated file:
-
-```html
-<head>
-  <link rel="stylesheet" href="/output.css" />
-</head>
-```
