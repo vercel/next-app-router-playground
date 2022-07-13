@@ -1,21 +1,28 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./app/**/*.{js,ts,jsx,tsx}', './ui/**/*.{js,ts,jsx,tsx}'],
-  plugins: [require('@tailwindcss/forms')],
+  content: ['./{app,pages}/**/*.{js,ts,jsx,tsx}', './ui/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
-      // TODO create better animation to demo re-rendering
       keyframes: ({ theme }) => ({
-        mutation: {
+        childrenRender: {
           '0%': {
-            background: theme('colors.rose.200'),
+            ['border-color']: theme('colors.pink.600'),
           },
-          '10%': {
-            background: theme('colors.rose.200 / 15%'),
-            color: theme('colors.rose.200 / 75%'),
+          '50%': {
+            ['border-color']: theme('colors.pink.600'),
+          },
+        },
+        segmentChange: {
+          '0%': {
+            background: theme('colors.purple.600 / 90%'),
+            color: theme('colors.purple.900'),
+          },
+          '30%': {
+            background: theme('colors.purple.600 / 50%'),
+            color: theme('colors.purple.90'),
           },
           '100%': {
-            background: theme('colors.rose.200 / 0%'),
+            background: theme('colors.black / 5%'),
           },
         },
       }),
