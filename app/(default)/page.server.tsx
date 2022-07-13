@@ -4,7 +4,7 @@ import {
   useCookies,
   usePreviewData,
 } from "next/dist/client/components/hooks-server";
-import ClientCounter from './counter.client';
+import ClientCounter from "./counter.client";
 
 export async function getServerSideProps() {
   return {
@@ -20,13 +20,16 @@ export default function Page(props: any) {
   const previewData = usePreviewData();
   return (
     <Info
-      path={['app', '(default)']}
+      path={["app", "(default)"]}
       kind="page"
       type="server"
       url="/"
-      data={{ props, useHeaders: headers,
+      data={{
+        props,
+        useHeaders: headers,
         useCookies: cookies,
-        usePreviewData: previewData, }}
+        usePreviewData: previewData,
+      }}
     >
       {/* <ClientCounter /> */}
     </Info>
