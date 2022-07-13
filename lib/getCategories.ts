@@ -2,31 +2,31 @@ export const getCategories = () => [
   {
     name: 'Electronics',
     slug: 'electronics',
-    count: 30,
+    count: 11,
     items: [
-      { name: 'Phones', slug: 'phones', count: 5 },
-      { name: 'Tablets', slug: 'tablets', count: 10 },
-      { name: 'Laptops', slug: 'laptops', count: 15 },
+      { name: 'Phones', slug: 'phones', count: 4 },
+      { name: 'Tablets', slug: 'tablets', count: 5 },
+      { name: 'Laptops', slug: 'laptops', count: 2 },
     ],
   },
   {
     name: 'Clothes',
     slug: 'clothes',
-    count: 32,
+    count: 12,
     items: [
-      { name: 'Tops', slug: 'tops', count: 7 },
-      { name: 'Shorts', slug: 'shorts', count: 13 },
-      { name: 'Shoes', slug: 'shoes', count: 12 },
+      { name: 'Tops', slug: 'tops', count: 3 },
+      { name: 'Shorts', slug: 'shorts', count: 4 },
+      { name: 'Shoes', slug: 'shoes', count: 5 },
     ],
   },
   {
     name: 'Books',
     slug: 'books',
-    count: 18,
+    count: 10,
     items: [
-      { name: 'Fiction', slug: 'fiction', count: 4 },
-      { name: 'Biography', slug: 'biography', count: 6 },
-      { name: 'Education', slug: 'education', count: 8 },
+      { name: 'Fiction', slug: 'fiction', count: 5 },
+      { name: 'Biography', slug: 'biography', count: 2 },
+      { name: 'Education', slug: 'education', count: 3 },
     ],
   },
 ];

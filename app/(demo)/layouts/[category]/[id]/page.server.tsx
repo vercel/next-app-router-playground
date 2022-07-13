@@ -4,11 +4,14 @@ import { SkeletonCard } from '@/ui/SkeletonCard.server';
 import { GetServerSideProps } from 'next';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { id } = context.params!;
+  const { category, id } = context.params!;
+
+  const mainCategory = getCategories().find((x) => x.slug === category);
+  const subCategory = mainCategory?.items.find((x) => x.slug === id);
 
   return {
     props: {
-      category: getCategories().find((x) => x.slug === id),
+      category: subCategory,
     },
   };
 };
@@ -18,11 +21,10 @@ export default function Page({
 }: {
   category: ReturnType<typeof getCategories>[0];
 }) {
-  console.log(category);
   return (
     <Boundary>
       <div className="grid grid-cols-3 gap-5">
-        {Array.from({ length: 10 }).map((_, i) => (
+        {Array.from({ length: category.count }).map((_, i) => (
           <SkeletonCard key={i} />
         ))}
         {/* <div>
