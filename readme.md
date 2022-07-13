@@ -11,24 +11,35 @@ This is a playground DevEx is using to try out the new layouts and routing. You 
 
 ## Supported Features
 
+- Routing / Linking
+  - `app` folder and defining routes
+  - Nested routes (layouts and pages)
+  - Dynamic segments
+  - Route Groups
+  - Page transitions with `next/link`
+  - Layout and Page Props
+- Server and Client Components
+  - Server Components currently require `.server.js` extension
+  - Client components using `useState`/`useEffect` require `.client.js` extension
+  - Reacy `lazy` loading client components
+  - Server and Client Component Hooks
+  - Importing client and server components
 - Data fetching
   - `getServerSideProps`
   - Nested data fetching
+- Client-side and server-side routing
+  - server-side routing?
+  - router.push, router.replace, router.reload
+- Loading UI
 - Styling
   - Global styles
   - Inline styles
   - CSS Modules
-- Server Components
-  - Currently requires `.server.js` extension
-  - Client components using `useState`/`useEffect` require `.client.js` extension
-  - Reacy `lazy` loading client components
-- Routing / Linking
-  - Nested routes and folders
-  - Dynamic routes
-  - Page transitions with `next/link`
 - Misc.
   - Public folder
   - Existing `/pages` directory can remain
+  - API routes
+  - Middleware
 
 [View e2e test suite](https://github.com/vercel/next.js/tree/canary/test/e2e/app-dir).
 
@@ -39,6 +50,8 @@ This is a playground DevEx is using to try out the new layouts and routing. You 
 - No `getInitialProps`
 - Redirects will not work exactly right yet
 - No i18n routing
+- Parallel Routes, Intercepting Routes, etc.
+- Error page handling
 
 ## Aim
 
