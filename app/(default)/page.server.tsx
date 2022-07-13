@@ -1,10 +1,10 @@
-import { Info } from "@/ui/Info.server";
+import { Info } from '@/ui/Info.server';
 import {
   useHeaders,
   useCookies,
   usePreviewData,
-} from "next/dist/client/components/hooks-server";
-import ClientCounter from "./counter.client";
+} from 'next/dist/client/components/hooks-server';
+import ClientCounter from './counter.client';
 
 export async function getServerSideProps() {
   return {
@@ -20,7 +20,7 @@ export default function Page(props: any) {
   const previewData = usePreviewData();
   return (
     <Info
-      path={["app", "(default)"]}
+      path={['app', '(default)']}
       kind="page"
       type="server"
       url="/"

@@ -1,8 +1,8 @@
-import { Info } from "@/ui/Info.server"
+import { Info } from '@/ui/Info.server';
 export default function Page() {
   return (
     <Info
-      path={["app", "(minimal)", "checkout"]}
+      path={['app', '(minimal)', 'checkout']}
       kind="page"
       type="server"
       url="/checkout"
@@ -12,5 +12,5 @@ export default function Page() {
         global menu.
       </div>
     </Info>
-  )
+  );
 }

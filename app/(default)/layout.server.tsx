@@ -1,21 +1,21 @@
-import { Info } from "@/ui/Info.server";
-import Link from "next/link";
+import { Info } from '@/ui/Info.server';
+import Link from 'next/link';
 import {
   useHeaders,
   useCookies,
   usePreviewData,
-} from "next/dist/client/components/hooks-server";
-import "../../styles/globals.css";
+} from 'next/dist/client/components/hooks-server';
+import '../../styles/globals.css';
 
 export default function Root({ children, ...props }: { children: any }) {
   const headers = useHeaders();
   const cookies = useCookies();
   const previewData = usePreviewData();
   const menuItems = [
-    { slug: "/", title: "Home" },
-    { slug: "/categories", title: "Categories" },
-    { slug: "cart", title: "Cart" },
-    { slug: "checkout", title: "Checkout" },
+    { slug: '/', title: 'Home' },
+    { slug: '/categories', title: 'Categories' },
+    { slug: 'cart', title: 'Cart' },
+    { slug: 'checkout', title: 'Checkout' },
   ];
 
   return (

@@ -1,5 +1,5 @@
-import clsx from "clsx"
-import React from "react"
+import clsx from 'clsx';
+import React from 'react';
 
 /**
  *
@@ -19,24 +19,24 @@ export function Info({
   data,
   children,
 }: {
-  path: string[]
-  url?: string
-  children?: React.ReactNode
-  type: "server" | "client"
-  kind: "layout" | "page"
-  data?: any
+  path: string[];
+  url?: string;
+  children?: React.ReactNode;
+  type: 'server' | 'client';
+  kind: 'layout' | 'page';
+  data?: any;
 }) {
   return (
     <div
-      className={clsx("rounded-lg border-2 xx", {
-        "border-blue-200 bg-blue-50": type === "server",
-        "border-purple-200 bg-purple-50": type === "client",
+      className={clsx('xx rounded-lg border-2', {
+        'border-blue-200 bg-blue-50': type === 'server',
+        'border-purple-200 bg-purple-50': type === 'client',
       })}
     >
       <div
-        className={clsx("flex space-x-1 px-2 py-1 rounded-t-md text-sm", {
-          "bg-blue-200": type === "server",
-          "bg-purple-200": type === "client",
+        className={clsx('flex space-x-1 rounded-t-md px-2 py-1 text-sm', {
+          'bg-blue-200': type === 'server',
+          'bg-purple-200': type === 'client',
         })}
       >
         <div className="text-black/60">
@@ -46,7 +46,7 @@ export function Info({
             viewBox="0 0 20 20"
             fill="currentColor"
           >
-            {type === "server" ? (
+            {type === 'server' ? (
               <path
                 fillRule="evenodd"
                 d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm14 1a1 1 0 11-2 0 1 1 0 012 0zM2 13a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2zm14 1a1 1 0 11-2 0 1 1 0 012 0z"
@@ -69,7 +69,7 @@ export function Info({
           </React.Fragment>
         ))}
 
-        <div className="text-black/90 font-medium">{kind}.js</div>
+        <div className="font-medium text-black/90">{kind}.js</div>
 
         {url ? (
           <>
@@ -79,7 +79,7 @@ export function Info({
         ) : null}
       </div>
 
-      <div className="p-6 space-y-6">
+      <div className="space-y-6 p-6">
         {data ? (
           <div className="flex flex-col">
             <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -124,5 +124,5 @@ export function Info({
         {children}
       </div>
     </div>
-  )
+  );
 }

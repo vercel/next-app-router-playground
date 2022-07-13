@@ -1,5 +1,5 @@
-import { Info } from "@/ui/Info.server";
-import "../../styles/globals.css";
+import { Info } from '@/ui/Info.server';
+import '../../styles/globals.css';
 
 export default function Root({ children }: { children: any }) {
   return (

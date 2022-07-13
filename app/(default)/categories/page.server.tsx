@@ -1,9 +1,9 @@
-import { Info } from "@/ui/Info.server";
+import { Info } from '@/ui/Info.server';
 import {
   useHeaders,
   useCookies,
   usePreviewData,
-} from "next/dist/client/components/hooks-server";
+} from 'next/dist/client/components/hooks-server';
 
 export default function Page(props: any) {
   const headers = useHeaders();
@@ -11,7 +11,7 @@ export default function Page(props: any) {
   const previewData = usePreviewData();
   return (
     <Info
-      path={["app", "(default)", "categories"]}
+      path={['app', '(default)', 'categories']}
       kind="page"
       type="server"
       url="/categories"
