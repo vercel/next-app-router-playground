@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "clsx": "^1.2.1",
-    "next": "^12.2.3-canary.3",
-    "react": "^0.0.0-experimental-e225fa43a-20220711",
-    "react-dom": "^0.0.0-experimental-e225fa43a-20220711"
+    "next": "^12.2.3-canary.5",
+    "react": "^0.0.0-experimental-7a4336c40-20220712",
+    "react-dom": "^0.0.0-experimental-7a4336c40-20220712"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.2",
@@ -23,6 +23,8 @@
     "eslint": "8.19.0",
     "eslint-config-next": "^12.2.3-canary.2",
     "postcss": "^8.4.14",
+    "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.1.12",
     "tailwindcss": "^3.1.6",
     "typescript": "4.7.4"
   }
