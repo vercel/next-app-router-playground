@@ -1,19 +1,27 @@
-import { Info } from "@/ui/Info.server"
-import Link from "next/link"
+import { Info } from "@/ui/Info.server";
+import Link from "next/link";
+import {
+  useHeaders,
+  useCookies,
+  usePreviewData,
+} from "next/dist/client/components/hooks-server";
+import "../../styles/globals.css";
 
 export default function Root({ children, ...props }: { children: any }) {
+  const headers = useHeaders();
+  const cookies = useCookies();
+  const previewData = usePreviewData();
   const menuItems = [
     { slug: "/", title: "Home" },
     { slug: "/categories", title: "Categories" },
     { slug: "cart", title: "Cart" },
     { slug: "checkout", title: "Checkout" },
-  ]
+  ];
 
   return (
     <html>
       <head>
         <title>V Store</title>
-        <link rel="stylesheet" href="/output.css" />
       </head>
       <body>
         <div className="mx-auto mt-12 w-full px-4 lg:max-w-screen-lg">
@@ -23,9 +31,9 @@ export default function Root({ children, ...props }: { children: any }) {
             type="server"
             data={{
               props,
-              useHeaders: {},
-              useCookies: {},
-              usePreviewData: {},
+              useHeaders: headers,
+              useCookies: cookies,
+              usePreviewData: previewData,
             }}
           >
             <div className="space-y-6">
@@ -43,5 +51,5 @@ export default function Root({ children, ...props }: { children: any }) {
         </div>
       </body>
     </html>
-  )
+  );
 }

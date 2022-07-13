@@ -1,11 +1,11 @@
-import { Info } from "@/ui/Info.server"
+import { Info } from "@/ui/Info.server";
+import "../../styles/globals.css";
 
 export default function Root({ children }: { children: any }) {
   return (
     <html>
       <head>
         <title>Checkout</title>
-        <link rel="stylesheet" href="/output.css" />
       </head>
       <body>
         <div className="mx-auto mt-12 w-full px-4 lg:max-w-screen-lg">
@@ -15,5 +15,5 @@ export default function Root({ children }: { children: any }) {
         </div>
       </body>
     </html>
-  )
+  );
 }
