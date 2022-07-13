@@ -1,4 +1,5 @@
 import { getCategories } from '@/lib/getCategories';
+import Counter from '@/ui/Counter.client';
 import Link from 'next/link';
 import React from 'react';
 
@@ -7,7 +8,6 @@ export const getServerSideProps = () => {
     props: { categories: getCategories() },
   };
 };
-
 export default function Layout({
   children,
   categories,
@@ -37,7 +37,9 @@ export default function Layout({
               </Link>
             ))}
           </div>
-          <div className="ml-auto">{/* <Counter /> */}</div>
+          <div className="ml-auto">
+            <Counter />
+          </div>
         </div>
       </div>
       <div>{children}</div>

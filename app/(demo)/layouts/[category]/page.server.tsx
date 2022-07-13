@@ -1,6 +1,5 @@
 import { getCategories } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary.server';
-import { Counter } from '@/ui/Counter.client';
 import { SkeletonCard } from '@/ui/SkeletonCard.server';
 import { GetServerSideProps } from 'next';
 
@@ -26,7 +25,6 @@ export default function Page({
         {Array.from({ length: category.count }).map((_, i) => (
           <SkeletonCard key={i} />
         ))}
-        <div>{/* <Counter /> */}</div>
       </div>
     </Boundary>
   );

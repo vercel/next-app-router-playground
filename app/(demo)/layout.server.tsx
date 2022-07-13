@@ -2,11 +2,9 @@
 // - [A] works, but causes an initial flash of unstyled content, so temporarily using [B]
 import '@/styles/globals.css';
 import { AddressBar } from '@/ui/AddressBar.server';
-import { Counter } from '@/ui/Counter.client';
 import { Nav } from '@/ui/Nav.server';
-import Link from 'next/link';
-import React from 'react';
 import nextPackageJson from 'next/package.json';
+import React from 'react';
 
 export default function RootLayout({ children }: { children: any }) {
   return (

@@ -27,9 +27,6 @@ export default function Page({
         {Array.from({ length: category.count }).map((_, i) => (
           <SkeletonCard key={i} />
         ))}
-        {/* <div>
-        <Counter />
-      </div> */}
       </div>
     </Boundary>
   );
