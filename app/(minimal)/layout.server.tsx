@@ -9,7 +9,7 @@ export default function Root({ children }: { children: any }) {
       </head>
       <body>
         <div className="mx-auto mt-12 w-full px-4 lg:max-w-screen-lg">
-          <Info path={["app", "(minimal)"]} kind="layout" type="server">
+          <Info path={['app', '(minimal)']} kind="layout" type="server">
             <div className="space-y-6">{children}</div>
           </Info>
         </div>

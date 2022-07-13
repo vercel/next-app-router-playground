@@ -26,7 +26,7 @@ export default function Root({ children, ...props }: { children: any }) {
       <body>
         <div className="mx-auto mt-12 w-full px-4 lg:max-w-screen-lg">
           <Info
-            path={["app", "(default)"]}
+            path={['app', '(default)']}
             kind="layout"
             type="server"
             data={{
