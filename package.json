@@ -6,16 +6,22 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write \"**/*.{js,ts,tsx,md}\""
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "semi": true,
+    "trailingComma": "all",
+    "singleQuote": true
   },
   "dependencies": {
     "clsx": "^1.2.1",
-    "next": "^12.2.3-canary.2",
-    "react": "^0.0.0-experimental-dd2d65227-20220708",
-    "react-dom": "^0.0.0-experimental-dd2d65227-20220708"
+    "next": "^12.2.3-canary.4",
+    "react": "^0.0.0-experimental-e225fa43a-20220711",
+    "react-dom": "^0.0.0-experimental-e225fa43a-20220711"
   },
   "devDependencies": {
-    "@tailwindcss/forms": "^0.5.2",
     "@types/node": "18.0.3",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
@@ -23,6 +29,8 @@
     "eslint": "8.19.0",
     "eslint-config-next": "^12.2.3-canary.2",
     "postcss": "^8.4.14",
+    "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.1.12",
     "tailwindcss": "^3.1.6",
     "typescript": "4.7.4"
   }

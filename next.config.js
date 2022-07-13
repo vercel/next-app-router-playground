@@ -7,11 +7,11 @@ const nextConfig = {
       allowFutureImage: true,
     },
     appDir: true,
-    runtime: "nodejs",
+    runtime: 'nodejs',
     serverComponents: true,
     legacyBrowsers: false,
     browsersListForSwc: true,
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
