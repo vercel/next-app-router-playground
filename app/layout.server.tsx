@@ -1,5 +1,5 @@
 import '@/styles/globals.css';
-import { AddressBar } from '@/ui/AddressBar.server';
+import AddressBar from '@/ui/AddressBar.client';
 import { Nav } from '@/ui/Nav.server';
 import nextPackageJson from 'next/package.json';
 import React from 'react';
@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: any }) {
           </div>
 
           <div className="col-start-3 space-y-6">
-            <AddressBar path={['demo', 'a', 'b', 'c']} />
+            <AddressBar />
 
             <div className="w-full rounded-xl border border-zinc-800 bg-black p-8">
               {children}
