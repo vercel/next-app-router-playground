@@ -1,4 +1,11 @@
-export const getCategories = () => [
+export type Category = {
+  name: string;
+  slug: string;
+  count: number;
+  items: Omit<Category, 'items'>[];
+};
+
+export const getCategories = (): Category[] => [
   {
     name: 'Electronics',
     slug: 'electronics',

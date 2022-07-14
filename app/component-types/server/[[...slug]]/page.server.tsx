@@ -27,6 +27,7 @@ export default function Page(props: any) {
           </div>
         </div>
 
+        {/* TODO: Update to searchParams after `https://github.com/vercel/next.js/pull/38654` */}
         <div className="space-y-2">
           <div className="font-medium">`query`</div>
           <div className="overflow-x-auto rounded-xl bg-white/20 py-4 px-2 text-sm [color-scheme:dark]">
