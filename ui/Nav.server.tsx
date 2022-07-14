@@ -11,6 +11,21 @@ type Item = {
   disabled?: boolean;
 };
 
+export const playgrounds: Item[] = [
+  {
+    name: 'Layouts',
+    href: '/layouts',
+  },
+  {
+    name: 'Client / Server Components',
+    href: '/component-types/server',
+    disabled: true,
+  },
+  //
+  // { name: 'Parallel routes', href: '#', disabled: true },
+  // { name: 'Intercepting routes', href: '#', disabled: true },
+];
+
 const NavItem = ({ item }: { item: Item }) => {
   return (
     <>
@@ -19,8 +34,8 @@ const NavItem = ({ item }: { item: Item }) => {
         className={clsx(
           'group flex items-center rounded-md px-3 py-2 text-sm font-medium',
           {
-            'text-gray-400': item.disabled,
-            'text-gray-600 hover:bg-gray-50 hover:text-gray-900':
+            'text-zinc-500': item.disabled,
+            'text-zinc-200 hover:bg-zinc-800 hover:text-zinc-100':
               !item.disabled,
           },
         )}
@@ -38,17 +53,14 @@ const NavItem = ({ item }: { item: Item }) => {
   );
 };
 
-export function Nav({ items }: { items: Item[] }) {
+export function Nav() {
   return (
     <div className="space-y-1">
-      <h3
-        className="px-3 text-xs font-semibold uppercase tracking-wider text-gray-500"
-        id="projects-headline"
-      >
+      <h3 className="px-3 text-xs font-semibold uppercase tracking-wider text-zinc-500">
         Demos
       </h3>
       <div className="space-y-1">
-        {items.map((item) => (
+        {playgrounds.map((item) => (
           <NavItem key={item.name} item={item} />
         ))}
       </div>
