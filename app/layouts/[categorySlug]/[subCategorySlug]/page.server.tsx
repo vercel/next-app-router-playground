@@ -4,19 +4,20 @@ import { SkeletonCard } from '@/ui/SkeletonCard.server';
 import { GetServerSideProps } from 'next';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { category } = context.params!;
+  const { categorySlug, subCategorySlug } = context.params!;
+
+  const category = getCategories().find((x) => x.slug === categorySlug);
 
   return {
     props: {
-      category: getCategories().find((x) => x.slug === category),
+      category: category?.items.find((x) => x.slug === subCategorySlug),
     },
   };
 };
+
 export default function Page({
-  children,
   category,
 }: {
-  children: React.ReactNode;
   category: ReturnType<typeof getCategories>[0];
 }) {
   return (
