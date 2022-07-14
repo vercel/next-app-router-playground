@@ -6,7 +6,6 @@ const nextConfig = {
     // Required:
     appDir: true,
     serverComponents: true,
-    runtime: 'nodejs',
     // Recommended for new `<Link>` and `<Image>` behavior:
     newNextLinkBehavior: true,
     images: {
