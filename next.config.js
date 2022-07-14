@@ -1,14 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: true, // Recommended for the `pages` directory, default in `app`.
+  swcMinify: true,
   experimental: {
+    // Required:
+    appDir: true,
+    serverComponents: true,
+    runtime: 'nodejs',
+    // Recommended for new `<Link>` and `<Image>` behavior:
     newNextLinkBehavior: true,
     images: {
       allowFutureImage: true,
     },
-    appDir: true,
-    runtime: 'nodejs',
-    serverComponents: true,
+    // Recommended, will be the default in the next major version:
     legacyBrowsers: false,
     browsersListForSwc: true,
   },
