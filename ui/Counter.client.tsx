@@ -8,7 +8,7 @@ export const Counter = () => {
   }, []);
 
   return (
-    <div className="inline-flex space-x-1 rounded-xl border-2 border-dashed border-pink-500 p-1.5">
+    <div className="inline-flex space-x-1 rounded-lg border border-dashed border-blue-500 p-1.5">
       <button
         className="h-3 w-8 rounded-lg bg-white/20 hover:bg-white/30"
         onClick={() => setCount(count + 1)}

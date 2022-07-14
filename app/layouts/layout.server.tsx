@@ -22,7 +22,7 @@ export default function Layout({
           <div className="flex space-x-3">
             <Link
               href="/layouts"
-              className="rounded-full bg-zinc-700 px-3 text-sm font-medium text-zinc-100 hover:bg-pink-600 hover:text-white"
+              className="rounded-lg bg-zinc-700 px-2.5 py-0.5 text-sm font-medium text-zinc-100 hover:bg-blue-600 hover:text-white"
             >
               Home
             </Link>
@@ -31,7 +31,7 @@ export default function Layout({
               <Link
                 key={category.slug}
                 href={`/layouts/${category.slug}`}
-                className="rounded-full bg-zinc-700 px-3 text-sm font-medium text-zinc-100 hover:bg-pink-600 hover:text-white"
+                className="rounded-lg bg-zinc-700 px-2.5 py-0.5 text-sm font-medium text-zinc-100 hover:bg-blue-600 hover:text-white"
               >
                 {category.name}
               </Link>

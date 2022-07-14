@@ -28,7 +28,7 @@ export default function Layout({
             <div className="flex items-center space-x-4">
               <Link
                 href="/layouts/electronics"
-                className="rounded-full bg-zinc-700 px-3 text-sm font-medium text-zinc-100 hover:bg-pink-600 hover:text-white"
+                className="rounded-lg bg-zinc-700 px-2.5 py-0.5 text-sm font-medium text-zinc-100 hover:bg-blue-600 hover:text-white"
               >
                 All
               </Link>
@@ -37,7 +37,7 @@ export default function Layout({
                 <Link
                   key={item.slug}
                   href={`/layouts/${category.slug}/${item.slug}`}
-                  className="rounded-full bg-zinc-700 px-3 text-sm font-medium text-zinc-100 hover:bg-pink-600 hover:text-white"
+                  className="rounded-lg bg-zinc-700 px-2.5 py-0.5 text-sm font-medium text-zinc-100 hover:bg-blue-600 hover:text-white"
                 >
                   {item.name}
                 </Link>
