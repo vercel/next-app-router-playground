@@ -8,7 +8,6 @@ type Item = {
     name: string;
     href: string;
   }[];
-  disabled?: boolean;
 };
 
 export const playgrounds: Item[] = [
@@ -19,7 +18,6 @@ export const playgrounds: Item[] = [
   {
     name: 'Client / Server Components',
     href: '/component-types/server',
-    disabled: true,
   },
   //
   // { name: 'Parallel routes', href: '#', disabled: true },
@@ -32,12 +30,7 @@ const NavItem = ({ item }: { item: Item }) => {
       <Link
         href={item.href}
         className={clsx(
-          'group flex items-center rounded-md px-3 py-2 text-sm font-medium',
-          {
-            'text-zinc-500': item.disabled,
-            'text-zinc-200 hover:bg-zinc-800 hover:text-zinc-100':
-              !item.disabled,
-          },
+          'group flex items-center rounded-md px-3 py-2 text-sm font-medium text-zinc-200 hover:bg-zinc-800 hover:text-zinc-100',
         )}
       >
         <span className="truncate">{item.name}</span>
@@ -53,7 +46,7 @@ const NavItem = ({ item }: { item: Item }) => {
   );
 };
 
-export function Nav() {
+export function PlaygroundNav() {
   return (
     <div className="space-y-1">
       <h3 className="px-3 text-xs font-semibold uppercase tracking-wider text-zinc-500">
