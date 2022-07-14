@@ -1,5 +1,3 @@
-// TODO:
-// - [A] works, but causes an initial flash of unstyled content, so temporarily using [B]
 import '@/styles/globals.css';
 import { AddressBar } from '@/ui/AddressBar.server';
 import { Nav } from '@/ui/Nav.server';
@@ -11,8 +9,6 @@ export default function RootLayout({ children }: { children: any }) {
     <html>
       <head>
         <title>Demo</title>
-        {/* [B]: Requires npx tailwindcss -i ./styles/globals.css -o ./public/output.css --watch */}
-        {/* <link rel="stylesheet" href="/output.css" /> */}
       </head>
       <body className="overflow-y-scroll bg-zinc-900">
         <div className="grid grid-cols-[1fr,minmax(auto,240px),min(800px,100%),minmax(auto,240px),1fr] gap-x-8 py-12">

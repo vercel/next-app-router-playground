@@ -1,5 +1,4 @@
 import React from 'react';
-// import { useRouter } from 'next/router';
 
 export const AddressBar = ({
   path,
@@ -8,9 +7,6 @@ export const AddressBar = ({
   path?: string[];
   query?: { k: string; v: string }[];
 }) => {
-  // const router = useRouter();
-  // console.log(router);
-
   return (
     <div className="flex w-full items-center space-x-2 rounded-3xl bg-gray-100 px-4 py-2 text-gray-500">
       <div>

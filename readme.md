@@ -28,7 +28,3 @@ Link to doc
   - Page file path
   - Component type (Server / Client)
   - Resulting URL paths
-
-### Importing new hooks
-
-Looks like the new hooks are not exported yet, except from the `"next/dist/client/components/hooks-server"` folder which causes a context error.

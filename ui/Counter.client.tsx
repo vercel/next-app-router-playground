@@ -1,5 +1,3 @@
-// TODO: Use this once https://vercel.slack.com/archives/C035J346QQL/p1657713568087989 is resolved
-
 import React from 'react';
 
 export const Counter = () => {
