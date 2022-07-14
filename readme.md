@@ -1,7 +1,5 @@
 # Layouts Playground & Demo
 
-This is a playground DevEx is using to try out the new layouts and routing. You can find more information on [Notion](https://www.notion.so/vercel/Update-learn-and-docs-for-Layouts-and-Routing-dd39d46fc8054972b08e3711c4345f6e).
-
 ## Running Locally
 
 1. Install dependencies: `yarn`
@@ -9,22 +7,12 @@ This is a playground DevEx is using to try out the new layouts and routing. You 
 
 > **Note:** This examples requires the `react` and `react-dom` experimental version.
 
-## Supported Features
+## Documentation
 
-Link to doc
+Learn more about supported and upcoming features and how to use them.
 
-# Unsupported Features
-
-Link to doc
-
-## Aim
-
-- Show the simplest and smallest example for each feature.
-- Visually show debug info so it's easy to understand
-  - Layout component hierarchy
-  - Data returned by new hooks
-  - Props passed to layouts and pages
-  - Re-rendering on navigation
-  - Page file path
-  - Component type (Server / Client)
-  - Resulting URL paths
+- [Getting Started](https://www.notion.so/vercel/Getting-Started-6c762851a9d74c6bbae2cab1fa443eac)
+- [Defining Routes](https://www.notion.so/vercel/Defining-Routes-3b3c1514987a49e9a19931c81292b17a)
+- [Layouts and Pages](https://www.notion.so/vercel/Layouts-and-Pages-7ee6f2d919c0412291849376783fe2f5)
+- [Server and Client Components](https://www.notion.so/vercel/Server-and-Client-components-b4f72607fefd4b508aad99371f8488a4)
+- [Data Fetching](https://www.notion.so/vercel/Data-Fetching-5e621124c641469185989bbbf2902ad7)
