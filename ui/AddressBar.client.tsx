@@ -1,8 +1,12 @@
 import React from 'react';
-import { usePathname } from 'next/dist/client/components/hooks-client';
+import {
+  usePathname,
+  useSearchParams,
+} from 'next/dist/client/components/hooks-client';
 
-const AddressBar = ({ query }: { query?: { k: string; v: string }[] }) => {
+const AddressBar = () => {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   return (
     <div className="flex w-full items-center space-x-2 rounded-xl border border-zinc-800 bg-black px-4 py-3 text-zinc-500">
@@ -36,7 +40,7 @@ const AddressBar = ({ query }: { query?: { k: string; v: string }[] }) => {
                     <span>
                       <span
                         key={segment}
-                        className="animate-[segmentChange_1s_ease-in-out_1] rounded-lg  px-2 py-0.5 text-zinc-100"
+                        className="animate-[segmentChange_1s_ease-in-out_1] rounded-lg px-2 py-0.5 text-zinc-100"
                       >
                         {segment}
                       </span>
@@ -48,7 +52,23 @@ const AddressBar = ({ query }: { query?: { k: string; v: string }[] }) => {
               })}
           </>
         ) : null}
-        {query ? <>?{query.map(({ k, v }) => k + '=' + v).join('&')}</> : null}
+        {Object.keys(searchParams).length !== 0 ? (
+          <div className="px-2 text-zinc-500">
+            <span>?</span>
+            {Object.entries(searchParams).map(([key, value], index) => {
+              return (
+                <>
+                  {index !== 0 ? <span>&</span> : null}
+                  <span key={key} className="px-2">
+                    <span className="text-zinc-100">{key}</span>
+                    <span>=</span>
+                    <span className="text-zinc-100">{value}</span>
+                  </span>
+                </>
+              );
+            })}
+          </div>
+        ) : null}
       </div>
     </div>
   );
