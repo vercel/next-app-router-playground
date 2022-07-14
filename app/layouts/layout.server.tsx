@@ -1,7 +1,7 @@
-import { getCategories } from '@/lib/getCategories';
+import { getCategories, type Category } from '@/lib/getCategories';
 import Counter from '@/ui/Counter.client';
-import Link from 'next/link';
 import React from 'react';
+import CategoryNav from './CategoryNav.client';
 
 export const getServerSideProps = () => {
   return {
@@ -13,31 +13,14 @@ export default function Layout({
   categories,
 }: {
   children: React.ReactNode;
-  categories: ReturnType<typeof getCategories>;
+  categories: Category[];
 }) {
   return (
     <div className="space-y-9">
       <div>
-        <div className="flex items-center">
-          <div className="flex space-x-3">
-            <Link
-              href="/layouts"
-              className="rounded-lg bg-zinc-700 px-2.5 py-0.5 text-sm font-medium text-zinc-100 hover:bg-blue-600 hover:text-white"
-            >
-              Home
-            </Link>
-
-            {categories.map((category) => (
-              <Link
-                key={category.slug}
-                href={`/layouts/${category.slug}`}
-                className="rounded-lg bg-zinc-700 px-2.5 py-0.5 text-sm font-medium text-zinc-100 hover:bg-blue-600 hover:text-white"
-              >
-                {category.name}
-              </Link>
-            ))}
-          </div>
-          <div className="ml-auto">
+        <div className="flex items-center justify-between">
+          <CategoryNav categories={categories} />
+          <div>
             <Counter />
           </div>
         </div>
