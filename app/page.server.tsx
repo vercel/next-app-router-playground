@@ -1,4 +1,4 @@
-import { playgrounds } from '@/ui/PlaygroundNav.server';
+import { playgrounds } from '@/lib/playgrounds';
 import { SkeletonCard } from '@/ui/SkeletonCard.server';
 import Link from 'next/link';
 
@@ -7,8 +7,8 @@ export default function Page() {
     <div className="grid grid-cols-3 gap-x-8 gap-y-10">
       {playgrounds.map((playground) => (
         <Link
-          key={playground.href}
-          href={playground.href}
+          key={playground.slug}
+          href={`/${playground.slug}`}
           className="group relative block space-y-3"
         >
           <SkeletonCard />

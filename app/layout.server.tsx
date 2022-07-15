@@ -1,6 +1,6 @@
 import '@/styles/globals.css';
 import AddressBar from '@/ui/AddressBar.client';
-import { PlaygroundNav } from '@/ui/PlaygroundNav.server';
+import GlobalNav from './GlobalNav.client';
 import nextPackageJson from 'next/package.json';
 import React from 'react';
 
@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: any }) {
       <body className="overflow-y-scroll bg-zinc-900">
         <div className="grid grid-cols-[1fr,minmax(auto,240px),min(800px,100%),minmax(auto,240px),1fr] gap-x-8 py-12">
           <div className="col-start-2">
-            <PlaygroundNav />
+            <GlobalNav />
           </div>
 
           <div className="col-start-3 space-y-6">
