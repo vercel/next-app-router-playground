@@ -17,7 +17,7 @@ const HooksClient = () => {
           {
             usePathname: pathname,
             useSearchParams: searchParams,
-            useSelectedLayoutSegment__IN_DEVELOPMENT: selectedLayoutSegement,
+            selectedLayoutSegement: selectedLayoutSegement,
           },
           null,
           2,

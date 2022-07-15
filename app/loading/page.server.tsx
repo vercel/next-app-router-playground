@@ -1,9 +1,7 @@
-import { type Category, getCategories } from '@/lib/getCategories';
+import { getCategories, type Category } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary.server';
-import Counter from '@/ui/Counter.client';
 import { SkeletonCard } from '@/ui/SkeletonCard.server';
 import { TabNavItem } from '@/ui/TabNavItem';
-import Link from 'next/link';
 
 export const getServerSideProps = () => {
   return {
@@ -40,7 +38,7 @@ export default function Page({ categories }: { categories: Category[] }) {
 
         <div>
           <div className="font-medium text-white">Things to note</div>
-          <ul className="mt-3 list-disc pl-4">
+          <ul className="mt-3 list-disc space-y-2 pl-4">
             <li>
               Shared layouts are still interactive while nested layouts or pages
               load. Try clicking the counter while{' '}
