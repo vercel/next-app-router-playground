@@ -1,9 +1,7 @@
-import { type Category, getCategories } from '@/lib/getCategories';
+import { getCategories, type Category } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary.server';
 import Counter from '@/ui/Counter.client';
-import { SkeletonCard } from '@/ui/SkeletonCard.server';
 import { TabNavItem } from '@/ui/TabNavItem';
-import Link from 'next/link';
 
 export const getServerSideProps = () => {
   return {
@@ -16,7 +14,7 @@ export default function Page({ categories }: { categories: Category[] }) {
     <Boundary>
       <div className="space-y-10 text-sm text-zinc-400">
         <div>
-          <div className="text-xl font-medium text-white">Layouts</div>
+          <div className="text-2xl font-medium text-white">Layouts</div>
         </div>
 
         <div className="">
@@ -35,9 +33,9 @@ export default function Page({ categories }: { categories: Category[] }) {
               <Boundary isHighlighted={true}>{''}</Boundary>
             </div>
             <div>
-              A pink border indicates{' '}
+              A pink border indicates which{' '}
               <span className="font-mono font-medium text-white">{`{children}`}</span>{' '}
-              have recently re-rendered.
+              have re-rendered.
             </div>
 
             <div>

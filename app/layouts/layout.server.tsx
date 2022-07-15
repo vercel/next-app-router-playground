@@ -17,14 +17,13 @@ export default function Layout({
 }) {
   return (
     <div className="space-y-9">
-      <div>
-        <div className="flex items-center justify-between">
-          <CategoryNav categories={categories} />
-          <div>
-            <Counter />
-          </div>
+      <div className="flex items-center justify-between">
+        <CategoryNav categories={categories} />
+        <div>
+          <Counter />
         </div>
       </div>
+
       <div>{children}</div>
     </div>
   );
