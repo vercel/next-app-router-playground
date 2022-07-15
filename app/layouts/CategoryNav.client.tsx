@@ -2,7 +2,7 @@ import { type Category } from '@/lib/getCategories';
 import { TabNavItem } from '@/ui/TabNavItem';
 import { useSelectedLayoutSegment } from 'next/dist/client/components/hooks-client';
 
-const SubCategoryNav = ({ categories }: { categories: Category[] }) => {
+const CategoryNav = ({ categories }: { categories: Category[] }) => {
   const selectedLayoutSegement = useSelectedLayoutSegment();
 
   return (
@@ -24,4 +24,4 @@ const SubCategoryNav = ({ categories }: { categories: Category[] }) => {
   );
 };
 
-export default SubCategoryNav;
+export default CategoryNav;
