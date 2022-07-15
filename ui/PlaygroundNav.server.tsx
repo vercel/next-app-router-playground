@@ -16,7 +16,7 @@ export const playgrounds: Item[] = [
     href: '/layouts',
   },
   {
-    name: 'Client / Server Components',
+    name: 'Client/Server Components (WIP)',
     href: '/component-types/server',
   },
   //
