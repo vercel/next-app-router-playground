@@ -4,7 +4,7 @@ import { useSelectedLayoutSegment } from 'next/dist/client/components/hooks-clie
 import Link from 'next/link';
 
 export default function GlobalNav() {
-  const selectedLayoutSegement = useSelectedLayoutSegment();
+  const selectedLayoutSegment = useSelectedLayoutSegment();
 
   return (
     <div className="space-y-1">
@@ -13,7 +13,7 @@ export default function GlobalNav() {
       </h3>
       <div className="space-y-1">
         {playgrounds.map((item) => {
-          const isActive = item.slug === selectedLayoutSegement;
+          const isActive = item.slug === selectedLayoutSegment;
 
           return (
             <Link
