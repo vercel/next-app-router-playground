@@ -8,7 +8,7 @@ const SubCategoryNav = ({ category }: { category: Category }) => {
   return (
     <div className="flex items-center space-x-4">
       <TabNavItem
-        href="/layouts/electronics"
+        href={`/layouts/${category.slug}`}
         isActive={!selectedLayoutSegement}
       >
         All
