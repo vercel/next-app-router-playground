@@ -13,13 +13,10 @@ export const TabNavItem = ({
   return (
     <Link
       href={href}
-      className={clsx(
-        'rounded-lg bg-zinc-700 px-2.5 py-0.5 text-sm font-medium',
-        {
-          'text-zinc-100 hover:bg-blue-600 hover:text-white': !isActive,
-          'bg-blue-600 text-white': isActive,
-        },
-      )}
+      className={clsx('rounded-lg bg-zinc-700 px-3 py-1 text-sm font-medium', {
+        'text-zinc-100 hover:bg-blue-600 hover:text-white': !isActive,
+        'bg-blue-600 text-white': isActive,
+      })}
     >
       {children}
     </Link>

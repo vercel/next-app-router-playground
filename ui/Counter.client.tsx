@@ -10,9 +10,9 @@ export const Counter = () => {
   return (
     <button
       onClick={() => setCount(count + 1)}
-      className="group inline-flex space-x-1 rounded-lg border border-dashed border-blue-500 p-1.5"
+      className="group inline-flex space-x-1 rounded-lg border-2 border-dashed border-blue-600 p-1.5"
     >
-      <div className="h-3 w-8 rounded-lg bg-zinc-600 group-hover:bg-zinc-400"></div>
+      <div className="h-3 w-8 rounded-lg bg-zinc-600 group-hover:bg-zinc-400" />
 
       <div className="text-xs font-bold tabular-nums leading-none text-white">
         {count}
