@@ -1,6 +1,6 @@
 # Layouts Playground & Demo
 
-> **Note**: This repository is shared externally with the GitHub team.
+> **Note**: This repository is shared externally with Next.js community members.
 
 ## Running Locally
 
