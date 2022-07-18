@@ -1,8 +1,10 @@
 import '@/styles/globals.css';
 import AddressBar from '@/ui/AddressBar.client';
-import GlobalNav from './GlobalNav.client';
+import { Boundary } from '@/ui/Boundary.server';
+import Counter from '@/ui/Counter.client';
 import nextPackageJson from 'next/package.json';
 import React from 'react';
+import GlobalNav from './GlobalNav.client';
 
 export default function RootLayout({ children }: { children: any }) {
   return (
@@ -19,7 +21,7 @@ export default function RootLayout({ children }: { children: any }) {
           <div className="col-start-3 space-y-6">
             <AddressBar />
 
-            <div className="w-full rounded-xl border border-zinc-800 bg-black p-8">
+            <div className="rounded-xl border border-zinc-800 bg-black p-8">
               {children}
             </div>
           </div>

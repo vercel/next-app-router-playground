@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Counter = () => {
+const Counter = () => {
   const [count, setCount] = React.useState(0);
 
   React.useEffect(() => {

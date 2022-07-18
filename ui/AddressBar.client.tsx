@@ -9,7 +9,7 @@ const AddressBar = () => {
   const searchParams = useSearchParams();
 
   return (
-    <div className="flex w-full items-center space-x-2 rounded-xl border border-zinc-800 bg-black px-4 py-3 text-zinc-500">
+    <div className="flex w-full items-center space-x-2 rounded-xl border border-zinc-800 bg-black px-4 py-3 text-zinc-600">
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +26,7 @@ const AddressBar = () => {
       </div>
       <div className="flex space-x-1 text-sm font-medium">
         <div>
-          <span className="px-2 text-zinc-400">acme.com</span>
+          <span className="px-2 text-zinc-500">acme.com</span>
         </div>
         {pathname ? (
           <>
@@ -40,7 +40,7 @@ const AddressBar = () => {
                     <span>
                       <span
                         key={segment}
-                        className="animate-[segmentChange_1s_ease-in-out_1] rounded-lg px-2 py-0.5 text-zinc-100"
+                        className="animate-[highlight_1s_ease-in-out_1] rounded-full px-1.5 py-0.5 text-zinc-100"
                       >
                         {segment}
                       </span>
