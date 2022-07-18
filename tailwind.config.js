@@ -29,6 +29,11 @@ module.exports = {
             color: theme('colors.white'),
           },
         },
+        shimmer: {
+          '100%': {
+            transform: 'translateX(100%)',
+          },
+        },
       }),
     },
   },
