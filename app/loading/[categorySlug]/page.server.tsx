@@ -7,7 +7,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { categorySlug } = context.params!;
 
   // artifical delay
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 3000));
 
   return {
     props: {
@@ -15,19 +15,17 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   };
 };
-export default function Page({
-  children,
-  category,
-}: {
-  children: React.ReactNode;
-  category: Category;
-}) {
+export default function Page({ category }: { category: Category }) {
   return (
     <Boundary>
-      <div className="grid grid-cols-3 gap-5">
-        {Array.from({ length: category.count }).map((_, i) => (
-          <SkeletonCard key={i} />
-        ))}
+      <div className="space-y-4">
+        <div className="text-xl font-medium text-zinc-500">{category.name}</div>
+
+        <div className="grid grid-cols-3 gap-6">
+          {Array.from({ length: category.count }).map((_, i) => (
+            <SkeletonCard key={i} />
+          ))}
+        </div>
       </div>
     </Boundary>
   );

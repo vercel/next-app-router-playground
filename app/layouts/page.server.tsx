@@ -1,7 +1,8 @@
 import { getCategories, type Category } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary.server';
 import Counter from '@/ui/Counter.client';
-import { TabNavItem } from '@/ui/TabNavItem';
+import { SectionLink } from '@/ui/SectionLink.server';
+import { SkeletonCard } from '@/ui/SkeletonCard.server';
 
 export const getServerSideProps = () => {
   return {
@@ -11,61 +12,25 @@ export const getServerSideProps = () => {
 
 export default function Page({ categories }: { categories: Category[] }) {
   return (
-    <Boundary>
-      <div className="space-y-10 text-sm text-zinc-400">
-        <div>
-          <div className="text-2xl font-medium text-white">Layouts</div>
-        </div>
-
-        <div className="">
-          <div className="grid grid-cols-[124px,1fr] gap-x-6 gap-y-8">
-            <div>
-              <Boundary>{''}</Boundary>
-            </div>
-
-            <div>
-              The{' '}
-              <span className="font-mono font-medium text-white">{`{children}`}</span>{' '}
-              boundary between a parent layout and a nested layout or page.
-            </div>
-
-            <div>
-              <Boundary isHighlighted={true}>{''}</Boundary>
-            </div>
-            <div>
-              A pink border indicates which{' '}
-              <span className="font-mono font-medium text-white">{`{children}`}</span>{' '}
-              have re-rendered.
-            </div>
-
-            <div>
-              <Counter />
-            </div>
-
-            <div>
-              A client-side component with state. Use it to highlight that state
-              is preserved in a parent layout when{' '}
-              <span className="font-mono font-medium text-white">{`{children}`}</span>{' '}
-              change.
-            </div>
+    <div className="space-y-12">
+      <Boundary>
+        <div className="space-y-4">
+          <div className="text-xl font-medium text-zinc-500">Home</div>
+          <div className="grid grid-cols-3 gap-6">
+            {categories.map((category) => {
+              return (
+                <SectionLink
+                  key={category.slug}
+                  href={`/layouts/${category.slug}`}
+                  text={category.name}
+                >
+                  <SkeletonCard />
+                </SectionLink>
+              );
+            })}
           </div>
         </div>
-
-        <div className="space-y-2">
-          <div>Navigate to a category to get started:</div>
-
-          <div className="flex space-x-3">
-            {categories.map((category) => (
-              <TabNavItem
-                key={category.slug}
-                href={`/layouts/${category.slug}`}
-              >
-                {category.name}
-              </TabNavItem>
-            ))}
-          </div>
-        </div>
-      </div>
-    </Boundary>
+      </Boundary>
+    </div>
   );
 }
