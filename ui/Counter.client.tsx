@@ -10,7 +10,7 @@ export const Counter = () => {
   return (
     <button
       onClick={() => setCount(count + 1)}
-      className="group inline-flex space-x-1 rounded-lg border-2 border-dashed border-blue-600 p-1.5"
+      className="group inline-flex space-x-1 rounded-lg border border-dashed border-vercel-blue p-1.5"
     >
       <div className="h-3 w-8 rounded-lg bg-zinc-600 group-hover:bg-zinc-400" />
 
