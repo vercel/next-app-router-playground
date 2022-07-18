@@ -17,8 +17,8 @@ export const getCategories = (): Category[] => [
     ],
   },
   {
-    name: 'Clothes',
-    slug: 'clothes',
+    name: 'Clothing',
+    slug: 'clothing',
     count: 12,
     items: [
       { name: 'Tops', slug: 'tops', count: 3 },
