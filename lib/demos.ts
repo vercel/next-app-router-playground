@@ -50,20 +50,14 @@ export const demos: Item[] = [
         name: 'Soft Push Navigation',
         slug: 'soft-push',
       },
-    ],
-  },
-  // {
-  //   name: 'Client/Server Components (WIP)',
-  //   slug: 'components-types',
-  // },
-  //
-  // { name: 'Parallel routes', href: '#', isDisabled: true },
-  {
-    name: 'Intercepting Routes',
-    items: [
       {
-        name: 'Modals',
-        slug: 'modals',
+        name: 'Intercepting Routes',
+        slug: 'intercepting-routes',
+        isDisabled: true,
+      },
+      {
+        name: 'Parallel Routes',
+        slug: 'parallel-routes',
         isDisabled: true,
       },
     ],
