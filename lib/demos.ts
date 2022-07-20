@@ -43,6 +43,15 @@ export const demos: Item[] = [
       },
     ],
   },
+  {
+    name: 'Routing',
+    items: [
+      {
+        name: 'Soft Push Navigation',
+        slug: 'soft-push',
+      },
+    ],
+  },
   // {
   //   name: 'Client/Server Components (WIP)',
   //   slug: 'components-types',
