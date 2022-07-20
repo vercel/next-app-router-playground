@@ -47,7 +47,7 @@ export const demos: Item[] = [
     name: 'Routing',
     items: [
       {
-        name: 'Soft Push',
+        name: 'Soft Push Navigation',
         slug: 'soft-push',
       },
     ],
