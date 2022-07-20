@@ -49,6 +49,7 @@ export const demos: Item[] = [
       {
         name: 'Soft Push Navigation',
         slug: 'soft-push',
+        isDisabled: true,
       },
       {
         name: 'Intercepting Routes',
