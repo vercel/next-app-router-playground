@@ -4,7 +4,7 @@ export default function Page() {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-3 gap-6">
-        <SectionLink useSoftPush={true} href="/layouts" text="Nested Layouts">
+        <SectionLink href="/layouts" text="Nested Layouts">
           <div className="rounded-2xl bg-zinc-900/80 p-4">
             <div className="space-y-3">
               <div className="h-3 w-4/5 rounded-lg bg-zinc-700" />
@@ -18,7 +18,7 @@ export default function Page() {
           </div>
         </SectionLink>
 
-        <SectionLink useSoftPush={true} href="/loading" text="Loading UI">
+        <SectionLink href="/loading" text="Loading UI">
           <div className="rounded-2xl bg-zinc-900/80 p-4">
             <div className="space-y-3">
               <div className="h-3 w-4/5 rounded-lg bg-zinc-700" />
@@ -37,11 +37,7 @@ export default function Page() {
         </SectionLink>
 
         {/* TODO: Custom skeleton */}
-        <SectionLink
-          useSoftPush={true}
-          href="/soft-push"
-          text="Soft Push Navigation"
-        >
+        <SectionLink href="/soft-push" text="Soft Push Navigation">
           <div className="rounded-2xl bg-zinc-900/80 p-4">
             <div className="space-y-3">
               <div className="h-3 w-4/5 rounded-lg bg-zinc-700" />
