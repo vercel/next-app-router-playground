@@ -28,6 +28,10 @@ export default function Page({ categories }: { categories: Category[] }) {
                 </SectionLink>
               );
             })}
+
+            <SectionLink href="/loading/no-loading" text="No Loading UI">
+              <SkeletonCard />
+            </SectionLink>
           </div>
         </div>
       </Boundary>
