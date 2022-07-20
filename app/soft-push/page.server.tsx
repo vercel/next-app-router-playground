@@ -10,23 +10,35 @@ export const getServerSideProps = () => {
 };
 
 export default function Page({ categories }: { categories: Category[] }) {
+  const lastCategory = categories[categories.length - 1];
   return (
     <div className="space-y-9">
       <Boundary>
         <div className="space-y-4">
           <div className="text-xl font-medium text-zinc-500">Home</div>
           <div className="grid grid-cols-3 gap-6">
-            {categories.map((category) => {
+            {/* Demo soft push */}
+            {categories.slice(0, -1).map((category) => {
               return (
                 <SectionLink
                   key={category.slug}
                   href={`/soft-push/${category.slug}`}
                   text={category.name}
+                  useSoftPush={true}
                 >
                   <SkeletonCard />
                 </SectionLink>
               );
             })}
+
+            {/* Demo hard push */}
+            <SectionLink
+              key={lastCategory.slug}
+              href={`/soft-push/${lastCategory.slug}`}
+              text={`${lastCategory.name} (Hard push)`}
+            >
+              <SkeletonCard />
+            </SectionLink>
           </div>
         </div>
       </Boundary>

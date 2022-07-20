@@ -10,6 +10,7 @@ const CategoryNav = ({
   useSoftPush?: boolean;
 }) => {
   const selectedLayoutSegement = useSelectedLayoutSegment();
+  const lastCategory = categories[categories.length - 1];
 
   return (
     <div className="flex items-center space-x-4">
@@ -17,7 +18,8 @@ const CategoryNav = ({
         Home
       </TabNavItem>
 
-      {categories.map((item) => (
+      {/* Demo soft push */}
+      {categories.slice(0, -1).map((item) => (
         <TabNavItem
           key={item.slug}
           href={`/soft-push/${item.slug}`}
@@ -27,6 +29,15 @@ const CategoryNav = ({
           {item.name}
         </TabNavItem>
       ))}
+
+      {/* Demo hard push */}
+      <TabNavItem
+        key={lastCategory.slug}
+        href={`/soft-push/${lastCategory.slug}`}
+        isActive={lastCategory.slug === selectedLayoutSegement}
+      >
+        {lastCategory.name} (Hard push)
+      </TabNavItem>
     </div>
   );
 };
