@@ -1,6 +1,5 @@
 import { getCategories, type Category } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary.server';
-import Counter from '@/ui/Counter.client';
 import { SectionLink } from '@/ui/SectionLink.server';
 import { SkeletonCard } from '@/ui/SkeletonCard.server';
 
