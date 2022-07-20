@@ -11,7 +11,7 @@ export default function RootLayout({ children }: { children: any }) {
         <title>Next.js Layouts and Routing Playground</title>
       </head>
       <body className="overflow-y-scroll bg-zinc-900">
-        <div className="grid grid-cols-[1fr,minmax(auto,240px),min(800px,100%),minmax(auto,240px),1fr] gap-x-8 py-12">
+        <div className="grid grid-cols-[1fr,minmax(auto,240px),min(800px,100%),1fr] gap-x-8 py-12">
           <div className="col-start-2">
             <GlobalNav />
           </div>
