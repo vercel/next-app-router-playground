@@ -1,4 +1,5 @@
 import { getCategories, type Category } from '@/lib/getCategories';
+import { Boundary } from '@/ui/Boundary.server';
 import Counter from '@/ui/Counter.client';
 import React from 'react';
 import CategoryNav from './CategoryNav.client';
@@ -17,11 +18,24 @@ export default function Layout({
 }) {
   return (
     <div className="space-y-9">
-      <div className="flex items-center justify-between">
-        <CategoryNav categories={categories} />
-        <div>
+      <div className="flex items-stretch justify-between">
+        <Boundary
+          size="small"
+          labels={['Client', '1KB']}
+          color="blue"
+          animateRerendering={false}
+        >
+          <CategoryNav categories={categories} />
+        </Boundary>
+
+        <Boundary
+          size="small"
+          labels={['Client', '1KB']}
+          color="blue"
+          animateRerendering={false}
+        >
           <Counter />
-        </div>
+        </Boundary>
       </div>
 
       <div>{children}</div>

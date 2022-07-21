@@ -23,13 +23,24 @@ export default function Layout({
   return (
     <Boundary>
       <div className="space-y-9">
-        <div>
-          <div className="flex items-center justify-between">
+        <div className="flex items-stretch justify-between">
+          <Boundary
+            size="small"
+            labels={['Client', '1KB']}
+            color="blue"
+            animateRerendering={false}
+          >
             <SubCategoryNav category={category} />
-            <div>
-              <Counter />
-            </div>
-          </div>
+          </Boundary>
+
+          <Boundary
+            size="small"
+            labels={['Client', '1KB']}
+            color="blue"
+            animateRerendering={false}
+          >
+            <Counter />
+          </Boundary>
         </div>
 
         <div>{children}</div>
