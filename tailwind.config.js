@@ -16,10 +16,10 @@ module.exports = {
       keyframes: ({ theme }) => ({
         rerender: {
           '0%': {
-            ['border-color']: theme('colors.vercel.pink'),
+            ['border-color']: 'currentcolor',
           },
           '40%': {
-            ['border-color']: theme('colors.vercel.pink'),
+            ['border-color']: 'currentcolor',
           },
         },
         highlight: {
