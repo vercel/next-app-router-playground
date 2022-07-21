@@ -2,7 +2,7 @@ import { Boundary } from '@/ui/Boundary.server';
 import { SkeletonCard } from '@/ui/SkeletonCard.server';
 export default function Loading() {
   return (
-    <Boundary isHighlighted={true} isRendering={true}>
+    <Boundary animateRerendering={false} color="pink">
       <div className="space-y-4">
         <div className="text-xl font-medium text-zinc-500">Loading...</div>
 
