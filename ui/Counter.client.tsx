@@ -3,20 +3,12 @@ import React from 'react';
 const Counter = () => {
   const [count, setCount] = React.useState(0);
 
-  React.useEffect(() => {
-    setCount(1);
-  }, []);
-
   return (
     <button
       onClick={() => setCount(count + 1)}
-      className="group inline-flex space-x-1 rounded-lg border border-dashed border-vercel-blue p-1.5"
+      className="rounded-lg bg-zinc-700 px-3 py-1 text-sm font-medium tabular-nums text-zinc-100 hover:bg-zinc-500 hover:text-white"
     >
-      <div className="h-3 w-8 rounded-lg bg-zinc-600 group-hover:bg-zinc-400" />
-
-      <div className="text-xs font-bold tabular-nums leading-none text-white">
-        {count}
-      </div>
+      {count} Clicks
     </button>
   );
 };
