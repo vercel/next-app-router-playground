@@ -29,6 +29,20 @@ export const demos: Item[] = [
     ],
   },
   {
+    name: 'Components',
+    items: [
+      {
+        name: 'Client and Server Components',
+        slug: 'components',
+      },
+      {
+        name: 'Hooks',
+        slug: 'hooks',
+        isDisabled: true,
+      },
+    ],
+  },
+  {
     name: 'Instant Loading States',
     items: [
       {
