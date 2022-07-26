@@ -53,7 +53,7 @@ const List = ({ items, depth }: { items: Item[]; depth: number }) => {
               ) : null}
 
               <div className="rounded-lg bg-zinc-800 px-3 py-1 text-sm font-medium text-white/50">
-                {item.size} KB
+                {item.size / 1000} KB
               </div>
             </div>
 
@@ -96,7 +96,7 @@ export const ComponentTree = ({ items }: { items: Item[] }) => {
               Client Components
             </div>
             <div className="rounded-full bg-vercel-blue px-1.5 text-[9px] uppercase leading-4 tracking-widest text-blue-100">
-              {clientTotal} KB
+              {clientTotal / 1000} KB
             </div>
           </div>
           <div className="rounded-full bg-zinc-800">

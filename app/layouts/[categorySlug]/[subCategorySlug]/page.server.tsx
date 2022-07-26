@@ -6,11 +6,15 @@ import { GetServerSideProps } from 'next';
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { categorySlug, subCategorySlug } = context.params!;
 
-  const category = getCategories().find((x) => x.slug === categorySlug);
+  const category = getCategories().find(
+    (category) => category.slug === categorySlug,
+  );
 
   return {
     props: {
-      category: category?.items.find((x) => x.slug === subCategorySlug),
+      category: category?.items.find(
+        (category) => category.slug === subCategorySlug,
+      ),
     },
   };
 };

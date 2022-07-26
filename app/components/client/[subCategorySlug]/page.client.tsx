@@ -4,9 +4,11 @@ import { SkeletonCard } from '@/ui/SkeletonCard.server';
 
 export default function Page(props: any) {
   // In production, we would not "fetch" data this way.
-  const category = getCategories().find((x) => x.slug === 'electronics')!;
+  const category = getCategories().find(
+    (category) => category.slug === 'electronics',
+  )!;
   const subCategory = category?.items.find(
-    (x) => x.slug === props.params.subCategorySlug!,
+    (subCategory) => subCategory.slug === props.params.subCategorySlug!,
   )!;
 
   return (

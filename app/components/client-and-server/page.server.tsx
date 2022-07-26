@@ -5,7 +5,9 @@ import { SkeletonCard } from '@/ui/SkeletonCard.server';
 export const getServerSideProps = async () => {
   return {
     props: {
-      category: getCategories().find((x) => x.slug === 'clothing'),
+      category: getCategories().find(
+        (category) => category.slug === 'clothing',
+      ),
     },
   };
 };

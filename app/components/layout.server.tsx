@@ -1,24 +1,11 @@
-import { getCategories, type Category } from '@/lib/getCategories';
-import Counter from '@/ui/Counter.client';
 import React from 'react';
 import CategoryNav from './CategoryNav.client';
 
-export const getServerSideProps = () => {
-  return {
-    props: { categories: getCategories() },
-  };
-};
-export default function Layout({
-  children,
-  categories,
-}: {
-  children: React.ReactNode;
-  categories: Category[];
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="space-y-9">
       <div className="flex items-stretch justify-between">
-        <CategoryNav categories={categories} />
+        <CategoryNav />
       </div>
 
       <div>{children}</div>

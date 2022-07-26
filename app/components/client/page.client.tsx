@@ -4,7 +4,9 @@ import { SkeletonCard } from '@/ui/SkeletonCard.server';
 
 export default function Page() {
   // In production, we would not "fetch" data this way.
-  const category = getCategories().find((x) => x.slug === 'electronics')!;
+  const category = getCategories().find(
+    (category) => category.slug === 'electronics',
+  )!;
   return (
     <Boundary>
       <div className="space-y-4">

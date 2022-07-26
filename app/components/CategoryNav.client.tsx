@@ -2,7 +2,7 @@ import { type Category } from '@/lib/getCategories';
 import { TabNavItem } from '@/ui/TabNavItem';
 import { useSelectedLayoutSegment } from 'next/dist/client/components/hooks-client';
 
-const CategoryNav = ({ categories }: { categories: Category[] }) => {
+const CategoryNav = () => {
   const selectedLayoutSegement = useSelectedLayoutSegment();
 
   return (
@@ -12,15 +12,15 @@ const CategoryNav = ({ categories }: { categories: Category[] }) => {
       </TabNavItem>
 
       <TabNavItem
-        href="/components/electronics"
-        isActive={'electronics' === selectedLayoutSegement}
+        href="/components/client"
+        isActive={'client' === selectedLayoutSegement}
       >
         Client Components Only
       </TabNavItem>
 
       <TabNavItem
-        href="/components/clothing"
-        isActive={'clothing' === selectedLayoutSegement}
+        href="/components/client-and-server"
+        isActive={'client-and-server' === selectedLayoutSegement}
       >
         Client and Server Components
       </TabNavItem>

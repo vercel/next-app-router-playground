@@ -1,90 +1,102 @@
-import { getCategories } from '@/lib/getCategories';
+import { getCategories, type Category } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary.server';
 import { ComponentTree } from '@/ui/ComponentTree.server';
 import Counter from '@/ui/Counter.client';
 import SubCategoryNav from './SubCategoryNav.client';
+export const getServerSideProps = async () => {
+  return {
+    props: {
+      category: getCategories().find(
+        (category) => category.slug === 'clothing',
+      ),
+    },
+  };
+};
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  // In production, we would not "fetch" data this way.
-  const category = getCategories().find((x) => x.slug === 'electronics')!;
+export default function Layout({
+  children,
+  category,
+}: {
+  children: React.ReactNode;
+  category: Category;
+}) {
   return (
     <div className="space-y-9">
       <div className="text-white">
-        In this section all components are deliberately client components
+        In this section, both client and server components are used.
       </div>
 
       {/* TODO: Add real component bundle sizes */}
-
       <ComponentTree
         items={[
           {
             name: 'RootLayout',
             type: 'server',
-            size: 1,
+            size: 1000,
             children: [
               {
                 name: 'CategoryNav',
                 type: 'client',
-                size: 3,
+                size: 2000,
                 children: [
                   {
                     name: 'TabNavItem',
                     type: 'client',
-                    size: 0.4,
+                    size: 400,
                     duplicates: 4,
                     children: [
                       {
                         name: 'LinkComponent',
                         type: 'client',
-                        size: 3,
+                        size: 3000,
                       },
                     ],
                   },
                 ],
               },
-              { name: 'ClickCounter', type: 'client', size: 0.4 },
+              { name: 'ClickCounter', type: 'client', size: 400 },
               {
                 name: 'CategoryLayout',
-                type: 'client',
-                size: 1,
+                type: 'server',
+                size: 1000,
                 children: [
                   {
                     name: 'SubCategoryNav',
                     type: 'client',
-                    size: 3,
+                    size: 3000,
                     children: [
                       {
                         name: 'TabNavItem',
                         type: 'client',
-                        size: 0.4,
+                        size: 400,
                         duplicates: 4,
                         children: [
                           {
                             name: 'LinkComponent',
                             type: 'client',
-                            size: 3,
+                            size: 3000,
                           },
                         ],
                       },
                     ],
                   },
-                  { name: 'ClickCounter', type: 'client', size: 0.4 },
+                  { name: 'ClickCounter', type: 'client', size: 400 },
                   {
                     name: 'SubCategoryLayout',
-                    type: 'client',
-                    size: 1,
+                    type: 'server',
+                    size: 1000,
                     children: [
                       {
                         name: 'SubCategoryPage',
-                        type: 'client',
-                        size: 2,
+                        type: 'server',
+                        size: 2000,
                         children: [
-                          { name: 'Title', type: 'client', size: 2 },
+                          { name: 'Title', type: 'server', size: 2000 },
                           {
                             name: 'SkeletonCard',
-                            type: 'client',
-                            size: 1,
                             duplicates: 4,
+                            size: 1000,
+                            type: 'server',
                           },
                         ],
                       },
@@ -96,7 +108,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           },
         ]}
       />
-
       <Boundary>
         <div className="space-y-9">
           <div className="flex items-stretch justify-between">

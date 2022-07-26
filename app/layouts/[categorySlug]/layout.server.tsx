@@ -8,7 +8,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      category: getCategories().find((x) => x.slug === categorySlug),
+      category: getCategories().find(
+        (category) => category.slug === categorySlug,
+      ),
     },
   };
 };
