@@ -21,12 +21,17 @@ const List = ({ items, depth }: { items: Item[]; depth: number }) => {
             key={item.name}
             className={clsx(
               'relative before:absolute',
+              // Visualize tree hierarchy
+              // vertical line
               'before:-left-3 before:top-0 before:border-zinc-800',
+              // horizontal line
               'after:top-6 after:-left-3 after:h-3 after:w-3 after:border-zinc-800',
               {
                 'ml-6 pt-3 before:border-l-2 after:absolute after:border-t-2':
+                  // Don't add ui for the first level
                   depth !== 0,
                 'before:h-full': !isLast,
+                // Last item should end earlier
                 'before:h-6': isLast,
               },
             )}

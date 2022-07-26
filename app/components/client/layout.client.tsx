@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="space-y-9">
       <div className="text-white">
-        In this section, all components are client components.
+        In this section, only client components are used.
       </div>
 
       {/* TODO: Add real component bundle sizes */}
@@ -25,7 +25,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               {
                 name: 'CategoryNav',
                 type: 'client',
-                size: 3000,
+                size: 2000,
                 children: [
                   {
                     name: 'TabNavItem',
