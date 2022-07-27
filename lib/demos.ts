@@ -38,7 +38,6 @@ export const demos: Item[] = [
       {
         name: 'Hooks',
         slug: 'hooks',
-        isDisabled: true,
       },
     ],
   },
