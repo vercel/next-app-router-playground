@@ -19,7 +19,6 @@ export const demos: Item[] = [
       {
         name: 'Grouped Layouts',
         slug: 'route-groups',
-        isDisabled: true,
       },
       {
         name: 'Root Layouts',
