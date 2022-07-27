@@ -19,47 +19,59 @@ const List = ({ items, depth }: { items: Item[]; depth: number }) => {
         return (
           <div
             key={item.name}
-            className={clsx(
-              'relative before:absolute',
-              // Visualize tree hierarchy
-              // vertical line
-              'before:-left-3 before:top-0 before:border-zinc-800',
-              // horizontal line
-              'after:top-6 after:-left-3 after:h-3 after:w-3 after:border-zinc-800',
-              {
-                'ml-6 pt-3 before:border-l-2 after:absolute after:border-t-2':
-                  // Don't add ui for the first level
-                  depth !== 0,
-                'before:h-full': !isLast,
-                // Last item should end earlier
-                'before:h-6': isLast,
-              },
-            )}
+            className={
+              depth === 0
+                ? undefined // Ignore first level
+                : clsx(
+                    'relative ml-5 pt-2',
+                    // Use the border of pseudo elements to visualize hierarchy
+                    // │
+                    'before:absolute before:-left-2.5 before:top-0 before:border-l-2 before:border-zinc-800',
+                    // ──
+                    'after:absolute after:top-[17px] after:-left-2.5 after:h-3 after:w-2.5 after:border-t-2 after:border-zinc-800',
+                    {
+                      // ├─
+                      'before:h-full': !isLast,
+                      // └─
+                      'before:h-[17px]': isLast,
+                    },
+                  )
+            }
           >
             <div className="flex space-x-1">
               <div
-                className={clsx('rounded-lg px-3 py-1 text-sm font-medium', {
-                  'bg-vercel-blue text-white': item.type === 'client',
-                  'bg-zinc-700 text-zinc-100': item.type === 'server',
-                })}
+                className={clsx(
+                  'rounded-md px-2 py-0.5 text-xs tracking-wide',
+                  {
+                    'bg-vercel-blue text-blue-100': item.type === 'client',
+                    'bg-zinc-700 text-zinc-200': item.type === 'server',
+                  },
+                )}
               >
+                <span className="text-white/40">{'<'}</span>
                 {item.name}
+                <span className="text-white/40">{'>'}</span>
               </div>
 
               {item.duplicates ? (
                 <div
-                  className={clsx('rounded-lg px-3 py-1 text-sm font-medium', {
-                    'bg-vercel-blue text-white': item.type === 'client',
-                    'bg-zinc-700 text-zinc-100': item.type === 'server',
-                  })}
+                  className={clsx(
+                    'rounded-md px-2 py-0.5 text-xs tracking-wide',
+                    {
+                      'bg-vercel-blue text-blue-100': item.type === 'client',
+                      'bg-zinc-700 text-zinc-200': item.type === 'server',
+                    },
+                  )}
                 >
                   ×{item.duplicates}
                 </div>
               ) : null}
 
-              <div className="rounded-lg bg-zinc-800 px-3 py-1 text-sm font-medium text-white/50">
-                {item.size / 1000} KB
-              </div>
+              {item.type === 'client' ? (
+                <div className="rounded-md bg-zinc-800 px-2 py-0.5 text-xs tracking-wide text-white/50">
+                  {item.size / 1000} KB
+                </div>
+              ) : null}
             </div>
 
             {item.children ? (
@@ -75,47 +87,75 @@ const List = ({ items, depth }: { items: Item[]; depth: number }) => {
 // Calculate the total bundle size of a specific component type (client or
 // server) in a tree
 // TODO: Decide if to multiply the size by the number of duplicates
-const sum = (items: Item[], filterType: Item['type']): number =>
+const sum = (items: Item[], componentType: Item['type']): number =>
   items.reduce(
     (total, item) =>
       // running total
       total +
-      // add the current component size if it's type is filterType
-      ((item.type === filterType ? item.size : 0) || 0) +
-      // add the total size of children components
-      (item?.children ? sum(item.children, filterType) : 0),
+      // add the current component size if it's type is componentType
+      ((item.type === componentType ? item.size : 0) || 0) +
+      // add the total size of children components recursively
+      (item?.children ? sum(item.children, componentType) : 0),
     0,
   );
 
 export const ComponentTree = ({ items }: { items: Item[] }) => {
   const clientTotal = sum(items, 'client');
   const serverTotal = sum(items, 'server');
-  const fill = Math.round((clientTotal / (clientTotal + serverTotal)) * 100);
+  const clientDeltaAsPercent = Math.round(
+    (clientTotal / (clientTotal + serverTotal)) * 100,
+  );
 
   return (
-    <div className="space-y-6">
-      <Boundary animateRerendering={false} labels={['Bundle Size']}>
-        <div className="space-y-3">
-          <div className="flex space-x-2">
-            <div className="rounded-full bg-vercel-blue px-1.5 text-[9px] uppercase leading-4 tracking-widest text-blue-100">
-              Client Components
-            </div>
-            <div className="rounded-full bg-vercel-blue px-1.5 text-[9px] uppercase leading-4 tracking-widest text-blue-100">
-              {clientTotal / 1000} KB
-            </div>
+    <Boundary animateRerendering={false} labels={['Component Tree']}>
+      <div className="space-y-6">
+        <div className="flex">
+          <div className="flex-1">
+            <List items={items} depth={0} />
           </div>
-          <div className="rounded-full bg-zinc-800">
-            <div
-              className={clsx('h-2 bg-vercel-blue odd:rounded-full')}
-              style={{ width: `${fill}%` }}
-            />
+
+          <div className="space-y-6">
+            <div className="space-y-3 rounded-lg bg-zinc-900 p-4">
+              <div className="flex items-center justify-between space-x-3">
+                <div className="rounded-md bg-vercel-blue px-2 py-0.5 text-xs tabular-nums tracking-wider text-blue-50">
+                  {clientTotal / 1000} KB
+                </div>
+                <div className="text-sm text-zinc-300">Bundle Size</div>
+              </div>
+
+              <div className="overflow-hidden rounded-full bg-zinc-700">
+                <div
+                  className={clsx(
+                    'h-2 animate-[translateXReset_1s_ease-in-out_1_reverse] rounded-full bg-vercel-blue',
+                  )}
+                  style={{
+                    transform: `translateX(-${100 - clientDeltaAsPercent}%)`,
+                  }}
+                />
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <div className="flex items-center space-x-3 text-sm text-zinc-400">
+                <div className="rounded-md bg-vercel-blue px-2 py-0.5 text-xs tracking-widest text-white/50">
+                  {'</>'}
+                </div>
+                <div>Client Component</div>
+              </div>
+
+              <div className="flex items-center space-x-3 text-sm text-zinc-400">
+                <div className="rounded-md bg-zinc-700 px-2 py-0.5 text-xs tracking-widest text-white/50">
+                  {'</>'}
+                </div>
+                <div>Server Component</div>
+              </div>
+            </div>
           </div>
         </div>
-      </Boundary>
-
-      <Boundary animateRerendering={false} labels={['Component Tree']}>
-        <List items={items} depth={0} />
-      </Boundary>
-    </div>
+        <div className="text-sm italic text-vercel-orange">
+          Note: The component bundle sizes are not yet accurate.
+        </div>
+      </div>
+    </Boundary>
   );
 };

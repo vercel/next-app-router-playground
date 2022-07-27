@@ -10,14 +10,14 @@ export default function Page() {
           <div className="text-xl font-medium text-zinc-500">Home</div>
           <div className="grid grid-cols-3 gap-6">
             <SectionLink
-              href="/components/client"
+              href="/components/electronics"
               text="Client Components Only"
             >
               <SkeletonCard />
             </SectionLink>
 
             <SectionLink
-              href="/components/client"
+              href="/components/clothing"
               text="Client and Server Components"
             >
               <SkeletonCard />

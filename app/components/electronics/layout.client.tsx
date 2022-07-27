@@ -1,37 +1,21 @@
-import { getCategories, type Category } from '@/lib/getCategories';
+import { getCategories } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary.server';
 import { ComponentTree } from '@/ui/ComponentTree.server';
-import Counter from '@/ui/Counter.client';
-import SubCategoryNav from './SubCategoryNav.client';
-export const getServerSideProps = async () => {
-  return {
-    props: {
-      category: getCategories().find(
-        (category) => category.slug === 'clothing',
-      ),
-    },
-  };
-};
+import SubCategoryNav from '../SubCategoryNav.client';
 
-export default function Layout({
-  children,
-  category,
-}: {
-  children: React.ReactNode;
-  category: Category;
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
+  // In production, we would not "fetch" data this way.
+  const category = getCategories().find(
+    (category) => category.slug === 'electronics',
+  )!;
   return (
     <div className="space-y-9">
-      <div className="text-white">
-        In this section, both client and server components are used.
-      </div>
-
       {/* TODO: Add real component bundle sizes */}
       <ComponentTree
         items={[
           {
             name: 'RootLayout',
-            type: 'server',
+            type: 'client',
             size: 1000,
             children: [
               {
@@ -57,7 +41,7 @@ export default function Layout({
               { name: 'ClickCounter', type: 'client', size: 400 },
               {
                 name: 'CategoryLayout',
-                type: 'server',
+                type: 'client',
                 size: 1000,
                 children: [
                   {
@@ -83,20 +67,20 @@ export default function Layout({
                   { name: 'ClickCounter', type: 'client', size: 400 },
                   {
                     name: 'SubCategoryLayout',
-                    type: 'server',
+                    type: 'client',
                     size: 1000,
                     children: [
                       {
                         name: 'SubCategoryPage',
-                        type: 'server',
+                        type: 'client',
                         size: 2000,
                         children: [
-                          { name: 'Title', type: 'server', size: 2000 },
+                          { name: 'Title', type: 'client', size: 2000 },
                           {
                             name: 'SkeletonCard',
-                            duplicates: 4,
+                            type: 'client',
                             size: 1000,
-                            type: 'server',
+                            duplicates: 4,
                           },
                         ],
                       },
@@ -108,11 +92,10 @@ export default function Layout({
           },
         ]}
       />
+
       <Boundary>
         <div className="space-y-9">
-          <div className="flex items-stretch justify-between">
-            <SubCategoryNav category={category} />
-          </div>
+          <SubCategoryNav category={category} />
 
           <div>{children}</div>
         </div>

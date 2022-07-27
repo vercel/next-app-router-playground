@@ -12,15 +12,15 @@ const CategoryNav = () => {
       </TabNavItem>
 
       <TabNavItem
-        href="/components/client"
-        isActive={'client' === selectedLayoutSegement}
+        href="/components/electronics"
+        isActive={'electronics' === selectedLayoutSegement}
       >
         Client Components Only
       </TabNavItem>
 
       <TabNavItem
-        href="/components/client-and-server"
-        isActive={'client-and-server' === selectedLayoutSegement}
+        href="/components/clothing"
+        isActive={'clothing' === selectedLayoutSegement}
       >
         Client and Server Components
       </TabNavItem>
