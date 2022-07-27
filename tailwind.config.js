@@ -37,6 +37,11 @@ module.exports = {
             transform: 'translateX(100%)',
           },
         },
+        translateXReset: {
+          '100%': {
+            transform: 'translateX(0)',
+          },
+        },
       }),
     },
   },

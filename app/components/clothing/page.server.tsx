@@ -1,26 +1,17 @@
 import { getCategories, type Category } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary.server';
 import { SkeletonCard } from '@/ui/SkeletonCard.server';
-import { GetServerSideProps } from 'next';
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { categorySlug } = context.params!;
-
+export const getServerSideProps = async () => {
   return {
     props: {
       category: getCategories().find(
-        (category) => category.slug === categorySlug,
+        (category) => category.slug === 'clothing',
       ),
     },
   };
 };
-export default function Page({
-  children,
-  category,
-}: {
-  children: React.ReactNode;
-  category: Category;
-}) {
+export default function Page({ category }: { category: Category }) {
   return (
     <Boundary>
       <div className="space-y-4">
