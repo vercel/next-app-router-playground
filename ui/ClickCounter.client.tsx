@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Counter = () => {
+const ClickCounter = () => {
   const [count, setCount] = React.useState(0);
 
   return (
@@ -13,4 +13,4 @@ const Counter = () => {
   );
 };
 
-export default Counter;
+export default ClickCounter;

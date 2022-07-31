@@ -1,6 +1,6 @@
 import { getCategories, type Category } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary.server';
-import Counter from '@/ui/Counter.client';
+import ClickCounter from '@/ui/ClickCounter.client';
 import HooksClient from '@/ui/HooksClient.client';
 import HooksServer from '@/ui/HooksServer.server';
 import React from 'react';
@@ -23,7 +23,7 @@ export default function Layout({
       <div className="flex items-center justify-between">
         <CategoryNav categories={categories} />
         <div>
-          <Counter />
+          <ClickCounter />
         </div>
       </div>
 

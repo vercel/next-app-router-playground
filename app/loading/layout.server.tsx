@@ -1,5 +1,5 @@
 import { getCategories, type Category } from '@/lib/getCategories';
-import Counter from '@/ui/Counter.client';
+import ClickCounter from '@/ui/ClickCounter.client';
 import React from 'react';
 import CategoryNav from './CategoryNav.client';
 
@@ -20,7 +20,7 @@ export default function Layout({
       <div className="flex items-center justify-between">
         <CategoryNav categories={categories} />
         <div>
-          <Counter />
+          <ClickCounter />
         </div>
       </div>
 

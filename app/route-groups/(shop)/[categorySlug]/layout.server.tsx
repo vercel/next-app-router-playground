@@ -1,6 +1,6 @@
 import { getCategories, type Category } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary.server';
-import Counter from '@/ui/Counter.client';
+import ClickCounter from '@/ui/ClickCounter.client';
 import { GetServerSideProps } from 'next';
 import SubCategoryNav from './SubCategoryNav.client';
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -27,7 +27,7 @@ export default function Layout({
       <div className="space-y-9">
         <div className="flex items-center justify-between">
           <SubCategoryNav category={category} />
-          <Counter />
+          <ClickCounter />
         </div>
 
         <div>{children}</div>
