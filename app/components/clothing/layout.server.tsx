@@ -38,7 +38,6 @@ export default function Layout({
                     name: 'TabNavItem',
                     type: 'client',
                     size: 400,
-                    duplicates: 4,
                     children: [
                       {
                         name: 'LinkComponent',
@@ -64,7 +63,6 @@ export default function Layout({
                         name: 'TabNavItem',
                         type: 'client',
                         size: 400,
-                        duplicates: 4,
                         children: [
                           {
                             name: 'LinkComponent',
@@ -89,7 +87,6 @@ export default function Layout({
                           { name: 'Title', type: 'server', size: 2000 },
                           {
                             name: 'SkeletonCard',
-                            duplicates: 4,
                             size: 1000,
                             type: 'server',
                           },

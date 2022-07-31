@@ -42,6 +42,17 @@ module.exports = {
             transform: 'translateX(0)',
           },
         },
+        fadeToTransparent: {
+          '0%': {
+            opacity: 1,
+          },
+          '40%': {
+            opacity: 1,
+          },
+          '100%': {
+            opacity: 0,
+          },
+        },
       }),
     },
   },

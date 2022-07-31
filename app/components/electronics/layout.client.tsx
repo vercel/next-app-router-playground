@@ -27,7 +27,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     name: 'TabNavItem',
                     type: 'client',
                     size: 400,
-                    duplicates: 4,
                     children: [
                       {
                         name: 'LinkComponent',
@@ -53,7 +52,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         name: 'TabNavItem',
                         type: 'client',
                         size: 400,
-                        duplicates: 4,
                         children: [
                           {
                             name: 'LinkComponent',
@@ -80,7 +78,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                             name: 'SkeletonCard',
                             type: 'client',
                             size: 1000,
-                            duplicates: 4,
                           },
                         ],
                       },
