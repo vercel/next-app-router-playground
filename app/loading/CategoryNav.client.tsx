@@ -3,11 +3,11 @@ import { TabNavItem } from '@/ui/TabNavItem';
 import { useSelectedLayoutSegment } from 'next/dist/client/components/hooks-client';
 
 const CategoryNav = ({ categories }: { categories: Category[] }) => {
-  const selectedLayoutSegement = useSelectedLayoutSegment();
+  const selectedLayoutSegment = useSelectedLayoutSegment();
 
   return (
     <div className="flex items-center space-x-4">
-      <TabNavItem href="/loading" isActive={!selectedLayoutSegement}>
+      <TabNavItem href="/loading" isActive={!selectedLayoutSegment}>
         Home
       </TabNavItem>
 
@@ -15,7 +15,7 @@ const CategoryNav = ({ categories }: { categories: Category[] }) => {
         <TabNavItem
           key={item.slug}
           href={`/loading/${item.slug}`}
-          isActive={item.slug === selectedLayoutSegement}
+          isActive={item.slug === selectedLayoutSegment}
         >
           {item.name}
         </TabNavItem>
@@ -23,7 +23,7 @@ const CategoryNav = ({ categories }: { categories: Category[] }) => {
 
       <TabNavItem
         href={`/loading/no-loading`}
-        isActive={'no-loading' === selectedLayoutSegement}
+        isActive={'no-loading' === selectedLayoutSegment}
       >
         No Loading UI
       </TabNavItem>
