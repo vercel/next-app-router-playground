@@ -2,7 +2,6 @@ import { getCategories, type Category } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary.server';
 import { SectionLink } from '@/ui/SectionLink.server';
 import { SkeletonCard } from '@/ui/SkeletonCard.server';
-import { TabNavItem } from '@/ui/TabNavItem';
 
 export const getServerSideProps = () => {
   return {
