@@ -8,7 +8,7 @@ import {
 
 const HooksClient = () => {
   const pathname = usePathname();
-  const selectedLayoutSegement = useSelectedLayoutSegment();
+  const selectedLayoutSegment = useSelectedLayoutSegment();
   const searchParams = useSearchParams();
   const searchParam = useSearchParam('key');
 
@@ -18,7 +18,7 @@ const HooksClient = () => {
         {JSON.stringify(
           {
             usePathname: pathname,
-            selectedLayoutSegement: selectedLayoutSegement,
+            selectedLayoutSegment: selectedLayoutSegment,
             useSearchParams: searchParams,
             "useSearchParam('key')": searchParam,
             useRouter: {

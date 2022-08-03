@@ -6,7 +6,7 @@ import { GetServerSideProps } from 'next';
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { categorySlug } = context.params!;
 
-  // artifical delay
+  // artificial delay
   await new Promise((resolve) => setTimeout(resolve, 3000));
 
   return {
