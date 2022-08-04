@@ -4,7 +4,7 @@ import { SkeletonCard } from '@/ui/SkeletonCard.server';
 // This page demos data fetching without loading UI
 // - We move the route out of `./[categorySlug] so that `loading.js` doesn't apply
 export const getServerSideProps = async () => {
-  // artifical delay
+  // artificial delay
   await new Promise((resolve) => setTimeout(resolve, 3000));
 
   return {
