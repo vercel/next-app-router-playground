@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "clsx": "^1.2.1",
-    "next": "^12.2.4-canary.9",
+    "next": "^12.2.4",
     "react": "^0.0.0-experimental-9fcaf88d5-20220801",
     "react-dom": "^0.0.0-experimental-9fcaf88d5-20220801"
   },
