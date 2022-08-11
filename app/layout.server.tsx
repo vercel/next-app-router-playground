@@ -5,7 +5,7 @@ import Header from '@/ui/Header.client';
 import RootStyleRegistry from '@/ui/RootStyleRegistry.client';
 import nextPackageJson from 'next/package.json';
 import GlobalNav from './GlobalNav.client';
-import Footer from '@/ui/Footer.client'
+import Footer from '@/ui/Footer.client';
 
 export default function RootLayout({ children }: { children: any }) {
   return (

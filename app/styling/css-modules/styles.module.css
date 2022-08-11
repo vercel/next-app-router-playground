@@ -1,0 +1,17 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  border: 1px solid #fff;
+  width: 200px;
+  height: 200px;
+}
+
+.text {
+  text-transform: uppercase;
+  font-size: 48px;
+  line-height: 1;
+  color: #fff;
+  transform: translate(16px, -8px);
+}
