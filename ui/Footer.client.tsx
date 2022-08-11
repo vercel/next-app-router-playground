@@ -13,8 +13,6 @@ export default function Footer({
           display: inline-flex;
           align-items: center;
         }
-        .power-by svg {;
-        }
         .power-by-text {
           margin-right: .25rem;
         }

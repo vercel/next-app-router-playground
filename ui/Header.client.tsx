@@ -19,10 +19,8 @@ const Title = styled.span`
 
 const NextJsLogo = (props: any) => (
   <svg
-    // style={transform:translateX(4%);shape-rendering:auto}
     version="1.1"
     viewBox="0 0 148 90"
-    // width="82"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     {...props}
   >
