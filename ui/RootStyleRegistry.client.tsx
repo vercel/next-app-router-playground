@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-// @ts-ignore
 import { StyleRegistry, createStyleRegistry } from 'styled-jsx'
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
 import { useFlushEffects } from 'next/dist/client/components/hooks-client'
