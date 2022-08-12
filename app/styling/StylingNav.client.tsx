@@ -3,8 +3,12 @@ import { useSelectedLayoutSegment } from 'next/dist/client/components/hooks-clie
 
 const items = [
   {
-    name: 'Global CSS',
+    name: 'Home',
     slug: '',
+  },
+  {
+    name: 'Global CSS',
+    slug: 'global-css',
   },
   {
     name: 'CSS Modules',
