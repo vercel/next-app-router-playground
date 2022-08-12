@@ -22,6 +22,10 @@ const items = [
     name: 'Styled JSX',
     slug: 'styled-jsx',
   },
+  {
+    name: 'Tailwind CSS',
+    slug: 'tailwind',
+  },
 ];
 
 const StylingNav = () => {
