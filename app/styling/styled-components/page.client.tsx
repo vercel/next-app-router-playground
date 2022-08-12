@@ -1,52 +1,65 @@
+import { Boundary } from '@/ui/Boundary.server';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #fff;
-  width: 200px;
-  height: 200px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem /* 24px */;
 `;
 
-const Text = styled.div`
-  margin: auto 12px 12px;
-  text-transform: uppercase;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #fff;
-  align-self: flex-start;
-  justify-self: flex-end;
-  display: flex;
-  flex-direction: column;
+const SkeletonInner = styled.div`
+  padding: 1rem /* 16px */;
+  background-color: rgb(24 24 27 / 0.8);
+  border-radius: 1rem /* 16px */;
 `;
 
-const Logo = styled.div`
-  flex: 1 0 0;
-  display: flex;
-  align-items: center;
-  color: #fff;
-  font-size: 48px;
-
-  & span {
-    margin: 0 8px;
-  }
+const SkeletonImg = styled.div`
+  height: 3.5rem /* 56px */;
+  border-radius: 0.5rem /* 8px */;
+  background-color: rgb(63 63 70 / 1);
 `;
+
+const SkeletonBtn = styled.div`
+  margin-top: 0.75rem /* 12px */;
+  width: 25%;
+  height: 0.75rem /* 12px */;
+  border-radius: 0.5rem /* 8px */;
+  background-color: rgb(255 0 128 / 1);
+`;
+
+const SkeletonLineOne = styled.div`
+  margin-top: 0.75rem /* 12px */;
+  height: 0.75rem /* 12px */;
+  width: 91.666667%;
+  border-radius: 0.5rem /* 8px */;
+  background-color: rgb(63 63 70 / 1);
+`;
+
+const SkeletonLineTwo = styled.div`
+  margin-top: 0.75rem /* 12px */;
+  height: 0.75rem /* 12px */;
+  width: 66.666667%;
+  border-radius: 0.5rem /* 8px */;
+  background-color: rgb(63 63 70 / 1);
+`;
+
+const Skeleton = () => (
+  <SkeletonInner>
+    <SkeletonImg />
+    <SkeletonBtn />
+    <SkeletonLineOne />
+    <SkeletonLineTwo />
+  </SkeletonInner>
+);
 
 export default function Page() {
   return (
-    <Container>
-      <Logo>
-        <span>{`<`}</span>
-        <span>{`💅`}</span>
-        <span>{`>`}</span>
-      </Logo>
-
-      <Text>
-        <div>styled</div>
-        <div>components</div>
-      </Text>
-    </Container>
+    <Boundary labels={['Styled with styled-components']}>
+      <Container>
+        <Skeleton />
+        <Skeleton />
+        <Skeleton />
+      </Container>
+    </Boundary>
   );
 }

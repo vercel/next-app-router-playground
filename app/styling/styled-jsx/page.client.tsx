@@ -1,45 +1,76 @@
+import { Boundary } from '@/ui/Boundary.server';
+
+const SkeletonCard = () => (
+  <>
+    <div className="skeleton">
+      <div className="skeleton-img" />
+      <div className="skeleton-btn" />
+      <div className="skeleton-line-one" />
+      <div className="skeleton-line-two" />
+    </div>
+    <style jsx>{`
+      .skeleton {
+        padding: 1rem /* 16px */;
+        border-radius: 1rem /* 16px */;
+        background-color: rgb(24 24 27 / 0.8);
+      }
+
+      .skeleton-img,
+      .skeleton-btn,
+      .skeleton-line-one,
+      .skeleton-line-two {
+        border-radius: 0.5rem /* 8px */;
+      }
+
+      .skeleton-img {
+        height: 3.5rem /* 56px */;
+        background-color: rgb(63 63 70 / 1);
+      }
+
+      .skeleton-btn,
+      .skeleton-line-one,
+      .skeleton-line-two {
+        margin-top: 0.75rem /* 12px */;
+        height: 0.75rem /* 12px */;
+      }
+
+      .skeleton-btn {
+        background-color: rgb(0 112 243 / 1);
+        width: 25%;
+      }
+
+      .skeleton-line-one,
+      .skeleton-line-two {
+        background-color: rgb(63 63 70 / 1);
+      }
+
+      .skeleton-line-one {
+        width: 91.666667%;
+      }
+
+      .skeleton-line-two {
+        width: 66.666667%;
+      }
+    `}</style>
+  </>
+);
+
 export default function Page() {
   return (
-    <div className="container">
+    <Boundary labels={['Styled with styled-jsx']}>
+      <div className="container">
+        <SkeletonCard />
+        <SkeletonCard />
+        <SkeletonCard />
+      </div>
+
       <style jsx>{`
         .container {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          border: 1px solid #fff;
-          width: 200px;
-          height: 200px;
-        }
-        .logo {
-          flex: 1 0 0;
-          display: flex;
-          align-items: center;
-          color: #fff;
-          font-size: 36px;
-
-          & span {
-            margin: 0 8px;
-          }
-        }
-        .text {
-          margin: auto 12px 12px;
-          font-size: 14px;
-          line-height: 1.6;
-          color: #fff;
-          align-self: flex-start;
-          justify-self: flex-end;
-          display: flex;
-          flex-direction: column;
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 1.5rem /* 24px */;
         }
       `}</style>
-      <div className="logo">
-        <span>{`< {style} >`}</span>
-      </div>
-
-      <div className="text">
-        <div>styled-jsx</div>
-      </div>
-    </div>
+    </Boundary>
   );
 }
