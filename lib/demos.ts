@@ -44,7 +44,7 @@ export const demos: Item[] = [
     name: 'Styling',
     items: [
       {
-        name: 'CSS / CSS-in-JS',
+        name: 'CSS and CSS-in-JS',
         slug: 'styling',
       },
     ],
