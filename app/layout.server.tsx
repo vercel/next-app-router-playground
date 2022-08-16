@@ -1,6 +1,5 @@
 import '@/styles/globals.css';
 import AddressBar from '@/ui/AddressBar.client';
-import RootStyleRegistry from '@/ui/RootStyleRegistry.client';
 import nextPackageJson from 'next/package.json';
 import React from 'react';
 import GlobalNav from './GlobalNav.client';
@@ -11,7 +10,6 @@ export default function RootLayout({ children }: { children: any }) {
       <head>
         <title>Next.js Layouts and Routing Playground</title>
       </head>
-      <RootStyleRegistry>
         <body className="overflow-y-scroll bg-zinc-900">
           <div className="grid grid-cols-[1fr,minmax(auto,240px),min(800px,100%),1fr] gap-x-8 py-8">
             <div className="col-start-2">
@@ -34,7 +32,6 @@ export default function RootLayout({ children }: { children: any }) {
             </div>
           </div>
         </body>
-      </RootStyleRegistry>
     </html>
   );
 }
