@@ -1,11 +1,9 @@
 import '@/styles/globals.css';
-import React from 'react';
 import AddressBar from '@/ui/AddressBar.client';
-import Header from '@/ui/Header.client';
 import RootStyleRegistry from '@/ui/RootStyleRegistry.client';
 import nextPackageJson from 'next/package.json';
+import React from 'react';
 import GlobalNav from './GlobalNav.client';
-import Footer from '@/ui/Footer.client';
 
 export default function RootLayout({ children }: { children: any }) {
   return (
@@ -16,7 +14,6 @@ export default function RootLayout({ children }: { children: any }) {
       <RootStyleRegistry>
         <body className="overflow-y-scroll bg-zinc-900">
           <div className="grid grid-cols-[1fr,minmax(auto,240px),min(800px,100%),1fr] gap-x-8 py-8">
-            <Header />
             <div className="col-start-2">
               <GlobalNav />
             </div>
@@ -29,10 +26,12 @@ export default function RootLayout({ children }: { children: any }) {
               </div>
             </div>
 
-            <Footer
-              reactVersion={React.version}
-              nextVersion={nextPackageJson.version}
-            />
+            <div className="col-start-3 col-end-4 mt-28 flex items-center justify-between">
+              <div className="flex space-x-6 text-sm text-zinc-600">
+                <div>React: {React.version}</div>
+                <div>Next: {nextPackageJson.version}</div>
+              </div>
+            </div>
           </div>
         </body>
       </RootStyleRegistry>
