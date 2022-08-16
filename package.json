@@ -17,9 +17,10 @@
   },
   "dependencies": {
     "clsx": "^1.2.1",
-    "next": "^12.2.4",
-    "react": "^0.0.0-experimental-9fcaf88d5-20220801",
-    "react-dom": "^0.0.0-experimental-9fcaf88d5-20220801"
+    "next": "^12.2.6-canary.0",
+    "react": "^0.0.0-experimental-796d31809-20220812",
+    "react-dom": "^0.0.0-experimental-796d31809-20220812",
+    "use-count-up": "^3.0.1"
   },
   "devDependencies": {
     "@types/node": "18.0.3",
