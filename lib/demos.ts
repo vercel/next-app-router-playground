@@ -41,6 +41,15 @@ export const demos: Item[] = [
     ],
   },
   {
+    name: 'Styling',
+    items: [
+      {
+        name: 'CSS and CSS-in-JS',
+        slug: 'styling',
+      },
+    ],
+  },
+  {
     name: 'Instant Loading States',
     items: [
       {
