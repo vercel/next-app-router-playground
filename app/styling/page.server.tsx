@@ -17,8 +17,8 @@ export default function Page() {
             content that might use them.
           </li>
           <li>
-            Creating a client component that wraps your app with the style
-            registry during initial server-side rendering.
+            Creating a client component that wraps your top-level container containing
+            those styles usage with the style registry during initial server-side rendering.
           </li>
         </ul>
       </ul>
