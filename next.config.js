@@ -8,9 +8,6 @@ const nextConfig = {
     serverComponents: true,
     // Recommended for new `<Link>` and `<Image>` behavior:
     newNextLinkBehavior: true,
-    images: {
-      allowFutureImage: true,
-    },
     // Recommended, will be the default in the next major version:
     legacyBrowsers: false,
     browsersListForSwc: true,
