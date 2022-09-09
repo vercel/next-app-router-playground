@@ -5,17 +5,14 @@ export const TabNavItem = ({
   children,
   href,
   isActive,
-  useSoftPush,
 }: {
   children: React.ReactNode;
   href: string;
   isActive?: boolean;
-  useSoftPush?: boolean;
 }) => {
   return (
     <Link
       href={href}
-      soft={useSoftPush}
       className={clsx('rounded-lg px-3 py-1 text-sm font-medium', {
         'bg-zinc-700 text-zinc-100 hover:bg-zinc-500 hover:text-white':
           !isActive,
