@@ -32,3 +32,7 @@ export default function Page({ params } : { params: { [key: string]: string } })
     </Boundary>
   );
 }
+
+export const config = {
+  runtime: 'experimental-edge'
+}
