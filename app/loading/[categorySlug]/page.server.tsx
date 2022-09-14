@@ -17,7 +17,6 @@ const fetchCategory = async (categorySlug: string | undefined): Promise<Category
 
 export default function Page({ params } : { params: { [key: string]: string } }) {
   const category = use(fetchCategory(params.categorySlug))
-  // console.log('slug', params.categorySlug, category)
 
   return (
     <Boundary>
