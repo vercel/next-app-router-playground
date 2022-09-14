@@ -1,23 +1,23 @@
+// @ts-ignore
+import { experimental_use as use } from 'react'
 import { getCategories, type Category } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary.server';
 import { SkeletonCard } from '@/ui/SkeletonCard.server';
-import { GetServerSideProps } from 'next';
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { categorySlug } = context.params!;
-
+const fetchCategory = async (categorySlug: string | undefined): Promise<Category | undefined> => {
   // artificial delay
   await new Promise((resolve) => setTimeout(resolve, 3000));
 
-  return {
-    props: {
-      category: getCategories().find(
-        (category) => category.slug === categorySlug,
-      ),
-    },
-  };
+  const category = getCategories().find(
+    (category) => category.slug === categorySlug,
+  )
+
+  return category
 };
-export default function Page({ category }: { category: Category }) {
+
+export default function Page({ params } : { params: { [key: string]: string } }) {
+  const category = use(fetchCategory(params.categorySlug))
+
   return (
     <Boundary>
       <div className="space-y-4">
@@ -31,4 +31,8 @@ export default function Page({ category }: { category: Category }) {
       </div>
     </Boundary>
   );
+}
+
+export const config = {
+  runtime: 'experimental-edge'
 }
