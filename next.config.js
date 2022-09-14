@@ -5,7 +5,6 @@ const nextConfig = {
   experimental: {
     // Required:
     appDir: true,
-    // runtime: 'experimental-edge',
     serverComponents: true,
     // Recommended for new `<Link>` and `<Image>` behavior:
     newNextLinkBehavior: true,
