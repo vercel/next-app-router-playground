@@ -1,5 +1,4 @@
 import { getCategories } from '@/lib/getCategories';
-import { Boundary } from '@/ui/Boundary.server';
 import { ComponentTree } from '@/ui/ComponentTree.server';
 import SubCategoryNav from '../SubCategoryNav.client';
 
@@ -90,13 +89,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         ]}
       />
 
-      <Boundary>
-        <div className="space-y-9">
-          <SubCategoryNav category={category} />
+      <div className="space-y-9">
+        <SubCategoryNav category={category} />
 
-          <div>{children}</div>
-        </div>
-      </Boundary>
+        <div>{children}</div>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,3 @@
-import { Boundary } from '@/ui/Boundary.server';
 import './styles.css';
 
 const SkeletonCard = () => (
@@ -12,12 +11,15 @@ const SkeletonCard = () => (
 
 export default function Page() {
   return (
-    <Boundary labels={['Styled with a global css stylesheet']}>
+    <div className="space-y-4">
+      <div className="text-xl font-medium text-zinc-500">
+        Styled with a Global CSS Stylesheet
+      </div>
       <div className="container">
         <SkeletonCard />
         <SkeletonCard />
         <SkeletonCard />
       </div>
-    </Boundary>
+    </div>
   );
 }

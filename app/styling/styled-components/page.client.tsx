@@ -54,12 +54,15 @@ const Skeleton = () => (
 
 export default function Page() {
   return (
-    <Boundary labels={['Styled with styled-components']}>
+    <div className="space-y-4">
+      <div className="text-xl font-medium text-zinc-500">
+        Styled with Styled Components
+      </div>
       <Container>
         <Skeleton />
         <Skeleton />
         <Skeleton />
       </Container>
-    </Boundary>
+    </div>
   );
 }

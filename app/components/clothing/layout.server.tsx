@@ -100,13 +100,12 @@ export default function Layout({
           },
         ]}
       />
-      <Boundary>
-        <div className="space-y-9">
-          <SubCategoryNav category={category} />
 
-          <div>{children}</div>
-        </div>
-      </Boundary>
+      <div className="space-y-9">
+        <SubCategoryNav category={category} />
+
+        <div>{children}</div>
+      </div>
     </div>
   );
 }
