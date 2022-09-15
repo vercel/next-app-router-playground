@@ -20,13 +20,6 @@ const CategoryNav = ({ categories }: { categories: Category[] }) => {
           {item.name}
         </TabNavItem>
       ))}
-
-      <TabNavItem
-        href={`/loading/no-loading`}
-        isActive={'no-loading' === selectedLayoutSegment}
-      >
-        No Loading UI
-      </TabNavItem>
     </div>
   );
 };
