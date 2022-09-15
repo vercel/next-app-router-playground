@@ -23,15 +23,13 @@ export default function Layout({
   category: Category;
 }) {
   return (
-    <Boundary>
-      <div className="space-y-9">
-        <div className="flex items-center justify-between">
-          <SubCategoryNav category={category} />
-          <ClickCounter />
-        </div>
-
-        <div>{children}</div>
+    <div className="space-y-9">
+      <div className="flex items-center justify-between">
+        <SubCategoryNav category={category} />
+        <ClickCounter />
       </div>
-    </Boundary>
+
+      <div>{children}</div>
+    </div>
   );
 }

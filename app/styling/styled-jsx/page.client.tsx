@@ -1,5 +1,3 @@
-import { Boundary } from '@/ui/Boundary.server';
-
 const SkeletonCard = () => (
   <>
     <div className="skeleton">
@@ -57,7 +55,10 @@ const SkeletonCard = () => (
 
 export default function Page() {
   return (
-    <Boundary labels={['Styled with styled-jsx']}>
+    <div className="space-y-4">
+      <div className="text-xl font-medium text-zinc-500">
+        Styled with Styled JSX
+      </div>
       <div className="container">
         <SkeletonCard />
         <SkeletonCard />
@@ -71,6 +72,6 @@ export default function Page() {
           gap: 1.5rem /* 24px */;
         }
       `}</style>
-    </Boundary>
+    </div>
   );
 }

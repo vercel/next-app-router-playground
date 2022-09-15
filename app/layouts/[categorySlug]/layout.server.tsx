@@ -1,5 +1,4 @@
 import { getCategories, type Category } from '@/lib/getCategories';
-import { Boundary } from '@/ui/Boundary.server';
 import ClickCounter from '@/ui/ClickCounter.client';
 import { GetServerSideProps } from 'next';
 import SubCategoryNav from './SubCategoryNav.client';
@@ -23,19 +22,17 @@ export default function Layout({
   category: Category;
 }) {
   return (
-    <Boundary>
-      <div className="space-y-9">
-        <div>
-          <div className="flex items-center justify-between">
-            <SubCategoryNav category={category} />
-            <div>
-              <ClickCounter />
-            </div>
+    <div className="space-y-9">
+      <div>
+        <div className="flex items-center justify-between">
+          <SubCategoryNav category={category} />
+          <div>
+            <ClickCounter />
           </div>
         </div>
-
-        <div>{children}</div>
       </div>
-    </Boundary>
+
+      <div>{children}</div>
+    </div>
   );
 }
