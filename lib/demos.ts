@@ -3,6 +3,7 @@ type Item = {
   items: {
     name: string;
     slug: string;
+    description?: string;
     isDisabled?: boolean;
   }[];
 };
@@ -14,15 +15,39 @@ export const demos: Item[] = [
       {
         name: 'Nested Layouts',
         slug: 'layouts',
-        // slug: 'nested-layouts',
+        description: 'Create UI that is shared across routes',
       },
       {
         name: 'Grouped Layouts',
         slug: 'route-groups',
+        description: 'Organize routes without affecting URL paths',
       },
       {
         name: 'Root Layouts',
         slug: 'root-layouts',
+        description: 'Create top-level layouts that apply to all routes',
+        isDisabled: true,
+      },
+    ],
+  },
+  {
+    name: 'File Conventions',
+    items: [
+      {
+        name: 'Loading',
+        slug: 'loading',
+        description:
+          'Create meaningful loading UI for specific parts of an app',
+      },
+      {
+        name: 'Error',
+        slug: 'error',
+        description: 'Isolate errors to specifc parts of an app',
+        isDisabled: true,
+      },
+      {
+        name: 'Template',
+        slug: 'template',
         isDisabled: true,
       },
     ],
@@ -33,10 +58,14 @@ export const demos: Item[] = [
       {
         name: 'Client and Server Components',
         slug: 'components',
+        description:
+          'Preview the effect Server Components have on the component JS sent to the client',
       },
       {
         name: 'Hooks',
         slug: 'hooks',
+        description:
+          'Preview the hooks available for Client and Server Components',
       },
     ],
   },
@@ -46,32 +75,14 @@ export const demos: Item[] = [
       {
         name: 'CSS and CSS-in-JS',
         slug: 'styling',
+        description: 'Preview the supported styling solutions',
       },
     ],
   },
+
   {
-    name: 'Instant Loading States',
+    name: 'Advanced Routing Patterns',
     items: [
-      {
-        name: 'Default Skeletons',
-        slug: 'loading',
-        // slug: 'segment-skeletons',
-      },
-      {
-        name: 'Custom Per-Page Skeletons',
-        slug: 'page-skeletons',
-        isDisabled: true,
-      },
-    ],
-  },
-  {
-    name: 'Routing',
-    items: [
-      {
-        name: 'Soft Push Navigation',
-        slug: 'soft-push',
-        isDisabled: true,
-      },
       {
         name: 'Intercepting Routes',
         slug: 'intercepting-routes',
