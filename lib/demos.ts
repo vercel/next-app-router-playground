@@ -41,9 +41,8 @@ export const demos: Item[] = [
       },
       {
         name: 'Error',
-        slug: 'error',
-        description: 'Isolate errors to specifc parts of an app',
-        isDisabled: true,
+        slug: 'error-handling',
+        description: 'Create error UI for specific parts of an app',
       },
       {
         name: 'Template',
