@@ -1,3 +1,5 @@
+'client'
+
 import React from 'react';
 import { useFlushEffects } from 'next/dist/client/components/hooks-client';
 import { useStyledComponentsRegistry } from '@/lib/styling';

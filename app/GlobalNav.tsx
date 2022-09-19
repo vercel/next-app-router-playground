@@ -1,3 +1,5 @@
+'client'
+
 import { demos } from '@/lib/demos';
 import clsx from 'clsx';
 import { useSelectedLayoutSegment } from 'next/dist/client/components/hooks-client';

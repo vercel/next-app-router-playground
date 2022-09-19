@@ -1,4 +1,4 @@
-import StyledComponentsRegistry from './registry.client'
+import StyledComponentsRegistry from './registry'
 
 export default function Layout({ children }: { children: JSX.Element }) {
   return (

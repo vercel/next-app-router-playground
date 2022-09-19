@@ -1,3 +1,5 @@
+'client'
+
 const SkeletonCard = () => (
   <>
     <div className="skeleton">

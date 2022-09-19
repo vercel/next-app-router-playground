@@ -1,7 +1,7 @@
 import { getCategories, type Category } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary';
 import { ComponentTree } from '@/ui/ComponentTree';
-import SubCategoryNav from '../SubCategoryNav.client';
+import SubCategoryNav from '../SubCategoryNav';
 export const getServerSideProps = async () => {
   return {
     props: {

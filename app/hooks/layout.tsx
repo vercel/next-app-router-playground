@@ -1,10 +1,10 @@
 import { getCategories, type Category } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary';
-import ClickCounter from '@/ui/ClickCounter.client';
-import HooksClient from '@/ui/HooksClient.client';
+import ClickCounter from '@/ui/ClickCounter';
+import HooksClient from '@/ui/HooksClient';
 import HooksServer from '@/ui/HooksServer';
 import React from 'react';
-import CategoryNav from './CategoryNav.client';
+import CategoryNav from './CategoryNav';
 
 export const getServerSideProps = () => {
   return {

@@ -1,8 +1,8 @@
 import '@/styles/globals.css';
-import AddressBar from '@/ui/AddressBar.client';
+import AddressBar from '@/ui/AddressBar';
 import nextPackageJson from 'next/package.json';
 import React from 'react';
-import GlobalNav from './GlobalNav.client';
+import GlobalNav from './GlobalNav';
 
 export default function RootLayout({ children }: { children: any }) {
   return (

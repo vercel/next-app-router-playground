@@ -1,3 +1,5 @@
+'client'
+
 import { type Category } from '@/lib/getCategories';
 import { TabNavItem } from '@/ui/TabNavItem';
 import { useSelectedLayoutSegment } from 'next/dist/client/components/hooks-client';
@@ -7,28 +9,19 @@ const CategoryNav = ({ categories }: { categories: Category[] }) => {
 
   return (
     <div className="flex items-center space-x-4">
-      <TabNavItem href="/route-groups" isActive={!selectedLayoutSegment}>
+      <TabNavItem href="/hooks" isActive={!selectedLayoutSegment}>
         Home
       </TabNavItem>
 
       {categories.map((item) => (
         <TabNavItem
           key={item.slug}
-          href={`/route-groups/${item.slug}`}
+          href={`/hooks/${item.slug}?key=value`}
           isActive={item.slug === selectedLayoutSegment}
         >
           {item.name}
         </TabNavItem>
       ))}
-
-      <TabNavItem href="/route-groups/checkout">Checkout</TabNavItem>
-
-      <TabNavItem
-        href="/route-groups/blog"
-        isActive={'blog' === selectedLayoutSegment}
-      >
-        Blog
-      </TabNavItem>
     </div>
   );
 };

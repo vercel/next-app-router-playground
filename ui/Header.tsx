@@ -1,3 +1,5 @@
+'client'
+
 import styled from 'styled-components';
 
 const HeadContainer = styled.header`

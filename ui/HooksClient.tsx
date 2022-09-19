@@ -1,3 +1,5 @@
+'client'
+
 import React from 'react';
 import {
   usePathname,

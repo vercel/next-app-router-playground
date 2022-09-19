@@ -1,8 +1,8 @@
 import { getCategories, type Category } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary';
-import ClickCounter from '@/ui/ClickCounter.client';
+import ClickCounter from '@/ui/ClickCounter';
 import { GetServerSideProps } from 'next';
-import SubCategoryNav from './SubCategoryNav.client';
+import SubCategoryNav from './SubCategoryNav';
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { categorySlug } = context.params!;
 

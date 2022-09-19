@@ -1,5 +1,5 @@
 import { getCategories, type Category } from '@/lib/getCategories';
-import BuggyButton from '@/ui/BuggyButton.client';
+import BuggyButton from '@/ui/BuggyButton';
 import { SkeletonCard } from '@/ui/SkeletonCard';
 import { GetServerSideProps } from 'next';
 

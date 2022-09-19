@@ -1,6 +1,8 @@
+'client'
+
 import { getCategories } from '@/lib/getCategories';
 import { ComponentTree } from '@/ui/ComponentTree';
-import SubCategoryNav from '../SubCategoryNav.client';
+import SubCategoryNav from '../SubCategoryNav';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   // In production, we would not "fetch" data this way.

@@ -1,24 +1,20 @@
+'client'
+
 import React from 'react';
 import { useFlushEffects } from 'next/dist/client/components/hooks-client';
-import {
-  useStyledComponentsRegistry,
-  useStyledJsxRegistry,
-} from '@/lib/styling';
+import { useStyledJsxRegistry } from '@/lib/styling';
 
-export default function RootStyleRegistry({
+export default function StyledJsxRegistry({
   children,
 }: {
   children: JSX.Element;
 }) {
-  const [StyledComponentsRegistry, styledComponentsFlushEffect] =
-    useStyledComponentsRegistry();
   const [StyledJsxRegistry, styledJsxFlushEffect] = useStyledJsxRegistry();
 
   useFlushEffects(() => {
     return (
       <>
         {styledJsxFlushEffect()}
-        {styledComponentsFlushEffect()}
       </>
     );
   });
@@ -26,9 +22,8 @@ export default function RootStyleRegistry({
   // Only include style registry on server side for SSR
   if (typeof window === 'undefined') {
     return (
-      <StyledComponentsRegistry>
         <StyledJsxRegistry>{children}</StyledJsxRegistry>
-      </StyledComponentsRegistry>
+
     );
   }
 

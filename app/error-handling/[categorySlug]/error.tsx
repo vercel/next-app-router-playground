@@ -1,4 +1,6 @@
-import { Boundary } from '@/ui/Boundary.server';
+'client'
+
+import { Boundary } from '@/ui/Boundary';
 import Button from '@/ui/Button';
 import React from 'react';
 
@@ -8,7 +10,7 @@ export default function Error({ error, reset }: any) {
   }, [error]);
 
   return (
-    <Boundary labels={['Home page Error UI']} color="pink">
+    <Boundary labels={['Category Error UI']} color="pink">
       <div className="space-y-4">
         <div className="text-sm text-vercel-pink">
           <strong className="font-bold">Error:</strong> {error?.message}

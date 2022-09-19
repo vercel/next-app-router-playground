@@ -1,5 +1,5 @@
 import React from 'react';
-import CategoryNav from './CategoryNav.client';
+import CategoryNav from './CategoryNav';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

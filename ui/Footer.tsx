@@ -1,3 +1,5 @@
+'client'
+
 export default function Footer({
   reactVersion,
   nextVersion,

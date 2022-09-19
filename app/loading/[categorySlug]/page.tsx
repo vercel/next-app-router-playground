@@ -21,7 +21,7 @@ export default function Page({
 }: {
   params: { [key: string]: string };
 }) {
-  const category = use(fetchCategory(params.categorySlug));
+  const category = use(fetchCategory(params.categorySlug))!;
 
   return (
     <div className="space-y-4">

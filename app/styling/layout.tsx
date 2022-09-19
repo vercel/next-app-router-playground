@@ -1,5 +1,5 @@
 import React from 'react';
-import StylingNav from './StylingNav.client';
+import StylingNav from './StylingNav';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
