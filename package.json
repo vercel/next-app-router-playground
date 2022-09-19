@@ -16,7 +16,10 @@
     "singleQuote": true
   },
   "dependencies": {
+    "@heroicons/react": "1.0.6",
     "clsx": "^1.2.1",
+    "date-fns": "^2.29.3",
+    "dinero.js": "^2.0.0-alpha.8",
     "next": "^12.3.1-canary.2",
     "react": "0.0.0-experimental-975b64464-20220914",
     "react-dom": "0.0.0-experimental-975b64464-20220914",
@@ -24,6 +27,7 @@
     "use-count-up": "^3.0.1"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.5.0",
     "@types/node": "18.0.3",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
