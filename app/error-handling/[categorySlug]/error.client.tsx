@@ -1,4 +1,4 @@
-import { Boundary } from '@/ui/Boundary.server';
+import { Boundary } from '@/ui/Boundary';
 import Button from '@/ui/Button';
 import React from 'react';
 

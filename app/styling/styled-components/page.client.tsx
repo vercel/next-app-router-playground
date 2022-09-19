@@ -1,4 +1,3 @@
-import { Boundary } from '@/ui/Boundary.server';
 import styled from 'styled-components';
 
 const Container = styled.div`

@@ -1,5 +1,5 @@
 import { getCategories } from '@/lib/getCategories';
-import { SkeletonCard } from '@/ui/SkeletonCard.server';
+import { SkeletonCard } from '@/ui/SkeletonCard';
 
 export default function Page(props: any) {
   // In production, we would not "fetch" data this way.

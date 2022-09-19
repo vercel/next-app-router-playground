@@ -1,28 +1,28 @@
-// @ts-ignore
-import { experimental_use as use } from 'react';
-import { getCategories, type Category } from '@/lib/getCategories';
+import { getCategories } from '@/lib/getCategories';
 import { SkeletonCard } from '@/ui/SkeletonCard';
+import { GetServerSideProps } from 'next';
 
-const fetchCategory = async (
-  categorySlug: string | undefined,
-): Promise<Category | undefined> => {
-  // artificial delay
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { categorySlug, subCategorySlug } = context.params!;
 
   const category = getCategories().find(
     (category) => category.slug === categorySlug,
   );
 
-  return category;
+  return {
+    props: {
+      category: category?.items.find(
+        (subCategory) => subCategory.slug === subCategorySlug,
+      ),
+    },
+  };
 };
 
 export default function Page({
-  params,
+  category,
 }: {
-  params: { [key: string]: string };
+  category: ReturnType<typeof getCategories>[0];
 }) {
-  const category = use(fetchCategory(params.categorySlug));
-
   return (
     <div className="space-y-4">
       <div className="text-xl font-medium text-zinc-500">{category.name}</div>
@@ -35,7 +35,3 @@ export default function Page({
     </div>
   );
 }
-
-export const config = {
-  runtime: 'experimental-edge',
-};

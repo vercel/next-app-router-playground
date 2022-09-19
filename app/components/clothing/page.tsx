@@ -1,11 +1,16 @@
-import { getCategories } from '@/lib/getCategories';
+import { getCategories, type Category } from '@/lib/getCategories';
 import { SkeletonCard } from '@/ui/SkeletonCard';
 
-export default function Page() {
-  // In production, we would not "fetch" data this way.
-  const category = getCategories().find(
-    (category) => category.slug === 'electronics',
-  )!;
+export const getServerSideProps = async () => {
+  return {
+    props: {
+      category: getCategories().find(
+        (category) => category.slug === 'clothing',
+      ),
+    },
+  };
+};
+export default function Page({ category }: { category: Category }) {
   return (
     <div className="space-y-4">
       <div className="text-xl font-medium text-zinc-500">
