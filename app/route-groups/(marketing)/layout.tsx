@@ -1,21 +1,16 @@
-import { getCategories, type Category } from '@/lib/getCategories';
+import { experimental_use as use } from 'react';
+import { fetchCategories, getCategories } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary';
 import ClickCounter from '@/ui/ClickCounter';
 import React from 'react';
 import CategoryNav from '../CategoryNav';
 
-export const getServerSideProps = () => {
-  return {
-    props: { categories: getCategories() },
-  };
-};
 export default function Layout({
   children,
-  categories,
 }: {
   children: React.ReactNode;
-  categories: Category[];
 }) {
+  const categories = use(fetchCategories())
   return (
     <Boundary
       labels={['marketing layout']}

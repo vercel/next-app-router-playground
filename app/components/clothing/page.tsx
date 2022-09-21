@@ -1,16 +1,11 @@
-import { getCategories, type Category } from '@/lib/getCategories';
+import { experimental_use as use } from 'react';
+import { fetchCategoryBySlug } from '@/lib/getCategories';
 import { SkeletonCard } from '@/ui/SkeletonCard';
 
-export const getServerSideProps = async () => {
-  return {
-    props: {
-      category: getCategories().find(
-        (category) => category.slug === 'clothing',
-      ),
-    },
-  };
-};
-export default function Page({ category }: { category: Category }) {
+export default function Page() {
+  const category = use(fetchCategoryBySlug('clothing'))
+  if (!category) return null
+
   return (
     <div className="space-y-4">
       <div className="text-xl font-medium text-zinc-500">

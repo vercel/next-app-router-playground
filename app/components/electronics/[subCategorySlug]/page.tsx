@@ -1,16 +1,12 @@
 'client'
 
-import { getCategories } from '@/lib/getCategories';
+import { fetchSubCategory, PageParams } from '@/lib/getCategories';
 import { SkeletonCard } from '@/ui/SkeletonCard';
+import { experimental_use as use } from 'react';
 
-export default function Page(props: any) {
-  // In production, we would not "fetch" data this way.
-  const category = getCategories().find(
-    (category) => category.slug === 'electronics',
-  )!;
-  const subCategory = category?.items.find(
-    (subCategory) => subCategory.slug === props.params.subCategorySlug!,
-  )!;
+export default function Page({ params } : { params: PageParams }) {
+  const subCategory = use(fetchSubCategory('electronics', params.subCategorySlug))
+  if (!subCategory) return null
 
   return (
     <div className="space-y-4">

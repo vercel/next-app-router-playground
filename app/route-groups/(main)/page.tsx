@@ -1,13 +1,4 @@
-import { getCategories, type Category } from '@/lib/getCategories';
-import { Boundary } from '@/ui/Boundary';
-
-export const getServerSideProps = () => {
-  return {
-    props: { categories: getCategories() },
-  };
-};
-
-export default function Page({ categories }: { categories: Category[] }) {
+export default function Page() {
   return (
     <div className="space-y-9">
       <div className="text-xl font-medium text-zinc-500">Home</div>

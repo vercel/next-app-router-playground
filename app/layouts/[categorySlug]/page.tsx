@@ -1,19 +1,11 @@
-import { getCategories, type Category } from '@/lib/getCategories';
+import { experimental_use as use } from 'react';
+import { fetchCategoryBySlug, type PageParams } from '@/lib/getCategories';
 import { SkeletonCard } from '@/ui/SkeletonCard';
-import { GetServerSideProps } from 'next';
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { categorySlug } = context.params!;
+export default function Page({ params }: { params: PageParams }) {
+  const category = use(fetchCategoryBySlug(params.categorySlug))
+  if (!category) return null
 
-  return {
-    props: {
-      category: getCategories().find(
-        (category) => category.slug === categorySlug,
-      ),
-    },
-  };
-};
-export default function Page({ category }: { category: Category }) {
   return (
     <div className="space-y-4">
       <div className="text-xl font-medium text-zinc-500">

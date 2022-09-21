@@ -1,6 +1,6 @@
 // @ts-ignore
 import { experimental_use as use } from 'react';
-import { getCategories, type Category } from '@/lib/getCategories';
+import { fetchCategoryBySlug, type Category } from '@/lib/getCategories';
 import { SkeletonCard } from '@/ui/SkeletonCard';
 
 const fetchCategory = async (
@@ -9,11 +9,9 @@ const fetchCategory = async (
   // artificial delay
   await new Promise((resolve) => setTimeout(resolve, 3000));
 
-  const category = getCategories().find(
-    (category) => category.slug === categorySlug,
-  );
+  if (!categorySlug) return
 
-  return category;
+  return await fetchCategoryBySlug(categorySlug)
 };
 
 export default function Page({
@@ -21,7 +19,8 @@ export default function Page({
 }: {
   params: { [key: string]: string };
 }) {
-  const category = use(fetchCategory(params.categorySlug))!;
+  const category = use(fetchCategory(params.categorySlug));
+  if (!category) return null
 
   return (
     <div className="space-y-4">

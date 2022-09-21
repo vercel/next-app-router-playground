@@ -1,34 +1,24 @@
-import { getCategories, type Category } from '@/lib/getCategories';
-import { Boundary } from '@/ui/Boundary';
+import { experimental_use as use } from 'react';
+import { fetchCategoryBySlug, PageParams } from '@/lib/getCategories';
 import ClickCounter from '@/ui/ClickCounter';
-import { GetServerSideProps } from 'next';
 import SubCategoryNav from './SubCategoryNav';
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { categorySlug } = context.params!;
-
-  return {
-    props: {
-      category: getCategories().find(
-        (category) => category.slug === categorySlug,
-      ),
-    },
-  };
-};
 
 export default function Layout({
   children,
-  category,
+  params,
 }: {
   children: React.ReactNode;
-  category: Category;
+  params: PageParams
 }) {
+  const category = use(fetchCategoryBySlug(params.categorySlug))
+  if (!category) return null
+
   return (
     <div className="space-y-9">
       <div className="flex items-center justify-between">
         <SubCategoryNav category={category} />
         <ClickCounter />
       </div>
-
       <div>{children}</div>
     </div>
   );

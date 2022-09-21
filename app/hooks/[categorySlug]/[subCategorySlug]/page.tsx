@@ -1,28 +1,14 @@
-import { getCategories } from '@/lib/getCategories';
+import { experimental_use as use } from 'react';
+import { fetchSubCategory, PageParams } from '@/lib/getCategories';
 import { SkeletonCard } from '@/ui/SkeletonCard';
-import { GetServerSideProps } from 'next';
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { categorySlug, subCategorySlug } = context.params!;
-
-  const category = getCategories().find(
-    (category) => category.slug === categorySlug,
-  );
-
-  return {
-    props: {
-      category: category?.items.find(
-        (category) => category.slug === subCategorySlug,
-      ),
-    },
-  };
-};
 
 export default function Page({
-  category,
+  params
 }: {
-  category: ReturnType<typeof getCategories>[0];
+  params: PageParams
 }) {
+  const category = use(fetchSubCategory(params.categorySlug, params.subCategory))
+  if (!category) return null
   return (
     <div className="space-y-4">
       <div className="text-xl font-medium text-zinc-500">{category.name}</div>

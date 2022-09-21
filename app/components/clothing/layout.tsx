@@ -1,24 +1,16 @@
-import { getCategories, type Category } from '@/lib/getCategories';
-import { Boundary } from '@/ui/Boundary';
+import { fetchCategoryBySlug, getCategories } from '@/lib/getCategories';
+import { experimental_use as use } from 'react';
 import { ComponentTree } from '@/ui/ComponentTree';
 import SubCategoryNav from '../SubCategoryNav';
-export const getServerSideProps = async () => {
-  return {
-    props: {
-      category: getCategories().find(
-        (category) => category.slug === 'clothing',
-      ),
-    },
-  };
-};
 
 export default function Layout({
   children,
-  category,
 }: {
   children: React.ReactNode;
-  category: Category;
 }) {
+  const category = use(fetchCategoryBySlug('clothing'))
+  if (!category) return null
+
   return (
     <div className="space-y-9">
       {/* TODO: Add real component bundle sizes */}
