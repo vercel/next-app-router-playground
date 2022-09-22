@@ -21,6 +21,7 @@
     "react": "0.0.0-experimental-3d615fc14-20220919",
     "react-dom": "0.0.0-experimental-3d615fc14-20220919",
     "styled-components": "6.0.0-beta.2",
+    "swr": "^1.3.0",
     "use-count-up": "3.0.1"
   },
   "devDependencies": {

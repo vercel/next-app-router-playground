@@ -4,12 +4,17 @@ import { demos } from '@/lib/demos';
 import clsx from 'clsx';
 import { useSelectedLayoutSegment } from 'next/dist/client/components/hooks-client';
 import Link from 'next/link';
+import useSWR from 'swr';
 
 export default function GlobalNav() {
   const selectedLayoutSegment = useSelectedLayoutSegment();
+  const swr = useSWR<{ status: 'ok' }>('/api/test', async () => {
+    return fetch('/api/test').then((res) => res.json());
+  });
 
   return (
     <div className="space-y-5">
+      <pre>{JSON.stringify(swr.data)}</pre>
       {demos.map((demo) => {
         return (
           <div key={demo.name}>
