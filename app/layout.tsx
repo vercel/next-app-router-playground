@@ -36,4 +36,3 @@ export default function RootLayout({ children }: { children: any }) {
   );
 }
 
-export const config = { revalidate: 0 }
