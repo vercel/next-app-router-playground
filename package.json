@@ -16,12 +16,12 @@
     "singleQuote": true
   },
   "dependencies": {
-    "clsx": "^1.2.1",
-    "next": "^12.3.2-canary.3",
-    "react": "^0.0.0-experimental-3d615fc14-20220919",
-    "react-dom": "^0.0.0-experimental-3d615fc14-20220919",
-    "styled-components": "^6.0.0-alpha.7",
-    "use-count-up": "^3.0.1"
+    "clsx": "1.2.1",
+    "next": "12.3.2-canary.11",
+    "react": "0.0.0-experimental-cb5084d1c-20220924",
+    "react-dom": "0.0.0-experimental-cb5084d1c-20220924",
+    "styled-components": "6.0.0-beta.2",
+    "use-count-up": "3.0.1"
   },
   "devDependencies": {
     "@types/node": "18.0.3",
