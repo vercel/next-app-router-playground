@@ -1,4 +1,4 @@
-import { fetchCategoryBySlug, getCategories } from '@/lib/getCategories';
+import { fetchCategoryBySlug } from '@/lib/getCategories';
 import { experimental_use as use } from 'react';
 import { ComponentTree } from '@/ui/ComponentTree';
 import SubCategoryNav from '../SubCategoryNav';
