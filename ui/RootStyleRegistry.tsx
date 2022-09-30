@@ -25,14 +25,9 @@ export default function RootStyleRegistry({
     );
   });
 
-  // Only include style registry on server side for SSR
-  if (typeof window === 'undefined') {
-    return (
-      <StyledComponentsRegistry>
-        <StyledJsxRegistry>{children}</StyledJsxRegistry>
-      </StyledComponentsRegistry>
-    );
-  }
-
-  return children;
+  return (
+    <StyledComponentsRegistry>
+      <StyledJsxRegistry>{children}</StyledJsxRegistry>
+    </StyledComponentsRegistry>
+  );
 }
