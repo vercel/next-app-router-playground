@@ -1,7 +1,7 @@
 'client'
 
 import React from 'react';
-import { useFlushEffects } from 'next/dist/client/components/hooks-client';
+import { useServerInsertedHTML } from 'next/dist/client/components/hooks-client';
 import { useStyledComponentsRegistry } from '@/lib/styling';
 
 export default function StyledComponentsRegistry({
@@ -12,7 +12,7 @@ export default function StyledComponentsRegistry({
   const [StyledComponentsRegistry, styledComponentsFlushEffect] =
     useStyledComponentsRegistry();
 
-  useFlushEffects(() => {
+  useServerInsertedHTML(() => {
     return (
       <>
         {styledComponentsFlushEffect()}
