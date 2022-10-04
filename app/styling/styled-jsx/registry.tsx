@@ -1,7 +1,7 @@
 'client'
 
 import React from 'react';
-import { useFlushEffects } from 'next/dist/client/components/hooks-client';
+import { useServerInsertedHTML } from 'next/dist/client/components/hooks-client';
 import { useStyledJsxRegistry } from '@/lib/styling';
 
 export default function StyledJsxRegistry({
@@ -11,7 +11,7 @@ export default function StyledJsxRegistry({
 }) {
   const [StyledJsxRegistry, styledJsxFlushEffect] = useStyledJsxRegistry();
 
-  useFlushEffects(() => {
+  useServerInsertedHTML(() => {
     return (
       <>
         {styledJsxFlushEffect()}

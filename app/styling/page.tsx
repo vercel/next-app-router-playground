@@ -16,7 +16,7 @@ export default function Page() {
               Creating a "style registry" to collect all CSS rules in a render.
             </li>
             <li>
-              Using the new `useFlushEffects` hook to inject rules before any
+              Use the new `useServerInsertedHTML` hook to inject rules before any
               content that might use them.
             </li>
             <li>
