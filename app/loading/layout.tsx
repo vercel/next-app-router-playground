@@ -1,7 +1,6 @@
-import { experimental_use as use } from 'react';
+import React, { experimental_use as use } from 'react';
 import { fetchCategories } from '@/lib/getCategories';
 import ClickCounter from '@/ui/ClickCounter';
-import React from 'react';
 import CategoryNav from './CategoryNav';
 
 export default function Layout({
@@ -10,6 +9,8 @@ export default function Layout({
   children: React.ReactNode;
 }) {
   const categories = use(fetchCategories())
+  if (!categories) return null
+
   return (
     <div className="space-y-9">
       <div className="flex items-center justify-between">

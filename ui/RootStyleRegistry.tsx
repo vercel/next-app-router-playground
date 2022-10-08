@@ -1,7 +1,7 @@
 'client'
 
 import React from 'react';
-import { useFlushEffects } from 'next/dist/client/components/hooks-client';
+import { useServerInsertedHTML } from 'next/dist/client/components/hooks-client';
 import {
   useStyledComponentsRegistry,
   useStyledJsxRegistry,
@@ -16,7 +16,7 @@ export default function RootStyleRegistry({
     useStyledComponentsRegistry();
   const [StyledJsxRegistry, styledJsxFlushEffect] = useStyledJsxRegistry();
 
-  useFlushEffects(() => {
+  useServerInsertedHTML(() => {
     return (
       <>
         {styledJsxFlushEffect()}
@@ -25,14 +25,9 @@ export default function RootStyleRegistry({
     );
   });
 
-  // Only include style registry on server side for SSR
-  if (typeof window === 'undefined') {
-    return (
-      <StyledComponentsRegistry>
-        <StyledJsxRegistry>{children}</StyledJsxRegistry>
-      </StyledComponentsRegistry>
-    );
-  }
-
-  return children;
+  return (
+    <StyledComponentsRegistry>
+      <StyledJsxRegistry>{children}</StyledJsxRegistry>
+    </StyledComponentsRegistry>
+  );
 }
