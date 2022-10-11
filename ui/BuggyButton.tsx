@@ -1,4 +1,4 @@
-'client'
+'use client';
 
 import Button from '@/ui/Button';
 import React from 'react';

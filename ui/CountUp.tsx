@@ -1,4 +1,4 @@
-'client'
+'use client';
 
 import { useCountUp } from 'use-count-up';
 

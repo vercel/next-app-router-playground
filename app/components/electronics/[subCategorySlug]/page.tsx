@@ -1,4 +1,4 @@
-'client'
+'use client';
 
 import { fetchSubCategory, PageParams } from '@/lib/getCategories';
 import { SkeletonCard } from '@/ui/SkeletonCard';
