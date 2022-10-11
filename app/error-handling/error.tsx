@@ -1,4 +1,4 @@
-'client'
+'use client';
 
 import { Boundary } from '@/ui/Boundary';
 import Button from '@/ui/Button';
