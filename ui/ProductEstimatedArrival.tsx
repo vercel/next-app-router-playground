@@ -1,11 +1,9 @@
-import { format, isTomorrow, parseISO } from 'date-fns';
+import { add, format, isTomorrow } from 'date-fns';
 
-export const ProductEstimatedArrival = ({
-  estimatedArrival,
-}: {
-  estimatedArrival: string;
-}) => {
-  const date = parseISO(estimatedArrival);
+export const ProductEstimatedArrival = ({ leadTime }: { leadTime: number }) => {
+  const date = add(new Date(), {
+    days: leadTime,
+  });
 
   return (
     <div className="text-sm text-zinc-300">

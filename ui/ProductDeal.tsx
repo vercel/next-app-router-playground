@@ -6,9 +6,11 @@ export const ProductDeal = ({
   discount: discountRaw,
 }: {
   price: Dinero<number>;
-  discount: Dinero<number>;
+  discount: {
+    amount: Dinero<number>;
+  };
 }) => {
-  const discount = toUnit(discountRaw);
+  const discount = toUnit(discountRaw.amount);
   const price = toUnit(priceRaw);
   const percent = Math.round(100 - (discount / price) * 100);
 
@@ -19,7 +21,7 @@ export const ProductDeal = ({
       </div>
       <div className="flex">
         <div className="text-sm leading-snug text-white">
-          <ProductCurrencySymbol dinero={discountRaw} />
+          <ProductCurrencySymbol dinero={discountRaw.amount} />
         </div>
         <div className="text-lg font-bold leading-snug text-white">
           {discount}

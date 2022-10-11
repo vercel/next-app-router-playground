@@ -1,16 +1,13 @@
-import { experimental_use as use } from 'react';
-import { fetchSubCategory, PageParams } from '@/lib/getCategories';
+import { fetchSubCategory } from '@/lib/getCategories';
+import { type PageParams } from '@/lib/types';
 import { SkeletonCard } from '@/ui/SkeletonCard';
+import { experimental_use as use } from 'react';
 
-
-
-export default function Page({
-  params
-}: {
-  params: PageParams
-}) {
-  const category = use(fetchSubCategory(params.categorySlug, params.subCategorySlug))
-  if (!category) return null
+export default function Page({ params }: { params: PageParams }) {
+  const category = use(
+    fetchSubCategory(params.categorySlug, params.subCategorySlug),
+  );
+  if (!category) return null;
 
   return (
     <div className="space-y-4">

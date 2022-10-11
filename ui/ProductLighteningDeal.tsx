@@ -1,17 +1,18 @@
 import { ProductDeal } from '@/ui/ProductDeal';
-import { formatDistanceToNow, parseISO } from 'date-fns';
+import { add, formatDistanceToNow } from 'date-fns';
 import { type Dinero } from 'dinero.js';
 
 export const ProductLighteningDeal = ({
   price,
   discount,
-  expires,
 }: {
   price: Dinero<number>;
-  discount: Dinero<number>;
-  expires: string;
+  discount: {
+    amount: Dinero<number>;
+    expires?: number;
+  };
 }) => {
-  const date = parseISO(expires);
+  const date = add(new Date(), { days: discount.expires });
 
   return (
     <>

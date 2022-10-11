@@ -1,29 +1,37 @@
-import { Product } from '@/lib/getProducts';
+import { JsonValue } from '@/lib/db/types';
 import { ProductCurrencySymbol } from '@/ui/ProductCurrencySymbol';
 import { ProductDeal } from '@/ui/ProductDeal';
 import { ProductLighteningDeal } from '@/ui/ProductLighteningDeal';
-import { dinero, DineroSnapshot, toUnit } from 'dinero.js';
+import { multiply, toUnit, type Dinero } from 'dinero.js';
+
+function isDiscount(obj: any): obj is { percent: number; expires?: number } {
+  return typeof obj?.percent === 'number';
+}
+
+function formatDiscount(price: Dinero<number>, discountRaw: JsonValue) {
+  return isDiscount(discountRaw)
+    ? {
+        amount: multiply(price, {
+          amount: discountRaw.percent,
+          scale: 2,
+        }),
+        expires: discountRaw.expires,
+      }
+    : undefined;
+}
 
 export const ProductPrice = ({
-  price: priceRaw,
+  price,
   discount: discountRaw,
 }: {
-  price: DineroSnapshot<number>;
-  discount: Product['discount'];
+  price: Dinero<number>;
+  discount: JsonValue;
 }) => {
-  const price = dinero(priceRaw);
+  const discount = formatDiscount(price, discountRaw);
 
-  if (discountRaw) {
-    const discount = dinero(discountRaw.amount);
-
-    if (discountRaw.expires) {
-      return (
-        <ProductLighteningDeal
-          price={price}
-          discount={discount}
-          expires={discountRaw.expires}
-        />
-      );
+  if (discount) {
+    if (discount?.expires && typeof discount.expires === 'number') {
+      return <ProductLighteningDeal price={price} discount={discount} />;
     }
     return <ProductDeal price={price} discount={discount} />;
   }

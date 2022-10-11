@@ -52,6 +52,23 @@ export const demos: Item[] = [
     ],
   },
   {
+    name: 'Data Fetching',
+    items: [
+      {
+        name: 'Dynamic',
+        slug: 'data-fetching-dynamic',
+      },
+      {
+        name: 'Static',
+        slug: 'data-fetching-static',
+      },
+      {
+        name: 'Static (Revalidate)',
+        slug: 'data-fetching-static-revalidate',
+      },
+    ],
+  },
+  {
     name: 'Components',
     items: [
       {

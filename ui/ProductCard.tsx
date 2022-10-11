@@ -1,4 +1,4 @@
-import { type Product } from '@/lib/getProducts';
+import { ProductPayload } from '@/lib/queries';
 import { ProductBestSeller } from '@/ui/ProductBestSeller';
 import { ProductEstimatedArrival } from '@/ui/ProductEstimatedArrival';
 import { ProductImage } from '@/ui/ProductImage';
@@ -7,8 +7,11 @@ import { ProductPrice } from '@/ui/ProductPrice';
 import { ProductRating } from '@/ui/ProductRating';
 import { ProductSplitPayments } from '@/ui/ProductSplitPayments';
 import { ProductUsedPrice } from '@/ui/ProductUsedPrice';
+import { dinero, type DineroSnapshot } from 'dinero.js';
 
-export const ProductCard = ({ product }: { product: Product }) => {
+export const ProductCard = ({ product }: { product: ProductPayload }) => {
+  const price = dinero(product.price as DineroSnapshot<number>);
+
   return (
     <div className="space-y-2">
       {product.isBestSeller ? (
@@ -24,17 +27,17 @@ export const ProductCard = ({ product }: { product: Product }) => {
 
       <div className="truncate text-sm text-white">{product.name}</div>
 
-      <ProductRating rating={product.rating} />
+      {product.rating ? <ProductRating rating={product.rating} /> : null}
 
-      <ProductPrice price={product.price} discount={product.discount} />
+      <ProductPrice price={price} discount={product.discount} />
 
-      <ProductSplitPayments price={product.price} />
+      <ProductSplitPayments price={price} />
 
       {product.usedPrice ? (
         <ProductUsedPrice usedPrice={product.usedPrice} />
       ) : null}
 
-      <ProductEstimatedArrival estimatedArrival={product.estimatedArrival} />
+      <ProductEstimatedArrival leadTime={product.leadTime} />
 
       {product.stock <= 1 ? (
         <ProductLowStockWarning stock={product.stock} />

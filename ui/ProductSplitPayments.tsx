@@ -1,13 +1,8 @@
 import { ProductCurrencySymbol } from '@/ui/ProductCurrencySymbol';
-import { allocate, dinero, DineroSnapshot, toUnit, up } from 'dinero.js';
+import { allocate, toUnit, up, type Dinero } from 'dinero.js';
 
-export const ProductSplitPayments = ({
-  price: priceRaw,
-}: {
-  price: DineroSnapshot<number>;
-}) => {
-  const price = dinero(priceRaw);
-
+export const ProductSplitPayments = ({ price }: { price: Dinero<number> }) => {
+  // only offer split payments for more expensive items
   if (toUnit(price) < 150) {
     return null;
   }

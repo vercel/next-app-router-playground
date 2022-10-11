@@ -1,20 +1,20 @@
-import { experimental_use as use } from 'react';
-import { fetchCategoryBySlug, type PageParams } from '@/lib/getCategories';
+import { fetchCategoryBySlug } from '@/lib/getCategories';
+import { type PageParams } from '@/lib/types';
 import ClickCounter from '@/ui/ClickCounter';
+import { experimental_use as use } from 'react';
 import SubCategoryNav from './SubCategoryNav';
-
 
 export default function Layout({
   children,
   // category,
-  params
+  params,
 }: {
   children: React.ReactNode;
   // category: Category;
-  params: PageParams
+  params: PageParams;
 }) {
-  const category = use(fetchCategoryBySlug(params.categorySlug))
-  if (!category) return null
+  const category = use(fetchCategoryBySlug(params.categorySlug));
+  if (!category) return null;
   return (
     <div className="space-y-9">
       <div>
