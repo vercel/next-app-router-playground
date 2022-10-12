@@ -10,6 +10,7 @@ const getCategory = async (categorySlug: string) => {
       .select(['Category.name', 'Category.slug'])
       .executeTakeFirstOrThrow();
   } catch (error) {
+    // plz work
     console.log(categorySlug, error);
   }
 };
