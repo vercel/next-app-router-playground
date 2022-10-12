@@ -1,4 +1,4 @@
-'client';
+'use client';
 
 import { demos } from '@/lib/demos';
 import clsx from 'clsx';

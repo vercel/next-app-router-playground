@@ -1,4 +1,4 @@
-'client'
+'use client';
 
 import { type Category } from '@/lib/getCategories';
 import { TabNavItem } from '@/ui/TabNavItem';
