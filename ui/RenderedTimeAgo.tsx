@@ -1,4 +1,4 @@
-'client';
+'use client';
 
 import clsx from 'clsx';
 import { differenceInMilliseconds } from 'date-fns';
