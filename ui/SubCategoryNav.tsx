@@ -2,6 +2,18 @@ import { db } from '@/lib/db';
 import { TabNav } from '@/ui/TabNav';
 import { experimental_use as use } from 'react';
 
+const getCategory = async (categorySlug: string) => {
+  try {
+    return db
+      .selectFrom('Category')
+      .where('Category.slug', '=', categorySlug)
+      .select(['Category.name', 'Category.slug'])
+      .executeTakeFirst();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const SubCategoryNav = ({
   basePath,
   categorySlug,
@@ -9,13 +21,7 @@ export const SubCategoryNav = ({
   basePath: string;
   categorySlug: string;
 }) => {
-  const parentCategory = use(
-    db
-      .selectFrom('Category')
-      .where('Category.slug', '=', categorySlug)
-      .select(['Category.name', 'Category.slug'])
-      .executeTakeFirst(),
-  );
+  const parentCategory = use(getCategory(categorySlug));
 
   if (!parentCategory) throw new Error('Category not found');
 
