@@ -8,9 +8,9 @@ const getCategory = async (categorySlug: string) => {
       .selectFrom('Category')
       .where('Category.slug', '=', categorySlug)
       .select(['Category.name', 'Category.slug'])
-      .executeTakeFirst();
+      .executeTakeFirstOrThrow();
   } catch (error) {
-    console.log(error);
+    console.log(categorySlug, error);
   }
 };
 
