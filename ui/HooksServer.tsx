@@ -3,7 +3,7 @@ import {
   cookies,
   headers,
   previewData,
-} from 'next/dist/client/components/hooks-server';
+} from 'next/headers';
 
 const HooksServer = () => {
   return (

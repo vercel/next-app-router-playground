@@ -6,7 +6,7 @@ import {
   useSelectedLayoutSegment,
   useSearchParams,
   useSearchParam,
-} from 'next/dist/client/components/hooks-client';
+} from 'next/navigation';
 
 const HooksClient = () => {
   const pathname = usePathname();
