@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useServerInsertedHTML } from 'next/dist/client/components/hooks-client';
+import { useServerInsertedHTML } from 'next/navigation';
 import { useStyledComponentsRegistry } from '@/lib/styling';
 
 export default function StyledComponentsRegistry({

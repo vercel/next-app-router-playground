@@ -2,7 +2,7 @@
 
 import { type Category } from '@/lib/getCategories';
 import { TabNavItem } from '@/ui/TabNavItem';
-import { useSelectedLayoutSegment } from 'next/dist/client/components/hooks-client';
+import { useSelectedLayoutSegment } from 'next/navigation';
 
 const SubCategoryNav = ({ category }: { category: Category }) => {
   const selectedLayoutSegment = useSelectedLayoutSegment();

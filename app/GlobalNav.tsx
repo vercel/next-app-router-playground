@@ -2,7 +2,7 @@
 
 import { demos } from '@/lib/demos';
 import clsx from 'clsx';
-import { useSelectedLayoutSegment } from 'next/dist/client/components/hooks-client';
+import { useSelectedLayoutSegment } from 'next/navigation';
 import Link from 'next/link';
 
 export default function GlobalNav() {
