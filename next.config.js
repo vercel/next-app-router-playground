@@ -7,9 +7,6 @@ const nextConfig = {
     appDir: true,
     // Recommended for new `<Link>` and `<Image>` behavior:
     newNextLinkBehavior: true,
-    // Recommended, will be the default in the next major version:
-    legacyBrowsers: false,
-    browsersListForSwc: true,
   },
 };
 
