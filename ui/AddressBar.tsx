@@ -54,10 +54,10 @@ const AddressBar = () => {
               })}
           </>
         ) : null}
-        {Object.keys(searchParams).length !== 0 ? (
+        {searchParams.toString().length !== 0 ? (
           <div className="px-2 text-zinc-500">
             <span>?</span>
-            {Object.entries(searchParams).map(([key, value], index) => {
+            {Array.from(searchParams.entries()).map(([key, value], index) => {
               return (
                 <React.Fragment key={key}>
                   {index !== 0 ? <span>&</span> : null}
