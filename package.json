@@ -17,9 +17,9 @@
   },
   "dependencies": {
     "clsx": "1.2.1",
-    "next": "12.3.2-canary.32",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "next": "12.3.2-canary.33",
+    "react": "0.0.0-experimental-9cdf8a99e-20221018",
+    "react-dom": "0.0.0-experimental-9cdf8a99e-20221018",
     "styled-components": "6.0.0-beta.2",
     "use-count-up": "3.0.1"
   },
