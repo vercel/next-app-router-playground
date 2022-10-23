@@ -1,6 +1,5 @@
 {
-  "name": "rfc-demo",
-  "version": "0.1.0",
+  "name": "app-playground",
   "private": true,
   "scripts": {
     "dev": "next dev",
