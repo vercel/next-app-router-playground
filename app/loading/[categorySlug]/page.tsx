@@ -1,6 +1,6 @@
 // @ts-ignore
 import { experimental_use as use } from 'react';
-import { fetchCategoryBySlug, type Category } from '@/lib/getCategories';
+import { fetchCategoryBySlug, PageProps, type Category } from '@/lib/getCategories';
 import { SkeletonCard } from '@/ui/SkeletonCard';
 
 const fetchCategory = async (
@@ -16,9 +16,7 @@ const fetchCategory = async (
 
 export default function Page({
   params,
-}: {
-  params: { [key: string]: string };
-}) {
+}: PageProps) {
   const category = use(fetchCategory(params.categorySlug));
   if (!category) return null
 

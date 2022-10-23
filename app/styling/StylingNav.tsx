@@ -31,7 +31,7 @@ const items = [
 ];
 
 const StylingNav = () => {
-  const selectedLayoutSegment = useSelectedLayoutSegment();
+  const [selectedLayoutSegment] = useSelectedLayoutSegment();
 
   return (
     <div className="flex items-center space-x-4">

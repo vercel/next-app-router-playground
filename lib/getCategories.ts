@@ -1,4 +1,7 @@
-export type PageParams = Record<string, string>
+export type PageProps = {
+  params?: any,
+  children?: React.ReactNode
+}
 export type Category = {
   name: string;
   slug: string;
