@@ -44,12 +44,6 @@ export const demos: Item[] = [
     name: 'Components',
     items: [
       {
-        name: 'Client and Server Components',
-        slug: 'components',
-        description:
-          'Preview the effect Server Components have on the component JS sent to the client',
-      },
-      {
         name: 'Hooks',
         slug: 'hooks',
         description:
