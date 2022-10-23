@@ -1,7 +1,6 @@
 import '@/styles/globals.css';
 import AddressBar from '@/ui/AddressBar';
 import nextPackageJson from 'next/package.json';
-import React from 'react';
 import GlobalNav from './GlobalNav';
 
 export default function RootLayout({ children }: { children: any }) {
@@ -24,10 +23,28 @@ export default function RootLayout({ children }: { children: any }) {
             </div>
           </div>
 
-          <div className="col-start-3 col-end-4 mt-28 flex items-center justify-between">
-            <div className="flex space-x-6 text-sm text-zinc-600">
-              <div>React: {React.version}</div>
-              <div>Next: {nextPackageJson.version}</div>
+          <div className="col-start-3 col-end-4 mt-28 flex items-center justify-center">
+            <div className="text-sm text-zinc-600">
+              Created by the <b>Next.js</b>
+              {' team at '}
+              <a href="https://vercel.com">
+                <b>Vercel</b>
+              </a>
+              {'. '}
+              <a
+                className="underline underline-offset-2"
+                href="https://github.com/vercel/next.js/examples/app-playground"
+              >
+                View the code
+              </a>
+              {' or '}
+              <a
+                className="underline underline-offset-2"
+                href="https://vercel.com/templates/next.js"
+              >
+                deploy your own
+              </a>
+              {'.'}
             </div>
           </div>
         </div>

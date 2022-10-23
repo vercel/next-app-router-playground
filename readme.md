@@ -7,7 +7,7 @@
 1. Install dependencies: `yarn`
 1. Start the dev server: `yarn dev`
 
-> **Note:** This example currently requires the `react` and `react-dom` experimental version, as well as the `next` canary version.
+> **Note:** This example currently requires the `next` canary version.
 
 ## Documentation
 
