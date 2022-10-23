@@ -1,17 +1,16 @@
 import { fetchCategoryBySlug, PageParams } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary';
-import { experimental_use as use } from 'react';
 import { Counter } from '../ClickCounter';
 import SubCategoryNav from '../SubCategoryNav';
 
-export default function Layout({
+export default async function Layout({
   children,
   params,
 }: {
   children: React.ReactNode;
   params: PageParams;
 }) {
-  const category = use(fetchCategoryBySlug(params.categorySlug));
+  const category = await fetchCategoryBySlug(params.categorySlug);
   if (!category) return null;
 
   return (

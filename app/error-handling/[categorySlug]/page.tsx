@@ -1,11 +1,10 @@
-import { experimental_use as use } from 'react';
 import { fetchCategoryBySlug, PageParams } from '@/lib/getCategories';
 import BuggyButton from '@/ui/BuggyButton';
 import { SkeletonCard } from '@/ui/SkeletonCard';
 
-export default function Page({ params }: { params: PageParams }) {
-  const category = use(fetchCategoryBySlug(params.categorySlug))
-  if (!category) return null
+export default async function Page({ params }: { params: PageParams }) {
+  const category = await fetchCategoryBySlug(params.categorySlug);
+  if (!category) return null;
 
   return (
     <div className="space-y-4">
@@ -13,7 +12,6 @@ export default function Page({ params }: { params: PageParams }) {
         <div className="text-xl font-medium text-zinc-500">
           All {category.name}
         </div>
-
         <BuggyButton />
       </div>
 

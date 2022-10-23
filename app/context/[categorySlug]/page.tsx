@@ -1,10 +1,9 @@
 import { fetchCategoryBySlug, PageParams } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary';
-import { experimental_use as use } from 'react';
 import { Counter } from '../ClickCounter';
 
-export default function Page({ params }: { params: PageParams }) {
-  const category = use(fetchCategoryBySlug(params.categorySlug));
+export default async function Page({ params }: { params: PageParams }) {
+  const category = await fetchCategoryBySlug(params.categorySlug);
   if (!category) return null;
 
   return (

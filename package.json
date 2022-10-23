@@ -1,6 +1,5 @@
 {
-  "name": "rfc-demo",
-  "version": "0.1.0",
+  "name": "app-playground",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -17,9 +16,9 @@
   },
   "dependencies": {
     "clsx": "1.2.1",
-    "next": "12.3.2-canary.33",
-    "react": "0.0.0-experimental-9cdf8a99e-20221018",
-    "react-dom": "0.0.0-experimental-9cdf8a99e-20221018",
+    "next": "12.3.2-canary.34",
+    "react": "0.0.0-experimental-0c11baa6a-20221022",
+    "react-dom": "0.0.0-experimental-0c11baa6a-20221022",
     "styled-components": "6.0.0-beta.2",
     "use-count-up": "3.0.1"
   },

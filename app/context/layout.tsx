@@ -1,12 +1,17 @@
 import { fetchCategories } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary';
 import { CounterProvider } from 'app/context/CounterContext';
-import React, { experimental_use as use } from 'react';
+import React from 'react';
 import CategoryNav from './CategoryNav';
 import ClickCounter from './ClickCounter';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  const categories = use(fetchCategories());
+export default async function Layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const categories = await fetchCategories();
+
   return (
     <Boundary
       labels={['Server Component Boundary']}

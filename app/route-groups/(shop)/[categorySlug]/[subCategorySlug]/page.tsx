@@ -1,14 +1,16 @@
-import { experimental_use as use } from 'react';
 import { fetchSubCategory } from '@/lib/getCategories';
 import { SkeletonCard } from '@/ui/SkeletonCard';
 
-export default function Page({
-  params
+export default async function Page({
+  params,
 }: {
-  params: Record<string, string>
+  params: Record<string, string>;
 }) {
-  const category = use(fetchSubCategory(params.categorySlug, params.subCategorySlug))
-  if (!category) return null
+  const category = await fetchSubCategory(
+    params.categorySlug,
+    params.subCategorySlug,
+  );
+  if (!category) return null;
 
   return (
     <div className="space-y-4">

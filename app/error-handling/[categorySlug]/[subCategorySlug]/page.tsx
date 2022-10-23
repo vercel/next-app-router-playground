@@ -1,22 +1,18 @@
 import { fetchSubCategory, PageParams } from '@/lib/getCategories';
 import BuggyButton from '@/ui/BuggyButton';
 import { SkeletonCard } from '@/ui/SkeletonCard';
-import { experimental_use as use } from 'react';
 
-
-export default function Page({
-  params
-}: {
-  params: PageParams
-}) {
-  const category = use(fetchSubCategory(params.categorySlug, params.subCategorySlug))
-  if (!category) return null
+export default async function Page({ params }: { params: PageParams }) {
+  const category = await fetchSubCategory(
+    params.categorySlug,
+    params.subCategorySlug,
+  );
+  if (!category) return null;
 
   return (
     <div className="space-y-4">
       <div className="flex justify-between  space-x-3">
         <div className="text-xl font-medium text-zinc-500">{category.name}</div>
-
         <BuggyButton />
       </div>
 

@@ -1,26 +1,25 @@
 // @ts-ignore
-import { experimental_use as use } from 'react';
 import { fetchCategoryBySlug, type Category } from '@/lib/getCategories';
 import { SkeletonCard } from '@/ui/SkeletonCard';
 
 const fetchCategory = async (
   categorySlug: string | undefined,
 ): Promise<Category | undefined> => {
-  // artificial delay
+  // this is an artificial delay for demo purposes
   await new Promise((resolve) => setTimeout(resolve, 3000));
 
-  if (!categorySlug) return
+  if (!categorySlug) return;
 
-  return await fetchCategoryBySlug(categorySlug)
+  return await fetchCategoryBySlug(categorySlug);
 };
 
-export default function Page({
+export default async function Page({
   params,
 }: {
   params: { [key: string]: string };
 }) {
-  const category = use(fetchCategory(params.categorySlug));
-  if (!category) return null
+  const category = await fetchCategory(params.categorySlug);
+  if (!category) return null;
 
   return (
     <div className="space-y-4">
@@ -34,7 +33,3 @@ export default function Page({
     </div>
   );
 }
-
-export const config = {
-  runtime: 'experimental-edge',
-};
