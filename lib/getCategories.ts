@@ -1,4 +1,4 @@
-export type PageParams = Record<string, string>
+export type PageParams = any // Record<string, string>
 export type Category = {
   name: string;
   slug: string;
