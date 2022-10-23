@@ -5,7 +5,7 @@ import { TabNavItem } from '@/ui/TabNavItem';
 import { useSelectedLayoutSegment } from 'next/navigation';
 
 const CategoryNav = ({ categories }: { categories: Category[] }) => {
-  const selectedLayoutSegment = useSelectedLayoutSegment();
+  const [selectedLayoutSegment] = useSelectedLayoutSegment();
 
   return (
     <div className="flex items-center space-x-4">

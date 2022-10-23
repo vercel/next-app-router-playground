@@ -6,7 +6,7 @@ import { useSelectedLayoutSegment } from 'next/navigation';
 import Link from 'next/link';
 
 export default function GlobalNav() {
-  const selectedLayoutSegment = useSelectedLayoutSegment();
+  const [selectedLayoutSegment] = useSelectedLayoutSegment();
 
   return (
     <div className="space-y-5">

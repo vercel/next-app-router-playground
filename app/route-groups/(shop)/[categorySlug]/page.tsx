@@ -1,9 +1,9 @@
 import { experimental_use as use } from 'react';
-import { fetchCategoryBySlug, PageParams } from '@/lib/getCategories';
+import { fetchCategoryBySlug, PageProps } from '@/lib/getCategories';
 import { SkeletonCard } from '@/ui/SkeletonCard';
 
 export default function Page(
-  { params }: { params: PageParams }
+  { params }: PageProps
 ) {
   const category = use(fetchCategoryBySlug(params.categorySlug))
   if (!category) return null

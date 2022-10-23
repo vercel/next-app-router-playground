@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleRegistry, createStyleRegistry } from 'styled-jsx';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 
-type ChildProps = { children: JSX.Element };
+type ChildProps = { children: React.ReactNode };
 
 export function useStyledComponentsRegistry() {
   const [styledComponentsStyleSheet] = useState(() => new ServerStyleSheet());
@@ -16,7 +16,7 @@ export function useStyledComponentsRegistry() {
   function StyledComponentsRegistry({ children }: ChildProps) {
     return (
       <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
-        {children as React.ReactElement}
+        {children as React.ReactChild}
       </StyleSheetManager>
     );
   }
