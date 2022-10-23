@@ -22,12 +22,6 @@ export const demos: Item[] = [
         slug: 'route-groups',
         description: 'Organize routes without affecting URL paths',
       },
-      {
-        name: 'Root Layouts',
-        slug: 'root-layouts',
-        description: 'Create top-level layouts that apply to all routes',
-        isDisabled: true,
-      },
     ],
   },
   {
@@ -43,11 +37,6 @@ export const demos: Item[] = [
         name: 'Error',
         slug: 'error-handling',
         description: 'Create error UI for specific parts of an app',
-      },
-      {
-        name: 'Template',
-        slug: 'template',
-        isDisabled: true,
       },
     ],
   },
@@ -66,6 +55,12 @@ export const demos: Item[] = [
         description:
           'Preview the hooks available for Client and Server Components',
       },
+      {
+        name: 'Client Context',
+        slug: 'context',
+        description:
+          'Pass context between Client Components that cross Server/Client Component boundary',
+      },
     ],
   },
   {
@@ -75,22 +70,6 @@ export const demos: Item[] = [
         name: 'CSS and CSS-in-JS',
         slug: 'styling',
         description: 'Preview the supported styling solutions',
-      },
-    ],
-  },
-
-  {
-    name: 'Advanced Routing Patterns',
-    items: [
-      {
-        name: 'Intercepting Routes',
-        slug: 'intercepting-routes',
-        isDisabled: true,
-      },
-      {
-        name: 'Parallel Routes',
-        slug: 'parallel-routes',
-        isDisabled: true,
       },
     ],
   },
