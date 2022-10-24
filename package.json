@@ -15,7 +15,6 @@
     "singleQuote": true
   },
   "dependencies": {
-    "@vercel/analytics": "0.0.2",
     "clsx": "1.2.1",
     "next": "12.3.2-canary.38",
     "react": "18.2.0",
