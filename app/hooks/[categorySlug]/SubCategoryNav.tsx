@@ -2,16 +2,16 @@
 
 import { type Category } from '@/lib/getCategories';
 import { TabNavItem } from '@/ui/TabNavItem';
-import { useSelectedLayoutSegment } from 'next/navigation';
+import { useSelectedLayoutSegments } from 'next/navigation';
 
 const SubCategoryNav = ({ category }: { category: Category }) => {
-  const [selectedLayoutSegment] = useSelectedLayoutSegment();
+  const [selectedLayoutSegments] = useSelectedLayoutSegments();
 
   return (
     <div className="flex items-center space-x-4">
       <TabNavItem
         href={`/hooks/${category.slug}`}
-        isActive={!selectedLayoutSegment}
+        isActive={!selectedLayoutSegments}
       >
         All
       </TabNavItem>
@@ -20,7 +20,7 @@ const SubCategoryNav = ({ category }: { category: Category }) => {
         <TabNavItem
           key={item.slug}
           href={`/hooks/${category.slug}/${item.slug}`}
-          isActive={item.slug === selectedLayoutSegment}
+          isActive={item.slug === selectedLayoutSegments}
         >
           {item.name}
         </TabNavItem>

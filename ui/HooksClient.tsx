@@ -3,13 +3,13 @@
 import React from 'react';
 import {
   usePathname,
-  useSelectedLayoutSegment,
+  useSelectedLayoutSegments,
   useSearchParams,
 } from 'next/navigation';
 
 const HooksClient = () => {
   const pathname = usePathname();
-  const selectedLayoutSegment = useSelectedLayoutSegment();
+  const selectedLayoutSegments = useSelectedLayoutSegments();
   const searchParams = useSearchParams();
   const searchParam = searchParams.get('key');
 
@@ -19,7 +19,7 @@ const HooksClient = () => {
         {JSON.stringify(
           {
             usePathname: pathname,
-            selectedLayoutSegment: selectedLayoutSegment,
+            selectedLayoutSegments: selectedLayoutSegments,
             useSearchParams: searchParams,
             "useSearchParam('key')": searchParam,
             useRouter: {
