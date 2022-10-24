@@ -4,7 +4,7 @@
   "scripts": {
     "dev:webpack": "next dev --port 3001",
     "dev:turbo": "next dev --turbo",
-    "tailwind": "npx tailwindcss styles/globals.css -o public/dist.css --watch",
+    "tailwind": "npx tailwindcss -i styles/globals.css -o public/dist.css --postcss=postcss.config.js",
     "dev": "turbo dev:turbo dev:webpack tailwind",
     "build": "next build",
     "start": "next start",
@@ -30,6 +30,7 @@
     "@types/node": "18.0.3",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
+    "autoprefixer": "^10.4.7",
     "eslint": "8.19.0",
     "eslint-config-next": "^12.3.2-canary.16",
     "prettier": "^2.7.1",
