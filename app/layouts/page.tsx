@@ -6,9 +6,9 @@ export default function Page() {
       <div className="space-y-4">
         <ul className="list-disc space-y-2 pl-4 text-sm text-zinc-300">
           <li>
-            A layout is UI that is shared between multiple pages. On navigation,
-            layouts preserve state, remain interactive, and do not re-render.
-            Two or more layouts can also be nested.
+            Amaze.. A layout is UI that is shared between multiple pages. On
+            navigation, layouts preserve state, remain interactive, and do not
+            re-render. Two or more layouts can also be nested.
           </li>
           <li>Try navigating between categories and sub categories.</li>
         </ul>
