@@ -1,14 +1,13 @@
 import { fetchSubCategory, PageProps } from '@/lib/getCategories';
 import BuggyButton from '@/ui/BuggyButton';
 import { SkeletonCard } from '@/ui/SkeletonCard';
-import { experimental_use as use } from 'react';
+import { use } from 'react';
 
-
-export default function Page({
-  params
-}: PageProps) {
-  const category = use(fetchSubCategory(params.categorySlug, params.subCategorySlug))
-  if (!category) return null
+export default function Page({ params }: PageProps) {
+  const category = use(
+    fetchSubCategory(params.categorySlug, params.subCategorySlug),
+  );
+  if (!category) return null;
 
   return (
     <div className="space-y-4">
