@@ -1,5 +1,5 @@
 import { experimental_use as use } from 'react';
-import { fetchCategoryBySlug, type PageParams } from '@/lib/getCategories';
+import { fetchCategoryBySlug, type PageProps } from '@/lib/getCategories';
 import ClickCounter from '@/ui/ClickCounter';
 import SubCategoryNav from './SubCategoryNav';
 
@@ -8,11 +8,7 @@ export default function Layout({
   children,
   // category,
   params
-}: {
-  children: React.ReactNode;
-  // category: Category;
-  params: PageParams
-}) {
+}: PageProps) {
   const category = use(fetchCategoryBySlug(params.categorySlug))
   if (!category) return null
   return (

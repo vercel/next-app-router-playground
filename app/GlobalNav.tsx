@@ -2,11 +2,11 @@
 
 import { demos } from '@/lib/demos';
 import clsx from 'clsx';
-import { useSelectedLayoutSegment } from 'next/navigation';
+import { useSelectedLayoutSegments } from 'next/navigation';
 import Link from 'next/link';
 
 export default function GlobalNav() {
-  const selectedLayoutSegment = useSelectedLayoutSegment();
+  const [selectedLayoutSegments] = useSelectedLayoutSegments();
 
   return (
     <div className="space-y-5">
@@ -18,7 +18,7 @@ export default function GlobalNav() {
             </div>
 
             {demo.items.map((item) => {
-              const isActive = item.slug === selectedLayoutSegment;
+              const isActive = item.slug === selectedLayoutSegments;
 
               return (
                 <div key={item.slug}>

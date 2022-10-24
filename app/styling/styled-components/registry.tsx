@@ -7,7 +7,7 @@ import { useStyledComponentsRegistry } from '@/lib/styling';
 export default function StyledComponentsRegistry({
   children,
 }: {
-  children: JSX.Element
+  children: React.ReactNode
 }) {
   const [StyledComponentsRegistry, styledComponentsFlushEffect] =
     useStyledComponentsRegistry();
@@ -20,14 +20,9 @@ export default function StyledComponentsRegistry({
     );
   });
 
-  // Only include style registry on server side for SSR
-  if (typeof window === 'undefined') {
-    return (
-      <StyledComponentsRegistry>
-        {children}
-      </StyledComponentsRegistry>
-    );
-  }
-
-  return children;
+  return (
+    <StyledComponentsRegistry>
+      {children}
+    </StyledComponentsRegistry>
+  );
 }

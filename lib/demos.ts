@@ -51,27 +51,22 @@ export const demos: Item[] = [
         slug: 'error-handling',
         description: 'Create error UI for specific parts of an app',
       },
-      {
-        name: 'Template',
-        slug: 'template',
-        isDisabled: true,
-      },
     ],
   },
   {
     name: 'Components',
     items: [
       {
-        name: 'Client and Server Components',
-        slug: 'components',
-        description:
-          'Preview the effect Server Components have on the component JS sent to the client',
-      },
-      {
         name: 'Hooks',
         slug: 'hooks',
         description:
           'Preview the hooks available for Client and Server Components',
+      },
+      {
+        name: 'Client Context',
+        slug: 'context',
+        description:
+          'Pass context between Client Components that cross Server/Client Component boundary',
       },
     ],
   },
@@ -82,22 +77,6 @@ export const demos: Item[] = [
         name: 'CSS and CSS-in-JS',
         slug: 'styling',
         description: 'Preview the supported styling solutions',
-      },
-    ],
-  },
-
-  {
-    name: 'Advanced Routing Patterns',
-    items: [
-      {
-        name: 'Intercepting Routes',
-        slug: 'intercepting-routes',
-        isDisabled: true,
-      },
-      {
-        name: 'Parallel Routes',
-        slug: 'parallel-routes',
-        isDisabled: true,
       },
     ],
   },

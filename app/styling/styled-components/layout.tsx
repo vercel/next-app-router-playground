@@ -1,6 +1,6 @@
 import StyledComponentsRegistry from './registry'
 
-export default function Layout({ children }: { children: JSX.Element }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <StyledComponentsRegistry>
       {children}
