@@ -2,7 +2,7 @@ import { getCategoryBySlug, getProductsByParentCategory } from '@/lib/queries';
 import { type PageParams } from '@/lib/types';
 import { ProductCard } from '@/ui/ProductCard';
 import { RenderedTimeAgo } from '@/ui/RenderedTimeAgo';
-import { experimental_use as use } from 'react';
+import { use } from 'react';
 
 export default function Page({ params }: { params: PageParams }) {
   const category = use(getCategoryBySlug(params.categorySlug));

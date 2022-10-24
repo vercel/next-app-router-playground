@@ -1,6 +1,6 @@
 import { db } from '@/lib/db';
 import { TabNav } from '@/ui/TabNav';
-import { experimental_use as use } from 'react';
+import { use } from 'react';
 
 const getCategory = async (categorySlug: string) => {
   try {

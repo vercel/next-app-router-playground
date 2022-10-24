@@ -1,10 +1,7 @@
 'use client';
 
 import React from 'react';
-import {
-  usePathname,
-  useSearchParams,
-} from 'next/dist/client/components/hooks-client';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 const AddressBar = () => {
   const pathname = usePathname();

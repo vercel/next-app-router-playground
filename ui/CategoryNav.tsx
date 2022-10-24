@@ -1,15 +1,21 @@
-import { db } from '@/lib/db';
+import prisma from '@/lib/prisma';
 import { TabNav } from '@/ui/TabNav';
-import { experimental_use as use } from 'react';
+import { cache } from 'react';
 
-export const CategoryNav = ({ basePath }: { basePath: string }) => {
-  const categories = use(
-    db
-      .selectFrom('Category')
-      .where('Category.parentId', 'is', null)
-      .select(['Category.name', 'Category.slug'])
-      .execute(),
-  );
+export const CategoryNav = async ({ basePath }: { basePath: string }) => {
+  const getCategories = cache(async () => {
+    return await prisma.category.findMany({
+      where: {
+        parentId: null,
+      },
+      select: {
+        name: true,
+        slug: true,
+      },
+    });
+  });
+
+  const categories = await getCategories();
 
   if (!categories) throw new Error('Categories not found');
 

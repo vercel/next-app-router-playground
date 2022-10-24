@@ -5,14 +5,13 @@ import {
   usePathname,
   useSelectedLayoutSegment,
   useSearchParams,
-  useSearchParam,
-} from 'next/dist/client/components/hooks-client';
+} from 'next/navigation';
 
 const HooksClient = () => {
   const pathname = usePathname();
   const selectedLayoutSegment = useSelectedLayoutSegment();
   const searchParams = useSearchParams();
-  const searchParam = useSearchParam('key');
+  const searchParam = useSearchParams().get('key');
 
   return (
     <div className="overflow-x-auto rounded-xl py-4 px-2 text-sm text-white [color-scheme:dark]">

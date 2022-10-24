@@ -1,15 +1,11 @@
 import { fetchCategoryBySlug } from '@/lib/getCategories';
-import { experimental_use as use } from 'react';
+import { use } from 'react';
 import { ComponentTree } from '@/ui/ComponentTree';
 import SubCategoryNav from '../SubCategoryNav';
 
-export default function Layout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const category = use(fetchCategoryBySlug('clothing'))
-  if (!category) return null
+export default function Layout({ children }: { children: React.ReactNode }) {
+  const category = use(fetchCategoryBySlug('clothing'));
+  if (!category) return null;
 
   return (
     <div className="space-y-9">

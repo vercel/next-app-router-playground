@@ -1,8 +1,8 @@
 'use client';
 
-import { type Category } from '@/lib/getCategories';
+import { type Category } from '@/lib/types';
 import { TabNavItem } from '@/ui/TabNavItem';
-import { useSelectedLayoutSegment } from 'next/dist/client/components/hooks-client';
+import { useSelectedLayoutSegment } from 'next/navigation';
 
 const CategoryNav = ({ categories }: { categories: Category[] }) => {
   const selectedLayoutSegment = useSelectedLayoutSegment();

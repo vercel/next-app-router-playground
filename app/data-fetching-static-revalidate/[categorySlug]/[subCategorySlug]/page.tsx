@@ -4,7 +4,7 @@ import { ProductCard } from '@/ui/ProductCard';
 import { RenderedTimeAgo } from '@/ui/RenderedTimeAgo';
 
 // @ts-ignore
-import { experimental_use as use } from 'react';
+import { use } from 'react';
 
 export default function Page({ params }: { params: PageParams }) {
   const category = use(getCategoryBySlug(params.categorySlug));

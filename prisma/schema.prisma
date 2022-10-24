@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+model Category {
+  id       String     @id @default(cuid())
+  name     String     @db.VarChar(255)
+  order    Int        @unique @default(autoincrement())
+  slug     String     @unique
+  parentId String?
+  parent   Category?  @relation(name: "CategoryHierarchy", fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  children Category[] @relation(name: "CategoryHierarchy")
+  products Product[]
+}
+model Image {
+  id        String  @id @unique @default(cuid())
+  url       String
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+}
+model Product {
+  id           String   @id @unique @default(cuid())
+  order        Int      @unique @default(autoincrement())
+  name         String
+  price        Json
+  usedPrice    Json?
+  discount     Json?
+  stock        Int
+  leadTime     Int      @default(0)
+  isBestSeller Boolean? @default(false)
+  rating       Int?
+  images       Image[]
+  category     Category @relation(fields: [categoryId], references: [id])
+  categoryId   String
+}

@@ -1,7 +1,7 @@
 import { fetchCategoryBySlug } from '@/lib/getCategories';
 import { type PageParams } from '@/lib/types';
 import ClickCounter from '@/ui/ClickCounter';
-import { experimental_use as use } from 'react';
+import { use } from 'react';
 
 import SubCategoryNav from './SubCategoryNav';
 
