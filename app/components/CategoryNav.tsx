@@ -1,27 +1,27 @@
 'use client';
 
 import { TabNavItem } from '@/ui/TabNavItem';
-import { useSelectedLayoutSegment } from 'next/navigation';
+import { useSelectedLayoutSegments } from 'next/navigation';
 
 const CategoryNav = () => {
-  const selectedLayoutSegment = useSelectedLayoutSegment();
+  const selectedLayoutSegments = useSelectedLayoutSegments();
 
   return (
     <div className="flex items-center space-x-4">
-      <TabNavItem href="/components" isActive={!selectedLayoutSegment}>
+      <TabNavItem href="/components" isActive={!selectedLayoutSegments}>
         Home
       </TabNavItem>
 
       <TabNavItem
         href="/components/electronics"
-        isActive={'electronics' === selectedLayoutSegment}
+        isActive={selectedLayoutSegments.includes('electronics')}
       >
         Client Components Only
       </TabNavItem>
 
       <TabNavItem
         href="/components/clothing"
-        isActive={'clothing' === selectedLayoutSegment}
+        isActive={selectedLayoutSegments.includes('clothing')}
       >
         Client and Server Components
       </TabNavItem>

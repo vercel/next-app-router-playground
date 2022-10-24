@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  cookies,
-  headers,
-  previewData,
-} from 'next/dist/client/components/hooks-server';
+import { cookies, headers, previewData } from 'next/headers';
 
 const HooksServer = () => {
   return (

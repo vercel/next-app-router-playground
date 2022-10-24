@@ -1,7 +1,7 @@
 'use client';
 
 import { TabNavItem } from '@/ui/TabNavItem';
-import { useSelectedLayoutSegment } from 'next/navigation';
+import { useSelectedLayoutSegments } from 'next/navigation';
 
 const items = [
   {
@@ -31,7 +31,7 @@ const items = [
 ];
 
 const StylingNav = () => {
-  const selectedLayoutSegment = useSelectedLayoutSegment();
+  const selectedLayoutSegments = useSelectedLayoutSegments();
 
   return (
     <div className="flex items-center space-x-4">
@@ -39,7 +39,7 @@ const StylingNav = () => {
         <TabNavItem
           key={item.slug}
           href={`/styling/${item.slug}`}
-          isActive={item.slug === selectedLayoutSegment}
+          isActive={selectedLayoutSegments.includes(item.slug)}
         >
           {item.name}
         </TabNavItem>

@@ -44,29 +44,10 @@ const AddressBar = () => {
                         {segment}
                       </span>
                     </span>
-
-                    <span className="text-zinc-600">/</span>
                   </React.Fragment>
                 );
               })}
           </>
-        ) : null}
-        {Object.keys(searchParams).length !== 0 ? (
-          <div className="px-2 text-zinc-500">
-            <span>?</span>
-            {Object.entries(searchParams).map(([key, value], index) => {
-              return (
-                <React.Fragment key={key}>
-                  {index !== 0 ? <span>&</span> : null}
-                  <span className="px-2">
-                    <span className="text-zinc-100">{key}</span>
-                    <span>=</span>
-                    <span className="text-zinc-100">{value}</span>
-                  </span>
-                </React.Fragment>
-              );
-            })}
-          </div>
         ) : null}
       </div>
     </div>
