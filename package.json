@@ -4,13 +4,13 @@
   "scripts": {
     "dev:webpack": "next dev --port 3001",
     "dev:turbo": "next dev --turbo",
-    "tailwind": "npx tailwindcss -i styles/globals.css -o public/dist.css --postcss=postcss.config.js",
+    "tailwind": "npx tailwindcss -i styles/globals.css -o styles/dist.css --postcss=postcss.config.js",
     "dev": "turbo dev:turbo dev:webpack tailwind",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{js,ts,tsx,md}\"",
-    "postinstall": "npm run tailwind"
+    "postinstall": "npm run tailwindcss"
   },
   "prettier": {
     "arrowParens": "always",
