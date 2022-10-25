@@ -4,7 +4,7 @@ export default function Page() {
       <div className="text-xl font-medium text-zinc-500">Client Context</div>
 
       <div className="space-y-4">
-        <ul className="list-disc space-y-2 pl-4 text-sm text-zinc-300">
+        <ul className="pl-4 space-y-2 text-sm list-disc text-zinc-300">
           <li>
             Pass context <strong>between Client Components</strong> that cross
             the Server/Client Component boundary.
