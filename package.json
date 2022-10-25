@@ -2,15 +2,14 @@
   "name": "app-playground",
   "private": true,
   "scripts": {
-    "dev:webpack": "next dev --port 3001",
-    "dev:turbo": "next dev --turbo",
-    "tailwind": "npx tailwindcss -i styles/globals.css -o styles/dist.css --postcss=postcss.config.js",
-    "dev": "turbo dev:turbo dev:webpack tailwind",
+    "dev:next": "next dev --turbo",
+    "dev:tailwind": "npx tailwindcss -i styles/globals.css -o styles/dist.css --postcss=postcss.config.js --watch",
+    "dev": "turbo dev:turbo dev:tailwind",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{js,ts,tsx,md}\"",
-    "postinstall": "npm run tailwind"
+    "postinstall": "npx tailwindcss -i styles/globals.css -o styles/dist.css --postcss=postcss.config.js"
   },
   "prettier": {
     "arrowParens": "always",

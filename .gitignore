@@ -38,3 +38,4 @@ yarn-error.log*
 # tailwind
 .turbo
 .vscode
+styles/dist.css
