@@ -6,7 +6,7 @@ export default function RootLayout({ children }: { children: any }) {
   return (
     <html>
       <head>
-        <title>Next.js App Directory Playground</title>
+        <title>Next.js Turbopack App Directory Playground</title>
       </head>
       <body className="overflow-y-scroll bg-zinc-900">
         <div className="grid grid-cols-[1fr,minmax(auto,240px),min(800px,100%),1fr] gap-x-8 py-8">
@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: any }) {
               {'. '}
               <a
                 className="underline decoration-dotted underline-offset-4"
-                href="https://github.com/vercel/next.js/examples/app-playground"
+                href="https://github.com/vercel/next.js/examples/with-turbopack"
               >
                 View the code
               </a>
