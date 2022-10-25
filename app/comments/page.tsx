@@ -4,7 +4,7 @@ export default function Page() {
   return (
     <div className="flex items-center justify-center">
       <div className="text-center text-3xl font-bold text-white">
-        <p className="m-auto mb-10">vercel.fyi/nextjs-conf-demo-comments</p>
+        <p className="m-auto mb-10">vercel.fyi/conf-comments</p>
         <p className="m-auto mb-10">
           Or scan this QR code to leave comments 👇
         </p>
