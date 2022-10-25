@@ -20,7 +20,7 @@ export default function ProductHeader() {
         alt="Next.js Hoodie"
         width={500}
         height={90}
-        className="h-32 w-full object-contain"
+        className="h-[7.5rem] w-full object-contain"
       />
     </section>
   );
