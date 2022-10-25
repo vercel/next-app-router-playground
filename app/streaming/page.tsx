@@ -1,4 +1,5 @@
 import { SkeletonCard } from '@/ui/SkeletonCard';
+import { ExplanationBlock } from '@/ui/ExplanationBlock';
 import { Suspense } from 'react';
 import Description from './description';
 import ProductHeader from './product-header';
