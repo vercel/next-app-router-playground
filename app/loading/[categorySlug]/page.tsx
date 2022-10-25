@@ -34,7 +34,3 @@ export default function Page({ params }: PageProps) {
     </div>
   );
 }
-
-export const config = {
-  runtime: 'experimental-edge',
-};

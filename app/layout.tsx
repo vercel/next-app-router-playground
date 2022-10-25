@@ -1,14 +1,12 @@
 import '@/styles/dist.css';
 import AddressBar from '@/ui/AddressBar';
 import GlobalNav from './GlobalNav';
-import { Analytics } from './analytics';
 
 export default function RootLayout({ children }: { children: any }) {
   return (
     <html>
       <head>
         <title>Next.js App Directory Playground</title>
-        <Analytics />
       </head>
       <body className="overflow-y-scroll bg-zinc-900">
         <div className="grid grid-cols-[1fr,minmax(auto,240px),min(800px,100%),1fr] gap-x-8 py-8">
