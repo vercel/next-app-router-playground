@@ -1,10 +1,10 @@
-import { use } from 'react';
 import { fetchSubCategory, PageProps } from '@/lib/getCategories';
 import { SkeletonCard } from '@/ui/SkeletonCard';
 
-export default function Page({ params }: PageProps) {
-  const category = use(
-    fetchSubCategory(params.categorySlug, params.subCategory),
+export default async function Page({ params }: PageProps) {
+  const category = await fetchSubCategory(
+    params.categorySlug,
+    params.subCategory,
   );
   if (!category) return null;
   return (

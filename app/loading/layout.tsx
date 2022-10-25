@@ -1,10 +1,14 @@
-import React, { use } from 'react';
+import React from 'react';
 import { fetchCategories } from '@/lib/getCategories';
 import ClickCounter from '@/ui/ClickCounter';
 import CategoryNav from './CategoryNav';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  const categories = use(fetchCategories());
+export default async function Layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const categories = await fetchCategories();
   if (!categories) return null;
 
   return (

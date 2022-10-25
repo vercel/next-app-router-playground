@@ -13,31 +13,34 @@ export default function Posts() {
             <div className="w-full space-y-4">
               <Suspense
                 fallback={
-                  <div className="w-full h-40 ">
+                  <div className="h-40 w-full ">
                     <SkeletonCard isLoading={true} />
                   </div>
                 }
               >
+                {/* @ts-ignore */}
                 <ProductHeader />
               </Suspense>
               <Suspense
                 fallback={
-                  <div className="w-full h-40 ">
+                  <div className="h-40 w-full ">
                     <SkeletonCard isLoading={true} />
                   </div>
                 }
               >
+                {/* @ts-ignore */}
                 <Description />
               </Suspense>
             </div>
             <div className="min-w-[250px]">
               <Suspense
                 fallback={
-                  <div className="w-full h-40 ">
+                  <div className="h-40 w-full ">
                     <SkeletonCard isLoading={true} />
                   </div>
                 }
               >
+                {/* @ts-ignore */}
                 <BuyNow />
               </Suspense>
             </div>

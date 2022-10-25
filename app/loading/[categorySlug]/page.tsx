@@ -1,5 +1,3 @@
-// @ts-ignore
-import { use } from 'react';
 import {
   fetchCategoryBySlug,
   PageProps,
@@ -18,8 +16,8 @@ const fetchCategory = async (
   return await fetchCategoryBySlug(categorySlug);
 };
 
-export default function Page({ params }: PageProps) {
-  const category = use(fetchCategory(params.categorySlug));
+export default async function Page({ params }: PageProps) {
+  const category = await fetchCategory(params.categorySlug);
   if (!category) return null;
 
   return (

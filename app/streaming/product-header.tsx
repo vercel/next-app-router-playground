@@ -1,5 +1,5 @@
-import { use } from 'react';
 import Image from 'next/image';
+
 async function delay(ms: number): Promise<string> {
   let title = 'Next.js Quarter Zip';
   await new Promise((res) =>
@@ -10,8 +10,8 @@ async function delay(ms: number): Promise<string> {
   return title;
 }
 
-export default function ProductHeader() {
-  let title = use(delay(800));
+export default async function ProductHeader() {
+  let title = await delay(800);
   return (
     <section>
       <div className="mb-2 text-xl font-bold">{title}</div>
