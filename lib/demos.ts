@@ -54,6 +54,26 @@ export const demos: Item[] = [
     ],
   },
   {
+    name: 'Data Fetching',
+    items: [
+      {
+        name: 'Static-Site Generation',
+        slug: 'ssg',
+        description: 'Generate static pages',
+      },
+      {
+        name: 'Server-Side Rendering',
+        slug: 'ssr',
+        description: 'Server-render pages',
+      },
+      {
+        name: 'Incremental Static Regeneration',
+        slug: 'isr',
+        description: 'Get the best of both worlds between static & dynamic',
+      },
+    ],
+  },
+  {
     name: 'Components',
     items: [
       {
