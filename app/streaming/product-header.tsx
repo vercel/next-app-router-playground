@@ -1,4 +1,4 @@
-import { experimental_use as use } from 'react';
+import { use } from 'react';
 import Image from 'next/image';
 async function delay(ms: number): Promise<string> {
   let title = 'Next.js Quarter Zip';
