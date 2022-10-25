@@ -23,11 +23,3 @@ export type PromiseReturnType<T extends (...args: any) => Promise<any>> =
   PromiseType<ReturnType<T>>;
 
 export type PageParams = Record<string, string>;
-
-export interface Category {
-  id: string;
-  name: string;
-  order: number;
-  parentId: string | null;
-  slug: string;
-}

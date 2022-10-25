@@ -1,6 +1,6 @@
 'use client';
 
-import { type Category } from '@/lib/types';
+import { type Category } from '@/lib/getCategories';
 import { TabNavItem } from '@/ui/TabNavItem';
 import { useSelectedLayoutSegments } from 'next/navigation';
 
