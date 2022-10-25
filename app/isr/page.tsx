@@ -2,7 +2,7 @@ export default function Page() {
   return (
     <div className="space-y-4">
       <div className="text-xl font-medium text-zinc-500">
-        Instant Loading States
+        Static-Site Generation
       </div>
 
       <div className="space-y-4">
