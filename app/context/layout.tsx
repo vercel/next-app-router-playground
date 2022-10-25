@@ -1,7 +1,7 @@
 import { fetchCategories } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary';
 import { CounterProvider } from 'app/context/CounterContext';
-import React, { experimental_use as use } from 'react';
+import React, { use } from 'react';
 import CategoryNav from './CategoryNav';
 import ClickCounter from './ClickCounter';
 

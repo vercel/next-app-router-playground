@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "clsx": "1.2.1",
-    "next": "12.3.2-canary.38",
+    "next": "12.3.2-canary.39",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "styled-components": "6.0.0-beta.2",
@@ -30,7 +30,7 @@
     "autocannon": "7.10.0",
     "autoprefixer": "^10.4.7",
     "eslint": "8.19.0",
-    "eslint-config-next": "^12.3.2-canary.16",
+    "eslint-config-next": "12.3.2-canary.40",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.12",
