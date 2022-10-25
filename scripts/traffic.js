@@ -1,7 +1,7 @@
 const autocannon = require('autocannon');
 
 const host = process.argv.includes('--live')
-  ? `https://layouts-playground.vercel.sh`
+  ? `https://app-dir.vercel.app`
   : 'http://localhost:3000';
 
 // 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟
