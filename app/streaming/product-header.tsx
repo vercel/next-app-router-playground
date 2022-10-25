@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 async function delay(ms: number): Promise<string> {
   let title = 'Next.js Quarter Zip';
   await new Promise((res) =>
@@ -15,7 +13,7 @@ export default async function ProductHeader() {
   return (
     <section>
       <div className="mb-2 font-bold">{title}</div>
-      <Image
+      <img
         src="/q-zip.png"
         alt="Next.js Hoodie"
         width={500}
