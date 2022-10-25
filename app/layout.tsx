@@ -32,14 +32,14 @@ export default function RootLayout({ children }: { children: any }) {
               {'. '}
               <a
                 className="underline decoration-dotted underline-offset-4"
-                href="https://github.com/vercel/next.js/examples/app-playground"
+                href="https://github.com/vercel/app-playground"
               >
                 View the code
               </a>
               {' or '}
               <a
                 className="underline decoration-dotted underline-offset-4"
-                href="https://vercel.com/templates/next.js"
+                href="https://vercel.com/templates/next.js/app-playground"
               >
                 deploy your own
               </a>
