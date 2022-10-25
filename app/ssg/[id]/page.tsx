@@ -1,6 +1,3 @@
-// @ts-ignore
-import { use } from 'react';
-
 export async function generateStaticParams() {
   return [{ id: '1' }, { id: '2' }, { id: '3' }, { id: '4' }];
 }
@@ -13,13 +10,13 @@ async function fetchData(params: { id: string }) {
   return data;
 }
 
-export default function Page({
+export default async function Page({
   params,
 }: {
   params?: any;
   children?: React.ReactNode;
 }) {
-  const data = use(fetchData(params));
+  const data = await fetchData(params);
 
   return (
     <div className="space-y-4">

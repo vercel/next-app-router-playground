@@ -1,16 +1,15 @@
-import { use } from 'react';
-import {
-  fetchCategories,
-  getCategories,
-  type Category,
-} from '@/lib/getCategories';
+import { fetchCategories } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary';
 import ClickCounter from '@/ui/ClickCounter';
 import React from 'react';
 import CategoryNav from '../CategoryNav';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  const categories = use(fetchCategories());
+export default async function Layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const categories = await fetchCategories();
   return (
     <Boundary labels={['shop layout']} color="cyan" animateRerendering={false}>
       <div className="space-y-9">

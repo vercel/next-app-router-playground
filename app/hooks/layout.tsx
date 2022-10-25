@@ -1,4 +1,3 @@
-import { use } from 'react';
 import { fetchCategories } from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary';
 import ClickCounter from '@/ui/ClickCounter';
@@ -7,8 +6,12 @@ import HooksServer from '@/ui/HooksServer';
 import React from 'react';
 import CategoryNav from './CategoryNav';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  const categories = use(fetchCategories());
+export default async function Layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const categories = await fetchCategories();
   if (!categories) return null;
   return (
     <div className="space-y-9">

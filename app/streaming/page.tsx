@@ -12,9 +12,11 @@ export default function Posts() {
           <div className="flex space-x-6">
             <div className="w-full space-y-4">
               <Suspense fallback={<SkeletonCard isLoading={true} />}>
+                {/* @ts-ignore */}
                 <ProductHeader />
               </Suspense>
               <Suspense fallback={<SkeletonCard isLoading={true} />}>
+                {/* @ts-ignore */}
                 <Description />
               </Suspense>
             </div>
@@ -26,6 +28,7 @@ export default function Posts() {
                   </div>
                 }
               >
+                {/* @ts-ignore */}
                 <BuyNow />
               </Suspense>
             </div>

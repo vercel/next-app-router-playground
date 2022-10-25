@@ -1,6 +1,3 @@
-// @ts-ignore
-import { use } from 'react';
-
 async function fetchData(params: { id: string }) {
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${params.id}`,
@@ -10,13 +7,13 @@ async function fetchData(params: { id: string }) {
   return data;
 }
 
-export default function Page({
+export default async function Page({
   params,
 }: {
   params?: any;
   children?: React.ReactNode;
 }) {
-  const data = use(fetchData(params));
+  const data = await fetchData(params);
 
   return (
     <div className="space-y-4">
