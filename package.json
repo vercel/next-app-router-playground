@@ -10,7 +10,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{js,ts,tsx,md}\"",
-    "postinstall": "npm run tailwindcss"
+    "postinstall": "npm run tailwind"
   },
   "prettier": {
     "arrowParens": "always",
@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "clsx": "1.2.1",
-    "next": "npm:@vercel/next-22-10@12.3.2-rc.8",
+    "next": "npm:@vercel/next-22-10@12.3.2-rc.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "styled-components": "6.0.0-beta.2",

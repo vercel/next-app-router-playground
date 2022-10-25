@@ -36,5 +36,5 @@ yarn-error.log*
 *.tsbuildinfo
 
 # tailwind
-public/dist.css
 .turbo
+.vscode
