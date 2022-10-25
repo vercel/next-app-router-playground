@@ -1,10 +1,9 @@
-import { use } from 'react';
 import { fetchCategoryBySlug, type PageProps } from '@/lib/getCategories';
 import BuggyButton from '@/ui/BuggyButton';
 import { SkeletonCard } from '@/ui/SkeletonCard';
 
-export default function Page({ params }: PageProps) {
-  const category = use(fetchCategoryBySlug(params.categorySlug));
+export default async function Page({ params }: PageProps) {
+  const category = await fetchCategoryBySlug(params.categorySlug);
   if (!category) return null;
 
   return (

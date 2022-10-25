@@ -1,11 +1,10 @@
-import { use } from 'react';
 import { fetchCategoryBySlug, type PageProps } from '@/lib/getCategories';
 import ClickCounter from '@/ui/ClickCounter';
 
 import SubCategoryNav from './SubCategoryNav';
 
-export default function Layout({ children, params }: PageProps) {
-  const category = use(fetchCategoryBySlug(params.categorySlug));
+export default async function Layout({ children, params }: PageProps) {
+  const category = await fetchCategoryBySlug(params.categorySlug);
   if (!category) return null;
 
   return (
