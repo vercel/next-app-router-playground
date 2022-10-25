@@ -15,7 +15,13 @@ export default function ProductHeader() {
   return (
     <section>
       <div className="mb-2 text-xl font-bold">{title}</div>
-      <Image src="/q-zip.png" alt="Next.js Hoodie" width={500} height={90} />
+      <Image
+        src="/q-zip.png"
+        unoptimized
+        alt="Next.js Hoodie"
+        width={500}
+        height={90}
+      />
     </section>
   );
 }
