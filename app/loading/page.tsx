@@ -8,8 +8,8 @@ export default function Page() {
       <div className="space-y-4">
         <ul className="list-disc space-y-2 pl-4 text-sm text-zinc-300">
           <li>
-            This example has an artificial delay when "fetching" data for each
-            category page.{' '}
+            This example has an artificial delay when &quot;fetching&quot; data
+            for each category page.{' '}
             <span className="font-medium text-white">`loading.js`</span> is used
             to show a loading skeleton immediately while the category page
             loads.
