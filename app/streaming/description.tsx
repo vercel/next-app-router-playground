@@ -1,4 +1,4 @@
-import { experimental_use as use } from 'react';
+import { use } from 'react';
 
 async function delay(ms: number): Promise<string> {
   const msg =
