@@ -11,23 +11,11 @@ export default function Posts() {
         <div className="space-y-4">
           <div className="flex space-x-6">
             <div className="w-full space-y-4">
-              <Suspense
-                fallback={
-                  <div className="h-40 w-full ">
-                    <SkeletonCard isLoading={true} />
-                  </div>
-                }
-              >
+              <Suspense fallback={<SkeletonCard isLoading={true} />}>
                 {/* @ts-ignore */}
                 <ProductHeader />
               </Suspense>
-              <Suspense
-                fallback={
-                  <div className="h-40 w-full ">
-                    <SkeletonCard isLoading={true} />
-                  </div>
-                }
-              >
+              <Suspense fallback={<SkeletonCard isLoading={true} />}>
                 {/* @ts-ignore */}
                 <Description />
               </Suspense>

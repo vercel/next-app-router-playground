@@ -11,11 +11,17 @@ async function delay(ms: number): Promise<string> {
 }
 
 export default async function ProductHeader() {
-  let title = await delay(800);
+  let title = await delay(500);
   return (
     <section>
-      <div className="mb-2 text-xl font-bold">{title}</div>
-      <Image src="/q-zip.png" alt="Next.js Hoodie" width={500} height={90} />
+      <div className="mb-2 font-bold">{title}</div>
+      <Image
+        src="/q-zip.png"
+        alt="Next.js Hoodie"
+        width={500}
+        height={90}
+        className="h-[7.5rem] w-full object-contain"
+      />
     </section>
   );
 }
