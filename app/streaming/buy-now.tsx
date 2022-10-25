@@ -10,7 +10,7 @@ async function delay(ms: number): Promise<string> {
 }
 
 export default function ProductHeader() {
-  let price = use(delay(1000));
+  let price = use(delay(200));
   return (
     <section>
       <div className="space-y-4 rounded-md bg-zinc-900 p-4">
