@@ -17,3 +17,7 @@ The `app/` directory can coexist with the existing `pages` directory for inc
 ## Documentation
 
 https://beta.nextjs.org/docs
+
+## Leave Feedback
+
+https://github.com/vercel/next.js/discussions/41745
