@@ -22,13 +22,13 @@ export const demos: Item[] = [
         slug: 'route-groups',
         description: 'Organize routes without affecting URL paths',
       },
-
-      {
-        name: 'Streaming with Suspense',
-        slug: 'streaming',
-        description:
-          'Streaming data fetching from the server with React Suspense',
-      },
+      // TODO: Re-add this page once streaming example been updated.
+      // {
+      //   name: 'Streaming with Suspense',
+      //   slug: 'streaming',
+      //   description:
+      //     'Streaming data fetching from the server with React Suspense',
+      // },
       {
         name: 'Root Layouts',
         slug: 'root-layouts',
