@@ -7,11 +7,13 @@ import {
 } from './RecommendedProducts';
 import { Reviews, ReviewsSkeleton } from './Reviews';
 
-export default async function Posts() {
+export default async function Page({ params }: { params: any }) {
+  const id = params.id;
+
   return (
     <div className="space-y-16">
       <div>
-        <Product product={products[0]} />
+        <Product product={products[Number(id)]} />
       </div>
 
       <Suspense fallback={<RecommendedProductsSkeleton />}>

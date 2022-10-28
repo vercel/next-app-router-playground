@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { SearchIcon, ShoppingCartIcon } from '@heroicons/react/solid';
 import Image from 'next/image';
 import logo from '../../public/nextjs-icon-light-background.png';
-import { delay } from './delay';
+import { delay } from './[id]/delay';
 
 async function ShoppingCartCount() {
   // Normally you would fetch data here
