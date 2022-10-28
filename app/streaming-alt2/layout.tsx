@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { SearchIcon, ShoppingCartIcon } from '@heroicons/react/solid';
 import Image from 'next/image';
-import logo from '../../../public/nextjs-icon-light-background.png';
+import logo from '../../public/nextjs-icon-light-background.png';
+import { delay } from './[id]/delay';
+
+async function ShoppingCartCount() {
+  // Normally you would fetch data here
+  await delay(1500);
+
+  return (
+    <div className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-vercel-pink text-sm font-bold text-white">
+      <span>3</span>
+    </div>
+  );
+}
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -34,9 +46,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="flex space-x-3">
           <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-zinc-600 text-white">
             <ShoppingCartIcon className="w-6 text-white" />
-            <div className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-vercel-pink text-sm font-bold text-white">
-              <span>3</span>
-            </div>
+            <Suspense>
+              {/* @ts-ignore */}
+              <ShoppingCartCount />
+            </Suspense>
           </div>
 
           <Image

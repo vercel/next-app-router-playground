@@ -1,5 +1,6 @@
 import products from '@/lib/data/products';
 import { ProductCard } from '@/ui/ProductCard';
+import Link from 'next/link';
 import { delay } from './delay';
 
 const shimmer = `relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1.5s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent`;
@@ -41,7 +42,13 @@ export async function RecommendedProducts() {
       <div className="text-xl font-medium text-white">Recommended Products</div>
       <div className="grid grid-cols-4 gap-6">
         {products.slice(1, 5).map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <Link
+            key={product.id}
+            className="block"
+            href={`/streaming-alt2/${product.id}`}
+          >
+            <ProductCard product={product} />
+          </Link>
         ))}
       </div>
     </div>
