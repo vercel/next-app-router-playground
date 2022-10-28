@@ -11,7 +11,7 @@ export default function Loading() {
       <div className="flex items-center justify-between rounded-lg bg-zinc-800 px-5 py-4">
         <div className="flex space-x-4">
           <div className="h-10 w-10">
-            <Image src={logo} alt="Next.js" />
+            <Image src={logo} alt="Next.js" placeholder="blur" />
           </div>
 
           <div className="relative w-56">

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { SearchIcon, ShoppingCartIcon } from '@heroicons/react/solid';
 import Image from 'next/image';
 import logo from '../../../public/nextjs-icon-light-background.png';
@@ -10,7 +9,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className="flex items-center justify-between rounded-lg bg-zinc-800 px-5 py-4">
         <div className="flex space-x-4">
           <div className="h-10 w-10">
-            <Image src={logo} alt="Next.js" />
+            <Image src={logo} alt="Next.js" placeholder="blur" />
           </div>
 
           <div className="relative w-56">

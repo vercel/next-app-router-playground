@@ -21,6 +21,9 @@ export const Product = ({ product }: { product: IProduct }) => {
             alt={product.name}
             height={400}
             width={400}
+            placeholder="blur"
+            blurDataURL={product.imageBlur}
+            priority
           />
 
           <div className="flex space-x-2">
@@ -31,6 +34,8 @@ export const Product = ({ product }: { product: IProduct }) => {
                 alt={product.name}
                 height={80}
                 width={80}
+                placeholder="blur"
+                blurDataURL={product.imageBlur}
               />
             </div>
             <div className="w-1/3">
@@ -40,6 +45,8 @@ export const Product = ({ product }: { product: IProduct }) => {
                 alt={product.name}
                 height={80}
                 width={80}
+                placeholder="blur"
+                blurDataURL={product.imageBlur}
               />
             </div>
             <div className="w-1/3">
@@ -49,6 +56,8 @@ export const Product = ({ product }: { product: IProduct }) => {
                 alt={product.name}
                 height={80}
                 width={80}
+                placeholder="blur"
+                blurDataURL={product.imageBlur}
               />
             </div>
           </div>

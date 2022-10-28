@@ -24,6 +24,8 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
           height={400}
           className="rounded-xl"
           alt={product.name}
+          placeholder="blur"
+          blurDataURL={product.imageBlur}
         />
       </div>
 
