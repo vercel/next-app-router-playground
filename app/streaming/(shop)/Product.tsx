@@ -88,7 +88,8 @@ export const Product = ({ product }: { product: IProduct }) => {
           </p>
 
           <p>
-            To learn more about streaming, see the{' '}
+            You can reload the page to replay the demo. To learn more about
+            streaming, see the{' '}
             <a
               className="font-medium text-white"
               href="https://beta.nextjs.org/docs/data-fetching/streaming-and-suspense"

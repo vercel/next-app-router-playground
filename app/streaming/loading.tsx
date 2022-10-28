@@ -24,6 +24,7 @@ export default function Loading() {
               id="search"
               className="block w-full rounded-full border-none bg-zinc-600 pl-10 font-medium text-zinc-200 focus:border-vercel-pink focus:ring-2 focus:ring-vercel-pink"
               autoComplete="off"
+              disabled
             />
           </div>
         </div>
@@ -33,7 +34,7 @@ export default function Loading() {
             <ShoppingCartIcon className="w-6 text-white" />
           </div>
 
-          <div className="h-10 w-10 rounded-full bg-zinc-600"></div>
+          <div className="h-10 w-10 rounded-full bg-zinc-600" />
         </div>
       </div>
 
@@ -41,7 +42,7 @@ export default function Loading() {
         <div className="grid grid-cols-8 gap-6 pb-1">
           <div className="col-span-2">
             <div className={`space-y-2 ${shimmer}`}>
-              <div className="h-[166px] w-full rounded-lg bg-zinc-800"></div>
+              <div className="h-[166px] w-full rounded-lg bg-zinc-800" />
 
               <div className="flex space-x-2">
                 <div className="w-1/3">
@@ -66,7 +67,7 @@ export default function Loading() {
           <div className="col-span-2">
             <div
               className={`h-[224px] animate-pulse space-y-4 rounded-lg bg-zinc-800 ${shimmer}`}
-            ></div>
+            />
           </div>
         </div>
 
