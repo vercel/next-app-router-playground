@@ -1,10 +1,10 @@
-import { JsonValue } from '@/lib/db/types';
+import { IProduct } from '@/lib/data/products';
 import { dinero, toUnit, up, type DineroSnapshot } from 'dinero.js';
 
 export const ProductUsedPrice = ({
   usedPrice: usedPriceRaw,
 }: {
-  usedPrice: JsonValue;
+  usedPrice: IProduct['usedPrice'];
 }) => {
   const usedPrice = dinero(usedPriceRaw as DineroSnapshot<number>);
 
