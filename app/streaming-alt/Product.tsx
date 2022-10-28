@@ -15,7 +15,7 @@ const shimmer = `relative overflow-hidden rounded-xl before:absolute before:inse
 function PricingSkeleton() {
   return (
     <div
-      className={`h-[224px] animate-pulse space-y-4 rounded-lg bg-zinc-800 ${shimmer}`}
+      className={`h-[224px] space-y-4 rounded-lg bg-zinc-800 ${shimmer}`}
     ></div>
   );
 }

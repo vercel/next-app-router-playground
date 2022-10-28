@@ -9,7 +9,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className="flex items-center justify-between rounded-lg bg-zinc-800 px-5 py-4">
         <div className="flex space-x-4">
           <div className="h-10 w-10">
-            <Image src={logo} alt="Next.js" placeholder="blur" />
+            <Image
+              src={logo}
+              className="rounded-full"
+              alt="Next.js"
+              placeholder="blur"
+            />
           </div>
 
           <div className="relative w-56">
@@ -30,7 +35,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-zinc-600 text-white">
             <ShoppingCartIcon className="w-6 text-white" />
             <div className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-vercel-pink text-sm font-bold text-white">
-              <span>1</span>
+              <span>3</span>
             </div>
           </div>
 
