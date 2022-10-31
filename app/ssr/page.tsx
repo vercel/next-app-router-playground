@@ -2,7 +2,7 @@ export default function Page() {
   return (
     <div className="space-y-4">
       <div className="text-xl font-medium text-zinc-500">
-        Server-side reandering
+        Server-side rendering
       </div>
 
       <div className="space-y-4">
