@@ -19,8 +19,11 @@ function Skeleton() {
 
 export function RecommendedProductsSkeleton() {
   return (
-    <div className="space-y-6">
-      <div className={`h-7 w-2/5 rounded-lg bg-zinc-900 ${shimmer}`} />
+    <div className="space-y-6 pb-1">
+      <div className="space-y-2">
+        <div className={`h-6 w-1/3 rounded-lg bg-zinc-900 ${shimmer}`} />
+        <div className={`h-4 w-1/2 rounded-lg bg-zinc-900 ${shimmer}`} />
+      </div>
 
       <div className="grid grid-cols-4 gap-6">
         <Skeleton />
@@ -38,7 +41,14 @@ export async function RecommendedProducts() {
 
   return (
     <div className="space-y-6">
-      <div className="text-xl font-medium text-white">Recommended Products</div>
+      <div>
+        <div className="text-lg font-medium text-white">
+          Recommended Products for You
+        </div>
+        <div className="text-sm text-zinc-500">
+          Based on your preferences and shopping habits
+        </div>
+      </div>
       <div className="grid grid-cols-4 gap-6">
         {products.slice(1, 5).map((product) => (
           <ProductCard key={product.id} product={product} />

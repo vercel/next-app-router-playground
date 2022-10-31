@@ -15,7 +15,7 @@ const shimmer = `relative overflow-hidden rounded-xl before:absolute before:inse
 function PricingSkeleton() {
   return (
     <div
-      className={`h-[224px] space-y-4 rounded-lg bg-zinc-800 ${shimmer}`}
+      className={`h-[197px] space-y-4 rounded-lg bg-zinc-800 ${shimmer}`}
     ></div>
   );
 }
@@ -29,19 +29,14 @@ async function Pricing({ product }: { product: IProduct }) {
   return (
     <div className="space-y-4 rounded-lg bg-zinc-900 p-3">
       <ProductPrice price={price} discount={product.discount} />
-
       <ProductSplitPayments price={price} />
-
       {product.usedPrice ? (
         <ProductUsedPrice usedPrice={product.usedPrice} />
       ) : null}
-
-      <ProductEstimatedArrival leadTime={product.leadTime} />
-
+      <ProductEstimatedArrival leadTime={product.leadTime} hasDeliveryTime />
       {product.stock <= 1 ? (
         <ProductLowStockWarning stock={product.stock} />
       ) : null}
-
       <div className="space-y-2">
         <button className="w-full rounded-lg bg-zinc-700 px-3 py-1 text-sm font-medium text-zinc-100 hover:bg-zinc-500 hover:text-white">
           Add to Basket
@@ -100,19 +95,21 @@ export const Product = ({ product }: { product: IProduct }) => {
         </div>
       </div>
 
-      <div className="col-span-4 space-y-6">
+      <div className="col-span-4 space-y-4">
         <div className="truncate text-2xl font-medium text-white">
           {product.name}
         </div>
+
         <ProductRating rating={product.rating} />
-        <div className="space-y-4 text-zinc-200">
+
+        <div className="space-y-4 text-sm text-zinc-200">
           <p>
             Streaming allows you to progressively render and send units of the
             UI from the server to the client.
           </p>
           <p>
-            In this example product page, you’ll notice we first load the
-            product information, followed by recommended items, and finally the
+            In this example product page, you'll notice the product information
+            is loaded first, followed by recommended items, and finally the
             shopping cart count.
           </p>
           <p>

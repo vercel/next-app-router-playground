@@ -34,7 +34,7 @@ export async function Reviews() {
 
   return (
     <div className="space-y-6">
-      <div className="text-xl font-medium text-white">Customer Reviews</div>
+      <div className="text-lg font-medium text-white">Customer Reviews</div>
       <div className="space-y-8">
         {reviews.map((review) => {
           return <ProductReviewCard key={review.id} review={review} />;
