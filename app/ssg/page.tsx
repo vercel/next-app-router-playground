@@ -20,7 +20,7 @@ export default function Page() {
       <div>
         <a
           className="font-medium text-zinc-300 hover:text-white"
-          href="https://beta.nextjs.org/docs/routing/loading-ui"
+          href="https://beta.nextjs.org/docs/data-fetching/fetching#static-data"
         >
           Learn more
         </a>
