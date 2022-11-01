@@ -52,11 +52,13 @@ async function Pricing({
   );
 }
 
-export const Product = ({ product }: { product: IProduct }) => {
-  // Get the cart count from the users cookies and pass it to the client
-  // AddToCart component
-  const cartCount = cookies().get('_cart_count')?.value || '0';
-
+export const Product = ({
+  product,
+  cartCount,
+}: {
+  product: IProduct;
+  cartCount: string;
+}) => {
   return (
     <div className="grid grid-cols-8 gap-6">
       <div className="col-span-2">
