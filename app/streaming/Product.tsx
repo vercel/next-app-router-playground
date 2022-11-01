@@ -15,7 +15,7 @@ const shimmer = `relative overflow-hidden rounded-xl before:absolute before:inse
 function PricingSkeleton() {
   return (
     <div
-      className={`h-[197px] space-y-4 rounded-lg bg-zinc-800 ${shimmer}`}
+      className={`h-[161px] space-y-4 rounded-lg bg-zinc-800 ${shimmer}`}
     ></div>
   );
 }
@@ -38,13 +38,6 @@ async function Pricing({ product }: { product: IProduct }) {
         <ProductLowStockWarning stock={product.stock} />
       ) : null}
       <div className="space-y-2">
-        <button className="w-full rounded-lg bg-zinc-700 px-3 py-1 text-sm font-medium text-zinc-100 hover:bg-zinc-500 hover:text-white">
-          Add to Basket
-        </button>
-
-        <button className="w-full rounded-lg  bg-vercel-blue px-3 py-1 text-sm font-medium  text-white hover:bg-vercel-blue/90">
-          Buy Now
-        </button>
       </div>
     </div>
   );
