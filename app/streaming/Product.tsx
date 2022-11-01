@@ -6,7 +6,6 @@ import { ProductRating } from '@/ui/ProductRating';
 import { ProductSplitPayments } from '@/ui/ProductSplitPayments';
 import { ProductUsedPrice } from '@/ui/ProductUsedPrice';
 import { dinero, type DineroSnapshot } from 'dinero.js';
-import { cookies } from 'next/headers';
 import Image from 'next/image';
 import { Suspense } from 'react';
 import { AddToCart } from './AddToCart';
