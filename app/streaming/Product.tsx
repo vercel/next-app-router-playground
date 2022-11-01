@@ -22,13 +22,14 @@ function PricingSkeleton() {
   );
 }
 
-async function Pricing({ product }: { product: IProduct }) {
+async function Pricing({
+  product,
+  cartCount,
+}: {
+  product: IProduct;
+  cartCount: number;
+}) {
   const price = dinero(product.price as DineroSnapshot<number>);
-
-  // Get the cart count from the users cookies and pass it to the client
-  // AddToCart component
-  const _cookies = cookies();
-  const cartCount = _cookies.get('_cart_count')?.value || '0';
 
   // Normally you would fetch data here
   await delay(600);
@@ -52,6 +53,10 @@ async function Pricing({ product }: { product: IProduct }) {
 }
 
 export const Product = ({ product }: { product: IProduct }) => {
+  // Get the cart count from the users cookies and pass it to the client
+  // AddToCart component
+  const cartCount = cookies().get('_cart_count')?.value || '0';
+
   return (
     <div className="grid grid-cols-8 gap-6">
       <div className="col-span-2">
@@ -137,7 +142,7 @@ export const Product = ({ product }: { product: IProduct }) => {
       <div className="col-span-2">
         <Suspense fallback={<PricingSkeleton />}>
           {/* @ts-ignore */}
-          <Pricing product={product} />
+          <Pricing product={product} cartCount={cartCount} />
         </Suspense>
       </div>
     </div>
