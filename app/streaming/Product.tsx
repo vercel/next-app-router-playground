@@ -27,7 +27,7 @@ async function Pricing({ product }: { product: IProduct }) {
 
   // Get the cart count from the users cookies and pass it to the client
   // AddToCart component
-  const cartCount = Number(cookies().get('_cart_count')?.value || '0');
+  const cartCount = cookies().get('_cart_count')?.value || '0';
 
   // Normally you would fetch data here
   await delay(600);
@@ -44,7 +44,7 @@ async function Pricing({ product }: { product: IProduct }) {
         <ProductLowStockWarning stock={product.stock} />
       ) : null}
       <div className="space-y-2">
-        <AddToCart initialCartCount={cartCount} />
+        <AddToCart initialCartCount={Number(cartCount)} />
       </div>
     </div>
   );
