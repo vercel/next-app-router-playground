@@ -1,13 +1,15 @@
 import { SearchIcon, ShoppingCartIcon } from '@heroicons/react/solid';
+import { cookies } from 'next/headers';
 import Image from 'next/image';
 import React from 'react';
 import logo from '../../public/nextjs-icon-light-background.png';
 
 function ShoppingCartCount() {
+  const cartCount = cookies().get('_cart_count')?.value || '0';
 
   return (
     <div className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-vercel-pink text-sm font-bold text-white">
-      <span>3</span>
+      <span>{cartCount}</span>
     </div>
   );
 }

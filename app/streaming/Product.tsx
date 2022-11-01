@@ -6,8 +6,10 @@ import { ProductRating } from '@/ui/ProductRating';
 import { ProductSplitPayments } from '@/ui/ProductSplitPayments';
 import { ProductUsedPrice } from '@/ui/ProductUsedPrice';
 import { dinero, type DineroSnapshot } from 'dinero.js';
+import { cookies } from 'next/headers';
 import Image from 'next/image';
 import { Suspense } from 'react';
+import { AddToCart } from './AddToCart';
 import { delay } from './delay';
 
 const shimmer = `relative overflow-hidden rounded-xl before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1.5s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent`;
@@ -22,6 +24,10 @@ function PricingSkeleton() {
 
 async function Pricing({ product }: { product: IProduct }) {
   const price = dinero(product.price as DineroSnapshot<number>);
+
+  // Get the cart count from the users cookies and pass it to the client
+  // AddToCart component
+  const cartCount = Number(cookies().get('_cart_count')?.value || '0');
 
   // Normally you would fetch data here
   await delay(600);
@@ -38,6 +44,7 @@ async function Pricing({ product }: { product: IProduct }) {
         <ProductLowStockWarning stock={product.stock} />
       ) : null}
       <div className="space-y-2">
+        <AddToCart initialCartCount={cartCount} />
       </div>
     </div>
   );
