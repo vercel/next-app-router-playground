@@ -6,7 +6,7 @@ export default function Page() {
       </div>
 
       <div className="space-y-4">
-        <ul className="list-disc space-y-2 pl-4 text-sm text-zinc-300">
+        <ul className="pl-4 space-y-2 text-sm list-disc text-zinc-300">
           <li>
             This example has an artificial delay when "fetching" data for each
             category page.{' '}
@@ -24,15 +24,6 @@ export default function Page() {
             clicking a second category before the first one has loaded.
           </li>
         </ul>
-      </div>
-
-      <div>
-        <a
-          className="font-medium text-zinc-300 hover:text-white"
-          href="https://beta.nextjs.org/docs/routing/loading-ui"
-        >
-          Learn more
-        </a>
       </div>
     </div>
   );

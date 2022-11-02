@@ -13,7 +13,7 @@ export default function Page() {
         <BuggyButton />
       </div>
 
-      <ul className="list-disc space-y-2 pl-4 text-sm text-zinc-300">
+      <ul className="pl-4 space-y-2 text-sm list-disc text-zinc-300">
         <li>
           <strong>`error.js`</strong> defines the error boundary for a route
           segment and the children below it. It can be used to show specific
@@ -26,14 +26,14 @@ export default function Page() {
         <li>Note: Error boundaries don't yet work in development.</li>
       </ul>
 
-      <div>
+      {/* <div>
         <a
           className="font-medium text-zinc-300 hover:text-white"
           href="https://beta.nextjs.org/docs/routing/loading-ui"
         >
           Learn more
         </a>
-      </div>
+      </div> */}
     </div>
   );
 }
