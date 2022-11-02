@@ -2,12 +2,17 @@
 
 import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
+import { useCartCount } from './CartCountContext';
 
 export function AddToCart({ initialCartCount }: { initialCartCount: number }) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
+  const [, setOptimisticCartCount] = useCartCount();
+
   const addToCart = () => {
+    setOptimisticCartCount(initialCartCount + 1);
+
     // update the cart count cookie
     document.cookie = `_cart_count=${initialCartCount + 1}; path=/; max-age=${
       60 * 60 * 24 * 30
@@ -19,6 +24,8 @@ export function AddToCart({ initialCartCount }: { initialCartCount: number }) {
 
     // Use a transition and isPending to create inline loading UI
     startTransition(() => {
+      setOptimisticCartCount(null);
+
       // Refresh the current route and fetch new data from the server without
       // losing client-side browser or React state.
       router.refresh();

@@ -3,12 +3,14 @@ import { cookies } from 'next/headers';
 import Image from 'next/image';
 import React from 'react';
 import logo from '../../public/nextjs-icon-light-background.png';
+import { CartCount } from './CartCount';
+import { CartCountProvider } from './CartCountContext';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const cartCount = Number(cookies().get('_cart_count')?.value || '0');
 
   return (
-    <div>
+    <CartCountProvider initialCartCount={cartCount}>
       <div className="space-y-16">
         <div className="flex items-center justify-between rounded-lg bg-zinc-800 px-5 py-4">
           <div className="flex space-x-4">
@@ -39,7 +41,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-zinc-600 text-white">
               <ShoppingCartIcon className="w-6 text-white" />
               <div className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-vercel-pink text-sm font-bold text-white">
-                <span>{cartCount}</span>
+                <CartCount />
               </div>
             </div>
 
@@ -55,6 +57,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
         <div>{children}</div>
       </div>
-    </div>
+    </CartCountProvider>
   );
 }
