@@ -36,10 +36,11 @@ export function AddToCart({ initialCartCount }: { initialCartCount: number }) {
     >
       Add to Cart
       {isPending ? (
-        <div
-          className="absolute right-2 top-1.5 h-4 w-4 animate-spin rounded-full border-[3px] border-white border-r-transparent"
-          role="status"
-        >
+        <div className="absolute right-2 top-1.5" role="status">
+          <div
+            className="
+          h-4 w-4 animate-spin rounded-full border-[3px] border-white border-r-transparent"
+          />
           <span className="sr-only">Loading...</span>
         </div>
       ) : null}
