@@ -1,4 +1,4 @@
-import { IProduct } from '@/lib/data/products';
+import { IProduct } from '#/lib/data/products';
 import { dinero, toUnit, up, type DineroSnapshot } from 'dinero.js';
 
 export const ProductUsedPrice = ({

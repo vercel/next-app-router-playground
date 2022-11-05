@@ -1,4 +1,4 @@
-import BuggyButton from '@/ui/BuggyButton';
+import BuggyButton from '#/ui/BuggyButton';
 
 export default function Page() {
   return (

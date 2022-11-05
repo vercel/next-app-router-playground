@@ -1,5 +1,5 @@
-import { fetchCategoryBySlug, PageProps } from '@/lib/getCategories';
-import { SkeletonCard } from '@/ui/SkeletonCard';
+import { fetchCategoryBySlug, PageProps } from '#/lib/getCategories';
+import { SkeletonCard } from '#/ui/SkeletonCard';
 
 export default async function Page({ params }: PageProps) {
   const category = await fetchCategoryBySlug(params.categorySlug);

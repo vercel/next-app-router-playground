@@ -1,10 +1,10 @@
-import { type IProduct } from '@/lib/data/products';
-import { ProductBestSeller } from '@/ui/ProductBestSeller';
-import { ProductEstimatedArrival } from '@/ui/ProductEstimatedArrival';
-import { ProductLowStockWarning } from '@/ui/ProductLowStockWarning';
-import { ProductPrice } from '@/ui/ProductPrice';
-import { ProductRating } from '@/ui/ProductRating';
-import { ProductUsedPrice } from '@/ui/ProductUsedPrice';
+import { type IProduct } from '#/lib/data/products';
+import { ProductBestSeller } from '#/ui/ProductBestSeller';
+import { ProductEstimatedArrival } from '#/ui/ProductEstimatedArrival';
+import { ProductLowStockWarning } from '#/ui/ProductLowStockWarning';
+import { ProductPrice } from '#/ui/ProductPrice';
+import { ProductRating } from '#/ui/ProductRating';
+import { ProductUsedPrice } from '#/ui/ProductUsedPrice';
 import { dinero, type DineroSnapshot } from 'dinero.js';
 import Image from 'next/image';
 export const ProductCard = ({ product }: { product: IProduct }) => {

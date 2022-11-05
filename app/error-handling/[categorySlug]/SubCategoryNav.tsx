@@ -1,7 +1,7 @@
 'use client';
 
-import { type Category } from '@/lib/getCategories';
-import { TabNavItem } from '@/ui/TabNavItem';
+import { type Category } from '#/lib/getCategories';
+import { TabNavItem } from '#/ui/TabNavItem';
 import { useSelectedLayoutSegments } from 'next/navigation';
 
 const SubCategoryNav = ({ category }: { category: Category }) => {

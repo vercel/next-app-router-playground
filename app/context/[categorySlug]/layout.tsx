@@ -1,5 +1,5 @@
-import { fetchCategoryBySlug, PageProps } from '@/lib/getCategories';
-import { Boundary } from '@/ui/Boundary';
+import { fetchCategoryBySlug, PageProps } from '#/lib/getCategories';
+import { Boundary } from '#/ui/Boundary';
 import { Counter } from '../ClickCounter';
 import SubCategoryNav from '../SubCategoryNav';
 

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useServerInsertedHTML } from 'next/navigation';
-import { useStyledJsxRegistry } from '@/lib/styling';
+import { useStyledJsxRegistry } from '#/lib/styling';
 
 export default function StyledJsxRegistry({
   children,
@@ -12,12 +12,8 @@ export default function StyledJsxRegistry({
   const [StyledJsxRegistry, styledJsxFlushEffect] = useStyledJsxRegistry();
 
   useServerInsertedHTML(() => {
-    return (
-      <>
-        {styledJsxFlushEffect()}
-      </>
-    );
+    return <>{styledJsxFlushEffect()}</>;
   });
 
-  return <StyledJsxRegistry>{children}</StyledJsxRegistry>
+  return <StyledJsxRegistry>{children}</StyledJsxRegistry>;
 }

@@ -1,7 +1,7 @@
-import { IProduct } from '@/lib/data/products';
-import { ProductCurrencySymbol } from '@/ui/ProductCurrencySymbol';
-import { ProductDeal } from '@/ui/ProductDeal';
-import { ProductLighteningDeal } from '@/ui/ProductLighteningDeal';
+import { IProduct } from '#/lib/data/products';
+import { ProductCurrencySymbol } from '#/ui/ProductCurrencySymbol';
+import { ProductDeal } from '#/ui/ProductDeal';
+import { ProductLighteningDeal } from '#/ui/ProductLighteningDeal';
 import { multiply, toUnit, type Dinero } from 'dinero.js';
 
 function isDiscount(obj: any): obj is { percent: number; expires?: number } {

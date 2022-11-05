@@ -1,6 +1,6 @@
 'use client';
 
-import { TabNavItem } from '@/ui/TabNavItem';
+import { TabNavItem } from '#/ui/TabNavItem';
 import { useSelectedLayoutSegments } from 'next/navigation';
 
 const DataNav = ({ ids }: { ids: { id: string }[] }) => {

@@ -1,6 +1,6 @@
 'use client';
 
-import { demos } from '@/lib/demos';
+import { demos } from '#/lib/demos';
 import clsx from 'clsx';
 import { useSelectedLayoutSegments } from 'next/navigation';
 import Link from 'next/link';
