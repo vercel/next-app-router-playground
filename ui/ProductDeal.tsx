@@ -27,7 +27,7 @@ export const ProductDeal = ({
           {discount}
         </div>
       </div>
-      <div className="text-sm leading-snug text-zinc-400 line-through">
+      <div className="text-sm leading-snug text-gray-400 line-through">
         <ProductCurrencySymbol dinero={priceRaw} />
         {price}
       </div>

@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -9,6 +11,7 @@ module.exports = {
     extend: {
       // https://vercel.com/design/color
       colors: {
+        gray: colors.zinc,
         vercel: {
           pink: '#FF0080',
           blue: '#0070F3',

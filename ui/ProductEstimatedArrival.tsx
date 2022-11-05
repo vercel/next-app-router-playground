@@ -12,9 +12,9 @@ export const ProductEstimatedArrival = ({
   });
 
   return (
-    <div className="text-sm text-zinc-300">
+    <div className="text-sm text-gray-300">
       Get it{' '}
-      <strong className="font-bold text-zinc-100">
+      <strong className="font-bold text-gray-100">
         {isTomorrow(date) ? 'tomorrow, ' : null}
         {format(date, 'MMM d')}
       </strong>

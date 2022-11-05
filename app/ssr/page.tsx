@@ -1,12 +1,12 @@
 export default function Page() {
   return (
     <div className="space-y-4">
-      <div className="text-xl font-medium text-zinc-500">
+      <div className="text-xl font-medium text-gray-500">
         Server-side rendering
       </div>
 
       <div className="space-y-4">
-        <ul className="list-disc space-y-2 pl-4 text-sm text-zinc-300">
+        <ul className="list-disc space-y-2 pl-4 text-sm text-gray-300">
           <li>
             With server-side rendering, the HTML of the page is generated on a
             server for each request. The generated HTML, JSON data, and
@@ -24,7 +24,7 @@ export default function Page() {
 
       <div>
         <a
-          className="font-medium text-zinc-300 hover:text-white"
+          className="font-medium text-gray-300 hover:text-white"
           href="https://beta.nextjs.org/docs/data-fetching/fetching#dynamic-data"
         >
           Learn more
