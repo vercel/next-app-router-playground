@@ -13,7 +13,7 @@ export default function GlobalNav() {
       {demos.map((demo) => {
         return (
           <div key={demo.name}>
-            <div className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+            <div className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500">
               <div>{demo.name}</div>
             </div>
 
@@ -24,7 +24,7 @@ export default function GlobalNav() {
                 <div key={item.slug}>
                   {item.isDisabled ? (
                     <div
-                      className="block rounded-md px-3 py-2 text-sm font-medium text-zinc-600"
+                      className="block rounded-md px-3 py-2 text-sm font-medium text-gray-600"
                       title="Coming Soon"
                     >
                       {item.name}
@@ -33,8 +33,8 @@ export default function GlobalNav() {
                     <Link
                       href={`/${item.slug}`}
                       className={clsx(
-                        'block rounded-md px-3 py-2 text-sm font-medium hover:bg-zinc-800 hover:text-zinc-100',
-                        { 'text-zinc-400': !isActive, 'text-white': isActive },
+                        'block rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-800 hover:text-gray-100',
+                        { 'text-gray-400': !isActive, 'text-white': isActive },
                       )}
                     >
                       {item.name}

@@ -9,7 +9,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     <div className="space-y-9">
       <div className="flex items-center justify-between">
         <DataNav ids={ids} />
-        <div className="rounded-lg bg-zinc-700 px-3 py-1 text-sm font-medium tabular-nums text-zinc-100">
+        <div className="rounded-lg bg-gray-700 px-3 py-1 text-sm font-medium tabular-nums text-gray-100">
           Last Rendered: {new Date().toLocaleTimeString()}
         </div>
       </div>

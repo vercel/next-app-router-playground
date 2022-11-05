@@ -8,7 +8,7 @@ const AddressBar = () => {
   const searchParams = useSearchParams();
 
   return (
-    <div className="flex w-full items-center space-x-2 rounded-xl border border-zinc-800 bg-black px-4 py-3 text-zinc-600">
+    <div className="flex w-full items-center space-x-2 rounded-xl border border-gray-800 bg-black px-4 py-3 text-gray-600">
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -25,11 +25,11 @@ const AddressBar = () => {
       </div>
       <div className="flex space-x-1 text-sm font-medium">
         <div>
-          <span className="px-2 text-zinc-500">acme.com</span>
+          <span className="px-2 text-gray-500">acme.com</span>
         </div>
         {pathname ? (
           <>
-            <span className="text-zinc-600">/</span>
+            <span className="text-gray-600">/</span>
             {pathname
               .split('/')
               .slice(2)
@@ -39,29 +39,29 @@ const AddressBar = () => {
                     <span>
                       <span
                         key={segment}
-                        className="animate-[highlight_1s_ease-in-out_1] rounded-full px-1.5 py-0.5 text-zinc-100"
+                        className="animate-[highlight_1s_ease-in-out_1] rounded-full px-1.5 py-0.5 text-gray-100"
                       >
                         {segment}
                       </span>
                     </span>
 
-                    <span className="text-zinc-600">/</span>
+                    <span className="text-gray-600">/</span>
                   </React.Fragment>
                 );
               })}
           </>
         ) : null}
         {searchParams.toString().length !== 0 ? (
-          <div className="px-2 text-zinc-500">
+          <div className="px-2 text-gray-500">
             <span>?</span>
             {Array.from(searchParams.entries()).map(([key, value], index) => {
               return (
                 <React.Fragment key={key}>
                   {index !== 0 ? <span>&</span> : null}
                   <span className="px-2">
-                    <span className="text-zinc-100">{key}</span>
+                    <span className="text-gray-100">{key}</span>
                     <span>=</span>
-                    <span className="text-zinc-100">{value}</span>
+                    <span className="text-gray-100">{value}</span>
                   </span>
                 </React.Fragment>
               );

@@ -25,9 +25,9 @@ const List = ({ items, depth }: { items: Item[]; depth: number }) => {
                     'relative ml-5 pt-2',
                     // Use the border of pseudo elements to visualize hierarchy
                     // │
-                    'before:absolute before:-left-2.5 before:top-0 before:border-l-2 before:border-zinc-800',
+                    'before:absolute before:-left-2.5 before:top-0 before:border-l-2 before:border-gray-800',
                     // ──
-                    'after:absolute after:top-[17px] after:-left-2.5 after:h-3 after:w-2.5 after:border-t-2 after:border-zinc-800',
+                    'after:absolute after:top-[17px] after:-left-2.5 after:h-3 after:w-2.5 after:border-t-2 after:border-gray-800',
                     {
                       // ├─
                       'before:h-full': !isLast,
@@ -43,7 +43,7 @@ const List = ({ items, depth }: { items: Item[]; depth: number }) => {
                   'rounded-md px-2 py-0.5 text-xs tracking-wide',
                   {
                     'bg-vercel-blue text-blue-100': item.type === 'client',
-                    'bg-zinc-700 text-zinc-200': item.type === 'server',
+                    'bg-gray-700 text-gray-200': item.type === 'server',
                   },
                 )}
               >
@@ -54,7 +54,7 @@ const List = ({ items, depth }: { items: Item[]; depth: number }) => {
 
               <div
                 className={clsx(
-                  'rounded-md bg-zinc-800 px-2 py-0.5 text-xs tracking-wide text-white/50',
+                  'rounded-md bg-gray-800 px-2 py-0.5 text-xs tracking-wide text-white/50',
                   {
                     'animate-[fadeToTransparent_1s_ease-in-out_forwards_1]':
                       item.type === 'server',
@@ -112,7 +112,7 @@ export const ComponentTree = ({ items }: { items: Item[] }) => {
           </div>
 
           <div className="space-y-6">
-            <div className="space-y-3 rounded-lg bg-zinc-900 p-4">
+            <div className="space-y-3 rounded-lg bg-gray-900 p-4">
               <div className="flex items-center justify-between space-x-3">
                 <div className="rounded-md bg-vercel-blue px-2 py-0.5 text-xs tabular-nums tracking-wider text-blue-50">
                   <CountUp
@@ -121,10 +121,10 @@ export const ComponentTree = ({ items }: { items: Item[] }) => {
                   />{' '}
                   KB
                 </div>
-                <div className="text-sm text-zinc-300">Bundle Size</div>
+                <div className="text-sm text-gray-300">Bundle Size</div>
               </div>
 
-              <div className="overflow-hidden rounded-full bg-zinc-700">
+              <div className="overflow-hidden rounded-full bg-gray-700">
                 <div
                   className={clsx(
                     'h-2 animate-[translateXReset_1s_ease-in-out_1_reverse] rounded-full bg-vercel-blue',
@@ -137,15 +137,15 @@ export const ComponentTree = ({ items }: { items: Item[] }) => {
             </div>
 
             <div className="space-y-3">
-              <div className="flex items-center space-x-3 text-sm text-zinc-400">
+              <div className="flex items-center space-x-3 text-sm text-gray-400">
                 <div className="rounded-md bg-vercel-blue px-2 py-0.5 text-xs tracking-widest text-white/50">
                   {'</>'}
                 </div>
                 <div>Client Component</div>
               </div>
 
-              <div className="flex items-center space-x-3 text-sm text-zinc-400">
-                <div className="rounded-md bg-zinc-700 px-2 py-0.5 text-xs tracking-widest text-white/50">
+              <div className="flex items-center space-x-3 text-sm text-gray-400">
+                <div className="rounded-md bg-gray-700 px-2 py-0.5 text-xs tracking-widest text-white/50">
                   {'</>'}
                 </div>
                 <div>Server Component</div>

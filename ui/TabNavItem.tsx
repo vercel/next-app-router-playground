@@ -14,7 +14,7 @@ export const TabNavItem = ({
     <Link
       href={href}
       className={clsx('rounded-lg px-3 py-1 text-sm font-medium', {
-        'bg-zinc-700 text-zinc-100 hover:bg-zinc-500 hover:text-white':
+        'bg-gray-700 text-gray-100 hover:bg-gray-500 hover:text-white':
           !isActive,
         'bg-vercel-blue text-white': isActive,
       })}

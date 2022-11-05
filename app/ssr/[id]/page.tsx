@@ -17,8 +17,8 @@ export default async function Page({
 
   return (
     <div className="space-y-4">
-      <h1 className="text-2xl font-medium text-zinc-200">{data.title}</h1>
-      <p className="font-medium text-zinc-500">{data.body}</p>
+      <h1 className="text-2xl font-medium text-gray-200">{data.title}</h1>
+      <p className="font-medium text-gray-500">{data.body}</p>
     </div>
   );
 }

@@ -12,7 +12,7 @@ export default function Page() {
           .map((section) => {
             return (
               <div key={section.name} className="space-y-3">
-                <div className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
+                <div className="text-xs font-semibold uppercase tracking-wider text-gray-500">
                   {section.name}
                 </div>
 
@@ -29,7 +29,7 @@ export default function Page() {
                           <div>{item.name}</div>
 
                           {item.description ? (
-                            <div className="line-clamp-3 text-sm text-zinc-400">
+                            <div className="line-clamp-3 text-sm text-gray-400">
                               {item.description}
                             </div>
                           ) : null}

@@ -16,7 +16,7 @@ const shimmer = `relative overflow-hidden rounded-xl before:absolute before:inse
 function PricingSkeleton() {
   return (
     <div
-      className={`h-[161px] space-y-4 rounded-lg bg-zinc-800 ${shimmer}`}
+      className={`h-[161px] space-y-4 rounded-lg bg-gray-800 ${shimmer}`}
     ></div>
   );
 }
@@ -34,7 +34,7 @@ async function Pricing({
   await delay(600);
 
   return (
-    <div className="space-y-4 rounded-lg bg-zinc-900 p-3">
+    <div className="space-y-4 rounded-lg bg-gray-900 p-3">
       <ProductPrice price={price} discount={product.discount} />
       <ProductSplitPayments price={price} />
       {product.usedPrice ? (
@@ -109,7 +109,7 @@ export const Product = ({
 
         <ProductRating rating={product.rating} />
 
-        <div className="space-y-4 text-sm text-zinc-200">
+        <div className="space-y-4 text-sm text-gray-200">
           <p>
             Streaming allows you to progressively render and send units of the
             UI from the server to the client.

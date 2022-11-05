@@ -1,12 +1,12 @@
 export default function Page() {
   return (
     <div className="space-y-4">
-      <div className="text-xl font-medium text-zinc-500">
+      <div className="text-xl font-medium text-gray-500">
         Static-Site Generation
       </div>
 
       <div className="space-y-4">
-        <ul className="list-disc space-y-2 pl-4 text-sm text-zinc-300">
+        <ul className="list-disc space-y-2 pl-4 text-sm text-gray-300">
           <li>
             With Static Site Generation, the HTML is generated on the server,
             but unlike server-side rendering, there is no server at runtime.
@@ -19,7 +19,7 @@ export default function Page() {
 
       <div>
         <a
-          className="font-medium text-zinc-300 hover:text-white"
+          className="font-medium text-gray-300 hover:text-white"
           href="https://beta.nextjs.org/docs/data-fetching/fetching#static-data"
         >
           Learn more

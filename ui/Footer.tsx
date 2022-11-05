@@ -32,7 +32,7 @@ export default function Footer({
         </svg>
       </span>
 
-      <div className="flex space-x-6 text-sm text-zinc-600">
+      <div className="flex space-x-6 text-sm text-gray-600">
         <div>React: {reactVersion}</div>
         <div>Next: {nextVersion}</div>
       </div>

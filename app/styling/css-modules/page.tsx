@@ -14,7 +14,7 @@ const SkeletonCard = () => (
 export default function Page() {
   return (
     <div className="space-y-4">
-      <div className="text-xl font-medium text-zinc-500">
+      <div className="text-xl font-medium text-gray-500">
         Styled with CSS Modules
       </div>
       <div className={styles.container}>
