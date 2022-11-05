@@ -28,6 +28,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <SearchIcon className="h-5 w-5 text-zinc-300" />
               </div>
               <input
+                aria-label="Search"
                 type="search"
                 name="search"
                 id="search"
