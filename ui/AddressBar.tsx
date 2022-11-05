@@ -1,10 +1,7 @@
 'use client';
 
 import React from 'react';
-import {
-  usePathname,
-  useSearchParams,
-} from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 const AddressBar = () => {
   const pathname = usePathname();
