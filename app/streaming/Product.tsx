@@ -8,6 +8,7 @@ import { ProductUsedPrice } from '@/ui/ProductUsedPrice';
 import { dinero, type DineroSnapshot } from 'dinero.js';
 import Image from 'next/image';
 import { Suspense } from 'react';
+import { AddToCart } from './AddToCart';
 import { delay } from './delay';
 
 const shimmer = `relative overflow-hidden rounded-xl before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1.5s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent`;
@@ -15,12 +16,18 @@ const shimmer = `relative overflow-hidden rounded-xl before:absolute before:inse
 function PricingSkeleton() {
   return (
     <div
-      className={`h-[197px] space-y-4 rounded-lg bg-zinc-800 ${shimmer}`}
+      className={`h-[161px] space-y-4 rounded-lg bg-zinc-800 ${shimmer}`}
     ></div>
   );
 }
 
-async function Pricing({ product }: { product: IProduct }) {
+async function Pricing({
+  product,
+  cartCount,
+}: {
+  product: IProduct;
+  cartCount: number;
+}) {
   const price = dinero(product.price as DineroSnapshot<number>);
 
   // Normally you would fetch data here
@@ -38,19 +45,19 @@ async function Pricing({ product }: { product: IProduct }) {
         <ProductLowStockWarning stock={product.stock} />
       ) : null}
       <div className="space-y-2">
-        <button className="w-full rounded-lg bg-zinc-700 px-3 py-1 text-sm font-medium text-zinc-100 hover:bg-zinc-500 hover:text-white">
-          Add to Basket
-        </button>
-
-        <button className="w-full rounded-lg  bg-vercel-blue px-3 py-1 text-sm font-medium  text-white hover:bg-vercel-blue/90">
-          Buy Now
-        </button>
+        <AddToCart initialCartCount={Number(cartCount)} />
       </div>
     </div>
   );
 }
 
-export const Product = ({ product }: { product: IProduct }) => {
+export const Product = ({
+  product,
+  cartCount,
+}: {
+  product: IProduct;
+  cartCount: string;
+}) => {
   return (
     <div className="grid grid-cols-8 gap-6">
       <div className="col-span-2">
@@ -136,7 +143,7 @@ export const Product = ({ product }: { product: IProduct }) => {
       <div className="col-span-2">
         <Suspense fallback={<PricingSkeleton />}>
           {/* @ts-ignore */}
-          <Pricing product={product} />
+          <Pricing product={product} cartCount={cartCount} />
         </Suspense>
       </div>
     </div>
