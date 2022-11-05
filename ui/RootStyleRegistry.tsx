@@ -5,7 +5,7 @@ import { useServerInsertedHTML } from 'next/navigation';
 import {
   useStyledComponentsRegistry,
   useStyledJsxRegistry,
-} from '@/lib/styling';
+} from '#/lib/styling';
 
 export default function RootStyleRegistry({
   children,

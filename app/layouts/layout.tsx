@@ -1,5 +1,5 @@
-import { fetchCategories } from '@/lib/getCategories';
-import ClickCounter from '@/ui/ClickCounter';
+import { fetchCategories } from '#/lib/getCategories';
+import ClickCounter from '#/ui/ClickCounter';
 import React from 'react';
 import CategoryNav from './CategoryNav';
 

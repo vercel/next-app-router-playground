@@ -1,4 +1,4 @@
-import products from '@/lib/data/products';
+import products from '#/lib/data/products';
 import { cookies } from 'next/headers';
 import { Suspense } from 'react';
 import { Product } from './Product';

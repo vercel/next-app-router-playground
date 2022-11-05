@@ -1,5 +1,5 @@
-import '@/styles/globals.css';
-import AddressBar from '@/ui/AddressBar';
+import '#/styles/globals.css';
+import AddressBar from '#/ui/AddressBar';
 import GlobalNav from './GlobalNav';
 
 export default function RootLayout({ children }: { children: any }) {
@@ -30,10 +30,10 @@ export default function RootLayout({ children }: { children: any }) {
 
           <div className="col-start-3 col-end-4 mt-28 flex items-center justify-center">
             <div className="text-sm text-zinc-600">
-              Created by the <b>Next.js</b>
+              Created by the <strong>Next.js</strong>
               {' team at '}
               <a href="https://vercel.com">
-                <b>Vercel</b>
+                <strong>Vercel</strong>
               </a>
               {'. '}
               <a

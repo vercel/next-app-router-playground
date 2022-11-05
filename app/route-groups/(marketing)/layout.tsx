@@ -1,6 +1,6 @@
-import { fetchCategories } from '@/lib/getCategories';
-import { Boundary } from '@/ui/Boundary';
-import ClickCounter from '@/ui/ClickCounter';
+import { fetchCategories } from '#/lib/getCategories';
+import { Boundary } from '#/ui/Boundary';
+import ClickCounter from '#/ui/ClickCounter';
 import React from 'react';
 import CategoryNav from '../CategoryNav';
 

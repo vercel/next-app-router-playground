@@ -1,5 +1,5 @@
-import { fetchCategories } from '@/lib/getCategories';
-import { Boundary } from '@/ui/Boundary';
+import { fetchCategories } from '#/lib/getCategories';
+import { Boundary } from '#/ui/Boundary';
 import { CounterProvider } from 'app/context/CounterContext';
 import React from 'react';
 import CategoryNav from './CategoryNav';

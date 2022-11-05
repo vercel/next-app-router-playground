@@ -1,5 +1,5 @@
-import { fetchSubCategory, type PageProps } from '@/lib/getCategories';
-import { Boundary } from '@/ui/Boundary';
+import { fetchSubCategory, type PageProps } from '#/lib/getCategories';
+import { Boundary } from '#/ui/Boundary';
 import { Counter } from '../../ClickCounter';
 
 export default async function Page({ params }: PageProps) {

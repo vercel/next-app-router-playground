@@ -1,5 +1,5 @@
-import { fetchCategoryBySlug, type PageProps } from '@/lib/getCategories';
-import ClickCounter from '@/ui/ClickCounter';
+import { fetchCategoryBySlug, type PageProps } from '#/lib/getCategories';
+import ClickCounter from '#/ui/ClickCounter';
 
 import SubCategoryNav from './SubCategoryNav';
 
