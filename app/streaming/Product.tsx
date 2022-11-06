@@ -142,7 +142,7 @@ export const Product = ({
 
       <div className="col-span-2">
         <Suspense fallback={<PricingSkeleton />}>
-          {/* @ts-ignore */}
+          {/* @ts-expect-error Async Server Component */}
           <Pricing product={product} cartCount={cartCount} />
         </Suspense>
       </div>

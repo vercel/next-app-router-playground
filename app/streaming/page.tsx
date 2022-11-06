@@ -20,12 +20,12 @@ export default async function Page() {
       </div>
 
       <Suspense fallback={<RecommendedProductsSkeleton />}>
-        {/* @ts-ignore */}
+        {/* @ts-expect-error Async Server Component */}
         <RecommendedProducts />
       </Suspense>
 
       <Suspense fallback={<ReviewsSkeleton />}>
-        {/* @ts-ignore */}
+        {/* @ts-expect-error Async Server Component */}
         <Reviews />
       </Suspense>
     </div>
