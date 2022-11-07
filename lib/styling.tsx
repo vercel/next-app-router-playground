@@ -9,7 +9,7 @@ export function useStyledComponentsRegistry() {
 
   const styledComponentsFlushEffect = () => {
     const styles = styledComponentsStyleSheet.getStyleElement();
-    styledComponentsStyleSheet.seal();
+    styledComponentsStyleSheet.instance.clearTag();
     return <>{styles}</>;
   };
 
