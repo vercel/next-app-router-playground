@@ -23,12 +23,12 @@ export default function RootLayout({ children }: { children: any }) {
           <div className="col-start-3 space-y-6">
             <AddressBar />
 
-            <div className="rounded-xl border border-gray-800 bg-black p-8">
+            <div className="p-8 bg-black border border-gray-800 rounded-xl">
               {children}
             </div>
           </div>
 
-          <div className="col-start-3 col-end-4 mt-28 flex items-center justify-center">
+          <div className="flex items-center justify-center col-start-3 col-end-4 mt-28">
             <div className="text-sm text-gray-600">
               Created by the <strong>Next.js</strong>
               {' team at '}
