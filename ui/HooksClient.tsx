@@ -20,7 +20,7 @@ const HooksClient = () => {
           {
             usePathname: pathname,
             selectedLayoutSegments: selectedLayoutSegments,
-            useSearchParams: searchParams,
+            useSearchParams: Object.fromEntries(searchParams.entries()),
             "useSearchParam('key')": searchParam,
             useRouter: {
               push: '(string) => void',
