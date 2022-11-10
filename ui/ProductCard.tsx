@@ -7,6 +7,7 @@ import { ProductRating } from '#/ui/ProductRating';
 import { ProductUsedPrice } from '#/ui/ProductUsedPrice';
 import { dinero, type DineroSnapshot } from 'dinero.js';
 import Image from 'next/image';
+
 export const ProductCard = ({ product }: { product: IProduct }) => {
   const price = dinero(product.price as DineroSnapshot<number>);
 
@@ -22,7 +23,7 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
           src={`/${product.image}`}
           width={400}
           height={400}
-          className="rounded-xl"
+          className="rounded-xl grayscale"
           alt={product.name}
           placeholder="blur"
           blurDataURL={product.imageBlur}

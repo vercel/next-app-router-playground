@@ -1,4 +1,5 @@
 import BuggyButton from '#/ui/BuggyButton';
+import { ExternalLink } from '#/ui/ExternalLink';
 
 export default function Page() {
   return (
@@ -27,12 +28,9 @@ export default function Page() {
       </ul>
 
       <div>
-        <a
-          className="font-medium text-gray-300 hover:text-white"
-          href="https://beta.nextjs.org/docs/routing/error-handling"
-        >
-          Learn more
-        </a>
+        <ExternalLink href="https://beta.nextjs.org/docs/routing/error-handling">
+          Docs
+        </ExternalLink>
       </div>
     </div>
   );

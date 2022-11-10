@@ -1,59 +1,70 @@
 import '#/styles/globals.css';
-import AddressBar from '#/ui/AddressBar';
-import GlobalNav from './GlobalNav';
+import { AddressBar } from '#/ui/AddressBar';
+import { GlobalNav } from '#/ui/GlobalNav';
+import { VercelLogo } from '#/ui/VercelLogo';
 
-export default function RootLayout({ children }: { children: any }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Next.js App Directory Playground</title>
-        <meta
-          name="description"
-          content="Next.js App Directory Playground"
-          key="desc"
-        />
-      </head>
-      <body className="overflow-y-scroll bg-gray-900">
-        <div className="grid grid-cols-[1fr,minmax(auto,240px),min(800px,100%),1fr] gap-x-8 py-8">
-          <div className="col-start-2">
-            <GlobalNav />
-          </div>
+    <html lang="en" className="[color-scheme:dark]">
+      <head />
+      <body className="overflow-y-scroll bg-gray-1100 bg-[url('/grid.svg')]">
+        <GlobalNav />
 
-          <div className="col-start-3 space-y-6">
-            <AddressBar />
-
-            <div className="rounded-xl border border-gray-800 bg-black p-8">
-              {children}
+        <div className="lg:pl-72">
+          <div className="mx-auto max-w-4xl space-y-8 px-4 pt-20 lg:py-8 lg:px-8">
+            <div className="rounded-lg bg-vc-border-gradient p-px shadow-lg shadow-black/50">
+              <div className="rounded-lg bg-black">
+                <AddressBar />
+              </div>
             </div>
-          </div>
 
-          <div className="col-start-3 col-end-4 mt-28 flex items-center justify-center">
-            <div className="text-sm text-gray-600">
-              Created by the <strong>Next.js</strong>
-              {' team at '}
-              <a href="https://vercel.com">
-                <strong>Vercel</strong>
-              </a>
-              {'. '}
-              <a
-                className="underline decoration-dotted underline-offset-4"
-                href="https://github.com/vercel/app-playground"
-              >
-                View the code
-              </a>
-              {' or '}
-              <a
-                className="underline decoration-dotted underline-offset-4"
-                href="https://vercel.com/templates/next.js/app-directory"
-              >
-                deploy your own
-              </a>
-              {'.'}
+            <div className="rounded-lg bg-vc-border-gradient p-px shadow-lg shadow-black/50">
+              <div className="rounded-lg bg-black p-4 lg:p-6">{children}</div>
+            </div>
+
+            <div className="rounded-lg bg-vc-border-gradient p-px shadow-lg shadow-black/50">
+              <div className="rounded-lg bg-black">
+                <Byline />
+              </div>
             </div>
           </div>
         </div>
       </body>
     </html>
+  );
+}
+
+function Byline() {
+  return (
+    <div className="flex items-center justify-between space-x-4 px-5 py-3">
+      <div className="flex items-center space-x-1.5">
+        <div className="text-sm text-gray-600">By</div>
+        <a href="https://vercel.com" title="Vercel">
+          <div className="w-16 text-gray-300 hover:text-gray-50">
+            <VercelLogo />
+          </div>
+        </a>
+      </div>
+
+      <div className="text-sm text-gray-600">
+        <a
+          className="underline decoration-dotted underline-offset-4 hover:text-gray-400"
+          href="https://github.com/vercel/app-playground"
+        >
+          View code
+        </a>
+        {' or '}
+        <a
+          className="underline decoration-dotted underline-offset-4 hover:text-gray-400"
+          href="https://vercel.com/templates/next.js/app-directory"
+        >
+          deploy your own
+        </a>
+      </div>
+    </div>
   );
 }

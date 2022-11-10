@@ -1,8 +1,8 @@
 import { fetchCategories } from '#/lib/getCategories';
 import { Boundary } from '#/ui/Boundary';
+import { TabGroup } from '#/ui/TabGroup';
 import { CounterProvider } from 'app/context/CounterContext';
 import React from 'react';
-import CategoryNav from './CategoryNav';
 import ClickCounter from './ClickCounter';
 
 export default async function Layout({
@@ -30,8 +30,19 @@ export default async function Layout({
             animateRerendering={false}
           >
             <div className="space-y-9">
-              <div className="flex items-center justify-between">
-                <CategoryNav categories={categories} />
+              <div className="flex justify-between">
+                <TabGroup
+                  path="/context"
+                  items={[
+                    {
+                      text: 'Home',
+                    },
+                    ...categories.map((x) => ({
+                      text: x.name,
+                      slug: x.slug,
+                    })),
+                  ]}
+                />
               </div>
 
               <ClickCounter />

@@ -3,13 +3,13 @@
 import React from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
-const AddressBar = () => {
+export function AddressBar() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   return (
-    <div className="flex w-full items-center space-x-2 rounded-xl border border-gray-800 bg-black px-4 py-3 text-gray-600">
-      <div>
+    <div className="flex items-center space-x-2 px-5 py-3">
+      <div className="text-gray-600">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-4"
@@ -71,6 +71,4 @@ const AddressBar = () => {
       </div>
     </div>
   );
-};
-
-export default AddressBar;
+}

@@ -1,7 +1,7 @@
 import { fetchCategories } from '#/lib/getCategories';
-import ClickCounter from '#/ui/ClickCounter';
+import { ClickCounter } from '#/ui/ClickCounter';
+import { TabGroup } from '#/ui/TabGroup';
 import React from 'react';
-import CategoryNav from './CategoryNav';
 
 export default async function Layout({
   children,
@@ -11,9 +11,23 @@ export default async function Layout({
   const categories = await fetchCategories();
   return (
     <div className="space-y-9">
-      <div className="flex items-center justify-between">
-        <CategoryNav categories={categories} />
-        <ClickCounter />
+      <div className="flex justify-between">
+        <TabGroup
+          path="/error-handling"
+          items={[
+            {
+              text: 'Home',
+            },
+            ...categories.map((x) => ({
+              text: x.name,
+              slug: x.slug,
+            })),
+          ]}
+        />
+
+        <div className="self-start">
+          <ClickCounter />
+        </div>
       </div>
 
       <div>{children}</div>

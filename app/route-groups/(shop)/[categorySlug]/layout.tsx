@@ -1,6 +1,6 @@
 import { fetchCategoryBySlug, PageProps } from '#/lib/getCategories';
-import ClickCounter from '#/ui/ClickCounter';
-import SubCategoryNav from './SubCategoryNav';
+import { ClickCounter } from '#/ui/ClickCounter';
+import { TabGroup } from '#/ui/TabGroup';
 
 export default async function Layout({ children, params }: PageProps) {
   const category = await fetchCategoryBySlug(params.categorySlug);
@@ -8,9 +8,23 @@ export default async function Layout({ children, params }: PageProps) {
 
   return (
     <div className="space-y-9">
-      <div className="flex items-center justify-between">
-        <SubCategoryNav category={category} />
-        <ClickCounter />
+      <div className="flex justify-between">
+        <TabGroup
+          path={`/route-groups/${category.slug}`}
+          items={[
+            {
+              text: 'All',
+            },
+            ...category.items.map((x) => ({
+              text: x.name,
+              slug: x.slug,
+            })),
+          ]}
+        />
+
+        <div className="self-start">
+          <ClickCounter />
+        </div>
       </div>
       <div>{children}</div>
     </div>

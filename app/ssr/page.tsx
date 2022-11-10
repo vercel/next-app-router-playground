@@ -1,3 +1,5 @@
+import { ExternalLink } from '#/ui/ExternalLink';
+
 export default function Page() {
   return (
     <div className="space-y-4">
@@ -23,12 +25,9 @@ export default function Page() {
       </div>
 
       <div>
-        <a
-          className="font-medium text-gray-300 hover:text-white"
-          href="https://beta.nextjs.org/docs/data-fetching/fetching#dynamic-data"
-        >
-          Learn more
-        </a>
+        <ExternalLink href="https://beta.nextjs.org/docs/data-fetching/fetching#dynamic-data">
+          Docs
+        </ExternalLink>
       </div>
     </div>
   );

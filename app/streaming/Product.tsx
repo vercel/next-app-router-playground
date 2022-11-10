@@ -1,4 +1,5 @@
 import { type IProduct } from '#/lib/data/products';
+import { ExternalLink } from '#/ui/ExternalLink';
 import { ProductEstimatedArrival } from '#/ui/ProductEstimatedArrival';
 import { ProductLowStockWarning } from '#/ui/ProductLowStockWarning';
 import { ProductPrice } from '#/ui/ProductPrice';
@@ -59,12 +60,12 @@ export const Product = ({
   cartCount: string;
 }) => {
   return (
-    <div className="grid grid-cols-8 gap-6">
-      <div className="col-span-2">
+    <div className="grid grid-cols-4 gap-6">
+      <div className="col-span-full lg:col-span-1">
         <div className="space-y-2">
           <Image
             src={`/${product.image}`}
-            className="rounded-lg"
+            className="hidden rounded-lg grayscale lg:block"
             alt={product.name}
             height={400}
             width={400}
@@ -74,36 +75,36 @@ export const Product = ({
             <div className="w-1/3">
               <Image
                 src={`/${product.image}`}
-                className="rounded-lg"
+                className="rounded-lg grayscale"
                 alt={product.name}
-                height={80}
-                width={80}
+                height={180}
+                width={180}
               />
             </div>
             <div className="w-1/3">
               <Image
                 src={`/${product.image}`}
-                className="rounded-lg"
+                className="rounded-lg grayscale"
                 alt={product.name}
-                height={80}
-                width={80}
+                height={180}
+                width={180}
               />
             </div>
             <div className="w-1/3">
               <Image
                 src={`/${product.image}`}
-                className="rounded-lg"
+                className="rounded-lg grayscale"
                 alt={product.name}
-                height={80}
-                width={80}
+                height={180}
+                width={180}
               />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="col-span-4 space-y-4">
-        <div className="truncate text-2xl font-medium text-white">
+      <div className="col-span-full space-y-4 lg:col-span-2">
+        <div className="truncate text-xl font-medium text-white lg:text-2xl">
           {product.name}
         </div>
 
@@ -126,21 +127,15 @@ export const Product = ({
             anything.
           </p>
 
-          <p>
-            You can reload the page to replay the demo. To learn more about
-            streaming, see the{' '}
-            <a
-              className="font-medium text-white"
-              href="https://beta.nextjs.org/docs/data-fetching/streaming-and-suspense"
-            >
-              Streaming and Suspense Docs
-            </a>
-            .
-          </p>
+          <p>You can reload the page to replay the demo.</p>
+
+          <ExternalLink href="https://beta.nextjs.org/docs/data-fetching/streaming-and-suspense">
+            Docs
+          </ExternalLink>
         </div>
       </div>
 
-      <div className="col-span-2">
+      <div className="col-span-full lg:col-span-1">
         <Suspense fallback={<PricingSkeleton />}>
           {/* @ts-expect-error Async Server Component */}
           <Pricing product={product} cartCount={cartCount} />

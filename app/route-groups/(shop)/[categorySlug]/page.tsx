@@ -10,7 +10,7 @@ export default async function Page({ params }: PageProps) {
         All {category.name}
       </div>
 
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {Array.from({ length: 9 }).map((_, i) => (
           <SkeletonCard key={i} />
         ))}
