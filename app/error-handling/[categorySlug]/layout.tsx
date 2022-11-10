@@ -1,5 +1,5 @@
 import { fetchCategoryBySlug, type PageProps } from '#/lib/getCategories';
-import ClickCounter from '#/ui/ClickCounter';
+import { ClickCounter } from '#/ui/ClickCounter';
 import { TabGroup } from '#/ui/TabGroup';
 
 export default async function Layout({ children, params }: PageProps) {

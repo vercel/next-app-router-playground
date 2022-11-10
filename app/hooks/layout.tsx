@@ -1,6 +1,6 @@
 import { fetchCategories } from '#/lib/getCategories';
 import { Boundary } from '#/ui/Boundary';
-import ClickCounter from '#/ui/ClickCounter';
+import { ClickCounter } from '#/ui/ClickCounter';
 import HooksClient from '#/ui/HooksClient';
 import HooksServer from '#/ui/HooksServer';
 import { TabGroup } from '#/ui/TabGroup';

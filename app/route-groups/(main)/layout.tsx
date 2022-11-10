@@ -1,6 +1,6 @@
 import { fetchCategories } from '#/lib/getCategories';
 import { Boundary } from '#/ui/Boundary';
-import ClickCounter from '#/ui/ClickCounter';
+import { ClickCounter } from '#/ui/ClickCounter';
 import { TabGroup } from '#/ui/TabGroup';
 import React from 'react';
 
