@@ -14,7 +14,7 @@ export default async function Page() {
   const cartCount = cookies().get('_cart_count')?.value || '0';
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-8 lg:space-y-14">
       <div>
         <Product product={products[0]} cartCount={cartCount} />
       </div>
