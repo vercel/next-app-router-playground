@@ -2,7 +2,7 @@ import { SearchIcon, ShoppingCartIcon } from '@heroicons/react/solid';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import React from 'react';
-import logo from '../../public/nextjs-icon-light-background.png';
+import logo from '../../../public/nextjs-icon-light-background.png';
 import { CartCount } from './CartCount';
 import { CartCountProvider } from './CartCountContext';
 
