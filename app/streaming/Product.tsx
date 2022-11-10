@@ -1,4 +1,5 @@
 import { type IProduct } from '#/lib/data/products';
+import { ExternalLink } from '#/ui/ExternalLink';
 import { ProductEstimatedArrival } from '#/ui/ProductEstimatedArrival';
 import { ProductLowStockWarning } from '#/ui/ProductLowStockWarning';
 import { ProductPrice } from '#/ui/ProductPrice';
@@ -126,17 +127,11 @@ export const Product = ({
             anything.
           </p>
 
-          <p>
-            You can reload the page to replay the demo. To learn more about
-            streaming, see the{' '}
-            <a
-              className="font-medium text-white"
-              href="https://beta.nextjs.org/docs/data-fetching/streaming-and-suspense"
-            >
-              Streaming and Suspense Docs
-            </a>
-            .
-          </p>
+          <p>You can reload the page to replay the demo.</p>
+
+          <ExternalLink href="https://beta.nextjs.org/docs/data-fetching/streaming-and-suspense">
+            Docs
+          </ExternalLink>
         </div>
       </div>
 
