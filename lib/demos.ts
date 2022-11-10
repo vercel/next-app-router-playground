@@ -1,14 +1,10 @@
-type Item = {
+export type Item = {
   name: string;
-  items: {
-    name: string;
-    slug: string;
-    description?: string;
-    isDisabled?: boolean;
-  }[];
+  slug: string;
+  description?: string;
 };
 
-export const demos: Item[] = [
+export const demos: { name: string; items: Item[] }[] = [
   {
     name: 'Layouts',
     items: [
@@ -27,12 +23,6 @@ export const demos: Item[] = [
         slug: 'streaming',
         description:
           'Streaming data fetching from the server with React Suspense',
-      },
-      {
-        name: 'Root Layouts',
-        slug: 'root-layouts',
-        description: 'Create top-level layouts that apply to all routes',
-        isDisabled: true,
       },
     ],
   },
