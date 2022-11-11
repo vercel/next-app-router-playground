@@ -9,7 +9,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div className="space-y-9">
       <div className="flex justify-between">
         <TabGroup
-          path="/isr"
+          path="/ssr"
           items={[
             {
               text: 'Home',
