@@ -31,8 +31,6 @@ export function useMobileNavToggle() {
   return context;
 }
 
-// Wrap navigation in a client component that can control an open/closed state,
-// while keeping the navigation items themselves as a server component.
 export function MobileNavToggle({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useMobileNavToggle();
 
@@ -40,7 +38,7 @@ export function MobileNavToggle({ children }: { children: React.ReactNode }) {
     <>
       <button
         type="button"
-        className="group absolute right-0 top-0 flex h-12 items-center space-x-2 px-4 lg:hidden"
+        className="group absolute right-0 top-0 flex h-14 items-center space-x-2 px-4 lg:hidden"
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="font-medium text-gray-100 group-hover:text-gray-400">
@@ -55,7 +53,7 @@ export function MobileNavToggle({ children }: { children: React.ReactNode }) {
 
       <div
         className={clsx('overflow-y-auto lg:static lg:block', {
-          'fixed inset-x-0 bottom-0 top-12 bg-gray-900': isOpen,
+          'fixed inset-x-0 bottom-0 top-14 bg-gray-900': isOpen,
           hidden: !isOpen,
         })}
       >
