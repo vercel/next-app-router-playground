@@ -26,9 +26,11 @@
   "dependencies": {
     "@heroicons/react": "1.0.6",
     "@tailwindcss/forms": "0.5.3",
+    "@tailwindcss/line-clamp": "0.4.2",
     "clsx": "1.2.1",
     "date-fns": "2.29.3",
     "dinero.js": "2.0.0-alpha.8",
+    "ms": "3.0.0-canary.1",
     "next": "13.0.3-canary.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -36,7 +38,6 @@
     "use-count-up": "3.0.1"
   },
   "devDependencies": {
-    "@types/ms": "0.7.31",
     "@types/node": "18.11.6",
     "@types/react": "18.0.23",
     "@types/react-dom": "18.0.7",

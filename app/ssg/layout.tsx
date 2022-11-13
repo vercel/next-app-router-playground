@@ -1,28 +1,24 @@
-import { TabGroup } from '#/ui/TabGroup';
+import { Tab } from '#/ui/Tab';
 import React from 'react';
+import { RandomPostTab } from './RandomPostTab';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const ids = [{ id: '1' }, { id: '2' }, { id: '3' }, { id: '4' }];
-  if (!ids) return null;
+  const path = '/ssg';
+  const posts = [
+    { text: 'Post 1', slug: '1' },
+    { text: 'Post 2', slug: '2' },
+  ];
 
   return (
     <div className="space-y-9">
-      <div className="flex justify-between">
-        <TabGroup
-          path="/ssg"
-          items={[
-            {
-              text: 'Home',
-            },
-            ...ids.map((x) => ({
-              text: `Post ${x.id}`,
-              slug: x.id,
-            })),
-          ]}
-        />
-        <div className="self-start whitespace-nowrap rounded-lg bg-gray-700 px-3 py-1 text-sm font-medium tabular-nums text-gray-100">
-          Last Rendered: {new Date().toLocaleTimeString()}
-        </div>
+      <div className="-mt-2 flex flex-wrap items-center">
+        <Tab path={path} item={{ text: 'Home' }} />
+
+        {posts.map((item) => (
+          <Tab key={item.slug} path={path} item={item} />
+        ))}
+
+        <RandomPostTab path={path} />
       </div>
 
       <div>{children}</div>

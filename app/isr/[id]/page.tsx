@@ -1,13 +1,15 @@
+import { RenderingInfo } from '#/ui/RenderingInfo';
+
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  return [{ id: '1' }, { id: '2' }];
+  return [{ id: '1' }, { id: '2' }, { id: '3' }];
 }
 
 async function fetchData(params: { id: string }) {
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${params.id}`,
-    { next: { revalidate: 15 } },
+    { next: { revalidate: 10 } },
   );
   const data = await res.json();
   return data;
@@ -21,9 +23,16 @@ export default async function Page({
 }) {
   const data = await fetchData(params);
   return (
-    <div className="space-y-4">
-      <h1 className="text-2xl font-medium text-gray-200">{data.title}</h1>
-      <p className="font-medium text-gray-500">{data.body}</p>
+    <div className="grid grid-cols-6 gap-x-6 gap-y-3">
+      <div className="col-span-full space-y-3 lg:col-span-4">
+        <h1 className="truncate text-2xl font-medium capitalize text-gray-200">
+          {data.title}
+        </h1>
+        <p className="font-medium text-gray-500">{data.body}</p>
+      </div>
+      <div className="-order-1 col-span-full lg:order-none lg:col-span-2">
+        <RenderingInfo type="isr" />
+      </div>
     </div>
   );
 }
