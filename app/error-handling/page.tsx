@@ -16,13 +16,14 @@ export default function Page() {
 
       <ul className="list-disc space-y-2 pl-4 text-sm text-gray-300">
         <li>
-          <strong>`error.js`</strong> defines the error boundary for a route
-          segment and the children below it. It can be used to show specific
-          error information, and functionality to attempt to recover from the
-          error.
+          `error.js` defines the error boundary for a route segment and the
+          children below it. It can be used to show specific error information,
+          and functionality to attempt to recover from the error.
         </li>
         <li>
-          Trying navigation pages and triggering an error in nested layouts.
+          Trying navigation pages and triggering an error inside nested layouts.
+          Notice how the error is isolated to that segment, while the rest of
+          the app remains interactive.
         </li>
         <li>Note: Error boundaries don't yet work in development.</li>
       </ul>

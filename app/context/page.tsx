@@ -8,13 +8,13 @@ export default function Page() {
       <div className="space-y-4">
         <ul className="list-disc space-y-2 pl-4 text-sm text-gray-300">
           <li>
-            Pass context <strong>between Client Components</strong> that cross
-            the Server/Client Component boundary.
+            This example uses context to share state between Client Components
+            that cross the Server/Client Component boundary.
           </li>
-          <li>Click the counter and navigate between pages.</li>
           <li>
-            Because the context provider is above the nested layouts and pages
-            the number of clicks remains constant even between navigations.
+            Try incrementing the counter and navigating between pages. Note how
+            the counter state is shared across the app even though they are
+            inside different layouts and pages that are Server Components.
           </li>
         </ul>
       </div>

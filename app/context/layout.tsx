@@ -3,7 +3,7 @@ import { Boundary } from '#/ui/Boundary';
 import { TabGroup } from '#/ui/TabGroup';
 import { CounterProvider } from 'app/context/CounterContext';
 import React from 'react';
-import ClickCounter from './ClickCounter';
+import ContextClickCounter from './ContextClickCounter';
 
 export default async function Layout({
   children,
@@ -45,7 +45,7 @@ export default async function Layout({
                 />
               </div>
 
-              <ClickCounter />
+              <ContextClickCounter />
               <div>{children}</div>
             </div>
           </Boundary>

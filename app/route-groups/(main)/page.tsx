@@ -8,9 +8,12 @@ export default function Page() {
       <div className="space-y-4">
         <ul className="list-disc space-y-2 pl-4 text-sm text-gray-300">
           <li>
-            This example uses <span className="text-white">Route Groups</span>{' '}
-            to create layouts for different sections of the app without
-            affecting the URL structure.
+            This example uses Route Groups to create layouts for different
+            sections of the app without affecting the URL structure.
+          </li>
+          <li>
+            Try navigating pages and noting the different layouts used for each
+            section.
           </li>
           <li>Route groups can be used to:</li>
           <ul className="list-disc space-y-2 pl-4">

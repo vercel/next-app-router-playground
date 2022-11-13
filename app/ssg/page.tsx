@@ -10,11 +10,18 @@ export default function Page() {
       <div className="space-y-4">
         <ul className="list-disc space-y-2 pl-4 text-sm text-gray-300">
           <li>
-            With Static Site Generation, the HTML is generated on the server,
-            but unlike server-side rendering, there is no server at runtime.
-            Instead, content is generated once, at build time, when the
-            application is deployed, and the HTML is stored in a CDN and re-used
-            for each request.
+            In this example, static rendering is used to pre-render three posts.
+            The result of the rendering is stored on a CDN and re-used for each
+            request.
+          </li>
+          <li>Post 1 and 2 are statically pre-rendered at build time.</li>
+          <li>
+            A random third post is statically rendered on-demand the first time
+            it is requested
+          </li>
+          <li>
+            Try navigating to each post and noting the timestamp of when the
+            page was rendered.
           </li>
         </ul>
       </div>

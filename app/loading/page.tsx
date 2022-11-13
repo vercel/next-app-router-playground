@@ -11,15 +11,13 @@ export default function Page() {
         <ul className="list-disc space-y-2 pl-4 text-sm text-gray-300">
           <li>
             This example has an artificial delay when &quot;fetching&quot; data
-            for each category page.{' '}
-            <span className="font-medium text-white">`loading.js`</span> is used
-            to show a loading skeleton immediately while the category page
-            loads.
+            for each category page. `loading.js` is used to show a loading
+            skeleton immediately while data for category page loads before being
+            streamed in.
           </li>
           <li>
             Shared layouts remain interactive while nested layouts or pages
-            load. Try clicking the counter while{' '}
-            <span className="font-medium text-white">children</span> load.
+            load. Try clicking the counter while childrenoad.
           </li>
           <li>
             Navigation is interruptible. Try navigating to one category, then

@@ -14,8 +14,8 @@ export function GlobalNav() {
   const close = () => setIsOpen(false);
 
   return (
-    <div className="fixed top-0 z-10 flex w-full flex-col border-b border-gray-800 bg-black lg:bottom-0 lg:z-auto lg:w-72 lg:border-r lg:border-gray-800 ">
-      <div className="flex h-12 items-center py-4 px-4 lg:h-auto">
+    <div className="fixed top-0 z-10 flex w-full flex-col border-b border-gray-800 bg-black lg:bottom-0 lg:z-auto lg:w-72 lg:border-r lg:border-gray-800">
+      <div className="flex h-14 items-center py-4 px-4 lg:h-auto">
         <Link
           href="/"
           className="group flex w-full items-center space-x-2.5"
@@ -32,7 +32,7 @@ export function GlobalNav() {
       </div>
       <button
         type="button"
-        className="group absolute right-0 top-0 flex h-12 items-center space-x-2 px-4 lg:hidden"
+        className="group absolute right-0 top-0 flex h-14 items-center space-x-2 px-4 lg:hidden"
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="font-medium text-gray-100 group-hover:text-gray-400">
@@ -47,7 +47,7 @@ export function GlobalNav() {
 
       <div
         className={clsx('overflow-y-auto lg:static lg:block', {
-          'fixed inset-x-0 bottom-0 top-12 mt-px bg-black': isOpen,
+          'fixed inset-x-0 bottom-0 top-14 mt-px bg-black': isOpen,
           hidden: !isOpen,
         })}
       >
