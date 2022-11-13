@@ -10,11 +10,14 @@ export default function Page() {
       <div className="space-y-4">
         <ul className="list-disc space-y-2 pl-4 text-sm text-gray-300">
           <li>
-            Next.js allows you to create or update static pages after you’ve
-            built your site. Incremental Static Regeneration (ISR) enables you
-            to use static-generation on a per-page basis, without needing to
-            rebuild the entire site. With ISR, you can retain the benefits of
-            static while scaling to millions of pages.
+            In this example, three posts that were statically pre-rendered at
+            build time are periodically revalidated every 10 seconds.
+          </li>
+          <li>
+            Try navigating to each post and noting the timestamp of when the
+            page was rendered. Refresh the page after 10 seconds to trigger a
+            revalidation for the next request. Refresh again to see the
+            revalidated page.
           </li>
         </ul>
       </div>
