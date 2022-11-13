@@ -4,7 +4,7 @@ import { useCounter } from './CounterContext';
 import React from 'react';
 import { Boundary } from '#/ui/Boundary';
 
-const ClickCounter = () => {
+const ContextClickCounter = () => {
   const [count, setCount] = useCounter();
 
   return (
@@ -41,4 +41,4 @@ export const Counter = () => {
   );
 };
 
-export default ClickCounter;
+export default ContextClickCounter;

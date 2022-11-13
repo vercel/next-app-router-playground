@@ -1,6 +1,6 @@
 import { fetchSubCategory, type PageProps } from '#/lib/getCategories';
 import { Boundary } from '#/ui/Boundary';
-import { Counter } from '../../ClickCounter';
+import { Counter } from '../../ContextClickCounter';
 
 export default async function Page({ params }: PageProps) {
   const category = await fetchSubCategory(

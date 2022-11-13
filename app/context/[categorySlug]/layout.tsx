@@ -1,7 +1,7 @@
 import { fetchCategoryBySlug, PageProps } from '#/lib/getCategories';
 import { Boundary } from '#/ui/Boundary';
 import { TabGroup } from '#/ui/TabGroup';
-import { Counter } from '../ClickCounter';
+import { Counter } from '../ContextClickCounter';
 
 export default async function Layout({ children, params }: PageProps) {
   const category = await fetchCategoryBySlug(params.categorySlug);
