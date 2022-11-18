@@ -17,7 +17,7 @@ export default function Page() {
           </li>
           <li>
             Shared layouts remain interactive while nested layouts or pages
-            load. Try clicking the counter while childrenoad.
+            load. Try clicking the counter while the children load.
           </li>
           <li>
             Navigation is interruptible. Try navigating to one category, then
