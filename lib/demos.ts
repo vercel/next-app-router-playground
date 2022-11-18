@@ -40,6 +40,11 @@ export const demos: { name: string; items: Item[] }[] = [
         slug: 'error-handling',
         description: 'Create error UI for specific parts of an app',
       },
+      {
+        name: 'Head',
+        slug: 'head',
+        description: 'Configure the <head> tag of a route segment',
+      },
     ],
   },
   {
