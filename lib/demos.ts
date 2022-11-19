@@ -65,6 +65,11 @@ export const demos: { name: string; items: Item[] }[] = [
         slug: 'isr',
         description: 'Get the best of both worlds between static & dynamic',
       },
+      {
+        name: 'Fetching data on the client',
+        slug: 'client',
+        description: 'Fetch data synchronously on the client',
+      },
     ],
   },
   {
