@@ -1,9 +1,7 @@
-// A component that includes the default <head> tags we want included in every
-// configured `head.js` file
-export function DefaultHead({ children }: { children: React.ReactNode }) {
+// Default <head> tags we want shared across the app
+export function DefaultTags() {
   return (
     <>
-      {children}
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link
         href="/favicon/apple-touch-icon.png"

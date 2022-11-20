@@ -1,5 +1,5 @@
 import { fetchSubCategory, type PageProps } from '#/lib/getCategories';
-import { DefaultHead } from '#/ui/DefaultHead';
+import { DefaultTags } from '#/ui/DefaultTags';
 
 export default async function Head({ params }: PageProps) {
   const category = await fetchSubCategory(
@@ -11,9 +11,10 @@ export default async function Head({ params }: PageProps) {
   const description = `The best fictional ${category?.name} money can buy.`;
 
   return (
-    <DefaultHead>
+    <>
+      <DefaultTags />
       <title>{title}</title>
       <meta name="description" content={description} />
-    </DefaultHead>
+    </>
   );
 }
