@@ -1,19 +1,21 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useServerInsertedHTML } from 'next/navigation';
-import { useStyledJsxRegistry } from '#/lib/styling';
+import { StyleRegistry, createStyleRegistry } from 'styled-jsx';
 
 export default function StyledJsxRegistry({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
-  const [StyledJsxRegistry, styledJsxFlushEffect] = useStyledJsxRegistry();
+  const [jsxStyleRegistry] = useState(() => createStyleRegistry());
 
   useServerInsertedHTML(() => {
-    return <>{styledJsxFlushEffect()}</>;
+    const styles = jsxStyleRegistry.styles();
+    jsxStyleRegistry.flush();
+    return <>{styles}</>;
   });
 
-  return <StyledJsxRegistry>{children}</StyledJsxRegistry>;
+  return <StyleRegistry registry={jsxStyleRegistry}>{children}</StyleRegistry>;
 }
