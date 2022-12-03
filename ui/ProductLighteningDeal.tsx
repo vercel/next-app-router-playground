@@ -17,7 +17,7 @@ export const ProductLighteningDeal = ({
   return (
     <>
       <div className="flex">
-        <div className="rounded bg-vercel-pink px-1 text-xs text-pink-100">
+        <div className="rounded bg-gray-600 px-1.5 text-xs font-medium leading-5 text-white">
           Expires in {formatDistanceToNow(date)}
         </div>
       </div>

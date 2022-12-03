@@ -10,9 +10,9 @@ const SkeletonCard = () => (
 export default function Page() {
   return (
     <div className="space-y-4">
-      <div className="text-xl font-medium text-gray-500">
+      <h1 className="text-xl font-medium text-gray-400/80">
         Styled with Tailwind CSS
-      </div>
+      </h1>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <SkeletonCard />
