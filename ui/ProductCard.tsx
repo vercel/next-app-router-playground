@@ -15,7 +15,7 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
     <div className="space-y-2">
       <div className="relative">
         {product.isBestSeller ? (
-          <div className="absolute top-2 left-2 flex">
+          <div className="absolute top-2 left-2 z-10 flex">
             <ProductBestSeller />
           </div>
         ) : null}

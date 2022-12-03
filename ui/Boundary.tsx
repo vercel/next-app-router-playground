@@ -13,12 +13,12 @@ const Label = ({
   return (
     <div
       className={clsx('rounded-full px-1.5 shadow-[0_0_1px_3px_black]', {
-        'bg-gray-800 text-gray-500': color === 'default',
-        'bg-vercel-pink text-pink-100': color === 'pink',
-        'bg-vercel-blue text-blue-100': color === 'blue',
-        'bg-vercel-cyan text-cyan-100': color === 'cyan',
+        'bg-gray-800 text-gray-300': color === 'default',
+        'bg-vercel-pink text-white': color === 'pink',
+        'bg-vercel-blue text-white': color === 'blue',
+        'bg-vercel-cyan text-white': color === 'cyan',
         'bg-vercel-violet text-violet-100': color === 'violet',
-        'bg-vercel-orange text-orange-100': color === 'orange',
+        'bg-vercel-orange text-white': color === 'orange',
         'animate-[highlight_1s_ease-in-out_1]': animateRerendering,
       })}
     >

@@ -45,7 +45,7 @@ export async function RecommendedProducts() {
         <div className="text-lg font-medium text-white">
           Recommended Products for You
         </div>
-        <div className="text-sm text-gray-500">
+        <div className="text-sm text-gray-400">
           Based on your preferences and shopping habits
         </div>
       </div>

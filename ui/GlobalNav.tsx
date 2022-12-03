@@ -25,9 +25,9 @@ export function GlobalNav() {
             <NextLogo />
           </div>
 
-          <h2 className="font-medium tracking-wide text-gray-300 group-hover:text-gray-50">
+          <h3 className="font-semibold tracking-wide text-gray-400 group-hover:text-gray-50">
             App Directory <span className="Work in progress">(WIP)</span>
-          </h2>
+          </h3>
         </Link>
       </div>
       <button
@@ -39,9 +39,9 @@ export function GlobalNav() {
           Menu
         </div>
         {isOpen ? (
-          <XIcon className="block w-6 text-gray-300" />
+          <XIcon className="block w-6 text-gray-400" />
         ) : (
-          <MenuAlt2Icon className="block w-6 text-gray-300" />
+          <MenuAlt2Icon className="block w-6 text-gray-400" />
         )}
       </button>
 
@@ -55,7 +55,7 @@ export function GlobalNav() {
           {demos.map((section) => {
             return (
               <div key={section.name}>
-                <div className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-gray-600">
+                <div className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-gray-400/80">
                   <div>{section.name}</div>
                 </div>
 
@@ -88,10 +88,10 @@ function GlobalNavItem({
       onClick={close}
       href={`/${item.slug}`}
       className={clsx(
-        'block rounded-md px-3 py-2 text-sm font-medium  hover:text-gray-300',
+        'block rounded-md px-3 py-2 text-sm font-medium hover:text-gray-300',
         {
-          'text-gray-500 hover:bg-gray-800': !isActive,
-          'text-gray-200': isActive,
+          'text-gray-400 hover:bg-gray-800': !isActive,
+          'text-white': isActive,
         },
       )}
     >

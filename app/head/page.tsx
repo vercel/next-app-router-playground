@@ -4,9 +4,9 @@ import { HeadInfo } from './HeadInfo';
 export default function Page() {
   return (
     <div className="space-y-6">
-      <div className="text-xl font-medium text-gray-500">
+      <h1 className="text-xl font-medium text-gray-400/80">
         Configuring the Head Tag
-      </div>
+      </h1>
 
       <HeadInfo />
 

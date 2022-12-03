@@ -29,7 +29,7 @@
     "clsx": "1.2.1",
     "date-fns": "2.29.3",
     "dinero.js": "2.0.0-alpha.8",
-    "next": "13.0.5",
+    "next": "13.0.7-canary.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "styled-components": "6.0.0-beta.2",

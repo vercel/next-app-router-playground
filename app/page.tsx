@@ -10,7 +10,7 @@ export default function Page() {
         {demos.map((section) => {
           return (
             <div key={section.name} className="space-y-5">
-              <div className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+              <div className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                 {section.name}
               </div>
 
