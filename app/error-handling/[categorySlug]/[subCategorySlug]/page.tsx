@@ -12,7 +12,9 @@ export default async function Page({ params }: PageProps) {
   return (
     <div className="space-y-4">
       <div className="flex justify-between  space-x-3">
-        <div className="text-xl font-medium text-gray-500">{category.name}</div>
+        <h1 className="text-xl font-medium text-gray-400/80">
+          {category.name}
+        </h1>
 
         <BuggyButton />
       </div>

@@ -10,7 +10,7 @@ export default function Page() {
         {demos.map((section) => {
           return (
             <div key={section.name} className="space-y-5">
-              <div className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+              <div className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                 {section.name}
               </div>
 
@@ -27,7 +27,7 @@ export default function Page() {
                       </div>
 
                       {item.description ? (
-                        <div className="line-clamp-3 text-sm text-gray-400 group-hover:text-gray-300">
+                        <div className="text-sm text-gray-400 line-clamp-3 group-hover:text-gray-300">
                           {item.description}
                         </div>
                       ) : null}

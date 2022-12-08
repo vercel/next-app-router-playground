@@ -5,11 +5,7 @@ export default function Page() {
   return (
     <div className="space-y-4">
       <div className="flex justify-between space-x-3">
-        <div className="text-xl font-medium text-gray-500">
-          <div className="text-xl font-medium text-gray-500">
-            Error Handling
-          </div>
-        </div>
+        <h1 className="text-xl font-medium text-gray-400/80">Error Handling</h1>
 
         <BuggyButton />
       </div>

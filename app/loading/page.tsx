@@ -3,9 +3,9 @@ import { ExternalLink } from '#/ui/ExternalLink';
 export default function Page() {
   return (
     <div className="space-y-4">
-      <div className="text-xl font-medium text-gray-500">
+      <h1 className="text-xl font-medium text-gray-400/80">
         Instant Loading States
-      </div>
+      </h1>
 
       <div className="space-y-4">
         <ul className="list-disc space-y-2 pl-4 text-sm text-gray-300">
@@ -17,7 +17,7 @@ export default function Page() {
           </li>
           <li>
             Shared layouts remain interactive while nested layouts or pages
-            load. Try clicking the counter while childrenoad.
+            load. Try clicking the counter while the children load.
           </li>
           <li>
             Navigation is interruptible. Try navigating to one category, then

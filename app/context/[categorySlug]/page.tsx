@@ -9,9 +9,9 @@ export default async function Page({ params }: PageProps) {
   return (
     <Boundary labels={['Page [Server Component]']} animateRerendering={false}>
       <div className="space-y-8">
-        <div className="text-xl font-medium text-gray-500">
+        <h1 className="text-xl font-medium text-gray-400/80">
           All {category.name}
-        </div>
+        </h1>
 
         <Counter />
       </div>
