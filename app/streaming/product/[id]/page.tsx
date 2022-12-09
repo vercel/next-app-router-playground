@@ -8,6 +8,8 @@ import {
 } from '../../RecommendedProducts';
 import { Reviews, ReviewsSkeleton } from '../../Reviews';
 
+export const runtime = 'experimental-edge';
+
 export default async function Page({ params }: { params: { id: string } }) {
   // Get the cart count from the users cookies and pass it to the client
   // AddToCart component
