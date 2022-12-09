@@ -2,9 +2,12 @@ import { NextLogo } from '#/ui/NextLogo';
 import { SearchIcon, ShoppingCartIcon } from '@heroicons/react/solid';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { CartCount } from './CartCount';
 import { CartCountProvider } from './CartCountContext';
+
+export const runtime = 'experimental-edge';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const cartCount = Number(cookies().get('_cart_count')?.value || '0');
@@ -14,9 +17,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className="space-y-12 lg:space-y-16">
         <div className="flex items-center justify-between space-x-3 rounded-lg bg-gray-800 px-3 py-3 lg:px-5 lg:py-4">
           <div className="flex space-x-3">
-            <div className="h-10 w-10">
-              <NextLogo />
-            </div>
+            <Link href="/streaming">
+              <div className="h-10 w-10">
+                <NextLogo />
+              </div>
+            </Link>
 
             <div className="relative flex-1">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
