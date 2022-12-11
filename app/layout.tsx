@@ -54,6 +54,7 @@ function Byline() {
         <a
           className="underline decoration-dotted underline-offset-4 hover:text-gray-400"
           href="https://github.com/vercel/app-playground"
+          target="_blank"
         >
           View code
         </a>
@@ -61,6 +62,7 @@ function Byline() {
         <a
           className="underline decoration-dotted underline-offset-4 hover:text-gray-400"
           href="https://vercel.com/templates/next.js/app-directory"
+          target="_blank"
         >
           deploy your own
         </a>
