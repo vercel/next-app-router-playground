@@ -9,7 +9,7 @@ export default function StyledJsxRegistry({
 }: {
   children: React.ReactNode;
 }) {
-  // Only create stylesheet for once with lazy initial state
+  // Only create stylesheet once with lazy initial state
   // x-ref: https://reactjs.org/docs/hooks-reference.html#lazy-initial-state
   const [jsxStyleRegistry] = useState(() => createStyleRegistry());
 
