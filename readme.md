@@ -11,8 +11,17 @@ The `app/` directory can coexist with the existing `pages` directory for inc
 
 ## Running Locally
 
-1. Install dependencies: `yarn`
-1. Start the dev server: `yarn dev`
+1. Install dependencies:
+
+```sh
+pnpm install
+```
+
+2. Start the dev server:
+
+```sh
+pnpm dev
+```
 
 ## Documentation
 
