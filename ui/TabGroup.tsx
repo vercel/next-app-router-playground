@@ -7,7 +7,7 @@ export type Item = {
 
 export const TabGroup = ({ path, items }: { path: string; items: Item[] }) => {
   return (
-    <div className="-mt-2 flex flex-wrap items-center">
+    <div className="flex flex-wrap gap-2 items-center">
       {items.map((item) => (
         <Tab key={path + item.slug} item={item} path={path} />
       ))}
