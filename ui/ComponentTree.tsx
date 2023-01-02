@@ -37,7 +37,7 @@ const List = ({ items, depth }: { items: Item[]; depth: number }) => {
                   )
             }
           >
-            <div className="flex space-x-1">
+            <div className="flex gap-x-1">
               <div
                 className={clsx(
                   'rounded-md px-2 py-0.5 text-xs tracking-wide',
@@ -113,7 +113,7 @@ export const ComponentTree = ({ items }: { items: Item[] }) => {
 
           <div className="space-y-6">
             <div className="space-y-3 rounded-lg bg-gray-900 p-4">
-              <div className="flex items-center justify-between space-x-3">
+              <div className="flex items-center justify-between gap-x-3">
                 <div className="rounded-md bg-vercel-blue px-2 py-0.5 text-xs tabular-nums tracking-wider text-blue-50">
                   <CountUp
                     start={(clientTotal + serverTotal) / 1000}
@@ -137,14 +137,14 @@ export const ComponentTree = ({ items }: { items: Item[] }) => {
             </div>
 
             <div className="space-y-3">
-              <div className="flex items-center space-x-3 text-sm text-gray-400">
+              <div className="flex items-center gap-x-3 text-sm text-gray-400">
                 <div className="rounded-md bg-vercel-blue px-2 py-0.5 text-xs tracking-widest text-white/50">
                   {'</>'}
                 </div>
                 <div>Client Component</div>
               </div>
 
-              <div className="flex items-center space-x-3 text-sm text-gray-400">
+              <div className="flex items-center gap-x-3 text-sm text-gray-400">
                 <div className="rounded-md bg-gray-700 px-2 py-0.5 text-xs tracking-widest text-white/50">
                   {'</>'}
                 </div>

@@ -23,7 +23,7 @@ export const Product = ({
             width={400}
           />
 
-          <div className="flex space-x-2">
+          <div className="flex gap-x-2">
             <div className="w-1/3">
               <Image
                 src={`/${product.image}`}
