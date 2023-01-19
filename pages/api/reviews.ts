@@ -1,8 +1,18 @@
+import { NextRequest } from 'next/server';
+
 export const config = {
   runtime: 'edge',
 };
 
-export default async function handler() {
+export default async function handler(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+
+  const delay = searchParams.get('delay');
+
+  if (delay) {
+    await new Promise((resolve) => setTimeout(resolve, Number(delay)));
+  }
+
   return new Response(JSON.stringify(reviews), {
     status: 200,
     headers: {
