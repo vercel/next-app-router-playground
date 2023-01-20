@@ -5,6 +5,7 @@ import { CartCountProvider } from '../_components/CartCountContext';
 import { Header } from '../_components/Header';
 
 export const runtime = 'experimental-edge';
+export const dynamic = 'force-dynamic';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const cartCount = Number(cookies().get('_cart_count')?.value || '0');
