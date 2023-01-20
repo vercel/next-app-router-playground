@@ -4,7 +4,7 @@ import { ProductReviewCard } from '#/ui/ProductReviewCard';
 export async function Reviews() {
   const data = await fetch(
     // you would normally fetch data from an external data source
-    `https://app-dir.vercel.app/api/reviews?delay=1500`,
+    `https://app-dir.vercel.app/api/reviews?delay=1000`,
   );
   const reviews = (await data.json()) as Review[];
 

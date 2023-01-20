@@ -11,7 +11,7 @@ export async function RecommendedProducts({
   const res = await fetch(
     // We intentionally delay the reponse to simulate a slow data request that
     // would benefit from streaming
-    `https://app-dir.vercel.app/api/products?delay=1000&filter=${productId}`,
+    `https://app-dir.vercel.app/api/products?delay=500&filter=${productId}`,
   );
 
   const products = (await res.json()) as Product[];

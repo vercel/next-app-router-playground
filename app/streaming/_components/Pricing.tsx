@@ -29,7 +29,7 @@ function LoadingDots() {
 
 async function UserSpecificDetails({ productId }: { productId: string }) {
   const data = await fetch(
-    `https://app-dir.vercel.app/api/products?id=${productId}&delay=1500`,
+    `https://app-dir.vercel.app/api/products?id=${productId}&delay=500&filter=price,usedPrice,leadTime,stock`,
   );
 
   const product = (await data.json()) as Product;
