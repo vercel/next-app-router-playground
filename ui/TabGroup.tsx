@@ -3,6 +3,7 @@ import { Tab } from '#/ui/Tab';
 export type Item = {
   text: string;
   slug?: string;
+  segment?: string;
 };
 
 export const TabGroup = ({ path, items }: { path: string; items: Item[] }) => {

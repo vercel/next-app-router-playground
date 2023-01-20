@@ -1,4 +1,4 @@
-import { type IProduct } from '#/lib/data/products';
+import { Product } from '#/types/Product';
 import { ProductBestSeller } from '#/ui/ProductBestSeller';
 import { ProductEstimatedArrival } from '#/ui/ProductEstimatedArrival';
 import { ProductLowStockWarning } from '#/ui/ProductLowStockWarning';
@@ -13,7 +13,7 @@ export const ProductCard = ({
   product,
   href,
 }: {
-  product: IProduct;
+  product: Product;
   href: string;
 }) => {
   const price = dinero(product.price as DineroSnapshot<number>);
@@ -38,7 +38,7 @@ export const ProductCard = ({
           />
         </div>
 
-        <div className="truncate text-sm font-medium text-white group-hover:text-vercel-pink">
+        <div className="truncate text-sm font-medium text-white group-hover:text-vercel-cyan">
           {product.name}
         </div>
 

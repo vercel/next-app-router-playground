@@ -5,20 +5,15 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
 
-export const Tab = ({
-  path,
-  item: { slug, text },
-}: {
-  path: string;
-  item: Item;
-}) => {
+export const Tab = ({ path, item }: { path: string; item: Item }) => {
   const segment = useSelectedLayoutSegment();
-  const href = slug ? path + '/' + slug : path;
+  const href = item.slug ? path + '/' + item.slug : path;
   const isActive =
     // Example home pages e.g. `/layouts`
-    (!slug && segment === null) ||
+    (!item.slug && segment === null) ||
+    segment === item.segment ||
     // Nested pages e.g. `/layouts/electronics`
-    segment === slug;
+    segment === item.slug;
 
   return (
     <Link
@@ -29,7 +24,7 @@ export const Tab = ({
         'bg-vercel-blue text-white': isActive,
       })}
     >
-      {text}
+      {item.text}
     </Link>
   );
 };
