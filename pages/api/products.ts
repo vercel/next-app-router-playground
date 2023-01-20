@@ -9,23 +9,46 @@ export default async function handler(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const id = searchParams.get('id');
   const delay = searchParams.get('delay');
-  const filter = searchParams.get('filter');
-
-  let data: Product | Product[] | undefined = products;
-
-  if (filter) {
-    data = products.filter((product) => product.id !== filter);
-  }
-
-  if (id) {
-    data = products.find((product) => product.id === id);
-  }
 
   if (delay) {
     await new Promise((resolve) => setTimeout(resolve, Number(delay)));
   }
 
-  return new Response(JSON.stringify(data), {
+  if (id) {
+    let product = data.find((product) => product.id === id);
+
+    if (!product) {
+      return new Response(null, {
+        status: 404,
+      });
+    }
+
+    const fields = searchParams.get('fields');
+    if (fields) {
+      product = fields.split(',').reduce((acc, field) => {
+        // @ts-ignore
+        acc[field] = product[field];
+
+        return acc;
+      }, {} as Product);
+    }
+
+    return new Response(JSON.stringify(product), {
+      status: 200,
+      headers: {
+        'content-type': 'application/json',
+      },
+    });
+  }
+
+  let products = data;
+
+  const filter = searchParams.get('filter');
+  if (filter) {
+    products = products.filter((product) => product.id !== filter);
+  }
+
+  return new Response(JSON.stringify(products), {
     status: 200,
     headers: {
       'content-type': 'application/json',
@@ -33,7 +56,7 @@ export default async function handler(req: NextRequest) {
   });
 }
 
-const products = [
+const data: Product[] = [
   {
     id: '1',
     stock: 2,
