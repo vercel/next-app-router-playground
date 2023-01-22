@@ -30,18 +30,18 @@ export const demos: { name: string; items: Item[] }[] = [
     name: 'File Conventions',
     items: [
       {
-        name: 'loading.js',
+        name: 'Loading',
         slug: 'loading',
         description:
           'Create meaningful loading UI for specific parts of an app',
       },
       {
-        name: 'error.js',
+        name: 'Error',
         slug: 'error-handling',
         description: 'Create error UI for specific parts of an app',
       },
       {
-        name: 'head.js',
+        name: 'Head',
         slug: 'head',
         description: 'Configure the <head> tag of a route segment',
       },
