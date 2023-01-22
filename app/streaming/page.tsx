@@ -1,6 +1,4 @@
-import products from '#/lib/data/products';
 import { ExternalLink } from '#/ui/ExternalLink';
-import { ProductCard } from '#/ui/ProductCard';
 
 export default async function Page() {
   return (
@@ -23,11 +21,11 @@ export default async function Page() {
               anything.
             </li>
 
+            <li>Streaming works with both Edge and Node runtimes.</li>
+
             <li>
-              Try navigating to one of the products below. Notice how some
-              initial product information is loaded first and secondary
-              information like other recommended products and customer reviews
-              are progressively streamed in.
+              Try streaming by <strong>selecting a runtime</strong> in the
+              navigation above.
             </li>
           </ul>
 
@@ -35,17 +33,6 @@ export default async function Page() {
             Docs
           </ExternalLink>
         </div>
-      </div>
-
-      <div className="grid grid-cols-4 gap-6">
-        {products.slice(0, 4).map((product) => (
-          <div key={product.id} className="col-span-4 lg:col-span-1">
-            <ProductCard
-              product={product}
-              href={`/streaming/product/${product.id}`}
-            />
-          </div>
-        ))}
       </div>
     </div>
   );

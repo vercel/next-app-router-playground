@@ -1,12 +1,30 @@
-import reviews from '#/lib/data/reviews';
+import type { Review } from '#/types/Review';
 import { ProductReviewCard } from '#/ui/ProductReviewCard';
-import { delay } from './delay';
+
+export async function Reviews() {
+  const data = await fetch(
+    // you would normally fetch data from an external data source
+    `https://app-dir.vercel.app/api/reviews?delay=1000`,
+  );
+  const reviews = (await data.json()) as Review[];
+
+  return (
+    <div className="space-y-6">
+      <div className="text-lg font-medium text-white">Customer Reviews</div>
+      <div className="space-y-8">
+        {reviews.map((review) => {
+          return <ProductReviewCard key={review.id} review={review} />;
+        })}
+      </div>
+    </div>
+  );
+}
 
 const shimmer = `relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1.5s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent`;
 
 function Skeleton() {
   return (
-    <div className={`space-y-4`}>
+    <div className="space-y-4">
       <div className="h-6 w-2/6 rounded-lg bg-gray-900" />
       <div className="h-4 w-1/6 rounded-lg bg-gray-900" />
       <div className="h-4 w-full rounded-lg bg-gray-900" />
@@ -23,22 +41,6 @@ export function ReviewsSkeleton() {
       <div className="space-y-8">
         <Skeleton />
         <Skeleton />
-      </div>
-    </div>
-  );
-}
-
-export async function Reviews() {
-  // Normally you would fetch data here
-  await delay(1500);
-
-  return (
-    <div className="space-y-6">
-      <div className="text-lg font-medium text-white">Customer Reviews</div>
-      <div className="space-y-8">
-        {reviews.map((review) => {
-          return <ProductReviewCard key={review.id} review={review} />;
-        })}
       </div>
     </div>
   );

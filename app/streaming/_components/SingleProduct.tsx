@@ -1,16 +1,14 @@
-import { Pricing, PricingSkeleton } from '#/app/streaming/Pricing';
-import { type IProduct } from '#/lib/data/products';
+import { Pricing } from '#/app/streaming/_components/Pricing';
+import type { Product } from '#/types/Product';
 import { ProductRating } from '#/ui/ProductRating';
+import { cookies } from 'next/headers';
 import Image from 'next/image';
-import { Suspense } from 'react';
 
-export const Product = ({
-  product,
-  cartCount,
-}: {
-  product: IProduct;
-  cartCount: string;
-}) => {
+export const SingleProduct = ({ product }: { product: Product }) => {
+  // Get the cart count from the users cookies and pass it to the client
+  // AddToCart component
+  const cartCount = cookies().get('_cart_count')?.value || '0';
+
   return (
     <div className="grid grid-cols-4 gap-6">
       <div className="col-span-full lg:col-span-1">
@@ -63,15 +61,13 @@ export const Product = ({
         <ProductRating rating={product.rating} />
 
         <div className="space-y-4 text-sm text-gray-200">
-          {product.description}
+          <p>{product.description}</p>
+          <p>{product.description}</p>
         </div>
       </div>
 
       <div className="col-span-full lg:col-span-1">
-        <Suspense fallback={<PricingSkeleton />}>
-          {/* @ts-expect-error Async Server Component */}
-          <Pricing product={product} cartCount={cartCount} />
-        </Suspense>
+        <Pricing product={product} cartCount={cartCount} />
       </div>
     </div>
   );
