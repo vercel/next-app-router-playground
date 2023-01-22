@@ -22,15 +22,22 @@ const useInterval = (callback: Function, delay?: number | null) => {
 };
 
 export function RenderedTimeAgo({ timestamp }: { timestamp: number }) {
-  const [msAgo, setMsAgo] = useState<number>(() => Date.now() - timestamp);
+  // TODO: Fix flash of "0s" for SSG:
+  // During SSG, Date.now() and `timestamp` are the same. It's only after
+  // hydration that the difference is correctly calculated.
+  const [msAgo, setMsAgo] = useState<number>(() => {
+    return Date.now() - timestamp;
+  });
 
-  useInterval(() => {
-    setMsAgo(Date.now() - timestamp);
-  }, 1000);
-
+  // update on page change
   useEffect(() => {
     setMsAgo(Date.now() - timestamp);
   }, [timestamp]);
+
+  // update every second
+  useInterval(() => {
+    setMsAgo(Date.now() - timestamp);
+  }, 1000);
 
   return (
     <div
@@ -42,7 +49,7 @@ export function RenderedTimeAgo({ timestamp }: { timestamp: number }) {
         suppressHydrationWarning={true}
         className="font-semibold tabular-nums text-gray-900"
       >
-        {msAgo > 1000 ? ms(msAgo) : '0s'}
+        {msAgo >= 1000 ? ms(msAgo) : '0s'}
       </span>{' '}
       <span className="text-gray-600">ago</span>
     </div>

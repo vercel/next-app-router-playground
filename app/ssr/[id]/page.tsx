@@ -1,21 +1,13 @@
 import { RenderingInfo } from '#/ui/RenderingInfo';
 
-async function fetchData(params: { id: string }) {
+export const dynamic = 'force-dynamic';
+
+export default async function Page({ params }: { params: { id: string } }) {
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${params.id}`,
     { cache: 'no-store' },
   );
-  const data = await res.json();
-  return data;
-}
-
-export default async function Page({
-  params,
-}: {
-  params?: any;
-  children?: React.ReactNode;
-}) {
-  const data = await fetchData(params);
+  const data = (await res.json()) as { title: string; body: string };
 
   return (
     <div className="grid grid-cols-6 gap-x-6 gap-y-3">

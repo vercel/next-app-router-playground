@@ -6,22 +6,13 @@ export async function generateStaticParams() {
   return [{ id: '1' }, { id: '2' }, { id: '3' }];
 }
 
-async function fetchData(params: { id: string }) {
+export default async function Page({ params }: { params: { id: string } }) {
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${params.id}`,
     { next: { revalidate: 10 } },
   );
-  const data = await res.json();
-  return data;
-}
+  const data = (await res.json()) as { title: string; body: string };
 
-export default async function Page({
-  params,
-}: {
-  params?: any;
-  children?: React.ReactNode;
-}) {
-  const data = await fetchData(params);
   return (
     <div className="grid grid-cols-6 gap-x-6 gap-y-3">
       <div className="col-span-full space-y-3 lg:col-span-4">

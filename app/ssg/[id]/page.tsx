@@ -1,20 +1,17 @@
 import { RenderingInfo } from '#/ui/RenderingInfo';
 
 export async function generateStaticParams() {
-  // Generate two pages at build time and the rest on-demand
+  // Generate two pages at build time and the rest (3-100) on-demand
   return [{ id: '1' }, { id: '2' }];
 }
 
-async function fetchData(id: string) {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
-  const data = await res.json();
-  return data;
-}
+export default async function Page({ params }: { params: { id: string } }) {
+  const res = await fetch(
+    `https://jsonplaceholder.typicode.com/posts/${params.id}`,
+  );
+  const data = (await res.json()) as { title: string; body: string };
 
-export default async function Page({ params }: { params?: any }) {
-  const data = await fetchData(params.id);
-
-  const isOnDemand = Number(params.id) > 2;
+  const isOnDemand = Number(params.id) >= 3;
 
   return (
     <div className="grid grid-cols-6 gap-x-6 gap-y-3">
