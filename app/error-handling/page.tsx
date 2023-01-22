@@ -4,7 +4,7 @@ import { ExternalLink } from '#/ui/ExternalLink';
 export default function Page() {
   return (
     <div className="space-y-4">
-      <div className="flex justify-between space-x-3">
+      <div className="flex justify-between gap-x-3">
         <h1 className="text-xl font-medium text-gray-400/80">Error Handling</h1>
 
         <BuggyButton />

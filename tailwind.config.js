@@ -49,6 +49,18 @@ module.exports = {
             color: theme('colors.white'),
           },
         },
+        loading: {
+          '0%': {
+            opacity: '.2',
+          },
+          '20%': {
+            opacity: '1',
+            transform: 'translateX(1px)',
+          },
+          to: {
+            opacity: '.2',
+          },
+        },
         shimmer: {
           '100%': {
             transform: 'translateX(100%)',

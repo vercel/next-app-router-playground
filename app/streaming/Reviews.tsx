@@ -30,7 +30,7 @@ export function ReviewsSkeleton() {
 
 export async function Reviews() {
   // Normally you would fetch data here
-  await delay(1600);
+  await delay(1500);
 
   return (
     <div className="space-y-6">

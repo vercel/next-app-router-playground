@@ -2,9 +2,12 @@ import { NextLogo } from '#/ui/NextLogo';
 import { SearchIcon, ShoppingCartIcon } from '@heroicons/react/solid';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { CartCount } from './CartCount';
 import { CartCountProvider } from './CartCountContext';
+
+export const runtime = 'experimental-edge';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const cartCount = Number(cookies().get('_cart_count')?.value || '0');
@@ -12,11 +15,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <CartCountProvider initialCartCount={cartCount}>
       <div className="space-y-12 lg:space-y-16">
-        <div className="flex items-center justify-between space-x-3 rounded-lg bg-gray-800 px-3 py-3 lg:px-5 lg:py-4">
-          <div className="flex space-x-3">
-            <div className="h-10 w-10">
-              <NextLogo />
-            </div>
+        <div className="flex items-center justify-between gap-x-3 rounded-lg bg-gray-800 px-3 py-3 lg:px-5 lg:py-4">
+          <div className="flex gap-x-3">
+            <Link href="/streaming">
+              <div className="h-10 w-10">
+                <NextLogo />
+              </div>
+            </Link>
 
             <div className="relative flex-1">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -33,7 +38,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
           </div>
 
-          <div className="flex shrink-0 space-x-3">
+          <div className="flex shrink-0 gap-x-3">
             <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-600 text-white">
               <ShoppingCartIcon className="w-6 text-white" />
               <div className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-vercel-pink text-sm font-bold text-white">

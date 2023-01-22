@@ -15,8 +15,8 @@ export const ProductDeal = ({
   const percent = Math.round(100 - (discount / price) * 100);
 
   return (
-    <div className="flex space-x-1.5">
-      <div className="text-lg font-bold leading-snug text-vercel-pink">
+    <div className="flex gap-x-1.5">
+      <div className="text-lg font-bold leading-snug text-vercel-cyan">
         -{percent}%
       </div>
       <div className="flex">
