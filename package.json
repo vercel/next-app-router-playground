@@ -20,9 +20,11 @@
   "dependencies": {
     "@heroicons/react": "1.0.6",
     "@tailwindcss/forms": "0.5.3",
+    "@tailwindcss/line-clamp": "0.4.2",
     "clsx": "1.2.1",
     "date-fns": "2.29.3",
     "dinero.js": "2.0.0-alpha.8",
+    "ms": "3.0.0-canary.1",
     "next": "13.1.5-canary.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",

@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@heroicons/react': 1.0.6
   '@tailwindcss/forms': 0.5.3
+  '@tailwindcss/line-clamp': 0.4.2
   '@types/ms': 0.7.31
   '@types/node': 18.11.17
   '@types/react': 18.0.26
@@ -15,6 +16,7 @@ specifiers:
   eslint: 8.30.0
   eslint-config-next: 13.1.0
   lint-staged: 13.1.0
+  ms: 3.0.0-canary.1
   next: 13.1.5-canary.2
   postcss: 8.4.20
   prettier: 2.8.1
@@ -29,9 +31,11 @@ specifiers:
 dependencies:
   '@heroicons/react': 1.0.6_react@18.2.0
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.4
+  '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.2.4
   clsx: 1.2.1
   date-fns: 2.29.3
   dinero.js: 2.0.0-alpha.8
+  ms: 3.0.0-canary.1
   next: 13.1.5-canary.2_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -2086,6 +2090,17 @@ packages:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
       mini-svg-data-uri: 1.4.4
+      tailwindcss: 3.2.4_postcss@8.4.20
+    dev: false
+
+  /@tailwindcss/line-clamp/0.4.2_tailwindcss@3.2.4:
+    resolution:
+      {
+        integrity: sha512-HFzAQuqYCjyy/SX9sLGB1lroPzmcnWv1FHkIpmypte10hptf4oPUfucryMKovZh2u0uiS9U5Ty3GghWfEJGwVw==,
+      }
+    peerDependencies:
+      tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
+    dependencies:
       tailwindcss: 3.2.4_postcss@8.4.20
     dev: false
 
@@ -4443,6 +4458,14 @@ packages:
         integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==,
       }
     dev: true
+
+  /ms/3.0.0-canary.1:
+    resolution:
+      {
+        integrity: sha512-kh8ARjh8rMN7Du2igDRO9QJnqCb2xYTJxyQYK7vJJS4TvLLmsbyhiKpSW+t+y26gyOyMd0riphX0GeWKU3ky5g==,
+      }
+    engines: { node: '>=12.13' }
+    dev: false
 
   /nanoid/3.3.4:
     resolution:
