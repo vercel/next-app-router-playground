@@ -5,14 +5,13 @@ import { CartCountProvider } from '../_components/CartCountContext';
 import { Header } from '../_components/Header';
 
 export const runtime = 'experimental-edge';
-export const dynamic = 'force-dynamic';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const cartCount = Number(cookies().get('_cart_count')?.value || '0');
 
   return (
     <>
-      <ul className="list-disc space-y-2 pl-4 text-sm text-gray-300 mb-12">
+      <ul className="mb-12 list-disc space-y-2 pl-4 text-sm text-gray-300">
         <li>
           Primary product information is loaded first as part of the initial
           response.
