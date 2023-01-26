@@ -1,4 +1,5 @@
 import { RenderingInfo } from '#/ui/RenderingInfo';
+import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
   // Generate two pages at build time and the rest (3-100) on-demand
@@ -6,6 +7,10 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: { params: { id: string } }) {
+  if (Number(params.id) >= 100) {
+    notFound();
+  }
+
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${params.id}`,
   );
