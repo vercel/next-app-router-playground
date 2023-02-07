@@ -2,19 +2,13 @@ import { Product } from '#/types/Product';
 import { ProductCard } from '#/ui/ProductCard';
 
 export async function RecommendedProducts({
-  productId,
   path,
+  data,
 }: {
-  productId: string;
   path: string;
+  data: Promise<Response>;
 }) {
-  const res = await fetch(
-    // We intentionally delay the reponse to simulate a slow data request that
-    // would benefit from streaming
-    `https://app-dir.vercel.app/api/products?delay=500&filter=${productId}`,
-  );
-
-  const products = (await res.json()) as Product[];
+  const products = (await data.then((res) => res.json())) as Product[];
 
   return (
     <div className="space-y-6">
