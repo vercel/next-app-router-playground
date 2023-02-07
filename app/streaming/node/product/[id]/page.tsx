@@ -1,23 +1,19 @@
-import type { Product } from '#/types/Product';
 import { Ping } from '#/ui/Ping';
-import { Suspense } from 'react';
 import {
   RecommendedProducts,
   RecommendedProductsSkeleton,
-} from '../../../_components/RecommendedProducts';
-import { Reviews, ReviewsSkeleton } from '../../../_components/Reviews';
-import { SingleProduct } from '../../../_components/SingleProduct';
+} from 'app/streaming/_components/RecommendedProducts';
+import { Reviews, ReviewsSkeleton } from 'app/streaming/_components/Reviews';
+import { SingleProduct } from 'app/streaming/_components/SingleProduct';
+import { Suspense } from 'react';
 
 export default async function Page({ params }: { params: { id: string } }) {
-  const data = await fetch(
-    // you would normally fetch data from an external data source
-    `https://app-dir.vercel.app/api/products?id=${params.id}`,
-  );
-  const product = (await data.json()) as Product;
-
   return (
     <div className="space-y-8 lg:space-y-14">
-      <SingleProduct product={product} />
+      {/* @ts-expect-error Async Server Component */}
+      <SingleProduct
+        data={fetch(`https://app-dir.vercel.app/api/products?id=${params.id}`)}
+      />
 
       <div className="relative">
         <div className="absolute top-2 -left-4">
@@ -28,8 +24,12 @@ export default async function Page({ params }: { params: { id: string } }) {
       <Suspense fallback={<RecommendedProductsSkeleton />}>
         {/* @ts-expect-error Async Server Component */}
         <RecommendedProducts
-          path="/streaming/node/product"
-          productId={params.id}
+          path="/streaming/edge/product"
+          data={fetch(
+            // We intentionally delay the reponse to simulate a slow data
+            // request that would benefit from streaming
+            `https://app-dir.vercel.app/api/products?delay=500&filter=${params.id}`,
+          )}
         />
       </Suspense>
 
@@ -41,7 +41,13 @@ export default async function Page({ params }: { params: { id: string } }) {
 
       <Suspense fallback={<ReviewsSkeleton />}>
         {/* @ts-expect-error Async Server Component */}
-        <Reviews />
+        <Reviews
+          data={fetch(
+            // We intentionally delay the reponse to simulate a slow data
+            // request that would benefit from streaming
+            `https://app-dir.vercel.app/api/reviews?delay=1000`,
+          )}
+        />
       </Suspense>
     </div>
   );

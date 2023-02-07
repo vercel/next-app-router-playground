@@ -1,12 +1,8 @@
 import type { Review } from '#/types/Review';
 import { ProductReviewCard } from '#/ui/ProductReviewCard';
 
-export async function Reviews() {
-  const data = await fetch(
-    // you would normally fetch data from an external data source
-    `https://app-dir.vercel.app/api/reviews?delay=1000`,
-  );
-  const reviews = (await data.json()) as Review[];
+export async function Reviews({ data }: { data: Promise<Response> }) {
+  const reviews = (await data.then((res) => res.json())) as Review[];
 
   return (
     <div className="space-y-6">
