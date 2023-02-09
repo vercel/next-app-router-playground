@@ -10,7 +10,6 @@ export default async function Page({ params }: { params: { id: string } }) {
   if (Number(params.id) >= 100) {
     notFound();
   }
-
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${params.id}`,
   );

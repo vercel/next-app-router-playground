@@ -6,15 +6,15 @@ export type Item = {
 
 export const demos: { name: string; items: Item[] }[] = [
   {
-    name: 'Layouts',
+    name: '布局',
     items: [
       {
-        name: 'Nested Layouts',
+        name: '嵌套布局',
         slug: 'layouts',
         description: 'Create UI that is shared across routes',
       },
       {
-        name: 'Grouped Layouts',
+        name: '分组布局',
         slug: 'route-groups',
         description: 'Organize routes without affecting URL paths',
       },
@@ -27,19 +27,24 @@ export const demos: { name: string; items: Item[] }[] = [
     ],
   },
   {
-    name: 'File Conventions',
+    name: '文件约定',
     items: [
       {
-        name: 'Loading',
+        name: '加载中',
         slug: 'loading',
         description:
           'Create meaningful loading UI for specific parts of an app',
       },
       {
-        name: 'Error',
+        name: '错误处理',
         slug: 'error-handling',
         description: 'Create error UI for specific parts of an app',
       },
+      // {
+      //   name: '404',
+      //   slug: 'not-found-handling',
+      //   description: 'Create UI to show when the notFound function is thrown within a route segment.',
+      // },
       {
         name: 'Head',
         slug: 'head',
@@ -48,22 +53,27 @@ export const demos: { name: string; items: Item[] }[] = [
     ],
   },
   {
-    name: 'Data Fetching',
+    name: '请求数据',
     items: [
       {
-        name: 'Static-Site Generation',
+        name: '静态站点',
         slug: 'ssg',
-        description: 'Generate static pages',
+        description: 'Generate static pages(Static-Site Generation)',
       },
       {
-        name: 'Server-Side Rendering',
+        name: '服务端渲染',
         slug: 'ssr',
-        description: 'Server-render pages',
+        description: 'Server-render pages(Server-Side Rendering)',
       },
       {
-        name: 'Incremental Static Regeneration',
+        name: '服务端渲染-博客',
+        slug: 'blog',
+        description: '服务端渲染博客demo',
+      },
+      {
+        name: '增量静态再生',
         slug: 'isr',
-        description: 'Get the best of both worlds between static & dynamic',
+        description: 'Get the best of both worlds between static & dynamic(Incremental Static Regeneration)',
       },
     ],
   },

@@ -16,7 +16,7 @@ export default async function Layout({
           path="/layouts"
           items={[
             {
-              text: 'Home',
+              text: '首页',
             },
             ...categories.map((x) => ({
               text: x.name,
@@ -24,7 +24,6 @@ export default async function Layout({
             })),
           ]}
         />
-
         <div className="self-start">
           <ClickCounter />
         </div>

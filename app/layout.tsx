@@ -9,7 +9,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="[color-scheme:dark]">
+    <html lang="zh-Hans" className="[color-scheme:dark]">
       <head />
       <body className="overflow-y-scroll bg-gray-1100 bg-[url('/grid.svg')]">
         <GlobalNav />
@@ -54,7 +54,7 @@ function Byline() {
         <a
           className="underline decoration-dotted underline-offset-4 hover:text-gray-400"
           href="https://github.com/vercel/app-playground"
-          target="_blank"
+          target="_blank" rel="noreferrer"
         >
           View code
         </a>
@@ -62,7 +62,7 @@ function Byline() {
         <a
           className="underline decoration-dotted underline-offset-4 hover:text-gray-400"
           href="https://vercel.com/templates/next.js/app-directory"
-          target="_blank"
+          target="_blank" rel="noreferrer"
         >
           deploy your own
         </a>

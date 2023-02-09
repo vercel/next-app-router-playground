@@ -1,14 +1,14 @@
 import type { Product } from '#/types/Product';
-import { NextApiRequest, NextApiResponse } from 'next';
+import type { NextRequest } from 'next/server';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
-  // const { searchParams } = new URL(req.url);
-  // const id = searchParams.get('id');
-  // const delay = searchParams.get('delay');
-  const { id, delay, fields, filter } = req.query;
+export const config = {
+  runtime: 'edge',
+};
+
+export default async function handler(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get('id');
+  const delay = searchParams.get('delay');
 
   if (delay) {
     await new Promise((resolve) => setTimeout(resolve, Number(delay)));
@@ -23,8 +23,9 @@ export default async function handler(
       });
     }
 
+    const fields = searchParams.get('fields');
     if (fields) {
-      product = (fields as string).split(',').reduce((acc, field) => {
+      product = fields.split(',').reduce((acc, field) => {
         // @ts-ignore
         acc[field] = product[field];
 
@@ -42,10 +43,17 @@ export default async function handler(
 
   let products = data;
 
+  const filter = searchParams.get('filter');
   if (filter) {
     products = products.filter((product) => product.id !== filter);
   }
-  res.status(200).json(products);
+
+  return new Response(JSON.stringify(products), {
+    status: 200,
+    headers: {
+      'content-type': 'application/json',
+    },
+  });
 }
 
 const data: Product[] = [

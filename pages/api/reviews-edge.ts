@@ -1,16 +1,24 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest } from 'next/server';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
-  const { delay } = req.query;
+export const config = {
+  runtime: 'edge',
+};
+
+export default async function handler(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+
+  const delay = searchParams.get('delay');
 
   if (delay) {
     await new Promise((resolve) => setTimeout(resolve, Number(delay)));
   }
 
-  res.status(200).json(reviews);
+  return new Response(JSON.stringify(reviews), {
+    status: 200,
+    headers: {
+      'content-type': 'application/json',
+    },
+  });
 }
 
 const reviews = [

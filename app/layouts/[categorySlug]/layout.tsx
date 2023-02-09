@@ -13,7 +13,7 @@ export default async function Layout({ children, params }: PageProps) {
           path={`/layouts/${category.slug}`}
           items={[
             {
-              text: 'All',
+              text: '所有',
             },
             ...category.items.map((x) => ({
               text: x.name,

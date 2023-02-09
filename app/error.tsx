@@ -10,13 +10,13 @@ export default function Error({ error, reset }: any) {
   }, [error]);
 
   return (
-    <Boundary labels={['子页面错误']} color="pink">
+    <Boundary labels={['全局错误']} color="pink">
       <div className="space-y-4">
         <div className="text-sm text-vercel-pink">
           <strong className="font-bold">Error:</strong> {error?.message}
         </div>
         <div>
-          <Button onClick={() => reset()}>再次尝试</Button>
+          <Button onClick={() => reset()}>再次尝试!</Button>
         </div>
       </div>
     </Boundary>

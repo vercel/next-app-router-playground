@@ -15,7 +15,6 @@ export default async function Page({ params }: PageProps) {
         <h1 className="text-xl font-medium text-gray-400/80">
           {category.name}
         </h1>
-
         <BuggyButton />
       </div>
 

@@ -1,5 +1,5 @@
 'use client';
-
+import { notFound } from 'next/navigation';
 import Button from '#/ui/Button';
 import React from 'react';
 
@@ -7,7 +7,7 @@ export default function BuggyButton() {
   const [clicked, setClicked] = React.useState(false);
 
   if (clicked) {
-    throw new Error('啊! 出错了...');
+    notFound()
   }
 
   return (
@@ -17,7 +17,7 @@ export default function BuggyButton() {
         setClicked(true);
       }}
     >
-      触发错误
+      触发404
     </Button>
   );
 }

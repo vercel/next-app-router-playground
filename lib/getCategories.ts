@@ -13,33 +13,33 @@ export type Category = {
 
 export const getCategories = cache((): Category[] => [
   {
-    name: 'Electronics',
+    name: '电子产品',
     slug: 'electronics',
     count: 11,
     items: [
-      { name: 'Phones', slug: 'phones', count: 4 },
-      { name: 'Tablets', slug: 'tablets', count: 5 },
-      { name: 'Laptops', slug: 'laptops', count: 2 },
+      { name: '手机', slug: 'phones', count: 4 },
+      { name: '平板', slug: 'tablets', count: 5 },
+      { name: '笔记本电脑', slug: 'laptops', count: 2 },
     ],
   },
   {
-    name: 'Clothing',
+    name: '服装',
     slug: 'clothing',
     count: 12,
     items: [
-      { name: 'Tops', slug: 'tops', count: 3 },
-      { name: 'Shorts', slug: 'shorts', count: 4 },
-      { name: 'Shoes', slug: 'shoes', count: 5 },
+      { name: '上衣', slug: 'tops', count: 3 },
+      { name: '裤子', slug: 'shorts', count: 4 },
+      { name: '鞋子', slug: 'shoes', count: 5 },
     ],
   },
   {
-    name: 'Books',
+    name: '书籍',
     slug: 'books',
     count: 10,
     items: [
-      { name: 'Fiction', slug: 'fiction', count: 5 },
-      { name: 'Biography', slug: 'biography', count: 2 },
-      { name: 'Education', slug: 'education', count: 3 },
+      { name: '小说', slug: 'fiction', count: 5 },
+      { name: '传记', slug: 'biography', count: 2 },
+      { name: '教育', slug: 'education', count: 3 },
     ],
   },
 ]);

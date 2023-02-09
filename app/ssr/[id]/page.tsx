@@ -1,5 +1,7 @@
 import { RenderingInfo } from '#/ui/RenderingInfo';
 
+export const dynamic = 'force-dynamic';
+
 export default async function Page({ params }: { params: { id: string } }) {
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${params.id}`,

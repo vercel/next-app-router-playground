@@ -13,6 +13,13 @@ export type Product = {
   usedPrice?: UsedPrice;
 };
 
+export type PostData={
+  userId:number,
+  id:number,
+  title:string,
+  body:string,
+}
+
 type Price = {
   amount: number;
   currency: Currency;
