@@ -2,7 +2,6 @@ lockfileVersion: 5.4
 
 specifiers:
   '@heroicons/react': 1.0.6
-  '@next/font': 13.1.7-canary.16
   '@tailwindcss/forms': 0.5.3
   '@tailwindcss/line-clamp': 0.4.2
   '@types/ms': 0.7.31
@@ -31,7 +30,6 @@ specifiers:
 
 dependencies:
   '@heroicons/react': 1.0.6_react@18.2.0
-  '@next/font': 13.1.7-canary.16
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.4
   '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.2.4
   clsx: 1.2.1
@@ -1859,13 +1857,6 @@ packages:
     dependencies:
       glob: 7.1.7
     dev: true
-
-  /@next/font/13.1.7-canary.16:
-    resolution:
-      {
-        integrity: sha512-D4U/qkz7dehvtsZlh3OmlSnO3veg9kNSa/ySpi9HNmt1XUnAncjjDxEajQV+BMpbL+p4z4aE/VkZJtU/zk7ZBQ==,
-      }
-    dev: false
 
   /@next/swc-android-arm-eabi/13.1.7-canary.16:
     resolution:
