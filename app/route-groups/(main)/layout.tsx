@@ -1,7 +1,7 @@
-import { fetchCategories } from '#/lib/getCategories';
-import { Boundary } from '#/ui/Boundary';
-import { ClickCounter } from '#/ui/ClickCounter';
-import { TabGroup } from '#/ui/TabGroup';
+import { fetchCategories } from '#/lib/get-categories';
+import { Boundary } from '#/ui/boundary';
+import { ClickCounter } from '#/ui/click-counter';
+import { TabGroup } from '#/ui/tab-group';
 import React from 'react';
 
 export default async function Layout({

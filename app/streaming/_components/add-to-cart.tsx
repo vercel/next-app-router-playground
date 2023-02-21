@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
-import { useCartCount } from './CartCountContext';
+import { useCartCount } from './cart-count-context';
 
 export function AddToCart({ initialCartCount }: { initialCartCount: number }) {
   const router = useRouter();

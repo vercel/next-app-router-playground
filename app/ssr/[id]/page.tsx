@@ -1,4 +1,4 @@
-import { RenderingInfo } from '#/ui/RenderingInfo';
+import { RenderingInfo } from '#/ui/rendering-info';
 
 export default async function Page({ params }: { params: { id: string } }) {
   const res = await fetch(

@@ -1,4 +1,4 @@
-import { Product } from '#/types/Product';
+import { Product } from '#/types/product';
 import { dinero, toUnit, up, type DineroSnapshot } from 'dinero.js';
 
 export const ProductUsedPrice = ({

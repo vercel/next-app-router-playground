@@ -1,10 +1,10 @@
-import { Product } from '#/types/Product';
-import { ProductBestSeller } from '#/ui/ProductBestSeller';
-import { ProductEstimatedArrival } from '#/ui/ProductEstimatedArrival';
-import { ProductLowStockWarning } from '#/ui/ProductLowStockWarning';
-import { ProductPrice } from '#/ui/ProductPrice';
-import { ProductRating } from '#/ui/ProductRating';
-import { ProductUsedPrice } from '#/ui/ProductUsedPrice';
+import { Product } from '#/types/product';
+import { ProductBestSeller } from '#/ui/product-best-seller';
+import { ProductEstimatedArrival } from '#/ui/product-estimated-arrival';
+import { ProductLowStockWarning } from '#/ui/product-low-stock-warning';
+import { ProductPrice } from '#/ui/product-price';
+import { ProductRating } from '#/ui/product-rating';
+import { ProductUsedPrice } from '#/ui/product-used-price';
 import { dinero, type DineroSnapshot } from 'dinero.js';
 import Image from 'next/image';
 import Link from 'next/link';

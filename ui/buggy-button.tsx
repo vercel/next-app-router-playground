@@ -1,6 +1,6 @@
 'use client';
 
-import Button from '#/ui/Button';
+import Button from '#/ui/button';
 import React from 'react';
 
 export default function BuggyButton() {

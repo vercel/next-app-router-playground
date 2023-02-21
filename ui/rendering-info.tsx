@@ -1,4 +1,4 @@
-import { RenderedTimeAgo } from '#/ui/RenderedTimeAgo';
+import { RenderedTimeAgo } from '#/ui/rendered-time-ago';
 
 export function RenderingInfo({
   type,

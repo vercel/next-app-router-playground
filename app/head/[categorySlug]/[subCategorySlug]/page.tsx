@@ -1,5 +1,5 @@
-import { HeadInfo } from '#/app/head/HeadInfo';
-import { fetchSubCategory, PageProps } from '#/lib/getCategories';
+import { HeadInfo } from '#/app/head/head-info';
+import { fetchSubCategory, PageProps } from '#/lib/get-categories';
 
 export default async function Page({ params }: PageProps) {
   const category = await fetchSubCategory(

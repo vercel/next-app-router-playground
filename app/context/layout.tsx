@@ -1,9 +1,9 @@
-import { fetchCategories } from '#/lib/getCategories';
-import { Boundary } from '#/ui/Boundary';
-import { TabGroup } from '#/ui/TabGroup';
-import { CounterProvider } from 'app/context/CounterContext';
+import { fetchCategories } from '#/lib/get-categories';
+import { Boundary } from '#/ui/boundary';
+import { TabGroup } from '#/ui/tab-group';
+import { CounterProvider } from 'app/context/counter-context';
 import React from 'react';
-import ContextClickCounter from './ContextClickCounter';
+import ContextClickCounter from './context-click-counter';
 
 export default async function Layout({
   children,

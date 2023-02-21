@@ -1,4 +1,4 @@
-import { DefaultTags } from '#/ui/DefaultTags';
+import { DefaultTags } from '#/ui/default-tags';
 
 export default function Head() {
   return (
