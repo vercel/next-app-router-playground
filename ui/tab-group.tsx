@@ -1,4 +1,4 @@
-import { Tab } from '#/ui/Tab';
+import { Tab } from '#/ui/tab';
 
 export type Item = {
   text: string;

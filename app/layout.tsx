@@ -1,7 +1,7 @@
 import '#/styles/globals.css';
-import { AddressBar } from '#/ui/AddressBar';
-import { GlobalNav } from '#/ui/GlobalNav';
-import { VercelLogo } from '#/ui/VercelLogo';
+import { AddressBar } from '#/ui/address-bar';
+import { GlobalNav } from '#/ui/global-nav';
+import { VercelLogo } from '#/ui/vercel-logo';
 
 export default function RootLayout({
   children,

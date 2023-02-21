@@ -1,4 +1,4 @@
-import type { Product } from '#/types/Product';
+import type { Product } from '#/types/product';
 import type { NextRequest } from 'next/server';
 
 export const config = {

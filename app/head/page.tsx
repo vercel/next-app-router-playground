@@ -1,5 +1,5 @@
-import { ExternalLink } from '#/ui/ExternalLink';
-import { HeadInfo } from './HeadInfo';
+import { ExternalLink } from '#/ui/external-link';
+import { HeadInfo } from './head-info';
 
 export default function Page() {
   return (

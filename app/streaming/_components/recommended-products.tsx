@@ -1,5 +1,5 @@
-import { Product } from '#/types/Product';
-import { ProductCard } from '#/ui/ProductCard';
+import { Product } from '#/types/product';
+import { ProductCard } from '#/ui/product-card';
 
 export async function RecommendedProducts({
   path,

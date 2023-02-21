@@ -1,6 +1,6 @@
-import { Tab } from '#/ui/Tab';
+import { Tab } from '#/ui/tab';
 import React from 'react';
-import { RandomPostTab } from './RandomPostTab';
+import { RandomPostTab } from './random-post-tab';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

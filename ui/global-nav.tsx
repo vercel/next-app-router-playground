@@ -1,7 +1,7 @@
 'use client';
 
 import { demos, type Item } from '#/lib/demos';
-import { NextLogo } from '#/ui/NextLogo';
+import { NextLogo } from '#/ui/next-logo';
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
 import { MenuAlt2Icon, XIcon } from '@heroicons/react/solid';

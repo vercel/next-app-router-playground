@@ -1,8 +1,8 @@
-import { NextLogo } from '#/ui/NextLogo';
+import { NextLogo } from '#/ui/next-logo';
 import { SearchIcon, ShoppingCartIcon } from '@heroicons/react/solid';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CartCount } from '../_components/CartCount';
+import { CartCount } from './cart-count';
 
 export function Header() {
   return (

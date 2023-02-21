@@ -1,4 +1,4 @@
-import { RenderingInfo } from '#/ui/RenderingInfo';
+import { RenderingInfo } from '#/ui/rendering-info';
 import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
