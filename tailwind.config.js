@@ -12,6 +12,9 @@ module.exports = {
   },
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--primary-font)'],
+      },
       // https://vercel.com/design/color
       colors: {
         gray: colors.zinc,

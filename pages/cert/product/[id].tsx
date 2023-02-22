@@ -67,7 +67,7 @@ export const getStaticProps: GetStaticProps<{ product: GetProduct }> = async (
 
 // Server Side Rendering at runtime
 // export const getServerSideProps: GetServerSideProps<{
-//   product: SingleProduct;
+//   product: GetProduct;
 // }> = async (context) => {
 //   const id = context.params?.id as string;
 //   const product = await getProduct(id);
