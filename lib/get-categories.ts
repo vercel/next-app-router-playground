@@ -1,9 +1,5 @@
 import { cache } from 'react';
 
-export type PageProps = {
-  params?: any;
-  children?: React.ReactNode;
-};
 export type Category = {
   name: string;
   slug: string;
