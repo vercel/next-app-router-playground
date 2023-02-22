@@ -1,8 +1,12 @@
-import { fetchSubCategory, PageProps } from '#/lib/get-categories';
+import { fetchSubCategory } from '#/lib/get-categories';
 import BuggyButton from '#/ui/buggy-button';
 import { SkeletonCard } from '#/ui/skeleton-card';
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({
+  params,
+}: {
+  params: { categorySlug: string; subCategorySlug: string };
+}) {
   const category = await fetchSubCategory(
     params.categorySlug,
     params.subCategorySlug,

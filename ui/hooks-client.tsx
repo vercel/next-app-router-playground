@@ -11,7 +11,7 @@ const HooksClient = () => {
   const pathname = usePathname();
   const selectedLayoutSegments = useSelectedLayoutSegments();
   const searchParams = useSearchParams();
-  const searchParam = searchParams.get('key');
+  const searchParam = searchParams?.get('key');
 
   return (
     <div className="overflow-x-auto rounded-xl py-4 px-2 text-sm text-white [color-scheme:dark]">
@@ -20,7 +20,9 @@ const HooksClient = () => {
           {
             usePathname: pathname,
             selectedLayoutSegments: selectedLayoutSegments,
-            useSearchParams: Object.fromEntries(searchParams.entries()),
+            useSearchParams: searchParams
+              ? Object.fromEntries(searchParams.entries())
+              : {},
             "useSearchParam('key')": searchParam,
             useRouter: {
               push: '(string) => void',

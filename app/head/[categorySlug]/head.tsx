@@ -1,7 +1,11 @@
-import { fetchCategoryBySlug, type PageProps } from '#/lib/get-categories';
+import { fetchCategoryBySlug } from '#/lib/get-categories';
 import { DefaultTags } from '#/ui/default-tags';
 
-export default async function Head({ params }: PageProps) {
+export default async function Head({
+  params,
+}: {
+  params: { categorySlug: string };
+}) {
   const category = await fetchCategoryBySlug(params.categorySlug);
 
   const title = `${category?.name} | Next.js App Directory`;

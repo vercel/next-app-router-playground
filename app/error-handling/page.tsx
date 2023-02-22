@@ -21,7 +21,7 @@ export default function Page() {
           Notice how the error is isolated to that segment, while the rest of
           the app remains interactive.
         </li>
-        <li>Note: Error boundaries don't yet work in development.</li>
+        <li>Note: Error boundaries don&apos;t yet work in development.</li>
       </ul>
 
       <div>
