@@ -1,8 +1,13 @@
-import { fetchCategoryBySlug, type PageProps } from '#/lib/get-categories';
-import { ClickCounter } from '#/ui/click-counter';
+import { fetchCategoryBySlug } from '#/lib/get-categories';
 import { TabGroup } from '#/ui/tab-group';
 
-export default async function Layout({ children, params }: PageProps) {
+export default async function Layout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: { categorySlug: string };
+}) {
   const category = await fetchCategoryBySlug(params.categorySlug);
   if (!category) return null;
 
