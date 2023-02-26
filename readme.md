@@ -1,6 +1,6 @@
 # Next.js App Router Playground
 
-Next.js introduced the App ROuter (beta). This is the result of the [Layouts RFC](https://nextjs.org/blog/layouts-rfc) previously published for community feedback. This includes support for:
+Next.js introduced the App Router (beta). This is the result of the [Layouts RFC](https://nextjs.org/blog/layouts-rfc) previously published for community feedback. This includes support for:
 
 - **Layouts:** Easily share UI while preserving state and avoiding re-renders.
 - **Server Components:** Making server-first the default for the most dynamic applications.
