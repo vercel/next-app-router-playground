@@ -1,6 +1,10 @@
 import { TabGroup } from '#/ui/tab-group';
 import React from 'react';
 
+export const metadata = {
+  title: 'Styling',
+};
+
 const items = [
   {
     text: 'Global CSS',

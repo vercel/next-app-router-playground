@@ -1,6 +1,10 @@
 import { TabGroup } from '#/ui/tab-group';
 import React from 'react';
 
+export const metadata = {
+  title: 'Server Side Rendering (SSR)',
+};
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   const ids = [{ id: '1' }, { id: '2' }, { id: '3' }];
 

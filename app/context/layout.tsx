@@ -5,6 +5,10 @@ import { CounterProvider } from 'app/context/counter-context';
 import React from 'react';
 import ContextClickCounter from './context-click-counter';
 
+export const metadata = {
+  title: 'Client Context',
+};
+
 export default async function Layout({
   children,
 }: {
