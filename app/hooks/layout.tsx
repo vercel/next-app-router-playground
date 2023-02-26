@@ -6,6 +6,10 @@ import HooksServer from '#/ui/hooks-server';
 import { TabGroup } from '#/ui/tab-group';
 import React from 'react';
 
+export const metadata = {
+  title: 'Hooks',
+};
+
 export default async function Layout({
   children,
 }: {

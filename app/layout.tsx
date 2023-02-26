@@ -4,7 +4,10 @@ import { GlobalNav } from '#/ui/global-nav';
 import { VercelLogo } from '#/ui/vercel-logo';
 
 export const metadata = {
-  title: 'Next.js App Router',
+  title: {
+    default: 'Next.js App Router',
+    template: '%s | Next.js App Router',
+  },
   description:
     'A playground to explore new Next.js App Router features such as nested layouts, instant loading states, streaming, and component level data fetching.',
 };

@@ -2,6 +2,10 @@ import { Tab } from '#/ui/tab';
 import React from 'react';
 import { RandomPostTab } from './random-post-tab';
 
+export const metadata = {
+  title: 'Static Site Generation (SSG)',
+};
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="space-y-9">

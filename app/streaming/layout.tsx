@@ -1,6 +1,10 @@
 import { TabGroup } from '#/ui/tab-group';
 import React from 'react';
 
+export const metadata = {
+  title: 'Streaming',
+};
+
 export default async function Layout({
   children,
 }: {

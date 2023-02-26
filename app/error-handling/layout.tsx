@@ -3,6 +3,10 @@ import { ClickCounter } from '#/ui/click-counter';
 import { TabGroup } from '#/ui/tab-group';
 import React from 'react';
 
+export const metadata = {
+  title: 'Error Handling',
+};
+
 export default async function Layout({
   children,
 }: {
