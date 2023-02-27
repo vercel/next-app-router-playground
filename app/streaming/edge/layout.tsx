@@ -13,18 +13,20 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <ul className="mb-12 list-disc space-y-2 pl-4 text-sm text-gray-300">
-        <li>
-          Primary product information is loaded first as part of the initial
-          response.
-        </li>
-        <li>
-          Secondary, more personalized details (that might be slower) like ship
-          date, other recommended products, and customer reviews are
-          progressively streamed in.
-        </li>
-        <li>Try refreshing or navigating to other recommended products.</li>
-      </ul>
+      <div className="prose prose-sm prose-invert mb-8 max-w-none">
+        <ul>
+          <li>
+            Primary product information is loaded first as part of the initial
+            response.
+          </li>
+          <li>
+            Secondary, more personalized details (that might be slower) like
+            ship date, other recommended products, and customer reviews are
+            progressively streamed in.
+          </li>
+          <li>Try refreshing or navigating to other recommended products.</li>
+        </ul>
+      </div>
 
       <Boundary animateRerendering={false} labels={['Demo']} size="small">
         <CartCountProvider initialCartCount={cartCount}>

@@ -1,6 +1,7 @@
 import { fetchCategoryBySlug } from '#/lib/get-categories';
 import { ClickCounter } from '#/ui/click-counter';
 import { TabGroup } from '#/ui/tab-group';
+import { notFound } from 'next/navigation';
 
 export default async function Layout({
   children,
@@ -10,7 +11,7 @@ export default async function Layout({
   params: { categorySlug: string };
 }) {
   const category = await fetchCategoryBySlug(params.categorySlug);
-  if (!category) return null;
+  if (!category) notFound();
 
   return (
     <div className="space-y-9">

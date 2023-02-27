@@ -1,5 +1,6 @@
 import { fetchCategoryBySlug, type Category } from '#/lib/get-categories';
 import { SkeletonCard } from '#/ui/skeleton-card';
+import { notFound } from 'next/navigation';
 
 const fetchCategory = async (
   categorySlug: string | undefined,
@@ -18,7 +19,7 @@ export default async function Page({
   params: { categorySlug: string };
 }) {
   const category = await fetchCategory(params.categorySlug);
-  if (!category) return null;
+  if (!category) notFound();
 
   return (
     <div className="space-y-4">
