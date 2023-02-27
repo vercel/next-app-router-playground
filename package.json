@@ -33,6 +33,7 @@
     "use-count-up": "3.0.1"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "0.5.9",
     "@types/ms": "0.7.31",
     "@types/node": "18.11.17",
     "@types/react": "18.0.26",
