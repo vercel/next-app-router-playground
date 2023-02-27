@@ -10,11 +10,10 @@ export default function Error({ error, reset }: any) {
   }, [error]);
 
   return (
-    <Boundary labels={['Home page Error UI']} color="pink">
+    <Boundary labels={['./error.tsx']} color="pink">
       <div className="space-y-4">
-        <div className="text-sm text-vercel-pink">
-          <strong className="font-bold">Error:</strong> {error?.message}
-        </div>
+        <h2 className="text-lg font-bold">Error</h2>
+        <p className="text-sm">{error?.message}</p>
         <div>
           <Button onClick={() => reset()}>Try Again</Button>
         </div>

@@ -1,6 +1,7 @@
 import { fetchCategories } from '#/lib/get-categories';
 import { ClickCounter } from '#/ui/click-counter';
 import { TabGroup } from '#/ui/tab-group';
+import { notFound } from 'next/navigation';
 import React from 'react';
 
 export const metadata = {
@@ -13,7 +14,7 @@ export default async function Layout({
   children: React.ReactNode;
 }) {
   const categories = await fetchCategories();
-  if (!categories) return null;
+  if (!categories) notFound();
 
   return (
     <div className="space-y-9">

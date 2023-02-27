@@ -1,6 +1,7 @@
 import { fetchSubCategory } from '#/lib/get-categories';
 import BuggyButton from '#/ui/buggy-button';
 import { SkeletonCard } from '#/ui/skeleton-card';
+import { notFound } from 'next/navigation';
 
 export default async function Page({
   params,
@@ -11,17 +12,13 @@ export default async function Page({
     params.categorySlug,
     params.subCategorySlug,
   );
-  if (!category) return null;
+  if (!category) notFound();
 
   return (
     <div className="space-y-4">
-      <div className="flex justify-between gap-x-3">
-        <h1 className="text-xl font-medium text-gray-400/80">
-          {category.name}
-        </h1>
+      <h1 className="text-xl font-medium text-gray-400/80">{category.name}</h1>
 
-        <BuggyButton />
-      </div>
+      <BuggyButton />
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {Array.from({ length: category.count }).map((_, i) => (

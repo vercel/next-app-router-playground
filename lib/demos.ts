@@ -18,12 +18,6 @@ export const demos: { name: string; items: Item[] }[] = [
         slug: 'route-groups',
         description: 'Organize routes without affecting URL paths',
       },
-      {
-        name: 'Streaming with Suspense',
-        slug: 'streaming',
-        description:
-          'Streaming data fetching from the server with React Suspense',
-      },
     ],
   },
   {
@@ -50,6 +44,12 @@ export const demos: { name: string; items: Item[] }[] = [
   {
     name: 'Data Fetching',
     items: [
+      {
+        name: 'Streaming with Suspense',
+        slug: 'streaming',
+        description:
+          'Streaming data fetching from the server with React Suspense',
+      },
       {
         name: 'Static-Site Generation',
         slug: 'ssg',

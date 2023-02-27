@@ -1,5 +1,6 @@
 import { fetchCategoryBySlug } from '#/lib/get-categories';
 import { Boundary } from '#/ui/boundary';
+import { notFound } from 'next/navigation';
 import { Counter } from '../context-click-counter';
 
 export default async function Page({
@@ -8,7 +9,7 @@ export default async function Page({
   params: { categorySlug: string };
 }) {
   const category = await fetchCategoryBySlug(params.categorySlug);
-  if (!category) return null;
+  if (!category) notFound();
 
   return (
     <Boundary labels={['Page [Server Component]']} animateRerendering={false}>

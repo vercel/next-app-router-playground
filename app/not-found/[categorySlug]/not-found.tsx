@@ -2,7 +2,7 @@ import { Boundary } from '#/ui/boundary';
 
 export default function NotFound() {
   return (
-    <Boundary labels={['[categorySlug]/not-found.tsx']} color="pink">
+    <Boundary labels={['./[categorySlug]/not-found.tsx']} color="pink">
       <div className="space-y-3 text-vercel-pink">
         <h2 className="text-lg font-bold">Category Not Found</h2>
 
