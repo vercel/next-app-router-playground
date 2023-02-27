@@ -33,12 +33,17 @@ export const demos: { name: string; items: Item[] }[] = [
         name: 'Loading',
         slug: 'loading',
         description:
-          'Create meaningful loading UI for specific parts of an app',
+          'Create meaningful Loading UI for specific parts of an app',
       },
       {
         name: 'Error',
         slug: 'error-handling',
-        description: 'Create error UI for specific parts of an app',
+        description: 'Create Error UI for specific parts of an app',
+      },
+      {
+        name: 'Not Found',
+        slug: 'not-found',
+        description: 'Create Not Found UI for specific parts of an app',
       },
     ],
   },
