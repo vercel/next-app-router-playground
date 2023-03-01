@@ -86,11 +86,16 @@ export const demos: { name: string; items: Item[] }[] = [
     ],
   },
   {
-    name: 'Styling',
+    name: 'Misc',
     items: [
       {
         name: 'CSS and CSS-in-JS',
         slug: 'styling',
+        description: 'Preview the supported styling solutions',
+      },
+      {
+        name: 'Code Snippets',
+        slug: 'snippets',
         description: 'Preview the supported styling solutions',
       },
     ],
