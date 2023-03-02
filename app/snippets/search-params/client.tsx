@@ -1,12 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import {
-  usePathname,
-  useRouter,
-  useSearchParams,
-  type ReadonlyURLSearchParams,
-} from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useMemo } from 'react';
 
 export default function Client({
@@ -23,11 +18,11 @@ export default function Client({
   const router = useRouter();
 
   const selectedOptions = useMemo<URLSearchParams>(() => {
-    // get the initial selected options from the URL's searchParams
+    // Get the initial selected options from the URL's searchParams
     const params = new URLSearchParams(searchParams);
 
-    // preselect the first option of each variant if its not
-    // included in the searchParams
+    // Preselect the first value of each option if its not
+    // included in the current searchParams
     options.forEach((option) => {
       if (!searchParams.has(option.value)) {
         params.set(option.value, option.items[0]);
@@ -39,11 +34,12 @@ export default function Client({
 
   const updateSearchParam = useCallback(
     (name: string, value: string) => {
-      // temporarily clone current params for easier manipulation
+      // Merge the current searchParams with the new param set
       const params = new URLSearchParams(searchParams);
-      // add the new param set to current params
       params.set(name, value);
 
+      // Perform a new navigation to the updated URL. The current `page.js` will
+      // receive a new `searchParams` prop with the updated values.
       router.push(pathname + '?' + params.toString()); // or router.replace()
     },
     [router, pathname, searchParams],

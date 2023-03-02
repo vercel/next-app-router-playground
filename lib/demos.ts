@@ -96,7 +96,7 @@ export const demos: { name: string; items: Item[] }[] = [
       {
         name: 'Code Snippets',
         slug: 'snippets',
-        description: 'Preview the supported styling solutions',
+        description: 'A collection of useful App Router code snippets',
       },
     ],
   },
