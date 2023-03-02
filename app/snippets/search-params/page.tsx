@@ -28,12 +28,15 @@ export default async function Page({ searchParams }: { searchParams: any }) {
   return (
     <div className="prose prose-sm prose-invert max-w-none">
       <h1 className="text-lg font-bold">
-        Updating the URL&apos;s Search Params
+        Updating <code>searchParams</code>
       </h1>
       <p>
-        `useSearchParams` returns a read only version of URLSearchParams. To
-        update the URL&apos;s searchParams you can use{' '}
-        <code>useRouter&#40;&#41;</code> or <code>&lt;Link&gt;</code>.
+        The <code>useSearchParams</code> hook returns a read only version of{' '}
+        <code>URLSearchParams</code>. You can use{' '}
+        <code>useRouter&#40;&#41;</code> or <code>&lt;Link&gt;</code> to set new{' '}
+        <code>searchParams</code>. After a navigation is performed, the current{' '}
+        <code>page.js</code> will receive an updated <code>searchParams</code>{' '}
+        prop.
       </p>
       <div className="mt-12 space-y-12">
         <div className="space-y-4">
