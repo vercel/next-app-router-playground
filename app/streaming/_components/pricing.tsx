@@ -30,6 +30,11 @@ function LoadingDots() {
 async function UserSpecificDetails({ productId }: { productId: string }) {
   const data = await fetch(
     `https://app-dir.vercel.app/api/products?id=${productId}&delay=500&filter=price,usedPrice,leadTime,stock`,
+    {
+      // We intentionally disable Next.js Cache to better demo
+      // streaming
+      cache: 'no-store',
+    },
   );
 
   const product = (await data.json()) as Product;
