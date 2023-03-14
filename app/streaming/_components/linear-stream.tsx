@@ -1,5 +1,3 @@
-'use server';
-
 import { Suspense } from 'react';
 
 const hideSuccessors = `*:has(.linearStreamSentitel) ~ *, .linearStreamSentitel ~ *, .linearStreamSentitel {
@@ -10,11 +8,7 @@ const hideSuccessors = `*:has(.linearStreamSentitel) ~ *, .linearStreamSentitel 
  * Streams like in PHP: The component's children and all successors are hidden while we are
  * waiting for the children to finish loading.
  */
-export async function LinearStream({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function LinearStream({ children }: { children: React.ReactNode }) {
   return (
     <Suspense
       fallback={
