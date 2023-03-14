@@ -12,7 +12,14 @@ export default async function Page({ params }: { params: { id: string } }) {
     <div className="space-y-8 lg:space-y-14">
       {/* @ts-expect-error Async Server Component */}
       <SingleProduct
-        data={fetch(`https://app-dir.vercel.app/api/products?id=${params.id}`)}
+        data={fetch(
+          `https://app-dir.vercel.app/api/products?delay=3000&id=${params.id}`,
+          {
+            // We intentionally disable Next.js Cache to better demo
+            // streaming
+            cache: 'no-store',
+          },
+        )}
       />
 
       <div className="relative">

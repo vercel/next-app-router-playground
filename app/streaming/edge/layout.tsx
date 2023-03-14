@@ -3,6 +3,7 @@ import { cookies } from 'next/headers';
 import React from 'react';
 import { CartCountProvider } from '../_components/cart-count-context';
 import { Header } from '../_components/header';
+import { LinearStream } from '../_components/linear-stream';
 
 export const metadata = {
   title: 'Streaming (Edge Runtime)',
@@ -33,7 +34,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="space-y-10">
             <Header />
 
-            {children}
+            <LinearStream>{children}</LinearStream>
           </div>
         </CartCountProvider>
       </Boundary>
