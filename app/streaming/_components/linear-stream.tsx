@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-const hideSuccessors = `*:has(.linearStreamSentitel) ~ *, .linearStreamSentitel ~ *, .linearStreamSentitel {
+const hideSuccessors = `*:has(.linearStreamSentinel) ~ *, .linearStreamSentinel ~ *, .linearStreamSentinel {
   display: none
 }`;
 
@@ -14,7 +14,7 @@ export function LinearStream({ children }: { children: React.ReactNode }) {
       fallback={
         <>
           <style dangerouslySetInnerHTML={{ __html: hideSuccessors }}></style>
-          <div className="linearStreamSentitel" />
+          <div className="linearStreamSentinel" />
         </>
       }
     >
