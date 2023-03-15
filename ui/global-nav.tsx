@@ -68,8 +68,8 @@ export function GlobalNav() {
             );
           })}
         </nav>
+        <Byline />
       </div>
-      <Byline />
     </div>
   );
 }
