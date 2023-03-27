@@ -1,4 +1,5 @@
 import { getCategories, getCategory } from '#/app/api/categories/getCategories';
+import { LayoutHooks } from '#/app/hooks/_components/router-context-layout';
 import { ClickCounter } from '#/ui/click-counter';
 import { TabGroup } from '#/ui/tab-group';
 
@@ -32,6 +33,8 @@ export default async function Layout({
           <ClickCounter />
         </div>
       </div>
+
+      <LayoutHooks />
 
       <div>{children}</div>
     </div>

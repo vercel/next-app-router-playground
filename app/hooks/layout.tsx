@@ -1,10 +1,7 @@
 import { getCategories } from '#/app/api/categories/getCategories';
-import { Boundary } from '#/ui/boundary';
+import { LayoutHooks } from '#/app/hooks/_components/router-context-layout';
 import { ClickCounter } from '#/ui/click-counter';
-import HooksClient from '#/ui/hooks-client';
-import HooksServer from '#/ui/hooks-server';
 import { TabGroup } from '#/ui/tab-group';
-import { notFound } from 'next/navigation';
 import React from 'react';
 
 export const metadata = {
@@ -39,12 +36,7 @@ export default async function Layout({
         </div>
       </div>
 
-      <Boundary labels={['Client Component Hooks']}>
-        <HooksClient />
-      </Boundary>
-      <Boundary labels={['Server Component Hooks']}>
-        <HooksServer />
-      </Boundary>
+      <LayoutHooks />
 
       <div>{children}</div>
     </div>

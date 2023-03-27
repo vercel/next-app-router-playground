@@ -70,13 +70,6 @@ export const demos: { name: string; items: Item[] }[] = [
   {
     name: 'Components',
     items: [
-      // TODO: Re-add this page once hooks have been updated.
-      // {
-      //   name: 'Hooks',
-      //   slug: 'hooks',
-      //   description:
-      //     'Preview the hooks available for Client and Server Components',
-      // },
       {
         name: 'Client Context',
         slug: 'context',
@@ -88,6 +81,11 @@ export const demos: { name: string; items: Item[] }[] = [
   {
     name: 'Misc',
     items: [
+      {
+        name: 'Client Component Hooks',
+        slug: 'hooks',
+        description: 'Preview the routing hooks available in Client Components',
+      },
       {
         name: 'CSS and CSS-in-JS',
         slug: 'styling',
