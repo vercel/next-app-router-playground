@@ -1,7 +1,6 @@
-import { fetchCategoryBySlug } from '#/lib/get-categories';
+import { getCategories, getCategory } from '#/app/api/categories/getCategories';
 import { ClickCounter } from '#/ui/click-counter';
 import { TabGroup } from '#/ui/tab-group';
-import { notFound } from 'next/navigation';
 
 export default async function Layout({
   children,
@@ -10,8 +9,9 @@ export default async function Layout({
   children: React.ReactNode;
   params: { categorySlug: string };
 }) {
-  const category = await fetchCategoryBySlug(params.categorySlug);
-  if (!category) notFound();
+  const category = await getCategory({ slug: params.categorySlug });
+  const categories = await getCategories({ parent: params.categorySlug });
+
   return (
     <div className="space-y-9">
       <div>
@@ -22,7 +22,7 @@ export default async function Layout({
               {
                 text: 'All',
               },
-              ...category.items.map((x) => ({
+              ...categories.map((x) => ({
                 text: x.name,
                 slug: x.slug,
               })),

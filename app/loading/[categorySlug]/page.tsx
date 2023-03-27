@@ -1,25 +1,35 @@
-import { fetchCategoryBySlug, type Category } from '#/lib/get-categories';
+import type { Category } from '#/app/api/categories/category';
+import { getBaseUrl } from '#/lib/getBaseUrl';
 import { SkeletonCard } from '#/ui/skeleton-card';
 import { notFound } from 'next/navigation';
-
-const fetchCategory = async (
-  categorySlug: string | undefined,
-): Promise<Category | undefined> => {
-  // artificial delay
-  await new Promise((resolve) => setTimeout(resolve, 3000));
-
-  if (!categorySlug) return;
-
-  return await fetchCategoryBySlug(categorySlug);
-};
 
 export default async function Page({
   params,
 }: {
   params: { categorySlug: string };
 }) {
-  const category = await fetchCategory(params.categorySlug);
-  if (!category) notFound();
+  const res = await fetch(
+    // We intentionally delay the reponse to simulate a slow data
+    // request that would benefit from `loading.js`
+    `${getBaseUrl()}/api/categories?delay=1000&slug=${params.categorySlug}`,
+    {
+      // We intentionally disable Next.js Cache to better demo
+      // `loading.js`
+      cache: 'no-cache',
+    },
+  );
+
+  if (!res.ok) {
+    // Render the closest `error.js` Error Boundary
+    throw new Error('Something went wrong!');
+  }
+
+  const category = (await res.json()) as Category;
+
+  if (!category) {
+    // Render the closest `not-found.js` Error Boundary
+    notFound();
+  }
 
   return (
     <div className="space-y-4">

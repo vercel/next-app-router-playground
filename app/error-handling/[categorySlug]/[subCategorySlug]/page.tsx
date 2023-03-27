@@ -1,4 +1,4 @@
-import { fetchSubCategory } from '#/lib/get-categories';
+import { getCategory } from '#/app/api/categories/getCategories';
 import BuggyButton from '#/ui/buggy-button';
 import { SkeletonCard } from '#/ui/skeleton-card';
 import { notFound } from 'next/navigation';
@@ -8,11 +8,7 @@ export default async function Page({
 }: {
   params: { categorySlug: string; subCategorySlug: string };
 }) {
-  const category = await fetchSubCategory(
-    params.categorySlug,
-    params.subCategorySlug,
-  );
-  if (!category) notFound();
+  const category = await getCategory({ slug: params.subCategorySlug });
 
   return (
     <div className="space-y-4">

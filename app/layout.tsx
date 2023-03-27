@@ -2,8 +2,9 @@ import '#/styles/globals.css';
 import { AddressBar } from '#/ui/address-bar';
 import Byline from '#/ui/byline';
 import { GlobalNav } from '#/ui/global-nav';
+import { Metadata } from 'next';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: {
     default: 'Next.js App Router',
     template: '%s | Next.js App Router',

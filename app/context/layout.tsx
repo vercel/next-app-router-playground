@@ -1,4 +1,4 @@
-import { fetchCategories } from '#/lib/get-categories';
+import { getCategories } from '#/app/api/categories/getCategories';
 import { Boundary } from '#/ui/boundary';
 import { TabGroup } from '#/ui/tab-group';
 import { CounterProvider } from 'app/context/counter-context';
@@ -14,7 +14,7 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  const categories = await fetchCategories();
+  const categories = await getCategories();
   return (
     <Boundary
       labels={['Server Component Boundary']}
