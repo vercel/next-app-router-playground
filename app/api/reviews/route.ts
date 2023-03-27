@@ -1,14 +1,13 @@
-import { NextRequest } from 'next/server';
+import { Review } from '#/app/api/reviews/review';
 
-export const config = {
-  runtime: 'edge',
-};
+export const runtime = 'edge';
 
-export default async function handler(req: NextRequest) {
-  const { searchParams } = new URL(req.url);
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
 
+  // We sometimes artificially delay a reponse for demo purposes.
+  // Don't do this in real life :)
   const delay = searchParams.get('delay');
-
   if (delay) {
     await new Promise((resolve) => setTimeout(resolve, Number(delay)));
   }
@@ -21,7 +20,7 @@ export default async function handler(req: NextRequest) {
   });
 }
 
-const reviews = [
+const reviews: Review[] = [
   {
     id: '1',
     name: 'Nullam Duis',

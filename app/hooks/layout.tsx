@@ -1,4 +1,4 @@
-import { fetchCategories } from '#/lib/get-categories';
+import { getCategories } from '#/app/api/categories/getCategories';
 import { Boundary } from '#/ui/boundary';
 import { ClickCounter } from '#/ui/click-counter';
 import HooksClient from '#/ui/hooks-client';
@@ -16,8 +16,7 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  const categories = await fetchCategories();
-  if (!categories) notFound();
+  const categories = await getCategories();
 
   return (
     <div className="space-y-9">

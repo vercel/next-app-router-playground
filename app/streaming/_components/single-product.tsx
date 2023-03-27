@@ -1,5 +1,5 @@
 import { Pricing } from '#/app/streaming/_components/pricing';
-import type { Product } from '#/types/product';
+import type { Product } from '#/app/api/products/product';
 import { ProductRating } from '#/ui/product-rating';
 import { cookies } from 'next/headers';
 import Image from 'next/image';

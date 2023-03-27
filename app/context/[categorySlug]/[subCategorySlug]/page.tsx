@@ -1,4 +1,4 @@
-import { fetchSubCategory } from '#/lib/get-categories';
+import { getCategory } from '#/app/api/categories/getCategories';
 import { Boundary } from '#/ui/boundary';
 import { notFound } from 'next/navigation';
 import { Counter } from '../../context-click-counter';
@@ -8,11 +8,7 @@ export default async function Page({
 }: {
   params: { categorySlug: string; subCategorySlug: string };
 }) {
-  const category = await fetchSubCategory(
-    params.categorySlug,
-    params.subCategorySlug,
-  );
-  if (!category) notFound();
+  const category = await getCategory({ slug: params.subCategorySlug });
 
   return (
     <Boundary labels={['Page [Server Component]']} animateRerendering={false}>
