@@ -25,6 +25,7 @@ specifiers:
   prettier-plugin-tailwindcss: 0.2.1
   react: 18.2.0
   react-dom: 18.2.0
+  server-only: 0.0.1
   styled-components: 6.0.0-beta.2
   tailwindcss: 3.2.4
   typescript: 4.9.4
@@ -42,6 +43,7 @@ dependencies:
   next: 13.2.5-canary.19_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  server-only: 0.0.1
   styled-components: 6.0.0-beta.2_biqbaboplfbrettd7655fr4n2y
   use-count-up: 3.0.1_react@18.2.0
 
@@ -3855,6 +3857,10 @@ packages:
     dependencies:
       lru-cache: 6.0.0
     dev: true
+
+  /server-only/0.0.1:
+    resolution: {integrity: sha512-qepMx2JxAa5jjfzxG79yPPq+8BuFToHd1hm7kI+Z4zAq1ftQiP7HcxMhDDItrbtwVeLg/cY2JnKnrcFkmiswNA==}
+    dev: false
 
   /shallowequal/1.1.0:
     resolution: {integrity: sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==}
