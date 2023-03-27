@@ -1,4 +1,4 @@
-import type { Review } from '#/types/review';
+import type { Review } from '#/app/api/reviews/review';
 import { ProductRating } from '#/ui/product-rating';
 
 export const ProductReviewCard = ({ review }: { review: Review }) => {

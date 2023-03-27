@@ -1,4 +1,4 @@
-import type { Review } from '#/types/review';
+import type { Review } from '#/app/api/reviews/review';
 import { ProductReviewCard } from '#/ui/product-review-card';
 
 export async function Reviews({ data }: { data: Promise<Response> }) {

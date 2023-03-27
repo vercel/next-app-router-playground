@@ -1,22 +1,17 @@
-import { fetchCategoryBySlug } from '#/lib/get-categories';
+import { getCategory } from '#/app/api/categories/getCategories';
 import { SkeletonCard } from '#/ui/skeleton-card';
-import { notFound } from 'next/navigation';
 
 export default async function Page({
   params,
 }: {
   params: { categorySlug: string };
 }) {
-  const category = await fetchCategoryBySlug(params.categorySlug);
-
-  // If this category is not found, render `not-found.tsx` in the
-  // **same** segment, if it exists, or closest parent segment, if
-  // it does not.
-  if (!category) notFound();
-  // Note: In this particular segment, because `[categorySlug]/layout.tsx`
-  // triggers it's own `notFound()`, the `not-found.tsx` in the parent
-  // segment and not the sibling segment will be rendered. See th ecomment
-  // in the Layout for an explanation.
+  // - `getCategory()` returns `notFound()` if the fetched data is `null` or `undefined`.
+  // - `notFound()` renders the closest `not-found.tsx` in the route segment hierarchy.
+  // - For `layout.js`, the closest `not-found.tsx` starts from the parent segment.
+  // - For `page.js`, the closest `not-found.tsx` starts from the same segment.
+  // - Learn more: https://beta.nextjs.org/docs/routing/fundamentals#component-hierarchy.
+  const category = await getCategory({ slug: params.categorySlug });
 
   return (
     <div className="space-y-4">

@@ -1,4 +1,4 @@
-import type { Product } from '#/types/product';
+import type { Product } from '#/app/api/products/product';
 import { Ping } from '#/ui/ping';
 import { ProductEstimatedArrival } from '#/ui/product-estimated-arrival';
 import { ProductLowStockWarning } from '#/ui/product-low-stock-warning';

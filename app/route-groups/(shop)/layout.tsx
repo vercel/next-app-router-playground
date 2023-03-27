@@ -1,4 +1,4 @@
-import { fetchCategories } from '#/lib/get-categories';
+import { getCategories } from '#/app/api/categories/getCategories';
 import { Boundary } from '#/ui/boundary';
 import { ClickCounter } from '#/ui/click-counter';
 import { TabGroup } from '#/ui/tab-group';
@@ -9,7 +9,8 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  const categories = await fetchCategories();
+  const categories = await getCategories();
+
   return (
     <Boundary labels={['shop layout']} color="cyan" animateRerendering={false}>
       <div className="space-y-9">
