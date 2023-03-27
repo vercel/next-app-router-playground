@@ -1,30 +1,23 @@
-import type { Product } from '#/types/product';
-import type { NextRequest } from 'next/server';
+import type { Product } from '#/app/api/products/product';
 
-export const config = {
-  runtime: 'edge',
-};
+export const runtime = 'edge';
 
-export default async function handler(req: NextRequest) {
-  const { searchParams } = new URL(req.url);
-  const id = searchParams.get('id');
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+
+  // We sometimes artificially delay a reponse for demo purposes.
+  // Don't do this in real life :)
   const delay = searchParams.get('delay');
-
   if (delay) {
     await new Promise((resolve) => setTimeout(resolve, Number(delay)));
   }
 
+  const id = searchParams.get('id');
   if (id) {
     let product = data.find((product) => product.id === id);
 
-    if (!product) {
-      return new Response(null, {
-        status: 404,
-      });
-    }
-
     const fields = searchParams.get('fields');
-    if (fields) {
+    if (product && fields) {
       product = fields.split(',').reduce((acc, field) => {
         // @ts-ignore
         acc[field] = product[field];
@@ -33,7 +26,7 @@ export default async function handler(req: NextRequest) {
       }, {} as Product);
     }
 
-    return new Response(JSON.stringify(product), {
+    return new Response(JSON.stringify(product ?? null), {
       status: 200,
       headers: {
         'content-type': 'application/json',
@@ -41,12 +34,10 @@ export default async function handler(req: NextRequest) {
     });
   }
 
-  let products = data;
-
   const filter = searchParams.get('filter');
-  if (filter) {
-    products = products.filter((product) => product.id !== filter);
-  }
+  const products = filter
+    ? data.filter((product) => product.id !== filter)
+    : data;
 
   return new Response(JSON.stringify(products), {
     status: 200,
