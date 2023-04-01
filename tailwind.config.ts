@@ -1,7 +1,7 @@
-const colors = require('tailwindcss/colors');
+import colors from 'tailwindcss/colors';
+import { Config } from 'tailwindcss';
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
     './app/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -77,21 +77,17 @@ module.exports = {
         },
         fadeToTransparent: {
           '0%': {
-            opacity: 1,
+            opacity: '1',
           },
           '40%': {
-            opacity: 1,
+            opacity: '1',
           },
           '100%': {
-            opacity: 0,
+            opacity: '0',
           },
         },
       }),
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/line-clamp'),
-  ],
-};
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
+} satisfies Config;
