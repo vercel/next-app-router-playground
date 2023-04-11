@@ -6,16 +6,15 @@ export default function Page() {
       <h1 className="text-xl font-bold">Incremental Static Regeneration</h1>
 
       <ul>
-        <li>
-          In this example, three posts that were statically pre-rendered at
-          build time are periodically revalidated every 10 seconds.
-        </li>
+        <li>In this example, three posts fetch data using granular ISR.</li>
+        <li>Caches responses are fresh for 10 seconds.</li>
         <li>
           Try navigating to each post and noting the timestamp of when the page
           was rendered. Refresh the page after 10 seconds to trigger a
           revalidation for the next request. Refresh again to see the
           revalidated page.
         </li>
+        <li>Note that the fetch cache can be persisted across builds.</li>
       </ul>
 
       <div className="flex gap-2">

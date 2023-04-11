@@ -51,12 +51,12 @@ export const demos: { name: string; items: Item[] }[] = [
           'Streaming data fetching from the server with React Suspense',
       },
       {
-        name: 'Static-Site Generation',
+        name: 'Static Data',
         slug: 'ssg',
         description: 'Generate static pages',
       },
       {
-        name: 'Server-Side Rendering',
+        name: 'Dynamic Data',
         slug: 'ssr',
         description: 'Server-render pages',
       },

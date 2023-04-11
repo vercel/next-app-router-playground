@@ -3,9 +3,9 @@ import { Config } from 'tailwindcss';
 
 export default {
   content: [
-    './app/**/*.{js,ts,jsx,tsx}',
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './ui/**/*.{js,ts,jsx,tsx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './ui/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   future: {
     hoverOnlyWhenSupported: true,
@@ -13,9 +13,6 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
-      // fontFamily: {
-      //   sans: ['var(--primary-font)'],
-      // },
       // https://vercel.com/design/color
       colors: {
         gray: colors.zinc,

@@ -1,5 +1,5 @@
 import { Layout } from '#/ui/page-directory/layout';
-import { Inter, Karla } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import { AppProps } from 'next/app';
 import 'styles/globals.css';
 

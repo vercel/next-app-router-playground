@@ -3,19 +3,16 @@ import { ExternalLink } from '#/ui/external-link';
 export default function Page() {
   return (
     <div className="prose prose-sm prose-invert max-w-none">
-      <h1 className="text-xl font-bold">Server-side rendering</h1>
+      <h1 className="text-xl font-bold">Dynamic Data</h1>
 
       <ul>
         <li>
-          With server-side rendering, the HTML of the page is generated on a
-          server for each request. The generated HTML, JSON data, and JavaScript
-          instructions to make the page interactive are then sent to the client.
+          Dynamic, or server-rendered data, is fetched fresh on each request.
         </li>
+        <li>In this example, the post responses are explicitly not cached.</li>
         <li>
-          On the client, the HTML is used to show a fast non-interactive page,
-          while React uses the JSON data and JavaScript instructions to make
-          components interactive (for example, attaching event handlers to a
-          button). This process is called hydration.
+          Try navigating to each post and noting the timestamp of when the page
+          was rendered.
         </li>
       </ul>
 

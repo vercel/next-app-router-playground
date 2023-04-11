@@ -2,7 +2,6 @@ lockfileVersion: 5.4
 
 specifiers:
   '@heroicons/react': 1.0.6
-  '@next/font': 13.3.1-canary.3
   '@tailwindcss/forms': 0.5.3
   '@tailwindcss/typography': 0.5.9
   '@types/ms': 0.7.31
@@ -32,7 +31,6 @@ specifiers:
 
 dependencies:
   '@heroicons/react': 1.0.6_react@18.2.0
-  '@next/font': 13.3.1-canary.3
   clsx: 1.2.1
   date-fns: 2.29.3
   dinero.js: 2.0.0-alpha.8
@@ -1464,10 +1462,6 @@ packages:
     dependencies:
       glob: 7.1.7
     dev: true
-
-  /@next/font/13.3.1-canary.3:
-    resolution: {integrity: sha512-42ynCS+jVE4/grF7xpBIC+cUYYSinKurB6fKKCbOwaQTT6Exjcx/sd/DkX0n1fqLFkFRisvat5eSlxE+NP6hyg==}
-    dev: false
 
   /@next/swc-darwin-arm64/13.3.1-canary.3:
     resolution: {integrity: sha512-ujGJZMgNtVl6unk6pKLpb4Hoc9ft3t9jZ856o8ZvHHZKPuPtScUiJyc5hZ6CrN7+peIPLYDneiooAkO0HkEjNw==}

@@ -1,5 +1,4 @@
 {
-  "name": "app-playground",
   "private": true,
   "scripts": {
     "build": "next build",
@@ -19,7 +18,6 @@
   },
   "dependencies": {
     "@heroicons/react": "1.0.6",
-    "@next/font": "13.3.1-canary.3",
     "clsx": "1.2.1",
     "date-fns": "2.29.3",
     "dinero.js": "2.0.0-alpha.8",
