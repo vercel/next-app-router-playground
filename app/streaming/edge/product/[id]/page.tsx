@@ -8,7 +8,7 @@ import { getBaseUrl } from '#/lib/getBaseUrl';
 import { Ping } from '#/ui/ping';
 import { Suspense } from 'react';
 
-export const runtime = 'experimental-edge';
+// export const runtime = 'edge';
 
 export default async function Page({ params }: { params: { id: string } }) {
   return (
@@ -19,13 +19,13 @@ export default async function Page({ params }: { params: { id: string } }) {
       />
 
       <div className="relative">
-        <div className="absolute top-2 -left-4">
+        <div className="absolute -left-4 top-2">
           <Ping />
         </div>
       </div>
 
       <div className="relative">
-        <div className="absolute top-2 -left-4">
+        <div className="absolute -left-4 top-2">
           <Ping />
         </div>
       </div>
