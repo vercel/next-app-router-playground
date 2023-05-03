@@ -21,7 +21,7 @@ export default function Client({
     // Get the initial selected options from the URL's searchParams
     const params = new URLSearchParams(searchParams);
 
-    // Preselect the first value of each option if its not
+    // Preselect the first value of each option if it's not
     // included in the current searchParams
     options.forEach((option) => {
       if (!searchParams.has(option.value)) {
