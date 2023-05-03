@@ -6,7 +6,7 @@ const HeadContainer = styled.header`
   position: relative;
   height: 64px;
   align-items: center;
-  padding: 0px 8px;
+  padding: 0 8px;
   margin-bottom: 48px;
   display: flex;
   border: 0 solid #e5e7eb;
