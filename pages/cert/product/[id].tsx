@@ -9,7 +9,6 @@ import { SimilarProducts } from '#/ui/page-directory/similar-products';
 import {
   GetStaticProps,
   GetStaticPaths,
-  GetServerSideProps,
   InferGetStaticPropsType,
 } from 'next';
 
