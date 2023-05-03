@@ -1,3 +1,4 @@
+import React from "react";
 import { getCategories, getCategory } from '#/app/api/categories/getCategories';
 import { LayoutHooks } from '#/app/hooks/_components/router-context-layout';
 import { ClickCounter } from '#/ui/click-counter';

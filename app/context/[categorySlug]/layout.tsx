@@ -1,3 +1,4 @@
+import React from "react";
 import { getCategories, getCategory } from '#/app/api/categories/getCategories';
 import { Boundary } from '#/ui/boundary';
 import { TabGroup } from '#/ui/tab-group';
