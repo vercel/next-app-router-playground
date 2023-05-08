@@ -42,7 +42,7 @@ export function RenderedTimeAgo({ timestamp }: { timestamp: number }) {
       {msAgo ? (
         <>
           <span
-            // https://beta.reactjs.org/apis/react-dom/hydrate#avoiding-unavoidable-hydration-mismatches
+            // https://react.dev/reference/react-dom/hydrate#suppressing-unavoidable-hydration-mismatch-errors
             suppressHydrationWarning={true}
             className="font-semibold tabular-nums text-gray-900"
           >
