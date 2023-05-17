@@ -12,12 +12,16 @@ export async function GET(request: Request) {
     await new Promise((resolve) => setTimeout(resolve, Number(delay)));
   }
 
-  return new Response(JSON.stringify(reviews), {
+  return new Response(JSON.stringify(getRandomReviews()), {
     status: 200,
     headers: {
       'content-type': 'application/json',
     },
   });
+}
+
+const getRandomReviews = () => {
+  return reviews.slice().sort(() => Math.random() - 0.5)
 }
 
 const reviews: Review[] = [
