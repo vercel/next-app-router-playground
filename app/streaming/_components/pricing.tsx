@@ -1,4 +1,5 @@
 import type { Product } from '#/app/api/products/product';
+import { getBaseUrl } from '#/lib/getBaseUrl';
 import { Ping } from '#/ui/ping';
 import { ProductEstimatedArrival } from '#/ui/product-estimated-arrival';
 import { ProductLowStockWarning } from '#/ui/product-low-stock-warning';
@@ -29,7 +30,7 @@ function LoadingDots() {
 
 async function UserSpecificDetails({ productId }: { productId: string }) {
   const data = await fetch(
-    `https://app-dir.vercel.app/api/products?id=${productId}&delay=500&filter=price,usedPrice,leadTime,stock`,
+    `${getBaseUrl()}/api/products?id=${productId}&delay=500&filter=price,usedPrice,leadTime,stock`,
     {
       // We intentionally disable Next.js Cache to better demo
       // streaming
