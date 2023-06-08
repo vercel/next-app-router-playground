@@ -28,7 +28,8 @@
     "react-dom": "18.2.0",
     "server-only": "0.0.1",
     "styled-components": "6.0.0-beta.2",
-    "use-count-up": "3.0.1"
+    "use-count-up": "3.0.1",
+    "vercel": "30.2.1"
   },
   "devDependencies": {
     "@tailwindcss/forms": "0.5.3",
