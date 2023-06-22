@@ -19,9 +19,51 @@ export default function Layout({
         </Boundary>
 
         <div className="space-y-6">
-          {audience}
+          <Boundary labels={['@audience']} size="small">
+            <div className="space-y-8">
+              <TabGroup
+                path="/parallel-routes"
+                parallelRoutesKey="audience"
+                items={[
+                  {
+                    text: 'Home',
+                  },
+                  {
+                    text: 'Demographics',
+                    slug: 'demographics',
+                  },
+                  {
+                    text: 'Subscribers',
+                    slug: 'subscribers',
+                  },
+                ]}
+              />
+              {audience}
+            </div>
+          </Boundary>
 
-          {views}
+          <Boundary labels={['@views']} size="small">
+            <div className="space-y-8">
+              <TabGroup
+                path="/parallel-routes"
+                parallelRoutesKey="views"
+                items={[
+                  {
+                    text: 'Home',
+                  },
+                  {
+                    text: 'Impressions',
+                    slug: 'impressions',
+                  },
+                  {
+                    text: 'View Duration',
+                    slug: 'view-duration',
+                  },
+                ]}
+              />
+              {views}
+            </div>
+          </Boundary>
         </div>
       </div>
       <HooksClient />
