@@ -24,6 +24,12 @@ const options = [
 
 export const dynamic = 'force-dynamic';
 
+export async function SlowComponent({page}:{page: string}):Promise<JSX.Element> {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  return <div>{page}</div>;
+}
+
 export default async function Page({ searchParams }: { searchParams: any }) {
   return (
     <div className="prose prose-sm prose-invert max-w-none">
@@ -57,6 +63,9 @@ export default async function Page({ searchParams }: { searchParams: any }) {
 
         <div className="space-y-4">
           <Boundary labels={['From the Server']}>
+            <Suspense fallback={<div>Server component Loading</div>}>
+              <SlowComponent page={"Hello from server"}/>
+            </Suspense>
             <h3 className="mt-0">
               Using <code>&lt;Link&gt;</code>
             </h3>
