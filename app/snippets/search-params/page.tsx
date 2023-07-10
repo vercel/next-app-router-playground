@@ -3,6 +3,7 @@ import { ExternalLink } from '#/ui/external-link';
 import { Suspense } from 'react';
 import ActiveLink from './active-link';
 import Client from './client';
+import { SlowComponent } from './server-component';
 
 const options = [
   {
@@ -24,11 +25,6 @@ const options = [
 
 export const dynamic = 'force-dynamic';
 
-export async function SlowComponent({page}:{page: string}):Promise<JSX.Element> {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
-  return <div>{page}</div>;
-}
 
 export default async function Page({ searchParams }: { searchParams: any }) {
   return (
@@ -64,6 +60,7 @@ export default async function Page({ searchParams }: { searchParams: any }) {
         <div className="space-y-4">
           <Boundary labels={['From the Server']}>
             <Suspense fallback={<div>Server component Loading</div>}>
+              {/* @ts-ignore */}
               <SlowComponent page={"Hello from server"}/>
             </Suspense>
             <h3 className="mt-0">
