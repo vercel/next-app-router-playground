@@ -13,6 +13,8 @@ export async function getCategories({ parent }: { parent?: string } = {}) {
     `${getBaseUrl()}/api/categories${parent ? `?parent=${parent}` : ''}`,
   );
 
+  throw new Error('whoopsie');
+
   if (!res.ok) {
     // Render the closest `error.js` Error Boundary
     throw new Error('Something went wrong!');
