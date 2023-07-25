@@ -7,10 +7,10 @@ export default function Page() {
 
       <ul>
         <li>In this example, three posts fetch data using granular ISR.</li>
-        <li>Caches responses are fresh for 10 seconds.</li>
+        <li>Caches responses are fresh for 60 seconds.</li>
         <li>
           Try navigating to each post and noting the timestamp of when the page
-          was rendered. Refresh the page after 10 seconds to trigger a
+          was rendered. Refresh the page after 60 seconds to trigger a
           revalidation for the next request. Refresh again to see the
           revalidated page.
         </li>
