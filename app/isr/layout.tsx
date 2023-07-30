@@ -6,6 +6,7 @@ const title = 'Incremental Static Regeneration (ISR)';
 export const metadata = {
   title,
   openGraph: {
+    title,
     images: [`/api/og?title=${title}`],
   },
 };

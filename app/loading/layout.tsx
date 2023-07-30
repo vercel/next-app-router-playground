@@ -9,6 +9,7 @@ const title = 'Loading';
 export const metadata = {
   title,
   openGraph: {
+    title,
     images: [`/api/og?title=${title}`],
   },
 };
