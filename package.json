@@ -23,7 +23,7 @@
     "date-fns": "2.29.3",
     "dinero.js": "2.0.0-alpha.8",
     "ms": "3.0.0-canary.1",
-    "next": "13.4.8",
+    "next": "13.4.13-canary.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "server-only": "0.0.1",
