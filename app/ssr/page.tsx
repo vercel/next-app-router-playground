@@ -3,24 +3,21 @@ import { ExternalLink } from '#/ui/external-link';
 export default function Page() {
   return (
     <div className="prose prose-sm prose-invert max-w-none">
-      <h1 className="text-xl font-bold">Server-side rendering</h1>
+      <h1 className="text-xl font-bold">Dynamic Data</h1>
 
       <ul>
         <li>
-          With server-side rendering, the HTML of the page is generated on a
-          server for each request. The generated HTML, JSON data, and JavaScript
-          instructions to make the page interactive are then sent to the client.
+          Dynamic, or server-rendered data, is fetched fresh on each request.
         </li>
+        <li>In this example, the post responses are explicitly not cached.</li>
         <li>
-          On the client, the HTML is used to show a fast non-interactive page,
-          while React uses the JSON data and JavaScript instructions to make
-          components interactive (for example, attaching event handlers to a
-          button). This process is called hydration.
+          Try navigating to each post and noting the timestamp of when the page
+          was rendered.
         </li>
       </ul>
 
       <div className="flex gap-2">
-        <ExternalLink href="https://beta.nextjs.org/docs/data-fetching/fetching#dynamic-data">
+        <ExternalLink href="https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#dynamic-data-fetching">
           Docs
         </ExternalLink>
         <ExternalLink href="https://github.com/vercel/app-playground/tree/main/app/ssr">

@@ -3,7 +3,7 @@ import React from 'react';
 import { RandomPostTab } from './random-post-tab';
 
 export const metadata = {
-  title: 'Static Site Generation (SSG)',
+  title: 'Static Data',
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

@@ -2,7 +2,7 @@ import { TabGroup } from '#/ui/tab-group';
 import React from 'react';
 
 export const metadata = {
-  title: 'Server Side Rendering (SSR)',
+  title: 'Dynamic Data',
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

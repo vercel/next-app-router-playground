@@ -1,11 +1,11 @@
-const colors = require('tailwindcss/colors');
+import colors from 'tailwindcss/colors';
+import { Config } from 'tailwindcss';
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
-    './app/**/*.{js,ts,jsx,tsx}',
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './ui/**/*.{js,ts,jsx,tsx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './ui/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   future: {
     hoverOnlyWhenSupported: true,
@@ -13,9 +13,6 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
-      // fontFamily: {
-      //   sans: ['var(--primary-font)'],
-      // },
       // https://vercel.com/design/color
       colors: {
         gray: colors.zinc,
@@ -77,21 +74,17 @@ module.exports = {
         },
         fadeToTransparent: {
           '0%': {
-            opacity: 1,
+            opacity: '1',
           },
           '40%': {
-            opacity: 1,
+            opacity: '1',
           },
           '100%': {
-            opacity: 0,
+            opacity: '0',
           },
         },
       }),
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/line-clamp'),
-  ],
-};
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
+} satisfies Config;

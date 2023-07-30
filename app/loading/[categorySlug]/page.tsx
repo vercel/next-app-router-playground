@@ -9,7 +9,7 @@ export default async function Page({
   params: { categorySlug: string };
 }) {
   const res = await fetch(
-    // We intentionally delay the reponse to simulate a slow data
+    // We intentionally delay the response to simulate a slow data
     // request that would benefit from `loading.js`
     `${getBaseUrl()}/api/categories?delay=1000&slug=${params.categorySlug}`,
     {

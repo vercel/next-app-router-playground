@@ -9,7 +9,7 @@ export async function generateStaticParams() {
 export default async function Page({ params }: { params: { id: string } }) {
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${params.id}`,
-    { next: { revalidate: 10 } },
+    { next: { revalidate: 60, tags: ['collection'] } },
   );
   const data = (await res.json()) as { title: string; body: string };
 
