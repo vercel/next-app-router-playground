@@ -8,6 +8,7 @@ const title = 'Nested Layouts';
 export const metadata = {
   title,
   openGraph: {
+    title,
     images: [`/api/og?title=${title}`],
   },
 };

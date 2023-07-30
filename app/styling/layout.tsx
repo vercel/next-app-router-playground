@@ -6,6 +6,7 @@ const title = 'Styling';
 export const metadata = {
   title,
   openGraph: {
+    title,
     images: [`/api/og?title=${title}`],
   },
 };
