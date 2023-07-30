@@ -1,4 +1,3 @@
-import { getBaseUrl } from '#/lib/getBaseUrl';
 import { notFound } from 'next/navigation';
 import type { Review } from './review';
 
@@ -9,7 +8,7 @@ import type { Review } from './review';
 import 'server-only';
 
 export async function getReviews() {
-  const res = await fetch(`${getBaseUrl()}/api/reviews`);
+  const res = await fetch(`https://app-router-api.vercel.app/api/reviews`);
 
   if (!res.ok) {
     // Render the closest `error.js` Error Boundary

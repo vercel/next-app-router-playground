@@ -1,4 +1,3 @@
-import { getBaseUrl } from '#/lib/getBaseUrl';
 import { notFound } from 'next/navigation';
 import type { Category } from './category';
 
@@ -10,7 +9,9 @@ import 'server-only';
 
 export async function getCategories({ parent }: { parent?: string } = {}) {
   const res = await fetch(
-    `${getBaseUrl()}/api/categories${parent ? `?parent=${parent}` : ''}`,
+    `https://app-router-api.vercel.app/api/categories${
+      parent ? `?parent=${parent}` : ''
+    }`,
   );
 
   if (!res.ok) {
@@ -30,7 +31,9 @@ export async function getCategories({ parent }: { parent?: string } = {}) {
 
 export async function getCategory({ slug }: { slug: string }) {
   const res = await fetch(
-    `${getBaseUrl()}/api/categories${slug ? `?slug=${slug}` : ''}`,
+    `https://app-router-api.vercel.app/api/categories${
+      slug ? `?slug=${slug}` : ''
+    }`,
   );
 
   if (!res.ok) {
