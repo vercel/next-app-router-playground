@@ -1,10 +1,14 @@
 import { TabGroup } from '#/ui/tab-group';
 import React from 'react';
 
-export const metadata = {
-  title: 'Dynamic Data',
-};
+const title = 'Dynamic Data';
 
+export const metadata = {
+  title,
+  openGraph: {
+    images: [`/api/og?title=${title}`],
+  },
+};
 export default function Layout({ children }: { children: React.ReactNode }) {
   const ids = [{ id: '1' }, { id: '2' }, { id: '3' }];
 

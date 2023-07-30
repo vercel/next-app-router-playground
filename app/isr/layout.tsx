@@ -1,8 +1,13 @@
 import { TabGroup } from '#/ui/tab-group';
 import React from 'react';
 
+const title = 'Incremental Static Regeneration (ISR)';
+
 export const metadata = {
-  title: 'Incremental Static Regeneration (ISR)',
+  title,
+  openGraph: {
+    images: [`/api/og?title=${title}`],
+  },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

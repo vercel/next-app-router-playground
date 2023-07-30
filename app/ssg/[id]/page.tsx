@@ -24,7 +24,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         <h1 className="truncate text-2xl font-medium capitalize text-gray-200">
           {data.title}
         </h1>
-        <p className="font-medium text-gray-500 line-clamp-3">{data.body}</p>
+        <p className="line-clamp-3 font-medium text-gray-500">{data.body}</p>
       </div>
       <div className="-order-1 col-span-full lg:order-none lg:col-span-2">
         <RenderingInfo type={isOnDemand ? 'ssgod' : 'ssg'} />

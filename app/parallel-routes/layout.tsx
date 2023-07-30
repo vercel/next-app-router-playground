@@ -1,5 +1,10 @@
+const title = 'Parallel Routes';
+
 export const metadata = {
-  title: 'Parallel Routes',
+  title,
+  openGraph: {
+    images: [`/api/og?title=${title}`],
+  },
 };
 
 export default function Layout({
