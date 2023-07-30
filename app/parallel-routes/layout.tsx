@@ -1,3 +1,7 @@
+export const metadata = {
+  title: 'Parallel Routes',
+};
+
 export default function Layout({
   children,
   audience,

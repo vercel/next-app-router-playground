@@ -1,10 +1,6 @@
 import { Boundary } from '#/ui/boundary';
 import { TabGroup } from '#/ui/tab-group';
 
-export const metadata = {
-  title: 'Parallel Routes',
-};
-
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <Boundary labels={['parallel-routes/@views/layout.tsx']} size="small">
