@@ -26,7 +26,3 @@ pnpm dev
 ## Documentation
 
 https://nextjs.org/docs
-
-## Leave Feedback
-
-https://github.com/vercel/next.js/discussions/41745
