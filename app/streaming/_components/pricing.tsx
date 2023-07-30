@@ -69,7 +69,7 @@ export function Pricing({
       <ProductPrice price={price} discount={product.discount} />
 
       <div className="relative">
-        <div className="absolute top-1 -left-4">
+        <div className="absolute -left-4 top-1">
           <Ping />
         </div>
       </div>

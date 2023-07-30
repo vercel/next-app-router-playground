@@ -27,7 +27,7 @@ const List = ({ items, depth }: { items: Item[]; depth: number }) => {
                     // │
                     'before:absolute before:-left-2.5 before:top-0 before:border-l-2 before:border-gray-800',
                     // ──
-                    'after:absolute after:top-[17px] after:-left-2.5 after:h-3 after:w-2.5 after:border-t-2 after:border-gray-800',
+                    'after:absolute after:-left-2.5 after:top-[17px] after:h-3 after:w-2.5 after:border-t-2 after:border-gray-800',
                     {
                       // ├─
                       'before:h-full': !isLast,
@@ -114,7 +114,7 @@ export const ComponentTree = ({ items }: { items: Item[] }) => {
           <div className="space-y-6">
             <div className="space-y-3 rounded-lg bg-gray-900 p-4">
               <div className="flex items-center justify-between gap-x-3">
-                <div className="rounded-md bg-vercel-blue px-2 py-0.5 text-xs tabular-nums tracking-wider text-blue-50">
+                <div className="bg-vercel-blue rounded-md px-2 py-0.5 text-xs tabular-nums tracking-wider text-blue-50">
                   <CountUp
                     start={(clientTotal + serverTotal) / 1000}
                     end={clientTotal / 1000}
@@ -127,7 +127,7 @@ export const ComponentTree = ({ items }: { items: Item[] }) => {
               <div className="overflow-hidden rounded-full bg-gray-700">
                 <div
                   className={clsx(
-                    'h-2 animate-[translateXReset_1s_ease-in-out_1_reverse] rounded-full bg-vercel-blue',
+                    'bg-vercel-blue h-2 animate-[translateXReset_1s_ease-in-out_1_reverse] rounded-full',
                   )}
                   style={{
                     transform: `translateX(-${100 - clientDeltaAsPercent}%)`,
@@ -138,7 +138,7 @@ export const ComponentTree = ({ items }: { items: Item[] }) => {
 
             <div className="space-y-3">
               <div className="flex items-center gap-x-3 text-sm text-gray-400">
-                <div className="rounded-md bg-vercel-blue px-2 py-0.5 text-xs tracking-widest text-white/50">
+                <div className="bg-vercel-blue rounded-md px-2 py-0.5 text-xs tracking-widest text-white/50">
                   {'</>'}
                 </div>
                 <div>Client Component</div>
@@ -153,7 +153,7 @@ export const ComponentTree = ({ items }: { items: Item[] }) => {
             </div>
           </div>
         </div>
-        <div className="text-sm italic text-vercel-orange">
+        <div className="text-vercel-orange text-sm italic">
           Note: The component bundle sizes are not yet accurate.
         </div>
       </div>
