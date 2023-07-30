@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   },
   description:
     'A playground to explore new Next.js App Router features such as nested layouts, instant loading states, streaming, and component level data fetching.',
+  openGraph: {
+    images: [`/api/og?title=Next.js App Router`],
+  },
   twitter: {
     card: 'summary_large_image',
   },
