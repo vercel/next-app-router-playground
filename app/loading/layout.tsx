@@ -4,10 +4,14 @@ import { TabGroup } from '#/ui/tab-group';
 import { notFound } from 'next/navigation';
 import React from 'react';
 
-export const metadata = {
-  title: 'Loading',
-};
+const title = 'Loading';
 
+export const metadata = {
+  title,
+  openGraph: {
+    images: [`/api/og?title=${title}`],
+  },
+};
 export default async function Layout({
   children,
 }: {

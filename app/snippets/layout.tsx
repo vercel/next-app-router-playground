@@ -1,6 +1,4 @@
-import React from 'react';
-
-const title = 'Route Groups';
+const title = 'Snippets';
 
 export const metadata = {
   title,

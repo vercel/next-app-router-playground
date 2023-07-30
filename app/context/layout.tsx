@@ -5,8 +5,13 @@ import { CounterProvider } from 'app/context/counter-context';
 import React from 'react';
 import ContextClickCounter from './context-click-counter';
 
+const title = 'Client Context';
+
 export const metadata = {
-  title: 'Client Context',
+  title,
+  openGraph: {
+    images: [`/api/og?title=${title}`],
+  },
 };
 
 export default async function Layout({

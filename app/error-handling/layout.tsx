@@ -3,8 +3,13 @@ import { ClickCounter } from '#/ui/click-counter';
 import { TabGroup } from '#/ui/tab-group';
 import React from 'react';
 
+const title = 'Error Handling';
+
 export const metadata = {
-  title: 'Error Handling',
+  title,
+  openGraph: {
+    images: [`/api/og?title=${title}`],
+  },
 };
 
 export default async function Layout({

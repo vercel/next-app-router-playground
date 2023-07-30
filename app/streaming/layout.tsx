@@ -1,8 +1,13 @@
 import { TabGroup } from '#/ui/tab-group';
 import React from 'react';
 
+const title = 'Streaming';
+
 export const metadata = {
-  title: 'Streaming',
+  title,
+  openGraph: {
+    images: [`/api/og?title=${title}`],
+  },
 };
 
 export default async function Layout({
