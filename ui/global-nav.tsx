@@ -51,7 +51,7 @@ export function GlobalNav() {
           hidden: !isOpen,
         })}
       >
-        <nav className="space-y-6 px-2 py-5">
+        <nav className="space-y-6 px-2 pb-24 pt-5">
           {demos.map((section) => {
             return (
               <div key={section.name}>
