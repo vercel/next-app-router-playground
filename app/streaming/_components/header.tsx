@@ -10,7 +10,7 @@ export function Header() {
       <div className="flex gap-x-3">
         <Link href="/streaming">
           <div className="h-10 w-10 hover:opacity-70">
-            <NextLogo />
+            <NextLogo alt={''} />
           </div>
         </Link>
 
