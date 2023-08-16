@@ -21,12 +21,12 @@ export function GlobalNav() {
           className="group flex w-full items-center gap-x-2.5"
           onClick={close}
         >
-          <div className="h-7 w-7 rounded-full border border-white/30 group-hover:border-white/50">
-            <NextLogo />
+          <div className="h-5 w-7">
+            <NextLogo className="" alt="ATG logo" />
           </div>
 
           <h3 className="font-semibold tracking-wide text-gray-400 group-hover:text-gray-50">
-            App Router
+            Asia Trans Gas
           </h3>
         </Link>
       </div>
@@ -51,7 +51,7 @@ export function GlobalNav() {
           hidden: !isOpen,
         })}
       >
-        <nav className="space-y-6 px-2 pb-24 pt-5">
+        <nav className="space-y-6 px-2 py-5">
           {demos.map((section) => {
             return (
               <div key={section.name}>
