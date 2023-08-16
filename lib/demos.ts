@@ -6,41 +6,44 @@ export type Item = {
 
 export const demos: { name: string; items: Item[] }[] = [
   {
-    name: 'Layouts',
+    name: 'Лаборатория',
     items: [
       {
-        name: 'Nested Layouts',
+        name: 'Лабаратория № 1',
         slug: 'layouts',
-        description: 'Create UI that is shared across routes',
+        description:
+          'Через некоторое время общий расход газа по станции значительно снизился. Входной давления на рабочих ГПА увеличился. Соответственно и входное температура газа на рабочих ГПА.',
       },
       {
-        name: 'Grouped Layouts',
+        name: 'Лабаратория № 2',
         slug: 'route-groups',
-        description: 'Organize routes without affecting URL paths',
+        description:
+          'Через некоторое время выходное температура после АВО газа резко значительно повысилось. Чтобы предвратить  аварию станции быстро найдите причину повышения температуры после АВО газа',
       },
       {
-        name: 'Parallel Routes',
+        name: 'Лабаратория № 3',
         slug: 'parallel-routes',
-        description: 'Render multiple pages in the same layout',
+        description:
+          ' Произошло ошибка в системе SCADA, Прошу выяснить причину и дать свои комментарии ниже.',
       },
     ],
   },
   {
-    name: 'File Conventions',
+    name: ' Состояние серверов SCADA',
     items: [
       {
-        name: 'Loading',
+        name: 'SCADA Server A',
         slug: 'loading',
         description:
           'Create meaningful Loading UI for specific parts of an app',
       },
       {
-        name: 'Error',
+        name: 'SCADA Server B',
         slug: 'error-handling',
         description: 'Create Error UI for specific parts of an app',
       },
       {
-        name: 'Not Found',
+        name: 'PHD Server',
         slug: 'not-found',
         description: 'Create Not Found UI for specific parts of an app',
       },
