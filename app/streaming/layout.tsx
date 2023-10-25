@@ -31,7 +31,7 @@ export default async function Layout({
               segment: 'edge',
             },
             {
-              text: 'Node Runtime',
+              text: 'Partial Prerendering',
               slug: 'node/product/1',
               segment: 'node',
             },

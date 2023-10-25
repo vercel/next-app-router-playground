@@ -5,7 +5,7 @@ import { CartCountProvider } from '../_components/cart-count-context';
 import { Header } from '../_components/header';
 
 export const metadata = {
-  title: 'Streaming (Node Runtime)',
+  title: 'Partial Pre-Rendering',
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
