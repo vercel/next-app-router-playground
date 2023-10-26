@@ -1,11 +1,17 @@
 import type { Review } from '#/app/api/reviews/review';
 import { ProductReviewCard } from '#/ui/product-review-card';
+import { headers } from 'next/headers';
+
+async function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 export async function Reviews({ data }: { data: Promise<Response> }) {
+  await sleep(1000)
   const reviews = (await data.then((res) => res.json())) as Review[];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" data-headers={headers()}>
       <div className="text-lg font-medium text-white">Customer Reviews</div>
       <div className="space-y-8">
         {reviews.map((review) => {
