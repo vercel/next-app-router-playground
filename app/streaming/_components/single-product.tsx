@@ -1,15 +1,10 @@
 import { Pricing } from '#/app/streaming/_components/pricing';
 import type { Product } from '#/app/api/products/product';
 import { ProductRating } from '#/ui/product-rating';
-import { cookies } from 'next/headers';
 import Image from 'next/image';
 
 export const SingleProduct = async ({ data }: { data: Promise<Response> }) => {
   const product = (await data.then((res) => res.json())) as Product;
-
-  // Get the cart count from the users cookies and pass it to the client
-  // AddToCart component
-  const cartCount = cookies().get('_cart_count')?.value || '0';
 
   return (
     <div className="grid grid-cols-4 gap-6">
@@ -69,7 +64,7 @@ export const SingleProduct = async ({ data }: { data: Promise<Response> }) => {
       </div>
 
       <div className="col-span-full lg:col-span-1">
-        <Pricing product={product} cartCount={cartCount} />
+        <Pricing product={product} />
       </div>
     </div>
   );

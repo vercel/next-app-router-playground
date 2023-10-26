@@ -7,7 +7,7 @@ async function sleep(ms: number) {
 }
 
 export async function Reviews({ data }: { data: Promise<Response> }) {
-  await sleep(1000)
+  await sleep(1000);
   const reviews = (await data.then((res) => res.json())) as Review[];
 
   return (

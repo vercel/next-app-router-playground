@@ -9,8 +9,6 @@ export const metadata = {
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const cartCount = Number(cookies().get('_cart_count')?.value || '0');
-
   return (
     <>
       <div className="prose prose-sm prose-invert mb-8 max-w-none">
@@ -29,7 +27,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </div>
 
       <Boundary animateRerendering={false} labels={['Demo']} size="small">
-        <CartCountProvider initialCartCount={cartCount}>
+        <CartCountProvider>
           <div className="space-y-10">
             <Header />
 

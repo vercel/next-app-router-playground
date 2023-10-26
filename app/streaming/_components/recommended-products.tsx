@@ -6,7 +6,6 @@ async function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-
 export async function RecommendedProducts({
   path,
   data,
@@ -14,12 +13,12 @@ export async function RecommendedProducts({
   path: string;
   data: Promise<Response>;
 }) {
-  headers()
-  await sleep(500)
+  headers();
+  await sleep(500);
   const products = (await data.then((res) => res.json())) as Product[];
 
   return (
-    <div className="space-y-6"  data-headers={headers()}>
+    <div className="space-y-6" data-headers={headers()}>
       <div>
         <div className="text-lg font-medium text-white">
           Recommended Products for You

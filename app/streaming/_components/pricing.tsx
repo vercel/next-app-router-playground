@@ -8,6 +8,14 @@ import { ProductUsedPrice } from '#/ui/product-used-price';
 import { dinero, type DineroSnapshot } from 'dinero.js';
 import { Suspense } from 'react';
 import { AddToCart } from './add-to-cart';
+import { cookies } from 'next/headers';
+
+async function AddToCartFromCookies() {
+  // Get the cart count from the users cookies and pass it to the client
+  // AddToCart component
+  const cartCount = Number(cookies().get('_cart_count')?.value || '0');
+  return <AddToCart initialCartCount={cartCount} />;
+}
 
 function LoadingDots() {
   return (
@@ -55,13 +63,7 @@ async function UserSpecificDetails({ productId }: { productId: string }) {
   );
 }
 
-export function Pricing({
-  product,
-  cartCount,
-}: {
-  product: Product;
-  cartCount: string;
-}) {
+export function Pricing({ product }: { product: Product }) {
   const price = dinero(product.price as DineroSnapshot<number>);
 
   return (
@@ -79,7 +81,10 @@ export function Pricing({
         <UserSpecificDetails productId={product.id} />
       </Suspense>
 
-      <AddToCart initialCartCount={Number(cartCount)} />
+      <Suspense fallback={<AddToCart initialCartCount={0} />}>
+        {/* @ts-expect-error Async Server Component */}
+        <AddToCartFromCookies />
+      </Suspense>
     </div>
   );
 }

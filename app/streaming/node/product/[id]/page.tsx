@@ -7,6 +7,10 @@ import { SingleProduct } from '#/app/streaming/_components/single-product';
 import { Ping } from '#/ui/ping';
 import { Suspense } from 'react';
 
+export function generateStaticParams() {
+  return [{ id: '1' }];
+}
+
 export default async function Page({ params }: { params: { id: string } }) {
   return (
     <div className="space-y-8 lg:space-y-14">
@@ -64,4 +68,3 @@ export default async function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
-
