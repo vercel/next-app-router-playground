@@ -23,13 +23,13 @@
     "date-fns": "2.29.3",
     "dinero.js": "2.0.0-alpha.8",
     "ms": "3.0.0-canary.1",
-    "next": "https://f001.backblazeb2.com/file/wyattjoh-vercel/1698301617-next-13.5.7-canary.31.tgz",
+    "next": "13.5.7-canary.35",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "server-only": "0.0.1",
     "styled-components": "6.0.0-beta.2",
     "use-count-up": "3.0.1",
-    "vercel": "https://f001.backblazeb2.com/file/wyattjoh-vercel/1698298952-vercel-32.5.0.tgz"
+    "vercel": "^32.5.0"
   },
   "devDependencies": {
     "@tailwindcss/forms": "0.5.3",
