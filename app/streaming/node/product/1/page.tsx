@@ -7,15 +7,14 @@ import { SingleProduct } from '#/app/streaming/_components/single-product';
 import { Ping } from '#/ui/ping';
 import { Suspense } from 'react';
 
-export default async function Page({ params }: { params: { id: string } }) {
+export default async function Page() {
+  const params = {
+    id: '1',
+  }
   return (
     <div className="space-y-8 lg:space-y-14">
       {/* @ts-expect-error Async Server Component */}
-      <SingleProduct
-        data={fetch(
-          `https://app-router-api.vercel.app/api/products?id=${params.id}`,
-        )}
-      />
+      <SingleProduct id={params.id} />
 
       <div className="relative">
         <div className="absolute -left-4 top-2">

@@ -1,15 +1,18 @@
 import { Pricing } from '#/app/streaming/_components/pricing';
 import type { Product } from '#/app/api/products/product';
 import { ProductRating } from '#/ui/product-rating';
-import { cookies } from 'next/headers';
 import Image from 'next/image';
 
-export const SingleProduct = async ({ data }: { data: Promise<Response> }) => {
-  const product = (await data.then((res) => res.json())) as Product;
+export const SingleProduct = async ({ id }: { id: string }) => {
+  const data = await fetch(
+    `https://app-router-api.vercel.app/api/products?id=${id}`,
+  )
+  const product = (await data.json()) as Product;
+  console.log('Product: ', id, data.status, product == null, product?.image);
 
   // Get the cart count from the users cookies and pass it to the client
   // AddToCart component
-  const cartCount = cookies().get('_cart_count')?.value || '0';
+  const cartCount = '0'
 
   return (
     <div className="grid grid-cols-4 gap-6">
@@ -56,7 +59,7 @@ export const SingleProduct = async ({ data }: { data: Promise<Response> }) => {
       </div>
 
       <div className="col-span-full space-y-4 lg:col-span-2">
-        <div className="truncate text-xl font-medium text-white lg:text-2xl">
+        <div className="trun<cate text-xl font-medium text-white lg:text-2xl">
           {product.name}
         </div>
 

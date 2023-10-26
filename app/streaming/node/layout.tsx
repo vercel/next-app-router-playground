@@ -1,15 +1,15 @@
 import { Boundary } from '#/ui/boundary';
-import { cookies } from 'next/headers';
 import React from 'react';
 import { CartCountProvider } from '../_components/cart-count-context';
 import { Header } from '../_components/header';
 
 export const metadata = {
+  metadataBase: new URL('https://app-router.vercel.app/'),
   title: 'Partial Pre-Rendering',
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const cartCount = Number(cookies().get('_cart_count')?.value || '0');
+  const cartCount = 0
 
   return (
     <>
