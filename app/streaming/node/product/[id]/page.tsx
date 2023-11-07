@@ -34,11 +34,11 @@ export default async function Page({ params }: { params: { id: string } }) {
           data={fetch(
             // We intentionally delay the reponse to simulate a slow data
             // request that would benefit from streaming
-            `https://app-router-api.vercel.app/api/products?delay=0&filter=${params.id}`,
+            `https://app-router-api.vercel.app/api/products?delay=500&filter=${params.id}`,
             {
               // We intentionally disable Next.js Cache to better demo
               // streaming
-              //cache: 'no-store',
+              cache: 'no-store',
             },
           )}
         />
@@ -56,11 +56,11 @@ export default async function Page({ params }: { params: { id: string } }) {
           data={fetch(
             // We intentionally delay the reponse to simulate a slow data
             // request that would benefit from streaming
-            `https://app-router-api.vercel.app/api/reviews?delay=0`,
+            `https://app-router-api.vercel.app/api/reviews?delay=1000`,
             {
               // We intentionally disable Next.js Cache to better demo
               // streaming
-              //cache: 'no-store',
+              cache: 'no-store',
             },
           )}
         />
