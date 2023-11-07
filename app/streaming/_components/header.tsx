@@ -53,6 +53,7 @@ export function Header() {
           width={40}
           height={40}
           alt="User"
+          priority
         />
       </div>
     </div>

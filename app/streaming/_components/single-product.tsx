@@ -16,6 +16,7 @@ export const SingleProduct = async ({ data }: { data: Promise<Response> }) => {
             alt={product.name}
             height={400}
             width={400}
+            priority
           />
 
           <div className="flex gap-x-2">
@@ -26,6 +27,7 @@ export const SingleProduct = async ({ data }: { data: Promise<Response> }) => {
                 alt={product.name}
                 height={180}
                 width={180}
+                priority
               />
             </div>
             <div className="w-1/3">
@@ -35,6 +37,7 @@ export const SingleProduct = async ({ data }: { data: Promise<Response> }) => {
                 alt={product.name}
                 height={180}
                 width={180}
+                priority
               />
             </div>
             <div className="w-1/3">
@@ -44,6 +47,7 @@ export const SingleProduct = async ({ data }: { data: Promise<Response> }) => {
                 alt={product.name}
                 height={180}
                 width={180}
+                priority
               />
             </div>
           </div>
