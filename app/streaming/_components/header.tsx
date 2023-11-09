@@ -2,7 +2,7 @@ import { NextLogo } from '#/ui/next-logo';
 import { SearchIcon, ShoppingCartIcon } from '@heroicons/react/solid';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CartCount } from './cart-count';
+import { CartCount, OptimisticCartCount } from './cart-count';
 import { cookies } from 'next/headers';
 import { Suspense } from 'react';
 
@@ -40,7 +40,7 @@ export function Header() {
         <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-600 text-white">
           <ShoppingCartIcon className="w-6 text-white" />
           <div className="bg-vercel-cyan absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full text-sm font-bold text-cyan-800">
-            <Suspense fallback={<span>?</span>}>
+            <Suspense fallback={<OptimisticCartCount />}>
               {/* @ts-expect-error Async Server Component */}
               <CartCountFromCookies />
             </Suspense>
