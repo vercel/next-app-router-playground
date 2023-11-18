@@ -8,7 +8,7 @@ export default function Page() {
         <h2 className="text-lg font-bold">Parallel Routes</h2>
         <ul>
           <li>
-            Parallel Routes allow you to simultenously or conditionally render
+            Parallel Routes allow you to simultaneously or conditionally render
             multiple pages, with independent navigation, in the same layout.
           </li>
           <li>
