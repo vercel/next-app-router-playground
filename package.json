@@ -29,7 +29,7 @@
     "server-only": "0.0.1",
     "styled-components": "6.0.0-beta.2",
     "use-count-up": "3.0.1",
-    "vercel": "https://vercel-git-malte-graph.vercel.sh/tarballs/vercel.tgz"
+    "vercel": "32.6.1"
   },
   "devDependencies": {
     "@tailwindcss/forms": "0.5.3",
