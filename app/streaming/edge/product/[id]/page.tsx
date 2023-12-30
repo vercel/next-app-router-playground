@@ -25,12 +25,6 @@ export default async function Page({ params }: { params: { id: string } }) {
         </div>
       </div>
 
-      <div className="relative">
-        <div className="absolute -left-4 top-2">
-          <Ping />
-        </div>
-      </div>
-
       <Suspense fallback={<RecommendedProductsSkeleton />}>
         {/* @ts-expect-error Async Server Component */}
         <RecommendedProducts
@@ -47,6 +41,12 @@ export default async function Page({ params }: { params: { id: string } }) {
           )}
         />
       </Suspense>
+
+      <div className="relative">
+        <div className="absolute -left-4 top-2">
+          <Ping />
+        </div>
+      </div>
 
       <Suspense fallback={<ReviewsSkeleton />}>
         {/* @ts-expect-error Async Server Component */}
