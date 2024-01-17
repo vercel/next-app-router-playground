@@ -1,3 +1,3 @@
 export default function Page() {
-  return <p>A</p>;
+  return <p>A Slot</p>;
 }
