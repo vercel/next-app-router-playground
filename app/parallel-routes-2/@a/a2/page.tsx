@@ -1,3 +1,3 @@
 export default function Page() {
-  return <p>Subpage B2</p>;
+  return <p>Subpage A2</p>;
 }
