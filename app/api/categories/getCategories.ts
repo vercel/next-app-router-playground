@@ -9,7 +9,7 @@ import 'server-only';
 
 export async function getCategories({ parent }: { parent?: string } = {}) {
   const res = await fetch(
-    `https://app-router-api.vercel.app/api/categories${
+    `https://app-playground-api.vercel.app/api/categories${
       parent ? `?parent=${parent}` : ''
     }`,
   );
@@ -31,7 +31,7 @@ export async function getCategories({ parent }: { parent?: string } = {}) {
 
 export async function getCategory({ slug }: { slug: string }) {
   const res = await fetch(
-    `https://app-router-api.vercel.app/api/categories${
+    `https://app-playground-api.vercel.app/api/categories${
       slug ? `?slug=${slug}` : ''
     }`,
   );

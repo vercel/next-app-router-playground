@@ -10,7 +10,7 @@ export default async function Page({
   const res = await fetch(
     // We intentionally delay the response to simulate a slow data
     // request that would benefit from `loading.js`
-    `https://app-router-api.vercel.app/api/categories?delay=1000&slug=${params.categorySlug}`,
+    `https://app-playground-api.vercel.app/api/categories?delay=1000&slug=${params.categorySlug}`,
     {
       // We intentionally disable Next.js Cache to better demo
       // `loading.js`
