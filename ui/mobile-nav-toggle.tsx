@@ -1,6 +1,6 @@
 'use client';
 
-import { MenuAlt2Icon, XIcon } from '@heroicons/react/solid';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
 import React from 'react';
 
@@ -45,9 +45,9 @@ export function MobileNavToggle({ children }: { children: React.ReactNode }) {
           Menu
         </div>
         {isOpen ? (
-          <XIcon className="block w-6 text-gray-300" />
+          <XMarkIcon className="block w-6 text-gray-300" />
         ) : (
-          <MenuAlt2Icon className="block w-6 text-gray-300" />
+          <Bars3Icon className="block w-6 text-gray-300" />
         )}
       </button>
 

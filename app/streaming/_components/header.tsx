@@ -1,5 +1,5 @@
 import { NextLogo } from '#/ui/next-logo';
-import { SearchIcon, ShoppingCartIcon } from '@heroicons/react/solid';
+import { SearchIcon, ShoppingCartIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CartCount } from './cart-count';
