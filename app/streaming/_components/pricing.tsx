@@ -75,7 +75,6 @@ export function Pricing({
       </div>
 
       <Suspense fallback={<LoadingDots />}>
-        {/* @ts-expect-error Async Server Component */}
         <UserSpecificDetails productId={product.id} />
       </Suspense>
 
