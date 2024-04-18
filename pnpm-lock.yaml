@@ -11,8 +11,8 @@ dependencies:
     specifier: 3.6.0
     version: 3.6.0
   dinero.js:
-    specifier: 2.0.0-alpha.14
-    version: 2.0.0-alpha.14
+    specifier: 2.0.0-alpha.10
+    version: 2.0.0-alpha.10
   ms:
     specifier: 3.0.0-canary.1
     version: 3.0.0-canary.1
@@ -114,20 +114,20 @@ packages:
       '@jridgewell/trace-mapping': 0.3.9
     dev: false
 
-  /@dinero.js/calculator-number@2.0.0-alpha.14:
-    resolution: {integrity: sha512-Vmlu6eXNtkFU2cqlrpqfq8KQP9onALf8Es2d34liVa3k3RHjuhizgFUU3V3/tsjOu5WekZq+gYPOr58XVTkB7A==}
+  /@dinero.js/calculator-number@2.0.0-alpha.10:
+    resolution: {integrity: sha512-EdKG0yykukigfdq+TsxZ9r0Wrg5flYAncKWSfr2snWDXurFsg8JE0oazVraCBA3Vb5LN4vGuFEpTFTH+dIrRCg==}
     dependencies:
-      '@dinero.js/core': 2.0.0-alpha.14
+      '@dinero.js/core': 2.0.0-alpha.10
     dev: false
 
-  /@dinero.js/core@2.0.0-alpha.14:
-    resolution: {integrity: sha512-CtKELJ783joUbaU62fRM2xDXb4XYSy0MgOuIkPWgVOS3SYKKb6+2Ec9bNlvrW8lsPROz/RsvCuYVTphrZ79twg==}
+  /@dinero.js/core@2.0.0-alpha.10:
+    resolution: {integrity: sha512-vjeGXQbNvDXlXK54zaWDydEXyFAvLDj6LCfwO4CTZJIqn3+PaXakaEd5S0AXC6hluPatxnQa5J63x3WQ/Imrjw==}
     dependencies:
-      '@dinero.js/currencies': 2.0.0-alpha.14
+      '@dinero.js/currencies': 2.0.0-alpha.10
     dev: false
 
-  /@dinero.js/currencies@2.0.0-alpha.14:
-    resolution: {integrity: sha512-Ck5ZLjRI7Pl7Y4VkeOst4WEwiN5vZezv8GHcXWsVLUfTNsmkV37VeLYDRAuTUP4akEJyIry+1o1qHYNtLq3eNw==}
+  /@dinero.js/currencies@2.0.0-alpha.10:
+    resolution: {integrity: sha512-IDKaAh0YcJh700uLCrvWtIRCl5sItc3S2rk4IfVJBbms3j+NBDOlVFJnwru+UrMh7VpqU9GlZRsHcHf0NxYE9A==}
     dev: false
 
   /@edge-runtime/format@2.2.1:
@@ -1458,12 +1458,12 @@ packages:
     engines: {node: '>=0.3.1'}
     dev: false
 
-  /dinero.js@2.0.0-alpha.14:
-    resolution: {integrity: sha512-dkURHd9P+2TjuSTMUAnvrB7SsL4GbBYG/WPtIBV8M+L7Xf80x84sJcUUTxIS33S4AlkIbVANlaL86w2g5zdrmg==}
+  /dinero.js@2.0.0-alpha.10:
+    resolution: {integrity: sha512-EDiOZanmJBJnFfiz5cUL/I2UI7EXQ0jXf18srqgO7sQhChyBbN39b5sf6T4fq4Oj3f4/6x2L96YPUbMRcUmd/A==}
     dependencies:
-      '@dinero.js/calculator-number': 2.0.0-alpha.14
-      '@dinero.js/core': 2.0.0-alpha.14
-      '@dinero.js/currencies': 2.0.0-alpha.14
+      '@dinero.js/calculator-number': 2.0.0-alpha.10
+      '@dinero.js/core': 2.0.0-alpha.10
+      '@dinero.js/currencies': 2.0.0-alpha.10
     dev: false
 
   /dir-glob@3.0.1:
