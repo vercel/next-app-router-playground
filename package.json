@@ -9,7 +9,7 @@
     "prettier": "prettier --write --ignore-unknown .",
     "prettier:check": "prettier --check --ignore-unknown .",
     "start": "next start",
-    "test": "yarn prettier:check && yarn lint"
+    "test": "pnpm prettier:check && pnpm lint"
   },
   "git": {
     "pre-commit": "lint-staged"
