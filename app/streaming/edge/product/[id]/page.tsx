@@ -24,12 +24,6 @@ export default async function Page({ params }: { params: { id: string } }) {
         </div>
       </div>
 
-      <div className="relative">
-        <div className="absolute -left-4 top-2">
-          <Ping />
-        </div>
-      </div>
-
       <Suspense fallback={<RecommendedProductsSkeleton />}>
         <RecommendedProducts
           path="/streaming/edge/product"
@@ -45,6 +39,12 @@ export default async function Page({ params }: { params: { id: string } }) {
           )}
         />
       </Suspense>
+
+      <div className="relative">
+        <div className="absolute -left-4 top-2">
+          <Ping />
+        </div>
+      </div>
 
       <Suspense fallback={<ReviewsSkeleton />}>
         <Reviews
