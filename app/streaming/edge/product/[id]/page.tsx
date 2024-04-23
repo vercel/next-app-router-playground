@@ -28,7 +28,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         <RecommendedProducts
           path="/streaming/edge/product"
           data={fetch(
-            // We intentionally delay the reponse to simulate a slow data
+            // We intentionally delay the response to simulate a slow data
             // request that would benefit from streaming
             `https://app-playground-api.vercel.app/api/products?delay=500&filter=${params.id}`,
             {
@@ -49,7 +49,7 @@ export default async function Page({ params }: { params: { id: string } }) {
       <Suspense fallback={<ReviewsSkeleton />}>
         <Reviews
           data={fetch(
-            // We intentionally delay the reponse to simulate a slow data
+            // We intentionally delay the response to simulate a slow data
             // request that would benefit from streaming
             `https://app-playground-api.vercel.app/api/reviews?delay=1000`,
             {
