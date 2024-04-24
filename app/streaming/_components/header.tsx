@@ -1,4 +1,4 @@
-import { NextLogo } from '#/ui/next-logo';
+import { NextLogoLight } from '#/ui/next-logo';
 import {
   MagnifyingGlassIcon,
   ShoppingCartIcon,
@@ -13,7 +13,7 @@ export function Header() {
       <div className="flex gap-x-3">
         <Link href="/streaming">
           <div className="h-10 w-10 hover:opacity-70">
-            <NextLogo />
+            <NextLogoLight />
           </div>
         </Link>
 
