@@ -87,6 +87,11 @@ export const demos: { name: string; items: Item[] }[] = [
     name: 'Misc',
     items: [
       {
+        name: 'Patterns',
+        slug: 'patterns',
+        description: 'A collection of useful App Router patterns',
+      },
+      {
         name: 'Client Component Hooks',
         slug: 'hooks',
         description: 'Preview the routing hooks available in Client Components',
@@ -95,11 +100,6 @@ export const demos: { name: string; items: Item[] }[] = [
         name: 'CSS and CSS-in-JS',
         slug: 'styling',
         description: 'Preview the supported styling solutions',
-      },
-      {
-        name: 'Code Snippets',
-        slug: 'snippets',
-        description: 'A collection of useful App Router code snippets',
       },
     ],
   },
