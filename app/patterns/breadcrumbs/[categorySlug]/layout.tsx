@@ -15,7 +15,7 @@ export default async function Layout({
     <div className="space-y-9">
       <div className="flex justify-between">
         <TabGroup
-          path={`/breadcrumbs/${category.slug}`}
+          path={`/patterns/breadcrumbs/${category.slug}`}
           items={[
             {
               text: 'All',

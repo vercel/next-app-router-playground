@@ -3,7 +3,7 @@ import { Boundary } from '#/ui/boundary';
 import { TabGroup } from '#/ui/tab-group';
 import React from 'react';
 
-const title = 'Nested Layouts';
+const title = 'Breadcrumbs with Parallel Routes';
 
 export const metadata = {
   title,
@@ -15,20 +15,20 @@ export const metadata = {
 
 export default async function Layout({
   children,
-  breadcrumbs,
+  slot,
 }: {
   children: React.ReactNode;
-  breadcrumbs: React.ReactNode;
+  slot: React.ReactNode;
 }) {
   const categories = await getCategories();
 
   return (
     <div className="space-y-9">
-      <Boundary labels={['@breadcrumbs']}>{breadcrumbs}</Boundary>
+      <Boundary labels={['@breadcrumbs']}>{slot}</Boundary>
 
       <div className="flex justify-between">
         <TabGroup
-          path="/breadcrumbs"
+          path="/patterns/breadcrumbs"
           items={[
             {
               text: 'Home',
