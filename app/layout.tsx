@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     default: 'Next.js App Router',
     template: '%s | Next.js App Router',
   },
+  metadataBase: new URL('https://app-router.vercel.app'),
   description:
     'A playground to explore new Next.js App Router features such as nested layouts, instant loading states, streaming, and component level data fetching.',
   openGraph: {
