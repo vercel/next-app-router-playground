@@ -16,4 +16,4 @@ jobs:
 workflows:
   lighthouse_report:
     jobs:
-      - lighthouse_report
+      - generate_report
