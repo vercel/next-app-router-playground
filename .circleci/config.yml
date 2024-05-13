@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  lighthouse-check: foo-software/lighthouse-check@0.0.8
+  lighthouse-check: foo-software/lighthouse-check@0.0.13
 
 jobs:
   lighthouse_report:
@@ -13,6 +13,6 @@ jobs:
           urls: https://nextjs-app-playground-kappa.vercel.app/
 
 workflows:
-  test:
+  lighthouse_report:
     jobs:
       - lighthouse_report
