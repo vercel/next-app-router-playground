@@ -10,7 +10,7 @@ jobs:
       - lighthouse-check/audit:
           prCommentAccessToken: $LIGHTHOUSE_CHECK_GITHUB_ACCESS_TOKEN
           prCommentUrl: https://api.github.com/repos/Abhijeet-bluepineapple/nextjs-app-playground/pulls/${CIRCLE_PULL_REQUEST##*/}/reviews
-          urls: https://nextjs-app-playground-kappa.vercel.app/,https://nextjs-app-playground-kappa.vercel.app/route-groups
+          urls: https://nextjs-app-playground-kappa.vercel.app/
 
 workflows:
   test:
