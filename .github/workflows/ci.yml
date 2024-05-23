@@ -11,9 +11,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Dependencies
-        run: npm install -g @unlighthouse/cli puppeteer netlify-cli
-
       - name: Cache Node Modules
         uses: actions/cache@v3
         with:
@@ -21,6 +18,9 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+
+      - name: Install Dependencies
+        run: npm install -g @unlighthouse/cli puppeteer netlify-cli
 
       - name: Run Unlighthouse CI
         id: unlighthouse
@@ -48,6 +48,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            conosole.log('context', context)
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
