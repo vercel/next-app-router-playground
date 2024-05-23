@@ -28,7 +28,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: unlighthouse-output
-          path: unlighthouse-output.json
+          path: .unlighthouse/ci-result.json
 
   comment:
     runs-on: ubuntu-latest
