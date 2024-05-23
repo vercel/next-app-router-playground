@@ -60,13 +60,12 @@ jobs:
             output.forEach(page => {
               commentBody += `
               - **Path**: ${page.path}
-                - **Performance**: ${page.score}
-                - **Accessibility**: ${page.accessibility}
-                - **Best Practices**: ${page["best-practices"]}
-                - **SEO**: ${page.seo}
+                - **Performance**: ${page.score * 100}
+                - **Accessibility**: ${page.accessibility * 100}
+                - **Best Practices**: ${page["best-practices"] * 100}
+                - **SEO**: ${page.seo * 100}
               `;
             });
-            console.log('msg ', commentBody)
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
