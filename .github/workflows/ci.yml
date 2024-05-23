@@ -16,7 +16,7 @@ jobs:
 
       - name: Run Unlighthouse CI
         id: unlighthouse
-        run: unlighthouse-ci --build-static --output=json > unlighthouse-output.json
+        run: unlighthouse-ci --build-static --json
 
       - name: Deploy to Netlify
         run: netlify deploy --dir=.unlighthouse --prod --message="New Release Deploy from GitHub Actions"
@@ -48,18 +48,20 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const output = JSON.parse(fs.readFileSync('unlighthouse-output.json', 'utf8'));
-            const scores = output.summary;
-            const commentBody = `
-              ## Unlighthouse Scores
-              - **Performance**: ${scores.performance}
-              - **Accessibility**: ${scores.accessibility}
-              - **Best Practices**: ${scores.bestPractices}
-              - **SEO**: ${scores.seo}
-            `;
+            const output = JSON.parse(fs.readFileSync('./unlighthouse-output.json', 'utf8'));
+            let commentBody = '## Unlighthouse Scores\n';
+            output.forEach(page => {
+              commentBody += `
+              - **Path**: ${page.path}
+                - **Performance**: ${page.score}
+                - **Accessibility**: ${page.accessibility}
+                - **Best Practices**: ${page["best-practices"]}
+                - **SEO**: ${page.seo}
+              `;
+            });
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: commentBody
-            })
+            });
