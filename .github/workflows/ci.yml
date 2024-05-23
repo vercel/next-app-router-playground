@@ -11,12 +11,20 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Cache Node Modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install Dependencies
         run: npm install -g @unlighthouse/cli puppeteer netlify-cli
 
       - name: Run Unlighthouse CI
         id: unlighthouse
-        run: unlighthouse-ci --build-static --json
+        run: unlighthouse-ci --build-static --json --output-path=.unlighthouse/ci-result.json
 
       - name: Deploy to Netlify
         run: netlify deploy --dir=.unlighthouse --prod --message="New Release Deploy from GitHub Actions"
