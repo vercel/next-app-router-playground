@@ -2,8 +2,8 @@ export default {
   site: 'https://www.drive.com.au/',
   urls: [
     '/cars-for-sale/',
-    // '/showrooms/',
-    // '/drive-car-of-the-year/2024/'
+    '/showrooms/',
+    '/drive-car-of-the-year/2024/'
    ],
   // debug: true,
   // puppeteerClusterOptions: {
@@ -13,7 +13,7 @@ export default {
   scanner: {
     device: 'desktop',
     throttle: false,
-    samples: 1,
+    samples: 3,
   },
   // Exclude performance scores since they are not correct.
   lighthouseOptions: {
