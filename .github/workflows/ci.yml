@@ -15,7 +15,7 @@ jobs:
         run: npm install -g @unlighthouse/cli puppeteer netlify-cli
 
       - name: Unlighthouse assertions and client
-        run: unlighthouse-ci --site <your-site> --budget 75 --build-static
+        run: unlighthouse-ci --site https://www.google.com/ --budget 75 --build-static
 
       - name: Deploy
         run: netlify deploy --dir=.unlighthouse --prod --message="New Release Deploy from GitHub Actions"
