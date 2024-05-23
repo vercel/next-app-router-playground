@@ -1,10 +1,9 @@
 name: Assertions and static report
 
-on:
-  workflow_dispatch:
+on: [push]
 
 jobs:
-  demo:
+  lighthouse-report:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
