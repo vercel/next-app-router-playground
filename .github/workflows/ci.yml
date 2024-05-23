@@ -1,6 +1,8 @@
 name: Assertions and Static Report
 
-on: [push]
+on:
+  pull_request:
+    types: [opened, synchronize]
 
 jobs:
   lighthouse-report:
