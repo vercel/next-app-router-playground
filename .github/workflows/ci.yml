@@ -5,7 +5,7 @@ on:
     types: [opened, synchronize]
 
 permissions:
-  contents: write
+  pull-requests: 'write'
 
 jobs:
   lighthouse-report:
