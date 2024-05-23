@@ -1,4 +1,4 @@
-name: Assertions and static report
+name: Assertions and Static Report
 
 on: [push]
 
@@ -6,18 +6,57 @@ jobs:
   lighthouse-report:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
       - name: Install Dependencies
         run: npm install -g @unlighthouse/cli puppeteer netlify-cli
 
-      - name: Unlighthouse assertions and client
-        run: unlighthouse-ci --build-static
+      - name: Run Unlighthouse CI
+        id: unlighthouse
+        run: unlighthouse-ci --build-static | tee unlighthouse-output.json
 
-      - name: Deploy
+      - name: Extract and Save Scores
+        id: extract-scores
+        run: |
+          scores=$(cat unlighthouse-output.json | jq -r '[.summary.performance, .summary.accessibility, .summary.bestPractices, .summary.seo]')
+          echo "performance=$(echo $scores | jq '.[0]')" >> $GITHUB_ENV
+          echo "accessibility=$(echo $scores | jq '.[1]')" >> $GITHUB_ENV
+          echo "bestPractices=$(echo $scores | jq '.[2]')" >> $GITHUB_ENV
+          echo "seo=$(echo $scores | jq '.[3]')" >> $GITHUB_ENV
+
+      - name: Deploy to Netlify
         run: netlify deploy --dir=.unlighthouse --prod --message="New Release Deploy from GitHub Actions"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+  comment:
+    runs-on: ubuntu-latest
+    needs: lighthouse-report
+    steps:
+      - name: Comment on PR
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { performance, accessibility, bestPractices, seo } = process.env;
+            const commentBody = `
+              ## Unlighthouse Scores
+              - **Performance**: ${performance}
+              - **Accessibility**: ${accessibility}
+              - **Best Practices**: ${bestPractices}
+              - **SEO**: ${seo}
+            `;
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: commentBody
+            })
+        env:
+          performance: ${{ env.performance }}
+          accessibility: ${{ env.accessibility }}
+          bestPractices: ${{ env.bestPractices }}
+          seo: ${{ env.seo }}
