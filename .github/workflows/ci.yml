@@ -26,7 +26,7 @@ jobs:
 
       - name: Run Unlighthouse CI
         id: unlighthouse
-        run: unlighthouse-ci --build-static --json --output-path=.unlighthouse/ci-result.json
+        run: unlighthouse-ci --build-static --json --output-path=.unlighthouse/
 
       - name: Deploy to Netlify
         run: netlify deploy --dir=.unlighthouse --prod --message="New Release Deploy from GitHub Actions"
