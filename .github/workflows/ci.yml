@@ -12,23 +12,11 @@ jobs:
           fetch-depth: 0
 
       - name: Install Dependencies
-        run: npm install -g @unlighthouse/cli puppeteer netlify-cli jq
+        run: npm install -g @unlighthouse/cli puppeteer netlify-cli
 
       - name: Run Unlighthouse CI
         id: unlighthouse
         run: unlighthouse-ci --build-static --output=json > unlighthouse-output.json
-
-      - name: Extract and Save Scores
-        id: extract-scores
-        run: |
-          performance=$(jq '.summary.performance' unlighthouse-output.json)
-          accessibility=$(jq '.summary.accessibility' unlighthouse-output.json)
-          bestPractices=$(jq '.summary.bestPractices' unlighthouse-output.json)
-          seo=$(jq '.summary.seo' unlighthouse-output.json)
-          echo "PERFORMANCE=${performance}" >> $GITHUB_ENV
-          echo "ACCESSIBILITY=${accessibility}" >> $GITHUB_ENV
-          echo "BEST_PRACTICES=${bestPractices}" >> $GITHUB_ENV
-          echo "SEO=${seo}" >> $GITHUB_ENV
 
       - name: Deploy to Netlify
         run: netlify deploy --dir=.unlighthouse --prod --message="New Release Deploy from GitHub Actions"
@@ -36,21 +24,38 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
+      - name: Upload Unlighthouse Output
+        uses: actions/upload-artifact@v3
+        with:
+          name: unlighthouse-output
+          path: unlighthouse-output.json
+
   comment:
     runs-on: ubuntu-latest
     needs: lighthouse-report
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Download Unlighthouse Output
+        uses: actions/download-artifact@v3
+        with:
+          name: unlighthouse-output
+          path: .
+
       - name: Comment on PR
         uses: actions/github-script@v6
         with:
           script: |
-            const { PERFORMANCE, ACCESSIBILITY, BEST_PRACTICES, SEO } = process.env;
+            const fs = require('fs');
+            const output = JSON.parse(fs.readFileSync('unlighthouse-output.json', 'utf8'));
+            const scores = output.summary;
             const commentBody = `
               ## Unlighthouse Scores
-              - **Performance**: ${PERFORMANCE}
-              - **Accessibility**: ${ACCESSIBILITY}
-              - **Best Practices**: ${BEST_PRACTICES}
-              - **SEO**: ${SEO}
+              - **Performance**: ${scores.performance}
+              - **Accessibility**: ${scores.accessibility}
+              - **Best Practices**: ${scores.bestPractices}
+              - **SEO**: ${scores.seo}
             `;
             github.rest.issues.createComment({
               issue_number: context.issue.number,
@@ -58,8 +63,3 @@ jobs:
               repo: context.repo.repo,
               body: commentBody
             })
-        env:
-          PERFORMANCE: ${{ env.PERFORMANCE }}
-          ACCESSIBILITY: ${{ env.ACCESSIBILITY }}
-          BEST_PRACTICES: ${{ env.BEST_PRACTICES }}
-          SEO: ${{ env.SEO }}
