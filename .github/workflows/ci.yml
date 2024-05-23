@@ -4,6 +4,9 @@ on:
   pull_request:
     types: [opened, synchronize]
 
+permissions:
+  contents: write
+
 jobs:
   lighthouse-report:
     runs-on: ubuntu-latest
