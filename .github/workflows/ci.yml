@@ -48,7 +48,7 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const output = JSON.parse(fs.readFileSync('./unlighthouse-output.json', 'utf8'));
+            const output = JSON.parse(fs.readFileSync('./.unlighthouse/ci-result.json', 'utf8'));
             let commentBody = '## Unlighthouse Scores\n';
             output.forEach(page => {
               commentBody += `
