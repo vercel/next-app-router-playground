@@ -1,7 +1,7 @@
 export default {
-  site: 'https://www.drive.com.au/',
+  site: 'https://www.drive.com.au',
   urls: [
-    '',
+    '/',
     '/news/',
     '/reviews/',
     '/cars-for-sale/',
