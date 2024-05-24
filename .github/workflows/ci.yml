@@ -51,14 +51,10 @@ jobs:
             const fs = require('fs');
             const output = JSON.parse(fs.readFileSync('./.unlighthouse/ci-result.json', 'utf8'));
             let commentBody = '## Unlighthouse Scores\n';
+            commentBody += '| Path | Performance | Accessibility | Best Practices | SEO |\n';
+            commentBody += '|------|--------------|---------------|----------------|-----|\n';
             output.forEach(page => {
-              commentBody += `
-              - **Path**: ${page.path}
-                - **Performance**: ${page.score * 100}
-                - **Accessibility**: ${page.accessibility * 100}
-                - **Best Practices**: ${page["best-practices"] * 100}
-                - **SEO**: ${page.seo * 100}
-              `;
+            commentBody += `| ${page.path} | ${page.score * 100} | ${page.accessibility * 100} | ${page["best-practices"] * 100} | ${page.seo * 100} |\n`;
             });
             github.rest.issues.createComment({
               issue_number: context.issue.number,
