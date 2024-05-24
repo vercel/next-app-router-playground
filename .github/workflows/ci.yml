@@ -57,7 +57,7 @@ jobs:
                 .replace(/\b\w/g, char => char.toUpperCase()).trim();  // Capitalize each word
             }
             const keys = Object.keys(output[0]);
-            const columnNames = keys.map(key => key === 'score' ? 'Overall' : key.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase()));
+            const columnNames = keys.map(key => key.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase()));
 
             let commentBody = '## Lighthouse Scores\n\n';
             commentBody += '| ' + columnNames.join(' | ') + ' |\n';
