@@ -57,14 +57,14 @@ jobs:
                 .replace(/\b\w/g, char => char.toUpperCase());  // Capitalize each word
             }
             const keys = Object.keys(output[0]);
-            const columnNames = keys.map(key => key.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase()));
+            const columnNames = keys.map(key => key === 'score' ? 'Overall' : key.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase())).reverse();
 
             let commentBody = '## Lighthouse Scores\n\n';
             commentBody += '| ' + columnNames.join(' | ') + ' |\n';
             commentBody += '| ' + columnNames.map(() => '------').join(' | ') + ' |\n';
 
             output.forEach(page => {
-              const values = keys.map(key => key === 'path' ? formatPath(page[key]) : (page[key] * 100).toFixed(2));
+              const values = keys.map(key => key === 'path' ? formatPath(page[key]) : (page[key] * 100));
               commentBody += '| ' + values.join(' | ') + ' |\n';
             });
             github.rest.issues.createComment({
