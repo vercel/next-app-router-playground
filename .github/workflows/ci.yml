@@ -52,9 +52,9 @@ jobs:
             const output = JSON.parse(fs.readFileSync('./.unlighthouse/ci-result.json', 'utf8'));
             function formatPath(path) {
               return path
-                .replace(/\//g, '')  // Remove leading and trailing slashes
+                .replace(/\//g, ' ')  // Remove leading and trailing slashes
                 .replace(/-/g, ' ')  // Replace hyphens with spaces
-                .replace(/\b\w/g, char => char.toUpperCase());  // Capitalize each word
+                .replace(/\b\w/g, char => char.toUpperCase()).trim();  // Capitalize each word
             }
             const keys = Object.keys(output[0]);
             const columnNames = keys.map(key => key === 'score' ? 'Overall' : key.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase()));
