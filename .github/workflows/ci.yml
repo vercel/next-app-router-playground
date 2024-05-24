@@ -50,17 +50,22 @@ jobs:
           script: |
             const fs = require('fs');
             const output = JSON.parse(fs.readFileSync('./.unlighthouse/ci-result.json', 'utf8'));
-             function formatPath(path) {
+            function formatPath(path) {
               return path
                 .replace(/\//g, '')  // Remove leading and trailing slashes
                 .replace(/-/g, ' ')  // Replace hyphens with spaces
                 .replace(/\b\w/g, char => char.toUpperCase());  // Capitalize each word
             }
-            let commentBody = '## Lighthouse Scores\n';
-            commentBody += '| Page | Performance | Accessibility | Best Practices | SEO |\n';
-            commentBody += '|------|--------------|---------------|----------------|-----|\n';
+            const keys = Object.keys(output[0]);
+            const columnNames = keys.map(key => key.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase()));
+
+            let commentBody = '## Lighthouse Scores\n\n';
+            commentBody += '| ' + columnNames.join(' | ') + ' |\n';
+            commentBody += '| ' + columnNames.map(() => '------').join(' | ') + ' |\n';
+
             output.forEach(page => {
-            commentBody += `| ${formatPath(page.path)} | ${page.score * 100} | ${page.accessibility * 100} | ${page["best-practices"] * 100} | ${page.seo * 100} |\n`;
+              const values = keys.map(key => key === 'path' ? formatPath(page[key]) : (page[key] * 100).toFixed(2));
+              commentBody += '| ' + values.join(' | ') + ' |\n';
             });
             github.rest.issues.createComment({
               issue_number: context.issue.number,
