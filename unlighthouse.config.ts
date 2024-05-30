@@ -1,5 +1,4 @@
 export default {
-  site: 'https://www.drive.com.au',
   urls: [
     '/',
     '/news/',
