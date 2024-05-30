@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
 
       - name: Get Branch Name 
-        run: echo "::set-output name=branch::$(echo $GITHUB_BASE_REF)"
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
 
       - name: Cache Node Modules
         uses: actions/cache@v3
