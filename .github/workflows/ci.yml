@@ -34,7 +34,7 @@ jobs:
 
       - name: Run Unlighthouse CI
         id: unlighthouse
-        run: unlighthouse-ci --build-static --json --output-path=.unlighthouse/
+        run: unlighthouse-ci --site "http://$GITHUB_CONTEXT.com" --build-static --json --output-path=.unlighthouse/
 
       - name: Upload Unlighthouse Output
         uses: actions/upload-artifact@v3
