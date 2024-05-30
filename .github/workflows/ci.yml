@@ -36,7 +36,7 @@ jobs:
         id: unlighthouse
         env:
           GITHUB_CONTEXT: ${{ github.head_ref }}
-        run: unlighthouse-ci --site "http://${GITHUB_CONTEXT}.com" --build-static --json --output-path=.unlighthouse/
+        run: unlighthouse-ci --site "https://${GITHUB_CONTEXT}.grille-preview-environment-ugt03go.preflig.ht" --build-static --json --output-path=.unlighthouse/
 
       - name: Upload Unlighthouse Output
         uses: actions/upload-artifact@v3
