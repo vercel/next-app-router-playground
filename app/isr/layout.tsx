@@ -23,7 +23,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             text: 'Home',
           },
           ...ids.map((x) => ({
-            text: `Post ${x.id}`,
+            text: `Article ${x.id}`,
             slug: x.id,
           })),
         ]}

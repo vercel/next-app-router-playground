@@ -6,10 +6,10 @@ export default function Page() {
       <h1 className="text-xl font-bold">Incremental Static Regeneration</h1>
 
       <ul>
-        <li>In this example, three posts fetch data using granular ISR.</li>
+        <li>In this example, three articles fetch data using granular ISR.</li>
         <li>Caches responses are fresh for 60 seconds.</li>
         <li>
-          Try navigating to each post and noting the timestamp of when the page
+          Try navigating to each article and noting the timestamp of when the page
           was rendered. Refresh the page after 60 seconds to trigger a
           revalidation for the next request. Refresh again to see the
           revalidated page.
