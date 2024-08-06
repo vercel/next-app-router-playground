@@ -7,7 +7,6 @@ import { useSelectedLayoutSegment } from 'next/navigation';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
 import { useState } from 'react';
-import Byline from './byline';
 
 export function GlobalNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -68,7 +67,6 @@ export function GlobalNav() {
             );
           })}
         </nav>
-        <Byline className="absolute hidden sm:block" />
       </div>
     </div>
   );
