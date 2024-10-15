@@ -2,11 +2,10 @@ import type { Category } from '#/app/api/categories/category';
 import { SkeletonCard } from '#/ui/skeleton-card';
 import { notFound } from 'next/navigation';
 
-export default async function Page({
-  params,
-}: {
-  params: { categorySlug: string };
+export default async function Page(props: {
+  params: Promise<{ categorySlug: string }>;
 }) {
+  const params = await props.params;
   const res = await fetch(
     // We intentionally delay the response to simulate a slow data
     // request that would benefit from `loading.js`

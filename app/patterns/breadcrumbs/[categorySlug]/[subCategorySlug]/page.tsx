@@ -1,11 +1,10 @@
 import { getCategory } from '#/app/api/categories/getCategories';
 import { SkeletonCard } from '#/ui/skeleton-card';
 
-export default async function Page({
-  params,
-}: {
-  params: { subCategorySlug: string };
+export default async function Page(props: {
+  params: Promise<{ subCategorySlug: string }>;
 }) {
+  const params = await props.params;
   const category = await getCategory({ slug: params.subCategorySlug });
 
   return (

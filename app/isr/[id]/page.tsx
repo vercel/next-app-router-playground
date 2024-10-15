@@ -6,7 +6,8 @@ export async function generateStaticParams() {
   return [{ id: '1' }, { id: '2' }, { id: '3' }];
 }
 
-export default async function Page({ params }: { params: { id: string } }) {
+export default async function Page(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${params.id}`,
     { next: { revalidate: 60, tags: ['collection'] } },

@@ -9,7 +9,7 @@ export const SingleProduct = async ({ data }: { data: Promise<Response> }) => {
 
   // Get the cart count from the users cookies and pass it to the client
   // AddToCart component
-  const cartCount = cookies().get('_cart_count')?.value || '0';
+  const cartCount = (await cookies()).get('_cart_count')?.value || '0';
 
   return (
     <div className="grid grid-cols-4 gap-6">

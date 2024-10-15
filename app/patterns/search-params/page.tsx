@@ -24,7 +24,8 @@ const options = [
 
 export const dynamic = 'force-dynamic';
 
-export default async function Page({ searchParams }: { searchParams: any }) {
+export default async function Page(props: { searchParams: Promise<any> }) {
+  const searchParams = await props.searchParams;
   return (
     <div className="prose prose-sm prose-invert max-w-none">
       <h1 className="text-lg font-bold">
