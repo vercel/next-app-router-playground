@@ -8,8 +8,12 @@ export const metadata = {
   title: 'Streaming (Edge Runtime)',
 };
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  const cartCount = Number(cookies().get('_cart_count')?.value || '0');
+export default async function Layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const cartCount = Number((await cookies()).get('_cart_count')?.value || '0');
 
   return (
     <>

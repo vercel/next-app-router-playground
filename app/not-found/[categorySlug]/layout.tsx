@@ -2,13 +2,14 @@ import { getCategories, getCategory } from '#/app/api/categories/getCategories';
 import { ClickCounter } from '#/ui/click-counter';
 import { TabGroup } from '#/ui/tab-group';
 
-export default async function Layout({
-  children,
-  params,
-}: {
+export default async function Layout(props: {
   children: React.ReactNode;
-  params: { categorySlug: string };
+  params: Promise<{ categorySlug: string }>;
 }) {
+  const params = await props.params;
+
+  const { children } = props;
+
   // - `getCategory()` returns `notFound()` if the fetched data is `null` or `undefined`.
   // - `notFound()` renders the closest `not-found.tsx` in the route segment hierarchy.
   // - For `layout.js`, the closest `not-found.tsx` starts from the parent segment.

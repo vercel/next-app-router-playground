@@ -1,12 +1,14 @@
 import { Breadcrumbs } from '#/app/patterns/breadcrumbs/_components/breadcrumbs';
 
-export default function Page({
-  params: { all },
-}: {
-  params: {
+export default async function Page(props: {
+  params: Promise<{
     all: string[];
-  };
+  }>;
 }) {
+  const params = await props.params;
+
+  const { all } = params;
+
   // Note: you could fetch breadcrumb data based on params here
   // e.g. title, slug, children/siblings (for dropdowns)
   const items = [
