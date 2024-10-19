@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply my-1 bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-md bg-gray-900;
+  }
+}
