@@ -13,7 +13,7 @@ export default function Page() {
               not-found.js
             </Link>
           </code>{' '}
-          file is used to render UI when the{' '}
+          File is used to render UI when the{' '}
           <code>
             <Link href="https://nextjs.org/docs/app/api-reference/functions/not-found">
               notFound()
