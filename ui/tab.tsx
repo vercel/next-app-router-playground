@@ -3,26 +3,13 @@
 import type { Item } from '#/ui/tab-group';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { useSelectedLayoutSegment } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
-export const Tab = ({
-  path,
-  parallelRoutesKey,
-  item,
-}: {
-  path: string;
-  parallelRoutesKey?: string;
-  item: Item;
-}) => {
-  const segment = useSelectedLayoutSegment(parallelRoutesKey);
+export const Tab = ({ path, item }: { path: string; item: Item }) => {
+  const pathname = usePathname();
 
   const href = item.slug ? path + '/' + item.slug : path;
-  const isActive =
-    // Example home pages e.g. `/layouts`
-    (!item.slug && segment === null) ||
-    segment === item.segment ||
-    // Nested pages e.g. `/layouts/electronics`
-    segment === item.slug;
+  const isActive = pathname === href;
 
   return (
     <Link

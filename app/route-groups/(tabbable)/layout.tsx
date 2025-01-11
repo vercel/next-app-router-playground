@@ -13,8 +13,8 @@ export default async function Layout({
 
   return (
     <Boundary
-      labels={['marketing layout']}
-      color="violet"
+      labels={['tabbable layout']}
+      color="orange"
       animateRerendering={false}
     >
       <div className="space-y-9">
