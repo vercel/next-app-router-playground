@@ -19,21 +19,6 @@ export default async function Layout({
     >
       <div className="space-y-9">
         <div className="flex justify-between">
-          <TabGroup
-            path="/route-groups"
-            items={[
-              {
-                text: 'Home',
-              },
-              ...categories.map((x) => ({
-                text: x.name,
-                slug: x.slug,
-              })),
-              { text: 'Checkout', slug: 'checkout' },
-              { text: 'Blog', slug: 'blog' },
-            ]}
-          />
-
           <div className="self-start">
             <ClickCounter />
           </div>
