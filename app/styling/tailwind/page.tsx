@@ -14,7 +14,7 @@ export default function Page() {
         Styled with Tailwind CSS
       </h1>
 
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <div className="grid grid-cols-[repeat(auto-fit,_minmax(9.5rem,_1fr))] gap-6 lg:grid-cols-3">
         <SkeletonCard />
         <SkeletonCard />
         <SkeletonCard />
