@@ -18,6 +18,7 @@ export function NavLinks({
         const isActive = pathname === link.href;
         return (
           <Link
+            key={link.href}
             href={link.href}
             className={clsx('rounded-lg px-3 py-1 text-sm font-medium', {
               'bg-gray-700 text-gray-100 hover:bg-gray-500 hover:text-white':

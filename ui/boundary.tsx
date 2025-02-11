@@ -50,13 +50,13 @@ export const Boundary = ({
         'border-vercel-cyan': color === 'cyan',
         'border-vercel-violet': color === 'violet',
         'border-vercel-orange': color === 'orange',
-        'animate-[rerender_1s_ease-in-out_1] text-vercel-pink':
+        'text-vercel-pink animate-[rerender_1s_ease-in-out_1]':
           animateRerendering,
       })}
     >
       <div
         className={clsx(
-          'absolute -top-2.5 flex gap-x-1 text-[9px] uppercase leading-4 tracking-widest',
+          'absolute -top-2.5 flex gap-x-1 text-[9px] leading-4 tracking-widest uppercase',
           {
             'left-3 lg:left-5': size === 'small',
             'left-4 lg:left-9': size === 'default',
