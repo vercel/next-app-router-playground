@@ -7,6 +7,8 @@ export async function generateStaticParams() {
 }
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
+  'use cache';
+
   const params = await props.params;
   if (Number(params.id) >= 100) {
     notFound();
@@ -22,7 +24,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
   return (
     <div className="grid grid-cols-6 gap-x-6 gap-y-3">
       <div className="col-span-full space-y-3 lg:col-span-4">
-        <h1 className="truncate text-2xl font-medium capitalize text-gray-200">
+        <h1 className="truncate text-2xl font-medium text-gray-200 capitalize">
           {data.title}
         </h1>
         <p className="line-clamp-3 font-medium text-gray-500">{data.body}</p>

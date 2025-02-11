@@ -17,8 +17,6 @@ export default async function Page() {
           for the whole page to load before they can interact with anything.
         </li>
 
-        <li>Streaming works with both Edge and Node runtimes.</li>
-
         <li>
           Try streaming by <strong>selecting a runtime</strong> in the
           navigation above.

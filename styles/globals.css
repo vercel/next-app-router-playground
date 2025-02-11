@@ -1,3 +1,95 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@theme {
+  --color-gray-50: var(--color-zinc-50);
+  --color-gray-100: var(--color-zinc-100);
+  --color-gray-200: var(--color-zinc-200);
+  --color-gray-300: var(--color-zinc-300);
+  --color-gray-400: var(--color-zinc-400);
+  --color-gray-500: var(--color-zinc-500);
+  --color-gray-600: var(--color-zinc-600);
+  --color-gray-700: var(--color-zinc-700);
+  --color-gray-800: var(--color-zinc-800);
+  --color-gray-900: var(--color-zinc-900);
+  --color-gray-1000: rgb(17, 17, 19);
+  --color-gray-1100: rgb(10, 10, 11);
+  --color-vercel-pink: #ff0080;
+  --color-vercel-blue: #0070f3;
+  --color-vercel-cyan: #50e3c2;
+  --color-vercel-orange: #f5a623;
+  --color-vercel-violet: #7928ca;
+}
+
+@layer utilities {
+  .vc-border-gradient {
+    background-image: radial-gradient(
+      at left top,
+      var(--color-gray-500),
+      50px,
+      var(--color-gray-800) 50%
+    );
+  }
+}
+
+@keyframes rerender {
+  0%,
+  40% {
+    border-color: var(--color-vercel-pink);
+  }
+}
+
+@keyframes highlight {
+  0%,
+  40% {
+    background: var(--color-vercel-pink);
+    color: var(--color-white);
+  }
+}
+
+@keyframes loading {
+  0% {
+    opacity: 0.2;
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(1px);
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes translateXReset {
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeToTransparent {
+  0%,
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
