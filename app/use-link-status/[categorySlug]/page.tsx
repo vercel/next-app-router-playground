@@ -5,6 +5,9 @@ import { notFound } from 'next/navigation';
 export default async function Page(props: {
   params: Promise<{ categorySlug: string }>;
 }) {
+  // DEMO: We add an artificial delay to better demonstrate pending states.
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
   const params = await props.params;
   const res = await fetch(
     `https://app-playground-api.vercel.app/api/categories?slug=${params.categorySlug}`,

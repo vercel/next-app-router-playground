@@ -13,6 +13,9 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
+  // DEMO: We add an artificial delay to better demonstrate pending states.
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
   const categories = await getCategories();
 
   return (
@@ -26,6 +29,8 @@ export default async function Layout({
           ...categories.map((x) => ({
             text: x.name,
             slug: x.slug,
+            // DEMO: We disable prefetching to better demonstrate pending states.
+            prefetch: false,
           })),
         ]}
       />
