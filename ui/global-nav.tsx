@@ -2,7 +2,7 @@
 
 import { demos, type Item } from '#/lib/demos';
 import { NextLogoDark } from '#/ui/next-logo';
-import Link from 'next/link';
+import Link, { useLinkStatus } from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
@@ -96,6 +96,18 @@ function GlobalNavItem({
       )}
     >
       {item.name}
+      <PendingStatus />
     </Link>
   );
+}
+
+function PendingStatus() {
+  const { pending } = useLinkStatus();
+  return pending ? (
+    <div
+      role="status"
+      aria-label="Loading"
+      className="spinner ml-auto size-4 shrink-0 self-center rounded-full"
+    />
+  ) : null;
 }
