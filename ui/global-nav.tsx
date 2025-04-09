@@ -86,6 +86,7 @@ function GlobalNavItem({
     <Link
       onClick={close}
       href={`/${item.slug}`}
+      {...(item.requirements?.prefetch === false && { prefetch: false })}
       className={clsx(
         'block rounded-md px-3 py-2 text-sm font-medium hover:text-gray-300',
         {
