@@ -47,6 +47,16 @@ export const demos: { name: string; items: Item[] }[] = [
     ],
   },
   {
+    name: 'APIs',
+    items: [
+      {
+        name: 'useLinkStatus',
+        slug: 'use-link-status',
+        description: 'Create inline visual feedback for link interactions',
+      },
+    ],
+  },
+  {
     name: 'Data Fetching',
     items: [
       {
