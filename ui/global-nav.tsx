@@ -7,6 +7,7 @@ import { useSelectedLayoutSegment } from 'next/navigation';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
 import { useState } from 'react';
+import { LinkStatus } from '#/ui/link-status';
 
 export function GlobalNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -88,7 +89,7 @@ function GlobalNavItem({
       href={`/${item.slug}`}
       {...(item.requirements?.prefetch === false && { prefetch: false })}
       className={clsx(
-        'flex rounded-md px-3 py-2 text-sm font-medium hover:text-gray-300',
+        'flex justify-between rounded-md px-3 py-2 text-sm font-medium hover:text-gray-300',
         {
           'text-gray-400 hover:bg-gray-800': !isActive,
           'text-white': isActive,
@@ -96,18 +97,7 @@ function GlobalNavItem({
       )}
     >
       {item.name}
-      <PendingStatus />
+      <LinkStatus />
     </Link>
   );
-}
-
-function PendingStatus() {
-  const { pending } = useLinkStatus();
-  return pending ? (
-    <div
-      role="status"
-      aria-label="Loading"
-      className="spinner ml-auto size-4 shrink-0 self-center rounded-full"
-    />
-  ) : null;
 }
