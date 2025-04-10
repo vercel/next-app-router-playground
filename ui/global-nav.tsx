@@ -2,11 +2,12 @@
 
 import { demos, type Item } from '#/lib/demos';
 import { NextLogoDark } from '#/ui/next-logo';
-import Link from 'next/link';
+import Link, { useLinkStatus } from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
 import { useState } from 'react';
+import { LinkStatus } from '#/ui/link-status';
 
 export function GlobalNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -86,8 +87,9 @@ function GlobalNavItem({
     <Link
       onClick={close}
       href={`/${item.slug}`}
+      {...(item.requirements?.prefetch === false && { prefetch: false })}
       className={clsx(
-        'block rounded-md px-3 py-2 text-sm font-medium hover:text-gray-300',
+        'flex justify-between rounded-md px-3 py-2 text-sm font-medium hover:text-gray-300',
         {
           'text-gray-400 hover:bg-gray-800': !isActive,
           'text-white': isActive,
@@ -95,6 +97,7 @@ function GlobalNavItem({
       )}
     >
       {item.name}
+      <LinkStatus />
     </Link>
   );
 }

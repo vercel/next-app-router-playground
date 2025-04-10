@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.spinner {
+  background: conic-gradient(transparent 10deg, white, transparent 320deg);
+
+  /* Mask to create a hollow center 🍩 */
+  --border-size: 3px;
+  mask-image: radial-gradient(
+    closest-side,
+    transparent calc(100% - var(--border-size)),
+    white calc(100% - var(--border-size))
+  );
+
+  /* Animation:
+     - opacity: render invisible and use animations to reveal spinner
+     - fadeIn: fade in after delay to prevent flashes of UI on fast navigations 
+     - rotate: rotate indefinitely while rendered */
+  opacity: 0;
+  animation:
+    fadeIn 500ms 150ms forwards,
+    rotate 1s linear infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}

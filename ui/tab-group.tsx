@@ -1,9 +1,11 @@
 import { Tab } from '#/ui/tab';
+import type { LinkProps } from 'next/link';
 
 export type Item = {
   text: string;
   slug?: string;
   segment?: string;
+  prefetch?: LinkProps['prefetch'];
 };
 
 export const TabGroup = ({ path, items }: { path: string; items: Item[] }) => {

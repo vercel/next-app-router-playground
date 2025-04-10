@@ -84,6 +84,35 @@ export default {
           },
         },
       }),
+      typography: ({ theme }: any) => ({
+        DEFAULT: {
+          css: {
+            blockquote: {
+              borderWidth: '1px',
+              borderColor: theme('colors.gray.800'),
+              fontSize: '0.9em',
+              color: theme('colors.gray.400'),
+              borderRadius: '0.25em',
+              paddingTop: '0.75em',
+              paddingBottom: '0.75em',
+              fontStyle: 'normal',
+              fontWeight: 'normal',
+              '& > :first-child': {
+                marginTop: '0',
+              },
+              '& > :last-child': {
+                marginBottom: '0',
+              },
+              'p:first-of-type:before': {
+                content: 'none',
+              },
+              'p:last-of-type:after': {
+                content: 'none',
+              },
+            },
+          },
+        },
+      }),
     },
   },
   plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
