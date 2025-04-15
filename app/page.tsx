@@ -1,4 +1,5 @@
 import { demos } from '#/lib/demos';
+import { LinkStatus } from '#/ui/link-status';
 import Link from 'next/link';
 
 export default function Page() {
@@ -22,8 +23,8 @@ export default function Page() {
                       key={item.name}
                       className="group block space-y-1.5 rounded-lg bg-gray-900 px-5 py-3 hover:bg-gray-800"
                     >
-                      <div className="font-medium text-gray-200 group-hover:text-gray-50">
-                        {item.name}
+                      <div className="flex items-center justify-between font-medium text-gray-200 group-hover:text-gray-50">
+                        {item.name} <LinkStatus />
                       </div>
 
                       {item.description ? (

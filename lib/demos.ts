@@ -2,6 +2,9 @@ export type Item = {
   name: string;
   slug: string;
   description?: string;
+  requirements?: {
+    prefetch?: boolean;
+  };
 };
 
 export const demos: { name: string; items: Item[] }[] = [
@@ -43,6 +46,19 @@ export const demos: { name: string; items: Item[] }[] = [
         name: 'Not Found',
         slug: 'not-found',
         description: 'Create Not Found UI for specific parts of an app',
+      },
+    ],
+  },
+  {
+    name: 'APIs',
+    items: [
+      {
+        name: 'useLinkStatus',
+        slug: 'use-link-status',
+        description: 'Create inline visual feedback for link interactions',
+        requirements: {
+          prefetch: false,
+        },
       },
     ],
   },
