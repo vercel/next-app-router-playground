@@ -16,14 +16,14 @@ export const ProductDeal = ({
 
   return (
     <div className="flex gap-x-1.5">
-      <div className="text-lg font-bold leading-snug text-vercel-cyan">
+      <div className="text-lg leading-snug font-bold text-cyan-500">
         -{percent}%
       </div>
       <div className="flex">
         <div className="text-sm leading-snug text-white">
           <ProductCurrencySymbol dinero={discountRaw.amount} />
         </div>
-        <div className="text-lg font-bold leading-snug text-white">
+        <div className="text-lg leading-snug font-bold text-white">
           {discount}
         </div>
       </div>

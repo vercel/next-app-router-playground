@@ -26,12 +26,7 @@ export default async function Layout({
               text: 'Home',
             },
             {
-              text: 'Edge Runtime',
-              slug: 'edge/product/1',
-              segment: 'edge',
-            },
-            {
-              text: 'Node Runtime',
+              text: 'Node.js Runtime',
               slug: 'node/product/1',
               segment: 'node',
             },
