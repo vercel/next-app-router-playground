@@ -1,12 +1,8 @@
 import type { NextRequest } from 'next/server';
 import { ImageResponse } from 'next/og';
 import type { ReactElement } from 'react';
-
-export const runtime = 'edge';
-
-const interSemiBold = fetch(
-  new URL('./Inter-SemiBold.ttf', import.meta.url),
-).then((res) => res.arrayBuffer());
+import { join } from 'path';
+import { readFile } from 'fs/promises';
 
 export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
   try {
@@ -16,6 +12,9 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
     const title = searchParams.has('title')
       ? searchParams.get('title')
       : 'App Router Playground';
+
+    const file = await readFile(join(process.cwd(), './Inter-SemiBold.ttf'));
+    const font = Uint8Array.from(file).buffer;
 
     return new ImageResponse(
       (
@@ -56,7 +55,7 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
         fonts: [
           {
             name: 'Inter',
-            data: await interSemiBold,
+            data: font,
             style: 'normal',
             weight: 400,
           },

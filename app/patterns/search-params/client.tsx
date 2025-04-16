@@ -65,7 +65,7 @@ export default function Client({
                       {
                         'bg-gray-700 text-gray-100 hover:bg-gray-500 hover:text-white':
                           !isActive,
-                        'bg-vercel-blue text-white': isActive,
+                        'bg-blue-600 text-white': isActive,
                       },
                     )}
                   >

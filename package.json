@@ -1,52 +1,40 @@
 {
   "private": true,
-  "packageManager": "pnpm@8.2.0",
   "scripts": {
-    "build": "next build",
     "dev": "next dev",
-    "lint": "next lint",
-    "lint-staged": "lint-staged",
-    "prettier": "prettier --write --ignore-unknown .",
-    "prettier:check": "prettier --check --ignore-unknown .",
+    "build": "next build",
     "start": "next start",
-    "test": "pnpm prettier:check && pnpm lint"
-  },
-  "git": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*": "prettier --write --ignore-unknown"
+    "prettier": "prettier --write --ignore-unknown ."
   },
   "dependencies": {
-    "@heroicons/react": "2.1.3",
+    "@heroicons/react": "2.2.0",
+    "@mdx-js/loader": "3.1.0",
+    "@mdx-js/react": "3.1.0",
+    "@next/mdx": "15.3.1-canary.8",
+    "@types/mdx": "2.0.13",
     "clsx": "2.1.1",
-    "date-fns": "3.6.0",
+    "date-fns": "4.1.0",
     "dinero.js": "2.0.0-alpha.10",
     "ms": "3.0.0-canary.1",
-    "next": "15.0.0-canary.193",
-    "react": "19.0.0-rc-cd22717c-20241013",
-    "react-dom": "19.0.0-rc-cd22717c-20241013",
+    "next": "15.3.1-canary.8",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "server-only": "0.0.1",
-    "styled-components": "6.1.8",
-    "use-count-up": "3.0.1",
-    "vercel": "34.0.0"
+    "styled-components": "6.1.15",
+    "use-count-up": "3.0.1"
   },
   "devDependencies": {
-    "@tailwindcss/forms": "0.5.7",
-    "@tailwindcss/typography": "0.5.12",
-    "@types/ms": "0.7.34",
-    "@types/node": "20.12.7",
-    "@types/react": "npm:types-react@19.0.0-rc.1",
-    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
-    "@vercel/git-hooks": "1.0.0",
-    "autoprefixer": "10.4.19",
-    "eslint": "9.0.0",
-    "eslint-config-next": "14.2.2",
-    "lint-staged": "15.2.2",
-    "postcss": "8.4.38",
-    "prettier": "3.2.5",
-    "prettier-plugin-tailwindcss": "0.5.14",
-    "tailwindcss": "3.4.3",
-    "typescript": "5.4.5"
+    "@tailwindcss/forms": "0.5.10",
+    "@tailwindcss/postcss": "4.1.4",
+    "@tailwindcss/typography": "0.5.16",
+    "@types/ms": "2.1.0",
+    "@types/node": "22.13.1",
+    "@types/react": "19.1.2",
+    "@types/react-dom": "19.0.3",
+    "postcss": "8.5.3",
+    "prettier": "3.5.0",
+    "prettier-plugin-tailwindcss": "0.6.11",
+    "tailwindcss": "4.1.4",
+    "typescript": "5.7.3"
   }
 }
