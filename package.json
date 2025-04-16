@@ -1,40 +1,40 @@
 {
   "private": true,
   "scripts": {
+    "dev": "next dev",
     "build": "next build",
-    "dev": "next dev --turbopack",
-    "prettier": "prettier --write --ignore-unknown .",
-    "start": "next start"
+    "start": "next start",
+    "prettier": "prettier --write --ignore-unknown ."
   },
   "dependencies": {
     "@heroicons/react": "2.2.0",
     "@mdx-js/loader": "3.1.0",
     "@mdx-js/react": "3.1.0",
-    "@next/mdx": "15.3.0-canary.45",
+    "@next/mdx": "15.3.1-canary.8",
     "@types/mdx": "2.0.13",
     "clsx": "2.1.1",
     "date-fns": "4.1.0",
     "dinero.js": "2.0.0-alpha.10",
     "ms": "3.0.0-canary.1",
-    "next": "15.2.0-canary.49",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "next": "15.3.1-canary.8",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "server-only": "0.0.1",
     "styled-components": "6.1.15",
     "use-count-up": "3.0.1"
   },
   "devDependencies": {
     "@tailwindcss/forms": "0.5.10",
-    "@tailwindcss/postcss": "4.0.6",
+    "@tailwindcss/postcss": "4.1.4",
     "@tailwindcss/typography": "0.5.16",
     "@types/ms": "2.1.0",
     "@types/node": "22.13.1",
-    "@types/react": "19.0.8",
+    "@types/react": "19.1.2",
     "@types/react-dom": "19.0.3",
-    "postcss": "8.5.2",
+    "postcss": "8.5.3",
     "prettier": "3.5.0",
     "prettier-plugin-tailwindcss": "0.6.11",
-    "tailwindcss": "4.0.6",
+    "tailwindcss": "4.1.4",
     "typescript": "5.7.3"
   }
 }

@@ -16,11 +16,6 @@ export default async function Page() {
           of the page while the rest of the content loads - instead of waiting
           for the whole page to load before they can interact with anything.
         </li>
-
-        <li>
-          Try streaming by <strong>selecting a runtime</strong> in the
-          navigation above.
-        </li>
       </ul>
 
       <div className="flex gap-2">

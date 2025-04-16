@@ -33,7 +33,7 @@ function TabContent({
       className={clsx('flex rounded-md px-3 py-1 transition duration-75', {
         'bg-gray-700 text-gray-100 hover:bg-gray-500 hover:text-white':
           !isActive && !isPending,
-        'bg-vercel-blue text-white': isActive,
+        'bg-blue-600 text-white': isActive,
         'bg-gray-800 text-gray-500 delay-75': isPending,
       })}
     >
