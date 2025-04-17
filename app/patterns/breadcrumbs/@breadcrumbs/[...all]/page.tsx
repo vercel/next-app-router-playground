@@ -9,17 +9,18 @@ export default async function Page(props: {
 
   const { all } = params;
 
+  console.log(all);
+
   // Note: you could fetch breadcrumb data based on params here
   // e.g. title, slug, children/siblings (for dropdowns)
   const items = [
-    {
-      text: 'Home',
-      href: '/patterns/breadcrumbs',
-    },
-    ...all.map((param) => ({
+    ...all.map((param, index) => ({
       text: param,
-      href: `/patterns/breadcrumbs/${param}`,
+      // build cumulative path by joining all segments up to current index
+      href: `/${all.slice(0, index + 1).join('/')}`,
     })),
   ];
+
+  console.log(items);
   return <Breadcrumbs items={items} />;
 }

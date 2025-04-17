@@ -5,7 +5,11 @@ import { Breadcrumbs } from '#/app/patterns/breadcrumbs/_components/breadcrumbs'
 export default function Page() {
   const items = [
     {
-      text: 'Home',
+      text: 'Patterns',
+      href: '/patterns',
+    },
+    {
+      text: 'Breadcrumbs',
       href: '/patterns/breadcrumbs',
     },
   ];

@@ -2,6 +2,8 @@ import type { Category } from '#/app/api/categories/category';
 import { SkeletonCard } from '#/ui/skeleton-card';
 import { notFound } from 'next/navigation';
 
+export const dynamic = 'force-dynamic';
+
 export default async function Page(props: {
   params: Promise<{ categorySlug: string }>;
 }) {
@@ -10,11 +12,6 @@ export default async function Page(props: {
     // We intentionally delay the response to simulate a slow data
     // request that would benefit from `loading.js`
     `https://app-playground-api.vercel.app/api/categories?delay=1000&slug=${params.categorySlug}`,
-    {
-      // We intentionally disable Next.js Cache to better demo
-      // `loading.js`
-      cache: 'no-cache',
-    },
   );
 
   if (!res.ok) {
