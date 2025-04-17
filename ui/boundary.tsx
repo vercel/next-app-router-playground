@@ -29,7 +29,7 @@ const Label = ({
 
 export const Boundary = ({
   children,
-  labels = ['children'],
+  labels = ['@children'],
   size = 'default',
   color = 'default',
   animateRerendering = true,

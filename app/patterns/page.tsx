@@ -47,7 +47,7 @@ export default function Page() {
       </div>
 
       <div className="flex gap-2">
-        <ExternalLink href="https://github.com/vercel/app-playground/tree/main/app/patterns">
+        <ExternalLink href="https://github.com/vercel/next-app-router-playground/tree/main/app/patterns">
           Code
         </ExternalLink>
       </div>

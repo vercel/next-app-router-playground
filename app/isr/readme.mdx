@@ -1,0 +1,14 @@
+# Incremental Static Regeneration
+
+- In this example, three posts fetch data using granular ISR.
+- Caches responses are fresh for 60 seconds.
+- Try navigating to each post and noting the timestamp of when the page
+  was rendered. Refresh the page after 60 seconds to trigger a
+  revalidation for the next request. Refresh again to see the
+  revalidated page.
+- Note that the fetch cache can be persisted across builds.
+
+### Links
+
+- [Docs](https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#revalidating-data)
+- [Code](https://github.com/vercel/next-app-router-playground/tree/main/app/isr)

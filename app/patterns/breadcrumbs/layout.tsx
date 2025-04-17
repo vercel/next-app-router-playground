@@ -15,16 +15,16 @@ export const metadata = {
 
 export default async function Layout({
   children,
-  slot,
+  breadcrumbs,
 }: {
   children: React.ReactNode;
-  slot: React.ReactNode;
+  breadcrumbs: React.ReactNode;
 }) {
   const categories = await getCategories();
 
   return (
     <div className="space-y-9">
-      <Boundary labels={['@breadcrumbs']}>{slot}</Boundary>
+      <Boundary labels={['@breadcrumbs']}>{breadcrumbs}</Boundary>
 
       <div className="flex justify-between">
         <TabGroup

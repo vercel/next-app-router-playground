@@ -1,22 +1,28 @@
 # useLinkStatus
 
-The `useLinkStatus` hook tracks the **pending** state of a `<Link>`. Use it to show inline visual feedback (like spinners or text glimmers) while a navigation to a new route completes.
+`useLinkStatus` is a Client Component hook that tracks the **pending** state of a `<Link>`. Use it to show inline visual feedback (like spinners or text glimmers) while a navigation to a new route completes.
 
 `useLinkStatus` is useful when:
 
 - Prefetching is disabled or in progress.
 - The destination route is dynamic **and** doesn't include a `loading.js` file that would allow an instant navigation.
 
-## Demo
+**Note:** We recommend using `loading.js` and not disabling prefetching. This allows Next.js to [instantly navigate](/loading) to the new route and show a loading state while the rest of the page loads.
+
+### Demo
 
 1. Starting from another [route](/), click the useLinkStatus nav item on the main menu. Notice the inline loading indicator next to the nav item before navigation completes.
 2. Navigate across categories at the top. Notice the nav item is dimmed to show immediate visual feedback that an action is performed.
 
-To produce the demo, some non-standard adjustments were made:
+#### Notes
 
-- The main nav link to this route and the tabbed category links disable prefetching.
-- `loading.js` and `<Suspense>` boundaries are **not** used.
-- The route's layout and category pages include an artificial delay.
+- An artificial delay is added to the category pages to make the pending state more noticeable.
+- `loading.js` is intentionally not used.
+
+## Links
+
+- [Docs](https://nextjs.org/docs/app/api-reference/functions/use-link-status)
+- [Code](https://github.com/vercel/next-app-router-playground/tree/main/app/use-link-status)
 
 ## Pending UI design tips
 
