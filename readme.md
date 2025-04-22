@@ -1,13 +1,6 @@
 # Next.js App Router Playground
 
-Next.js recently introduced the App Router with support for:
-
-- **Layouts:** Easily share UI while preserving state and avoiding re-renders.
-- **Server Components:** Making server-first the default for the most dynamic applications.
-- **Streaming:** Display instant loading states and stream in updates.
-- **Suspense for Data Fetching:** `async`/`await` support and the `use` hook for component-level fetching.
-
-The App Router can coexist with the existing `pages` directory for incremental adoption. While you **don't need to use the App Router** when upgrading to Next.js 13, we're laying the foundations to build complex interfaces while shipping less JavaScript.
+This playground is used by the DX team to explore, test, and demo new features in Next.js. It serves as a starting point for writing documentation—helping us better understand features, identify bugs, and provide feedback to the Next.js team.
 
 ## Running Locally
 
