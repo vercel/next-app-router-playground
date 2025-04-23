@@ -1,38 +1,60 @@
-import { getCategories } from '#/app/api/categories/getCategories';
-import { TabGroup } from '#/ui/tab-group';
+'use cache';
+
+import { getSections } from '#/app/_internal/data';
+import { getDemoMeta } from '#/app/_internal/demos';
+import { Boundary } from '#/ui/boundary';
+import { Prose } from '#/ui/prose';
+import { Tabs } from '#/ui/tabs';
+import { type Metadata } from 'next';
 import React from 'react';
+import Readme from './readme.mdx';
 
-const title = 'useLinkStatus';
-
-export const metadata = {
-  title,
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const demo = getDemoMeta('use-link-status');
+  return {
+    title: demo.name,
+    openGraph: {
+      title: demo.name,
+      images: [`/api/og?title=${demo.name}`],
+    },
+  };
+}
 
 export default async function Layout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const categories = await getCategories();
+  const demo = getDemoMeta('use-link-status');
+  const sections = getSections();
 
   return (
-    <div className="grid gap-9">
-      <TabGroup
-        path="/use-link-status"
-        items={[
-          {
-            text: 'Home',
-          },
-          ...categories.map((x) => ({
-            text: x.name,
-            slug: x.slug,
-            // DEMO: We disable prefetching to better demonstrate pending states.
-            prefetch: false,
-          })),
-        ]}
-      />
+    <>
+      <Boundary label="Demo" kind="solid" animateRerendering={false}>
+        <Prose collapsed={true}>
+          <Readme />
+        </Prose>
+      </Boundary>
 
-      <div>{children}</div>
-    </div>
+      <Boundary
+        label="layout.tsx"
+        kind="solid"
+        animateRerendering={false}
+        className="flex flex-col gap-9"
+      >
+        <Tabs
+          basePath={`/${demo.slug}`}
+          items={[
+            { text: 'Home' },
+            ...sections.map((x) => ({
+              text: x.name,
+              slug: x.slug,
+            })),
+          ]}
+        />
+
+        {children}
+      </Boundary>
+    </>
   );
 }

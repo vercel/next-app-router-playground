@@ -1,45 +1,47 @@
-import { demos } from '#/lib/demos';
+import { navigation } from '#/app/_internal/demos';
+import { Boundary } from '#/ui/boundary';
 import { LinkStatus } from '#/ui/link-status';
 import Link from 'next/link';
 
 export default function Page() {
   return (
-    <div className="space-y-8">
-      <h1 className="text-xl font-medium text-gray-300">Examples</h1>
-
-      <div className="space-y-10 text-white">
-        {demos.map((section) => {
-          return (
-            <div key={section.name} className="space-y-5">
-              <div className="text-xs font-semibold uppercase tracking-wider text-gray-400">
-                {section.name}
-              </div>
-
-              <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
-                {section.items.map((item) => {
-                  return (
-                    <Link
-                      href={`/${item.slug}`}
-                      key={item.name}
-                      className="group block space-y-1.5 rounded-lg bg-gray-900 px-5 py-3 hover:bg-gray-800"
-                    >
-                      <div className="flex items-center justify-between font-medium text-gray-200 group-hover:text-gray-50">
-                        {item.name} <LinkStatus />
-                      </div>
-
-                      {item.description ? (
-                        <div className="line-clamp-3 text-sm text-gray-400 group-hover:text-gray-300">
-                          {item.description}
-                        </div>
-                      ) : null}
-                    </Link>
-                  );
-                })}
-              </div>
+    <Boundary
+      label="Examples"
+      animateRerendering={false}
+      kind="solid"
+      className="flex flex-col gap-9"
+    >
+      {navigation.map((section) => {
+        return (
+          <div key={section.name} className="flex flex-col gap-3">
+            <div className="font-mono text-xs font-semibold tracking-wider text-gray-700 uppercase">
+              {section.name}
             </div>
-          );
-        })}
-      </div>
-    </div>
+
+            <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+              {section.items.map((item) => {
+                return (
+                  <Link
+                    href={`/${item.slug}`}
+                    key={item.name}
+                    className="group flex flex-col gap-1 rounded-lg bg-gray-900 px-5 py-3 hover:bg-gray-800"
+                  >
+                    <div className="flex items-center justify-between font-medium text-gray-200 group-hover:text-gray-50">
+                      {item.name} <LinkStatus />
+                    </div>
+
+                    {item.description ? (
+                      <div className="line-clamp-3 text-[13px] text-gray-500 group-hover:text-gray-300">
+                        {item.description}
+                      </div>
+                    ) : null}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+    </Boundary>
   );
 }

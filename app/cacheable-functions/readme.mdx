@@ -1,0 +1,21 @@
+import { getDemoMeta } from '#/app/_internal/demos';
+
+export const demo = getDemoMeta('cacheable-functions');
+
+# {demo.name}
+
+- Mark a regular function as _cacheable_ by adding the `use cache` directive to the top of the function definition.
+- When a cacheable function is called with the same inputs, it will re-use the same cache entry if it exists, or the function will be executed and the result will be cached.
+
+{/* TODO: Add tiny code example with syntax highlighting */}
+
+### Demo
+
+- The data fetching function to get the list of products is annotated with `use cache`.
+- An artificial one second delay is added to the function to simulate a slow data request.
+- Since the function is cacheable, the delay only happens the first time the function is called.
+- The `<ProductList>` component itself will be dynamic if it contains other dynamic APIs, otherwise, it will be prerendered.
+
+### Notes
+
+- This demo uses the experimental `use cache` directive and describes caching behavior once stable.

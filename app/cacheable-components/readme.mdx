@@ -1,0 +1,21 @@
+import { getDemoMeta } from '#/app/_internal/demos';
+
+export const demo = getDemoMeta('cacheable-components');
+
+# {demo.name}
+
+- Mark an individual React Server Component as _cacheable_ by adding the `use cache` directive to the top of the function definition.
+- When a cacheable component is called with the same inputs, it will re-use the same cache entry if it exists, or the component will be rendered and the result will be cached.
+
+{/* TODO: Add tiny code example with syntax highlighting */}
+
+### Demo
+
+- A product list component is annotated with `use cache`.
+- An artificial one second delay is added to simulate a slow data request.
+- Since the component is cacheable, the delay only happens the first time the component is rendered.
+- Since the the `layout.tsx` and `page.tsx` components are not annotated, they will be dynamic if they contain dynamic APIs, otherwise, they will be prerendered.
+
+### Notes
+
+- This demo uses the experimental `use cache` directive and describes caching behavior once stable.

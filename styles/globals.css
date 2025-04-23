@@ -10,18 +10,41 @@
   }
 }
 
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
 @theme {
-  --color-gray-50: var(--color-zinc-50);
-  --color-gray-100: var(--color-zinc-100);
-  --color-gray-200: var(--color-zinc-200);
-  --color-gray-300: var(--color-zinc-300);
-  --color-gray-400: var(--color-zinc-400);
-  --color-gray-500: var(--color-zinc-500);
-  --color-gray-600: var(--color-zinc-600);
-  --color-gray-700: var(--color-zinc-700);
-  --color-gray-800: var(--color-zinc-800);
-  --color-gray-900: var(--color-zinc-900);
-  --color-gray-950: var(--color-zinc-950);
+  --color-gray-50: var(--color-neutral-50);
+  --color-gray-100: var(--color-neutral-100);
+  --color-gray-200: var(--color-neutral-200);
+  --color-gray-300: var(--color-neutral-300);
+  --color-gray-400: var(--color-neutral-400);
+  --color-gray-500: var(--color-neutral-500);
+  --color-gray-600: var(--color-neutral-600);
+  --color-gray-700: var(--color-neutral-700);
+  --color-gray-800: var(--color-neutral-800);
+  --color-gray-900: var(--color-neutral-900);
+  --color-gray-950: var(--color-neutral-950);
+
+  --animate-shimmer: shimmer 1.5s infinite;
+
+  @keyframes shimmer {
+    0% {
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(150%);
+      opacity: 0;
+    }
+  }
 }
 
 @layer utilities {
@@ -38,15 +61,15 @@
 @keyframes rerender {
   0%,
   40% {
-    border-color: var(--color-pink-600);
+    border-color: currentColor;
   }
 }
 
 @keyframes highlight {
   0%,
   40% {
-    background: var(--color-pink-600);
-    color: var(--color-pink-100);
+    background: var(--color-blue-600);
+    color: var(--color-blue-100);
   }
 }
 
@@ -60,12 +83,6 @@
   }
   100% {
     opacity: 0.2;
-  }
-}
-
-@keyframes shimmer {
-  100% {
-    transform: translateX(100%);
   }
 }
 
@@ -118,6 +135,19 @@
 @keyframes rotate {
   to {
     transform: rotate(360deg);
+  }
+}
+
+.transition-enter {
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 0.5s,
+    transform 0.5s;
+
+  @starting-style {
+    opacity: 0;
+    transform: scale(0.95);
   }
 }
 

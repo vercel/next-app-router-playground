@@ -1,0 +1,20 @@
+import { getDemoMeta } from '#/app/_internal/demos';
+
+export const demo = getDemoMeta('cacheable-routes');
+
+# {demo.name}
+
+- Mark a route segment as _cacheable_ by adding the `use cache` directive to the top of the `layout.tsx` or `page.tsx` component definition.
+  - Alternatively, you can add `use cache` to the top of the file to mark all exports as _cacheable_.
+- On the server, when a cacheable route segment is called with the same inputs, it will re-use the same cache entry if it exists, or the component will be rendered and the result will be cached.
+- On the client, the router will first check the client cache for a route segment before making a new request to the server.
+- `layout.tsx` and `page.tsx` are cached independently. This means you can have a cached `layout.tsx` and a dynamic `page.tsx`.
+
+### Demo
+
+- An artificial one second delay is added to each `page.tsx` to simulate a slow data request.
+- Since the whole route is cacheable, this delay only happens the first time the function runs, during prerendering. During runtime, the cached result is re-used.
+
+### Notes
+
+- This demo uses the experimental `use cache` directive and describes caching behavior once stable.

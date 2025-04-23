@@ -1,11 +1,21 @@
+import { getDemoMeta } from '#/app/_internal/demos';
 import { Boundary } from '#/ui/boundary';
+import { Tab } from '#/ui/tabs';
 
-export default function NotFound() {
+export default function Loading() {
+  const demo = getDemoMeta('not-found');
+
   return (
-    <Boundary labels={['./not-found.tsx']} color="pink">
-      <div className="flex flex-col gap-4">
-        <h2 className="text-lg font-bold">Not Found</h2>
-        <p className="text-sm">Could not find requested resource</p>
+    <Boundary label="not-found.tsx" className="flex flex-col gap-4">
+      <div className="flex flex-col gap-1">
+        <h1 className="text-lg font-bold text-gray-100">Not Found</h1>
+        <div className="text-sm text-gray-400">
+          Sorry, the requested resource could not be found
+        </div>
+      </div>
+
+      <div className="flex">
+        <Tab item={{ text: 'Home', slug: demo.slug }} />
       </div>
     </Boundary>
   );
