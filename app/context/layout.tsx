@@ -1,10 +1,11 @@
 import { getCategories } from '#/app/api/categories/getCategories';
 import { Boundary } from '#/ui/boundary';
-import { TabGroup } from '#/ui/tab-group';
+import { Tabs } from '#/ui/tabs';
 import { CounterProvider } from 'app/context/counter-context';
 import React from 'react';
 import ContextClickCounter from './context-click-counter';
-
+import { Prose } from '#/ui/prose';
+import Readme from './readme.mdx';
 const title = 'Client Context';
 
 export const metadata = {
@@ -20,47 +21,32 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  const categories = await getCategories();
   return (
-    <Boundary
-      labels={['Server Component Boundary']}
-      size="small"
-      animateRerendering={false}
-    >
+    <>
+      <Boundary label="Demo" kind="solid" animateRerendering={false}>
+        <Prose collapsed={true}>
+          <Readme />
+        </Prose>
+      </Boundary>
+
       <Boundary
-        labels={['Counter Context Provider [Client Component]']}
-        color="blue"
-        size="small"
+        label="layout.tsx (Server Environment)"
+        kind="solid"
         animateRerendering={false}
       >
-        <CounterProvider>
-          <Boundary
-            labels={['Server Component Boundary']}
-            size="small"
-            animateRerendering={false}
-          >
-            <div className="space-y-9">
-              <div className="flex justify-between">
-                <TabGroup
-                  path="/context"
-                  items={[
-                    {
-                      text: 'Home',
-                    },
-                    ...categories.map((x) => ({
-                      text: x.name,
-                      slug: x.slug,
-                    })),
-                  ]}
-                />
-              </div>
-
+        <Boundary
+          label="Context Provider (Client Environment)"
+          color="blue"
+          animateRerendering={false}
+        >
+          <CounterProvider>
+            <div className="flex flex-col gap-9">
               <ContextClickCounter />
-              <div>{children}</div>
+              {children}
             </div>
-          </Boundary>
-        </CounterProvider>
+          </CounterProvider>
+        </Boundary>
       </Boundary>
-    </Boundary>
+    </>
   );
 }

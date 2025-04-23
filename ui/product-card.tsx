@@ -9,7 +9,7 @@ import { dinero, type DineroSnapshot } from 'dinero.js';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const ProductCard = ({
+export const ProductCard__DEPRECATED = ({
   product,
   href,
 }: {

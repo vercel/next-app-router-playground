@@ -1,47 +1,68 @@
-import { getCategories } from '#/app/api/categories/getCategories';
-import { ClickCounter } from '#/ui/click-counter';
-import { TabGroup } from '#/ui/tab-group';
+'use cache';
+
 import React from 'react';
+import { type Metadata } from 'next';
+import { getSections } from '#/app/_internal/data';
+import { getDemoMeta } from '#/app/_internal/demos';
+import { Boundary } from '#/ui/boundary';
+import { ClickCounter } from '#/ui/click-counter';
+import { Prose } from '#/ui/prose';
+import { Tabs } from '#/ui/tabs';
+import Readme from './readme.mdx';
 
-const title = 'Nested Layouts';
+export async function generateMetadata(): Promise<Metadata> {
+  const demo = getDemoMeta('layouts');
 
-export const metadata = {
-  title,
-  openGraph: {
-    title,
-    images: [`/api/og?title=${title}`],
-  },
-};
+  return {
+    title: demo.name,
+    openGraph: {
+      title: demo.name,
+      images: [`/api/og?title=${demo.name}`],
+    },
+  };
+}
 
 export default async function Layout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const categories = await getCategories();
+  const demo = getDemoMeta('layouts');
+  const sections = getSections();
 
   return (
-    <div className="space-y-9">
-      <div className="flex justify-between">
-        <TabGroup
-          path="/layouts"
-          items={[
-            {
-              text: 'Home',
-            },
-            ...categories.map((x) => ({
-              text: x.name,
-              slug: x.slug,
-            })),
-          ]}
-        />
+    <>
+      <Boundary label="Demo" kind="solid" animateRerendering={false}>
+        <Prose collapsed={true}>
+          <Readme />
+        </Prose>
+      </Boundary>
 
-        <div className="self-start">
-          <ClickCounter />
+      <Boundary
+        label="layout.tsx"
+        kind="solid"
+        animateRerendering={false}
+        className="flex flex-col gap-9"
+      >
+        <div className="flex justify-between">
+          <Tabs
+            basePath={`/${demo.slug}`}
+            items={[
+              { text: 'Home' },
+              ...sections.map((x) => ({
+                text: x.name,
+                slug: x.slug,
+              })),
+            ]}
+          />
+
+          <div className="self-start">
+            <ClickCounter />
+          </div>
         </div>
-      </div>
 
-      <div>{children}</div>
-    </div>
+        {children}
+      </Boundary>
+    </>
   );
 }

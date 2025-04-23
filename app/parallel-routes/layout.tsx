@@ -1,14 +1,25 @@
-const title = 'Parallel Routes';
+'use cache';
 
-export const metadata = {
-  title,
-  openGraph: {
-    title,
-    images: [`/api/og?title=${title}`],
-  },
-};
+import { getDemoMeta } from '#/app/_internal/demos';
+import { Boundary } from '#/ui/boundary';
+import { Prose } from '#/ui/prose';
+import { type Metadata } from 'next';
+import React from 'react';
+import Readme from './readme.mdx';
 
-export default function Layout({
+export async function generateMetadata(): Promise<Metadata> {
+  const demo = getDemoMeta('parallel-routes');
+
+  return {
+    title: demo.name,
+    openGraph: {
+      title: demo.name,
+      images: [`/api/og?title=${demo.name}`],
+    },
+  };
+}
+
+export default async function Layout({
   children,
   audience,
   views,
@@ -18,15 +29,26 @@ export default function Layout({
   views: React.ReactNode;
 }) {
   return (
-    <div className="space-y-6">
-      <div className="space-y-6 lg:grid lg:grid-cols-2 lg:gap-6 lg:space-y-0">
+    <>
+      <Boundary label="Demo" kind="solid" animateRerendering={false}>
+        <Prose collapsed={true}>
+          <Readme />
+        </Prose>
+      </Boundary>
+
+      <Boundary
+        label="layout.tsx"
+        kind="solid"
+        animateRerendering={false}
+        className="grid gap-6 lg:grid-cols-2"
+      >
         {children}
 
-        <div className="space-y-6">
+        <div className="flex flex-col gap-6">
           {audience}
           {views}
         </div>
-      </div>
-    </div>
+      </Boundary>
+    </>
   );
 }

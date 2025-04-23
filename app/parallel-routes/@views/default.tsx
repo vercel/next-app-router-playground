@@ -1,45 +1,24 @@
-import { CurrentRoute } from '#/app/parallel-routes/_ui/current-route';
+import { getDemoMeta } from '#/app/_internal/demos';
 import { Boundary } from '#/ui/boundary';
-import Link from 'next/link';
+import { Tab } from '#/ui/tabs';
 
 export default function Default() {
+  const demo = getDemoMeta('parallel-routes');
   return (
-    <Boundary labels={['@views/default.tsx']} color="blue" size="small">
-      <div className="prose prose-sm prose-invert max-w-none">
-        <h2 className="text-lg font-bold">Default UI</h2>
+    <Boundary
+      label="@views/default.tsx"
+      size="small"
+      className="flex flex-col gap-4"
+    >
+      <h1 className="font-semibold text-gray-300">Default</h1>
 
-        <p>
-          Default UI is rendered because the <code>@views</code> slot{' '}
-          <strong>does not</strong> contain a route segment that matches the
-          current{' '}
-          <code>
-            /<CurrentRoute slice={1} />
-          </code>{' '}
-          route.
-        </p>
+      <div className="flex flex-col gap-2">
+        <div className="h-2 w-4/5 rounded-full bg-gray-800" />
+        <div className="h-2 w-1/3 rounded-full bg-gray-800" />
+      </div>
 
-        <ul className="text-xs">
-          <li>
-            <code>
-              @views/
-              <CurrentRoute />
-              /page.js
-            </code>{' '}
-            does not exist.
-          </li>
-
-          <li>
-            <code>@views/default.js</code> exists.
-          </li>
-        </ul>
-        <div className="not-prose flex">
-          <Link
-            href="/parallel-routes"
-            className="rounded-lg bg-gray-700 px-3 py-1 text-sm font-medium text-gray-100 hover:bg-gray-500 hover:text-white"
-          >
-            Home
-          </Link>
-        </div>
+      <div className="flex">
+        <Tab item={{ text: 'Home', slug: demo.slug }} />
       </div>
     </Boundary>
   );

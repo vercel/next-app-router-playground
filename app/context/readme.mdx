@@ -1,6 +1,10 @@
 # Client Context
 
-This example uses component composition to show that React context can be used to share state between Client Components that are nested "between" a server boundary.
+Importing a component into a file marked with `'use client'` makes it part of the client bundle. This means you can't import Server Components into Client Components.
+
+However, you can pass a Server Component as a prop (or child) to a Client Component. This lets you visually nest Server Components inside client-rendered UI.
+
+With this pattern, you can place a client context provider high in the tree and still nest Server Components inside it. Client Components deeper down can access the shared context—even if a Server Component sits between them.
 
 ### Demo
 
