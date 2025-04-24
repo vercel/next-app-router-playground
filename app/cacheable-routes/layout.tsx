@@ -1,3 +1,5 @@
+'use cache';
+
 import React from 'react';
 import Readme from './readme.mdx';
 import { getDemoMeta } from '#/app/_internal/demos';
@@ -19,8 +21,6 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  'use cache';
-
   return (
     <>
       <Boundary label="Demo" kind="solid" animateRerendering={false}>

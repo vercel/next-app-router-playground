@@ -1,10 +1,10 @@
+'use cache';
+
 import { getProducts } from '#/app/_internal/data';
 import { Boundary } from '#/ui/boundary';
 import { ProductCard } from '#/ui/new/product-card';
 
 export default async function Page() {
-  'use cache';
-
   return (
     <Boundary label="page.tsx (Cacheable)">
       <ProductList />

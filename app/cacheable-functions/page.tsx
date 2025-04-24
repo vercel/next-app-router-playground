@@ -1,11 +1,10 @@
 import { getProducts } from '#/app/_internal/data';
 import { Boundary } from '#/ui/boundary';
 import { ProductCard } from '#/ui/new/product-card';
-import { connection } from 'next/server';
 
 export default async function Page() {
   return (
-    <Boundary label="page.tsx (dynamic)">
+    <Boundary label="page.tsx (statically inferred)">
       <ProductList />
     </Boundary>
   );
@@ -15,7 +14,7 @@ async function ProductList() {
   const products = await getData();
 
   return (
-    <Boundary label="<ProductList> (Dynamic)" size="small">
+    <Boundary label="<ProductList> (statically inferred)" size="small">
       <div className="flex flex-col gap-4">
         <h1 className="text-xl font-semibold text-gray-300">
           All{' '}

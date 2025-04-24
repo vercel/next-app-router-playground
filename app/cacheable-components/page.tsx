@@ -4,7 +4,7 @@ import { ProductCard } from '#/ui/new/product-card';
 
 export default async function Page() {
   return (
-    <Boundary label="page.tsx (dynamic)">
+    <Boundary label="page.tsx (statically inferred)">
       <ProductList />
     </Boundary>
   );
