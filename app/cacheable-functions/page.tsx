@@ -1,26 +1,20 @@
 import { getProducts } from '#/app/_internal/data';
 import { Boundary } from '#/ui/boundary';
 import { ProductCard } from '#/ui/new/product-card';
-import { connection } from 'next/server';
 
 export default async function Page() {
   return (
-    <Boundary label="page.tsx (dynamic)">
+    <Boundary label="page.tsx (statically inferred)">
       <ProductList />
     </Boundary>
   );
 }
 
 async function ProductList() {
-  // DEMO: indicate that we require an actual user Request before continuing.
-  // Used to show the page and components can be dynamic while deeper
-  // components/functions can be cacheable.
-  await connection();
-
   const products = await getData();
 
   return (
-    <Boundary label="<ProductList> (Dynamic)" size="small">
+    <Boundary label="<ProductList> (statically inferred)" size="small">
       <div className="flex flex-col gap-4">
         <h1 className="text-xl font-semibold text-gray-300">
           All{' '}

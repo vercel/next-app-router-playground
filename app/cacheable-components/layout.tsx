@@ -28,7 +28,7 @@ export default async function Layout({
       </Boundary>
 
       <Boundary
-        label="layout.tsx (dynamic)"
+        label="layout.tsx (statically inferred)"
         kind="solid"
         animateRerendering={false}
       >
