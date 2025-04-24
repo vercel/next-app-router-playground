@@ -25,7 +25,7 @@ export function GlobalNav() {
             <NextLogoDark />
           </div>
 
-          <h3 className="text-lg font-semibold text-gray-200 group-hover:text-white">
+          <h3 className="text-lg font-medium text-gray-200 group-hover:text-white">
             Playground
           </h3>
         </Link>

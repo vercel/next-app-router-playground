@@ -17,7 +17,12 @@ export function Prose({
   const contentId = React.useId();
 
   return (
-    <div className={clsx('prose prose-sm prose-invert max-w-none', className)}>
+    <div
+      className={clsx(
+        'prose prose-sm prose-invert prose-h1:font-medium max-w-none',
+        className,
+      )}
+    >
       <div
         id={contentId}
         role={isCollapsible ? 'region' : undefined}
