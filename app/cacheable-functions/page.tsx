@@ -12,11 +12,6 @@ export default async function Page() {
 }
 
 async function ProductList() {
-  // DEMO: indicate that we require an actual user Request before continuing.
-  // Used to show the page and components can be dynamic while deeper
-  // components/functions can be cacheable.
-  await connection();
-
   const products = await getData();
 
   return (
