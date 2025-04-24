@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   experimental: {
     inlineCss: true,
     useCache: true,
+    clientSegmentCache: true,
     ppr: true,
   },
 };
