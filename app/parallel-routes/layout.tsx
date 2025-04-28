@@ -2,10 +2,10 @@
 
 import { getDemoMeta } from '#/app/_internal/demos';
 import { Boundary } from '#/ui/boundary';
-import { Prose } from '#/ui/prose';
+import { Mdx } from '#/ui/codehike';
 import { type Metadata } from 'next';
 import React from 'react';
-import Readme from './readme.mdx';
+import readme from './readme.mdx';
 
 export async function generateMetadata(): Promise<Metadata> {
   const demo = getDemoMeta('parallel-routes');
@@ -31,9 +31,7 @@ export default async function Layout({
   return (
     <>
       <Boundary label="Demo" kind="solid" animateRerendering={false}>
-        <Prose collapsed={true}>
-          <Readme />
-        </Prose>
+        <Mdx source={readme} collapsed={true} />
       </Boundary>
 
       <Boundary

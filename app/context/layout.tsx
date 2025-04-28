@@ -1,10 +1,8 @@
-import { getCategories } from '#/app/api/categories/getCategories';
 import { Boundary } from '#/ui/boundary';
-import { Tabs } from '#/ui/tabs';
+import { Mdx } from '#/ui/codehike';
 import { CounterProvider } from 'app/context/counter-context';
 import React from 'react';
 import ContextClickCounter from './context-click-counter';
-import { Prose } from '#/ui/prose';
 import Readme from './readme.mdx';
 const title = 'Client Context';
 
@@ -24,9 +22,7 @@ export default async function Layout({
   return (
     <>
       <Boundary label="Demo" kind="solid" animateRerendering={false}>
-        <Prose collapsed={true}>
-          <Readme />
-        </Prose>
+        <Mdx source={Readme} collapsed={true} />
       </Boundary>
 
       <Boundary

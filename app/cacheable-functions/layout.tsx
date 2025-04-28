@@ -1,10 +1,10 @@
-import React from 'react';
 import { getDemoMeta } from '#/app/_internal/demos';
 import { Boundary } from '#/ui/boundary';
-import { Prose } from '#/ui/prose';
-import Readme from './readme.mdx';
+import { Mdx } from '#/ui/codehike';
+import React from 'react';
+import readme from './readme.mdx';
 
-const demo = getDemoMeta('cacheable-components');
+const demo = getDemoMeta('cacheable-functions');
 
 export const metadata = {
   title: demo.name,
@@ -22,9 +22,7 @@ export default async function Layout({
   return (
     <>
       <Boundary label="Demo" kind="solid" animateRerendering={false}>
-        <Prose collapsed={true}>
-          <Readme />
-        </Prose>
+        <Mdx source={readme} collapsed={true} />
       </Boundary>
 
       <Boundary

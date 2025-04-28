@@ -6,6 +6,7 @@ import { Tabs } from '#/ui/tabs';
 import { type Metadata } from 'next';
 import React from 'react';
 import Readme from './readme.mdx';
+import { Mdx } from '#/ui/codehike';
 
 export async function generateMetadata(): Promise<Metadata> {
   const demo = getDemoMeta('error');
@@ -30,9 +31,7 @@ export default async function Layout({
   return (
     <>
       <Boundary label="Demo" kind="solid" animateRerendering={false}>
-        <Prose collapsed={true}>
-          <Readme />
-        </Prose>
+        <Mdx source={Readme} collapsed={true} />
       </Boundary>
 
       <Boundary
