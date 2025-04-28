@@ -1,14 +1,14 @@
 'use cache';
 
 import React from 'react';
-import { type Metadata } from 'next';
 import { getSections } from '#/app/_internal/data';
 import { getDemoMeta } from '#/app/_internal/demos';
 import { Boundary } from '#/ui/boundary';
 import { ClickCounter } from '#/ui/click-counter';
-import { Prose } from '#/ui/prose';
 import { Tabs } from '#/ui/tabs';
-import Readme from './readme.mdx';
+import { type Metadata } from 'next';
+import { Mdx } from '#/ui/codehike';
+import readme from './readme.mdx';
 
 export async function generateMetadata(): Promise<Metadata> {
   const demo = getDemoMeta('layouts');
@@ -33,11 +33,8 @@ export default async function Layout({
   return (
     <>
       <Boundary label="Demo" kind="solid" animateRerendering={false}>
-        <Prose collapsed={true}>
-          <Readme />
-        </Prose>
+        <Mdx source={readme} collapsed={true} />
       </Boundary>
-
       <Boundary
         label="layout.tsx"
         kind="solid"

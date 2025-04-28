@@ -1,19 +1,109 @@
 import { getDemoMeta } from '#/app/_internal/demos';
+import { Grid } from '/ui/codehike.tsx';
 
 export const demo = getDemoMeta('cacheable-routes');
 
 # {demo.name}
 
-- Mark a route segment as _cacheable_ by adding the `use cache` directive to the top of the `layout.tsx` or `page.tsx` file.
-- On the server:
-  - When a cacheable route segment is called with the same inputs, it reuses the cached result if it exists, otherwise it renders and caches the output.
-- On the client:
-  - The router will first check the client cache for a route segment before making a new request to the server.
-- `layout.tsx` and `page.tsx` are cached independently. This means you can have a cached `layout.tsx` and a dynamic `page.tsx`.
+<Grid>
+
+# !!col
+
+Mark a route segment as _cacheable_ by adding the `use cache` directive to the top of the `layout.tsx` or `page.tsx` file.
+
+# !!col
+
+```tsx app/page.tsx
+// !mark
+'use cache';
+
+export default async function Page() {
+  // ...
+}
+```
+
+</Grid>
+
+<Grid>
+
+# !!col
+
+#### On the client
+
+- The router first checks the client cache for a valid cache entry before making a new request to the server.
+- Cache entries in the server response update the client cache.
+
+# !!col
+
+<Image
+  className="border border-gray-800"
+  src="/visuals/cacheable-routes-client-cache.png"
+  alt="Client Cache"
+  width="1800"
+  height="912"
+/>
+
+</Grid>
+
+<Grid>
+
+# !!col
+
+#### On the server
+
+- The renderer first checks the server cache for a valid cache entry before rendering a new result and updating the server cache.
+
+# !!col
+
+<Image
+  className="border border-gray-800"
+  src="/visuals/cacheable-routes-server-cache.png"
+  alt="Server Cache"
+  width="1800"
+  height="1192"
+/>
+
+</Grid>
+
+<Grid>
+
+# !!col
+
+#### Prerendering
+
+- A cacheable route segment can be prerendered ahead of time, either at build time or during background revalidation.
+- The prerendered result is distributed across a global content delivery network (CDN).
+- At runtime, the CDN serves the closest static result to the client.
+- `layout.tsx` and `page.tsx` are independently cacheable. This means a `layout.tsx` can be prerendered, while its `page.tsx` can be dynamically rendered at request time.
+
+# !!col
+
+<Image
+  className="border border-gray-800"
+  src="/visuals/cacheable-routes-prerendering.png"
+  alt="Prerendering"
+  width="1800"
+  height="1752"
+/>
+
+</Grid>
 
 ### Demo
 
-- An artificial one second delay is added to the `page.tsx` to simulate a slow data request.
+- An artificial one second delay is added to the `page.tsx` to make the difference more obvious.
+
+  ```tsx app/page.tsx
+  'use cache';
+
+  export default async function Page() {
+    // !mark
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    const products = await getProducts();
+    // ...
+  }
+  ```
+
 - Since the whole route is cacheable, this delay only happens the first time the function runs, during prerendering.
 
 ### Notes

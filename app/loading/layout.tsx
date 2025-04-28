@@ -8,6 +8,7 @@ import { Boundary } from '#/ui/boundary';
 import { Prose } from '#/ui/prose';
 import { Tabs } from '#/ui/tabs';
 import Readme from './readme.mdx';
+import { Mdx } from '#/ui/codehike';
 
 export async function generateMetadata(): Promise<Metadata> {
   const demo = getDemoMeta('loading');
@@ -32,9 +33,7 @@ export default async function Layout({
   return (
     <>
       <Boundary label="Demo" kind="solid" animateRerendering={false}>
-        <Prose collapsed={true}>
-          <Readme />
-        </Prose>
+        <Mdx source={Readme} collapsed={true} />
       </Boundary>
 
       <Boundary
