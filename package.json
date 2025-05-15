@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "prettier": "prettier --write --ignore-unknown ."
@@ -17,7 +17,7 @@
     "date-fns": "4.1.0",
     "dinero.js": "2.0.0-alpha.10",
     "ms": "3.0.0-canary.1",
-    "next": "15.4.0-canary.10",
+    "next": "15.4.0-canary.35",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "server-only": "0.0.1",

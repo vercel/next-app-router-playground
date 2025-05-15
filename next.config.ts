@@ -1,10 +1,6 @@
 import type { NextConfig } from 'next';
 import createMDX from '@next/mdx';
-import {
-  remarkCodeHike,
-  recmaCodeHike,
-  type CodeHikeConfig,
-} from 'codehike/mdx';
+import { type CodeHikeConfig } from 'codehike/mdx';
 
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
@@ -23,8 +19,8 @@ const codeHikeConfig = {
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [[remarkCodeHike, codeHikeConfig]],
-    recmaPlugins: [[recmaCodeHike, codeHikeConfig]],
+    remarkPlugins: [[require.resolve('./remark-codehike.mjs'), codeHikeConfig]],
+    recmaPlugins: [[require.resolve('./recma-codehike.mjs'), codeHikeConfig]],
   },
 });
 
