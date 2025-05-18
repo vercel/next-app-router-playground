@@ -49,63 +49,63 @@ const categories: Category[] = [
     name: 'Tops',
     slug: 'tops',
     section: '1',
-    products: ['1', '2', '3'],
+    products: ['1'],
   },
   {
     id: '2',
     name: 'Shorts',
     slug: 'shorts',
     section: '1',
-    products: ['4', '5', '6'],
+    products: ['2'],
   },
   {
     id: '3',
     name: 'Shoes',
     slug: 'shoes',
     section: '1',
-    products: ['7', '8', '9'],
+    products: ['3'],
   },
   {
     id: '4',
     name: 'Phones',
     slug: 'phones',
     section: '2',
-    products: ['10', '11', '12'],
+    products: ['4'],
   },
   {
     id: '5',
     name: 'Laptops',
     slug: 'laptops',
     section: '2',
-    products: ['13', '14', '15'],
+    products: ['5'],
   },
   {
     id: '6',
     name: 'Tablets',
     slug: 'tablets',
     section: '2',
-    products: ['16', '17', '18'],
+    products: ['6'],
   },
   {
     id: '7',
     name: 'Balls',
     slug: 'balls',
     section: '3',
-    products: ['19', '20', '21'],
+    products: ['7'],
   },
   {
     id: '8',
     name: 'Equipment',
     slug: 'equipment',
     section: '3',
-    products: ['22', '23', '24'],
+    products: ['8'],
   },
   {
     id: '9',
     name: 'Accessories',
     slug: 'accessories',
     section: '3',
-    products: ['25', '26', '27'],
+    products: ['9'],
   },
 ];
 
@@ -118,160 +118,50 @@ const products: Product[] = [
   },
   {
     id: '2',
-    name: 'Top 2',
-    image: 'top.png',
-    category: '1',
+    name: 'Shorts',
+    image: 'shorts.png',
+    category: '2',
   },
   {
     id: '3',
-    name: 'Top 3',
-    image: 'top.png',
-    category: '1',
+    name: 'Shoes',
+    image: 'shoes.png',
+    category: '3',
   },
 
   {
     id: '4',
-    name: 'Shorts 1',
-    image: 'shorts.png',
-    category: '2',
+    name: 'Phone',
+    image: 'phone.png',
+    category: '4',
   },
   {
     id: '5',
-    name: 'Shorts 2',
-    image: 'shorts.png',
-    category: '2',
+    name: 'Laptop',
+    image: 'laptop.png',
+    category: '5',
   },
   {
     id: '6',
-    name: 'Shorts 3',
-    image: 'shorts.png',
-    category: '2',
+    name: 'Tablet',
+    image: 'tablet.png',
+    category: '6',
   },
-
   {
     id: '7',
-    name: 'Shoes 1',
-    image: 'shoes.png',
-    category: '3',
+    name: 'Basketball',
+    image: 'balls.png',
+    category: '7',
   },
   {
     id: '8',
-    name: 'Shoes 2',
-    image: 'shoes.png',
-    category: '3',
+    name: 'Weights',
+    image: 'weights.png',
+    category: '8',
   },
   {
     id: '9',
-    name: 'Shoes 3',
-    image: 'shoes.png',
-    category: '3',
-  },
-
-  {
-    id: '10',
-    name: 'Phones 1',
-    image: 'phone.png',
-    category: '4',
-  },
-  {
-    id: '11',
-    name: 'Phones 2',
-    image: 'phone.png',
-    category: '4',
-  },
-  {
-    id: '12',
-    name: 'Phones 3',
-    image: 'phone.png',
-    category: '4',
-  },
-  {
-    id: '13',
-    name: 'Laptops 1',
-    image: 'laptop.png',
-    category: '5',
-  },
-  {
-    id: '14',
-    name: 'Laptops 2',
-    image: 'laptop.png',
-    category: '5',
-  },
-  {
-    id: '15',
-    name: 'Laptops 3',
-    image: 'laptop.png',
-    category: '5',
-  },
-  {
-    id: '16',
-    name: 'Tablets 1',
-    image: 'tablet.png',
-    category: '6',
-  },
-  {
-    id: '17',
-    name: 'Tablets 2',
-    image: 'tablet.png',
-    category: '6',
-  },
-  {
-    id: '18',
-    name: 'Tablets 3',
-    image: 'tablet.png',
-    category: '6',
-  },
-  {
-    id: '19',
-    name: 'Balls 1',
-    image: 'balls.png',
-    category: '7',
-  },
-  {
-    id: '20',
-    name: 'Balls 2',
-    image: 'balls.png',
-    category: '7',
-  },
-  {
-    id: '21',
-    name: 'Balls 3',
-    image: 'balls.png',
-    category: '7',
-  },
-  {
-    id: '22',
-    name: 'Weights 1',
-    image: 'weights.png',
-    category: '8',
-  },
-  {
-    id: '23',
-    name: 'Weights 2',
-    image: 'weights.png',
-    category: '8',
-  },
-  {
-    id: '24',
-    name: 'Weights 3',
-    image: 'weights.png',
-    category: '8',
-  },
-  {
-    id: '25',
-    name: 'Gloves 1',
-    image: 'gloves.png',
-    category: '9',
-  },
-  {
-    id: '26',
-    name: 'Gloves 2',
-    image: 'gloves.png',
-    category: '9',
-  },
-  {
-    id: '27',
-    name: 'Gloves 3',
+    name: 'Gloves',
     image: 'gloves.png',
     category: '9',
   },
@@ -323,3 +213,76 @@ export const getProducts = ({ limit }: { limit?: number } = {}): Product[] => {
 
 // Get all sections
 export const getSections = (): Section[] => sections;
+
+type ProductWhere = {
+  id?: string;
+  category?: string;
+  section?: string;
+  // Add more fields as needed
+};
+
+type ProductFindOptions = {
+  where?: ProductWhere;
+  limit?: number;
+};
+
+// Poor mans ORM
+// Largely inspired by Prisma's elegant API which is easy to understand at a glance
+const db = {
+  product: {
+    find: (options: ProductFindOptions) => {
+      let product: Product | undefined;
+
+      if (options.where?.id !== undefined) {
+        product = products.find((p) => p.id === options.where?.id);
+      } else if (options.where?.category !== undefined) {
+        product = products.find((p) => p.category === options.where?.category);
+      }
+
+      let prev: string | undefined = undefined;
+      let next: string | undefined = undefined;
+
+      if (product) {
+        const ids = products.map((p) => Number(p.id));
+        const currentIndex = ids.indexOf(Number(product.id));
+        const prevIndex = (currentIndex - 1 + ids.length) % ids.length;
+        const nextIndex = (currentIndex + 1) % ids.length;
+
+        prev = products[prevIndex]?.id;
+        next = products[nextIndex]?.id;
+      }
+
+      return {
+        data: product,
+        prev,
+        next,
+      };
+    },
+    findMany: (options: ProductFindOptions = {}) => {
+      let result = products;
+
+      if (options.where?.category) {
+        result = result.filter(
+          (product) => product.category === options.where!.category,
+        );
+      }
+
+      if (options.where?.section) {
+        const sectionCategories = categories
+          .filter((category) => category.section === options.where!.section)
+          .map((category) => category.id);
+        result = result.filter((product) =>
+          sectionCategories.includes(product.category),
+        );
+      }
+
+      if (options.limit !== undefined) {
+        result = result.slice(0, options.limit);
+      }
+
+      return result;
+    },
+  },
+};
+
+export { db };

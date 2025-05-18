@@ -47,17 +47,6 @@
   }
 }
 
-@layer utilities {
-  .vc-border-gradient {
-    background-image: radial-gradient(
-      at left top,
-      var(--color-gray-500),
-      50px,
-      var(--color-gray-800) 50%
-    );
-  }
-}
-
 @keyframes rerender {
   0%,
   40% {
@@ -86,22 +75,6 @@
   }
 }
 
-@keyframes translateXReset {
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeToTransparent {
-  0%,
-  40% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
 .spinner {
   background: conic-gradient(transparent 10deg, white, transparent 320deg);
 
@@ -115,21 +88,12 @@
 
   /* Animation:
      - opacity: render invisible and use animations to reveal spinner
-     - fadeIn: fade in after delay to prevent flashes of UI on fast navigations 
+     - fade: fade in after delay to prevent flashes of UI on fast navigations 
      - rotate: rotate indefinitely while rendered */
   opacity: 0;
   animation:
-    fadeIn 500ms 150ms forwards,
+    fade 500ms 150ms forwards,
     rotate 1s linear infinite;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 @keyframes rotate {
@@ -153,3 +117,14 @@
 
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";
+
+@keyframes fade {
+  from {
+    filter: blur(3px);
+    opacity: 0;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
