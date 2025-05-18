@@ -83,7 +83,6 @@ const mark: AnnotationHandler = {
     const color = annotation?.query || 'rgb(14 165 233)';
     return (
       <span
-        className="..."
         style={{
           outline: `solid 1px rgb(from ${color} r g b / 0.5)`,
           background: `rgb(from ${color} r g b / 0.13)`,
@@ -127,7 +126,7 @@ async function MyInlineCode({ codeblock }: { codeblock: RawCode }) {
 export function Mdx({
   source: MdxComponent,
   components = {},
-  collapsed = false,
+  collapsed,
   className,
   ...props
 }: {

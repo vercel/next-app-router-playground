@@ -1,14 +1,12 @@
 'use cache';
 
-import React from 'react';
-import { type Metadata } from 'next';
 import { getSections } from '#/app/_internal/data';
 import { getDemoMeta } from '#/app/_internal/demos';
 import { Boundary } from '#/ui/boundary';
-import { Prose } from '#/ui/prose';
-import { Tabs } from '#/ui/tabs';
-import Readme from './readme.mdx';
 import { Mdx } from '#/ui/codehike';
+import { Tabs } from '#/ui/tabs';
+import { type Metadata } from 'next';
+import Readme from './readme.mdx';
 
 export async function generateMetadata(): Promise<Metadata> {
   const demo = getDemoMeta('loading');
