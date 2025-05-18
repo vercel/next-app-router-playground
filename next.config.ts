@@ -19,8 +19,8 @@ const codeHikeConfig = {
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [[require.resolve('./remark-codehike.mjs'), codeHikeConfig]],
-    recmaPlugins: [[require.resolve('./recma-codehike.mjs'), codeHikeConfig]],
+    remarkPlugins: [['remark-codehike', codeHikeConfig]],
+    recmaPlugins: [['recma-codehike', codeHikeConfig]],
   },
 });
 
