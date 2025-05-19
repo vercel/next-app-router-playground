@@ -10,14 +10,23 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import {
   unstable_addTransitionType as addTransitionType,
+  startTransition,
   unstable_ViewTransition as ViewTransition,
   ViewTransitionClass,
 } from 'react';
+import { useRouter } from 'next/navigation';
 
 export function TransitionLink({ type, ...props }: TransitionLinkProps) {
-  function handleNavigate() {
-    addTransitionType(type);
-  }
+  const router = useRouter();
+
+  const handleNavigate: TransitionLinkProps['onNavigate'] = (event) => {
+    event.preventDefault();
+
+    startTransition(() => {
+      addTransitionType(type);
+      router.push(props.href);
+    });
+  };
 
   return <Link onNavigate={handleNavigate} {...props} />;
 }

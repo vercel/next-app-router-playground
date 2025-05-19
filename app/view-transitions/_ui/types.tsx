@@ -36,6 +36,10 @@ export type ViewTransitionClass = AnimationType | TransitionMap;
 
 export type TransitionId = (typeof transitionIds)[number] | `product-${string}`;
 
-export type TransitionLinkProps = {
+export type TransitionLinkProps = Omit<
+  React.ComponentProps<typeof Link>,
+  'href'
+> & {
   type: TransitionType;
-} & Omit<React.ComponentProps<typeof Link>, 'onNavigate'>;
+  href: string;
+};
