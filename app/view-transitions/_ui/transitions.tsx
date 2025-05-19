@@ -10,6 +10,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import {
   unstable_addTransitionType as addTransitionType,
+  startTransition,
   unstable_ViewTransition as ViewTransition,
   ViewTransitionClass,
 } from 'react';
@@ -17,6 +18,16 @@ import {
 export function TransitionLink({ type, ...props }: TransitionLinkProps) {
   function handleNavigate() {
     addTransitionType(type);
+  }
+
+  return <Link onNavigate={handleNavigate} {...props} />;
+}
+
+export function TransitionLink2({ type, ...props }: TransitionLinkProps) {
+  function handleNavigate() {
+    startTransition(() => {
+      addTransitionType(type);
+    });
   }
 
   return <Link onNavigate={handleNavigate} {...props} />;

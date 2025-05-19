@@ -5,6 +5,7 @@ import {
   SharedTransition,
   TransitionButtonLink,
   TransitionLink,
+  TransitionLink2,
 } from '#/app/view-transitions/_ui/transitions';
 import { Boundary } from '#/ui/boundary';
 import { SkeletonText } from '#/ui/new/skeleton';
@@ -105,6 +106,14 @@ export default async function Page({
               >
                 Next
               </TransitionButtonLink>
+            </div>
+            <div className="flex justify-between gap-4">
+              <TransitionLink2 href={prevProduct} type="transition-backwards">
+                Previous
+              </TransitionLink2>
+              <TransitionLink2 href={nextProduct} type="transition-forwards">
+                Next
+              </TransitionLink2>
             </div>
           </SharedTransition>
         </div>
