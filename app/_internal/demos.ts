@@ -114,6 +114,12 @@ export const navigation = [
       //   description: 'Preview the routing hooks available in Client Components',
       // },
       {
+        slug: 'view-transitions',
+        name: 'View Transitions',
+        description:
+          'Use animations to help users understand the relationship between the two views',
+      },
+      {
         slug: 'context',
         name: 'Client Context',
         description:
