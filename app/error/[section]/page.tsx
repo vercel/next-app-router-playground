@@ -13,9 +13,9 @@ export async function generateStaticParams() {
 export default async function Page({
   params,
 }: {
-  params: Promise<{ section: string }>;
+  params: { section: string };
 }) {
-  const { section: sectionSlug } = await params;
+  const { section: sectionSlug } = params;
   const section = getSectionBySlug(sectionSlug);
   if (!section) {
     notFound();
