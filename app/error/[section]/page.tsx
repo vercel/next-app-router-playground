@@ -11,11 +11,11 @@ export default async function Page({
 }: {
   params: Promise<{ section: string }>;
 }) {
-  const { section: sectionSlug } = await params;
-  const section = getSectionBySlug(sectionSlug);
-  if (!section) {
-    notFound();
-  }
+  // const { section: sectionSlug } = await params;
+  // const section = getSectionBySlug(sectionSlug);
+  // if (!section) {
+  //   notFound();
+  // }
 
   const products = getProductsBySection(section?.id);
 
