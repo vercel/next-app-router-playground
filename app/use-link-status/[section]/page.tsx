@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { getProductsBySection, getSectionBySlug } from '#/app/_internal/data';
 import { Boundary } from '#/ui/boundary';
@@ -26,9 +27,10 @@ export default async function Page({
   const products = getProductsBySection(section?.id);
 
   return (
-    <Boundary label="[section]/page.tsx">
-      <div className="flex flex-col gap-4">
-        <h1 className="text-xl font-semibold text-gray-300">
+    <Suspense>
+      <Boundary label="[section]/page.tsx">
+        <div className="flex flex-col gap-4">
+          <h1 className="text-xl font-semibold text-gray-300">
           All{' '}
           <span className="font-mono tracking-tighter text-gray-600">
             ({products.length})
@@ -43,8 +45,9 @@ export default async function Page({
               animateEnter={true}
             />
           ))}
+          </div>
         </div>
-      </div>
-    </Boundary>
+      </Boundary>
+    </Suspense>
   );
 }
