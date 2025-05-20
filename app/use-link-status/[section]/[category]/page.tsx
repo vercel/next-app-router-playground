@@ -1,10 +1,11 @@
+import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { connection } from 'next/server';
 import { Boundary } from '#/ui/boundary';
 import { ProductCard } from '#/ui/new/product-card';
 import { getCategoryBySlug, getProductsByCategory } from '#/app/_internal/data';
 
-export default async function Page({
+async function InnerPage({
   params,
 }: {
   params: Promise<{ section: string; category: string }>;
@@ -46,5 +47,17 @@ export default async function Page({
         </div>
       </div>
     </Boundary>
+  );
+}
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ section: string; category: string }>;
+}) {
+  return (
+    <Suspense>
+      <InnerPage params={params} />
+    </Suspense>
   );
 }

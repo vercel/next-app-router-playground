@@ -5,7 +5,7 @@ import { Boundary } from '#/ui/boundary';
 import { ProductCard } from '#/ui/new/product-card';
 import { connection } from 'next/server';
 
-export default async function Page({
+async function InnerPage({
   params,
 }: {
   params: Promise<{ section: string }>;
@@ -27,10 +27,9 @@ export default async function Page({
   const products = getProductsBySection(section?.id);
 
   return (
-    <Suspense>
-      <Boundary label="[section]/page.tsx">
-        <div className="flex flex-col gap-4">
-          <h1 className="text-xl font-semibold text-gray-300">
+    <Boundary label="[section]/page.tsx">
+      <div className="flex flex-col gap-4">
+        <h1 className="text-xl font-semibold text-gray-300">
           All{' '}
           <span className="font-mono tracking-tighter text-gray-600">
             ({products.length})
@@ -45,9 +44,20 @@ export default async function Page({
               animateEnter={true}
             />
           ))}
-          </div>
         </div>
-      </Boundary>
+      </div>
+    </Boundary>
+  );
+}
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ section: string }>;
+}) {
+  return (
+    <Suspense>
+      <InnerPage params={params} />
     </Suspense>
   );
 }
