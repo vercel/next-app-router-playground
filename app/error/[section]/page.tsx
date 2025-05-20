@@ -1,4 +1,4 @@
-'use cache';
+//'use cache';
 
 import { notFound } from 'next/navigation';
 import { getProductsBySection, getSectionBySlug } from '#/app/_internal/data';
