@@ -1,7 +1,18 @@
 import { notFound } from 'next/navigation';
 import { Boundary } from '#/ui/boundary';
 import { ProductCard } from '#/ui/new/product-card';
-import { getCategoryBySlug, getProductsByCategory } from '#/app/_internal/data';
+import {
+  getCategories,
+  getCategoryBySlug,
+  getProductsByCategory,
+} from '#/app/_internal/data';
+
+export async function generateStaticParams() {
+  return getCategories().map(({ section, slug }) => ({
+    section,
+    category: slug,
+  }));
+}
 
 export default async function Page({
   params,
