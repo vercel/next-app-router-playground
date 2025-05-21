@@ -3,6 +3,7 @@
 import Link, { useLinkStatus } from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
+import { Suspense } from 'react';
 
 export type Item = {
   text: string;
@@ -31,14 +32,16 @@ export function Tab({
 
   return (
     <Link href={href} className="text-sm font-semibold">
-      <TabContent href={href}>{item.text}</TabContent>
+      <Suspense fallback={<TabContent>{item.text}</TabContent>}>
+        <DynamicTabContent href={href}>{item.text}</DynamicTabContent>
+      </Suspense>
     </Link>
   );
 }
 
 // Note: We create an additional component because useLinkStatus should be
 // called from a component that is rendered inside a `<Link>`
-function TabContent({
+function DynamicTabContent({
   children,
   href,
 }: {
@@ -49,6 +52,22 @@ function TabContent({
   const isActive = pathname === href;
   const { pending: isPending } = useLinkStatus();
 
+  return (
+    <TabContent isActive={isActive} isPending={isPending}>
+      {children}
+    </TabContent>
+  );
+}
+
+function TabContent({
+  children,
+  isActive,
+  isPending,
+}: {
+  children: React.ReactNode;
+  isActive?: boolean;
+  isPending?: boolean;
+}) {
   return (
     <span
       className={clsx('flex rounded-md px-3 py-1 transition duration-75', {

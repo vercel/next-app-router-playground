@@ -214,6 +214,9 @@ export const getProducts = ({ limit }: { limit?: number } = {}): Product[] => {
 // Get all sections
 export const getSections = (): Section[] => sections;
 
+// Get all categories
+export const getCategories = (): Category[] => categories;
+
 type ProductWhere = {
   id?: string;
   category?: string;
