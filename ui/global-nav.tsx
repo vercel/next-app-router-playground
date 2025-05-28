@@ -7,7 +7,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 
 export function GlobalNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -61,7 +61,12 @@ export function GlobalNav() {
 
                 <div className="flex flex-col gap-1">
                   {category.items.map((item) => (
-                    <NavItem key={item.slug} item={item} close={close} />
+                    <Suspense
+                      key={item.slug}
+                      fallback={<NavItem item={item} close={close} />}
+                    >
+                      <DynamicNavItem item={item} close={close} />
+                    </Suspense>
                   ))}
                 </div>
               </div>
@@ -73,10 +78,28 @@ export function GlobalNav() {
   );
 }
 
-function NavItem({ item, close }: { item: Demo; close: () => false | void }) {
+function DynamicNavItem({
+  item,
+  close,
+}: {
+  item: Demo;
+  close: () => false | void;
+}) {
   const segment = useSelectedLayoutSegment();
   const isActive = item.slug === segment;
 
+  return <NavItem item={item} close={close} isActive={isActive} />;
+}
+
+function NavItem({
+  item,
+  close,
+  isActive,
+}: {
+  item: Demo;
+  close: () => false | void;
+  isActive?: boolean;
+}) {
   return (
     <Link
       onClick={close}

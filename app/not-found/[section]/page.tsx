@@ -1,9 +1,17 @@
 'use cache';
 
-import { getProductsBySection, getSectionBySlug } from '#/app/_internal/data';
+import {
+  getProductsBySection,
+  getSectionBySlug,
+  getSections,
+} from '#/app/_internal/data';
 import { Boundary } from '#/ui/boundary';
 import { ProductCard } from '#/ui/new/product-card';
 import { notFound } from 'next/navigation';
+
+export async function generateStaticParams() {
+  return getSections().map(({ slug }) => ({ section: slug }));
+}
 
 export default async function Page({
   params,
