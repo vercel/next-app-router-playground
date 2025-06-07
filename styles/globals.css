@@ -30,6 +30,10 @@
 
   --animate-shimmer: shimmer 1.5s infinite;
 
+  --duration-enter: 210ms;
+  --duration-move: 400ms;
+  --duration-exit: 150ms;
+
   @keyframes shimmer {
     0% {
       opacity: 0;
@@ -126,5 +130,65 @@
   to {
     filter: blur(0);
     opacity: 1;
+  }
+}
+
+@keyframes slide {
+  from {
+    translate: var(--slide-offset);
+  }
+  to {
+    translate: 0;
+  }
+}
+
+::view-transition-new(.animate-slide-from-left) {
+  --slide-offset: -60px;
+  animation:
+    var(--duration-enter) ease-out var(--duration-exit) both fade,
+    var(--duration-move) ease-in-out both slide;
+}
+::view-transition-old(.animate-slide-to-right) {
+  --slide-offset: 60px;
+  animation:
+    var(--duration-exit) ease-in both fade reverse,
+    var(--duration-move) ease-in-out both slide reverse;
+}
+
+::view-transition-new(.animate-slide-from-right) {
+  --slide-offset: 60px;
+  animation:
+    var(--duration-enter) ease-out var(--duration-exit) both fade,
+    var(--duration-move) ease-in-out both slide;
+}
+
+::view-transition-old(.animate-slide-to-left) {
+  --slide-offset: -60px;
+  animation:
+    var(--duration-exit) ease-in both fade reverse,
+    var(--duration-move) ease-in-out both slide reverse;
+}
+
+::view-transition-group(.animate-morph) {
+  animation-duration: var(--duration-move);
+}
+
+/* 
+ * Using view-transition-image-pair and not view-transition-group to preserve
+ * the default animation which includes automatic position and scale morphing
+ */
+::view-transition-image-pair(.animate-morph) {
+  animation-name: via-blur;
+}
+
+/* 
+ * Blur animation for view transitions with shared elements. 
+ * Fast-moving elements can be visually jarring as the eye tries
+ * to track them. This creates a poor man's motion blur we can
+ * use to make these transitions smoother.
+ */
+@keyframes via-blur {
+  30% {
+    filter: blur(3px);
   }
 }
