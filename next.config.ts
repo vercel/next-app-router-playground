@@ -6,10 +6,10 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   experimental: {
     inlineCss: true,
-    useCache: true,
+    dynamicIO: true,
     clientSegmentCache: true,
     viewTransition: true,
-    ppr: true,
+    prerenderEarlyExit: false,
   },
 } satisfies NextConfig;
 
