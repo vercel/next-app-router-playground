@@ -1,7 +1,7 @@
 import { db } from '#/app/_internal/data';
 import { getDemoMeta } from '#/app/_internal/demos';
 import {
-  PageTransition,
+  HorizontalTransition,
   SharedTransition,
   TransitionButtonLink,
   TransitionLink,
@@ -30,7 +30,7 @@ export default async function Page({
   const nextProduct = `/${demo.slug}/posts/${next}`;
 
   return (
-    <PageTransition
+    <HorizontalTransition
       enter={{
         default: 'none',
         'transition-to-list': 'animate-slide-from-left',
@@ -109,7 +109,7 @@ export default async function Page({
           </SharedTransition>
         </div>
       </Boundary>
-    </PageTransition>
+    </HorizontalTransition>
   );
 }
 

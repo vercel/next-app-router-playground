@@ -174,8 +174,8 @@
 }
 
 /* 
- * Using *-image-pair and not *-group to preserve the default 
- * animation which includes automatic position and scale morphing 
+ * Using view-transition-image-pair and not view-transition-group to preserve
+ * the default animation which includes automatic position and scale morphing
  */
 ::view-transition-image-pair(.animate-morph) {
   animation-name: via-blur;
@@ -189,6 +189,6 @@
  */
 @keyframes via-blur {
   30% {
-    filter: blur(2px);
+    filter: blur(3px);
   }
 }

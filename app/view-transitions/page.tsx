@@ -1,7 +1,7 @@
 import { db } from '#/app/_internal/data';
 import {
   TransitionLink,
-  PageTransition,
+  HorizontalTransition,
   SharedTransition,
 } from '#/app/view-transitions/_ui/transitions';
 import { Boundary } from '#/ui/boundary';
@@ -11,7 +11,7 @@ export default async function Page() {
   const products = db.product.findMany();
 
   return (
-    <PageTransition
+    <HorizontalTransition
       enter={{
         default: 'none',
         'transition-to-list': 'animate-slide-from-left',
@@ -70,6 +70,6 @@ export default async function Page() {
           </div>
         </div>
       </Boundary>
-    </PageTransition>
+    </HorizontalTransition>
   );
 }
