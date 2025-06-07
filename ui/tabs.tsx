@@ -32,6 +32,11 @@ export function Tab({
 
   return (
     <Link href={href} className="text-sm font-semibold">
+      {/*
+       * `useSelectedLayoutSegment` suspends, so we place a Suspense boundary
+       * as deep as possible to allow the route's fallback shell to include
+       * these elements
+       */}
       <Suspense fallback={<TabContent>{item.text}</TabContent>}>
         <DynamicTabContent href={href}>{item.text}</DynamicTabContent>
       </Suspense>

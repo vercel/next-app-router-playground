@@ -61,6 +61,9 @@ export function GlobalNav() {
 
                 <div className="flex flex-col gap-1">
                   {category.items.map((item) => (
+                    // `useSelectedLayoutSegment` suspends, so we place
+                    // a Suspense boundary as deep as possible to allow
+                    // the route's fallback shell to include these elements
                     <Suspense
                       key={item.slug}
                       fallback={<NavItem item={item} close={close} />}

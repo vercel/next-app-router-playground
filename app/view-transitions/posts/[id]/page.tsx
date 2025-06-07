@@ -1,3 +1,5 @@
+'use cache';
+
 import { db } from '#/app/_internal/data';
 import { getDemoMeta } from '#/app/_internal/demos';
 import {

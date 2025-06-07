@@ -71,21 +71,21 @@ export const navigation = [
     name: 'Caching',
     items: [
       {
-        slug: 'cacheable-routes',
-        name: 'Cacheable Route Segments',
-        nav_title: 'Cacheable Routes',
+        slug: 'cached-routes',
+        name: 'Cached Route Segments',
+        nav_title: 'Cached Routes',
         description: 'Cache the rendered output of a route segment',
       },
       {
-        slug: 'cacheable-components',
-        name: 'Cacheable React Server Components',
-        nav_title: 'Cacheable Components',
+        slug: 'cached-components',
+        name: 'Cached React Server Components',
+        nav_title: 'Cached Components',
         description:
           'Cache the rendered output of an individual React Server Component',
       },
       {
-        slug: 'cacheable-functions',
-        name: 'Cacheable Functions',
+        slug: 'cached-functions',
+        name: 'Cached Functions',
         description: 'Cache the computed result of a regular function',
       },
     ],
