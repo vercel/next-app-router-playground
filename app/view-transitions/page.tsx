@@ -1,3 +1,5 @@
+'use cache';
+
 import { db } from '#/app/_internal/data';
 import {
   TransitionLink,
