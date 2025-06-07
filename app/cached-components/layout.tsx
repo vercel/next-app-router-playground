@@ -4,7 +4,7 @@ import { Mdx } from '#/ui/codehike';
 import React from 'react';
 import readme from './readme.mdx';
 
-const demo = getDemoMeta('cacheable-functions');
+const demo = getDemoMeta('cached-components');
 
 export const metadata = {
   title: demo.name,

@@ -6,7 +6,7 @@ import { Mdx } from '#/ui/codehike';
 import React from 'react';
 import readme from './readme.mdx';
 
-const demo = getDemoMeta('cacheable-routes');
+const demo = getDemoMeta('cached-routes');
 
 export const metadata = {
   title: demo.name,
