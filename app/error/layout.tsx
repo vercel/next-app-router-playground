@@ -1,7 +1,5 @@
-import { getSections } from '#/app/_internal/data';
-import { getDemoMeta } from '#/app/_internal/demos';
+import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
-import { Prose } from '#/ui/prose';
 import { Tabs } from '#/ui/tabs';
 import { type Metadata } from 'next';
 import React from 'react';
@@ -9,7 +7,7 @@ import Readme from './readme.mdx';
 import { Mdx } from '#/ui/codehike';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const demo = getDemoMeta('error');
+  const demo = db.demo.find({ where: { slug: 'error' } });
 
   return {
     title: demo.name,
@@ -25,8 +23,8 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  const demo = getDemoMeta('error');
-  const sections = getSections();
+  const demo = db.demo.find({ where: { slug: 'error' } });
+  const sections = db.section.findMany();
 
   return (
     <>

@@ -1,18 +1,21 @@
-import { getDemoMeta } from '#/app/_internal/demos';
+import { Metadata } from 'next';
+import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
 import { Mdx } from '#/ui/codehike';
 import React from 'react';
 import readme from './readme.mdx';
 
-const demo = getDemoMeta('cached-functions');
+export async function generateMetadata(): Promise<Metadata> {
+  const demo = db.demo.find({ where: { slug: 'cached-functions' } });
 
-export const metadata = {
-  title: demo.name,
-  openGraph: {
+  return {
     title: demo.name,
-    images: [`/api/og?title=${demo.name}`],
-  },
-};
+    openGraph: {
+      title: demo.name,
+      images: [`/api/og?title=${demo.name}`],
+    },
+  };
+}
 
 export default async function Layout({
   children,

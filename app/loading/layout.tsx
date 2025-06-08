@@ -1,7 +1,6 @@
 'use cache';
 
-import { getSections } from '#/app/_internal/data';
-import { getDemoMeta } from '#/app/_internal/demos';
+import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
 import { Mdx } from '#/ui/codehike';
 import { Tabs } from '#/ui/tabs';
@@ -9,7 +8,7 @@ import { type Metadata } from 'next';
 import Readme from './readme.mdx';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const demo = getDemoMeta('loading');
+  const demo = db.demo.find({ where: { slug: 'loading' } });
 
   return {
     title: demo.name,
@@ -25,8 +24,8 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  const demo = getDemoMeta('loading');
-  const sections = getSections();
+  const demo = db.demo.find({ where: { slug: 'loading' } });
+  const sections = db.section.findMany();
 
   return (
     <>

@@ -1,5 +1,5 @@
 import { Boundary } from '#/ui/boundary';
-import { ProductCardSkeleton } from '#/ui/new/product-card';
+import { ProductCardSkeleton } from '#/ui/product-card';
 
 export default function Loading() {
   return (

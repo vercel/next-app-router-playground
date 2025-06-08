@@ -1,6 +1,6 @@
-# Next.js App Router Playground
+# Next.js Playground
 
-This playground is used by the DX team to explore, test, and demo new features in Next.js. It serves as a starting point for writing documentation—helping us better understand features, identify bugs, and provide feedback to the Next.js team.
+This playground is used by the DX team to explore, test, and demo new Next.js features. It serves as a starting point for writing documentation and helps us understand features, identify bugs, and provide feedback to the Next.js team.
 
 ## Running Locally
 

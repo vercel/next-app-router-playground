@@ -1,15 +1,15 @@
 'use client';
 
-import { Demo, navigation } from '#/app/_internal/demos';
+import { type Demo, type DemoCategory } from '#/lib/db';
 import { LinkStatus } from '#/ui/link-status';
-import { NextLogoDark } from '#/ui/next-logo';
+import { NextLogoDark } from '#/ui/logo-next';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
 import { Suspense, useState } from 'react';
 
-export function GlobalNav() {
+export function GlobalNav({ items }: { items: DemoCategory[] }) {
   const [isOpen, setIsOpen] = useState(false);
   const close = () => setIsOpen(false);
 
@@ -52,15 +52,15 @@ export function GlobalNav() {
         })}
       >
         <nav className="space-y-6 px-2 pt-5 pb-24">
-          {navigation.map((category) => {
+          {items.map((section) => {
             return (
-              <div key={category.name}>
+              <div key={section.name}>
                 <div className="mb-2 px-3 font-mono text-xs font-semibold tracking-wide text-gray-600 uppercase">
-                  <div>{category.name}</div>
+                  <div>{section.name}</div>
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  {category.items.map((item) => (
+                  {section.items.map((item) => (
                     // `useSelectedLayoutSegment` suspends, so we place
                     // a Suspense boundary as deep as possible to allow
                     // the route's fallback shell to include these elements

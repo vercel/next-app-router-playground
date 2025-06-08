@@ -1,6 +1,6 @@
-import { getProducts } from '#/app/_internal/data';
+import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
-import { ProductCard } from '#/ui/new/product-card';
+import { ProductCard } from '#/ui/product-card';
 
 export default async function Page() {
   return (
@@ -16,7 +16,7 @@ async function ProductList() {
   // DEMO: Add a delay to simulate a slow data request
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  const products = getProducts({ limit: 9 });
+  const products = db.product.findMany({ limit: 9 });
 
   return (
     <Boundary label="<ProductList> (Cacheable)" size="small">

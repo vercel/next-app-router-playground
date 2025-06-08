@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation';
 import { connection } from 'next/server';
 import { Boundary } from '#/ui/boundary';
-import { ProductCard } from '#/ui/new/product-card';
-import { getCategoryBySlug, getProductsByCategory } from '#/app/_internal/data';
+import { ProductCard } from '#/ui/product-card';
+import db from '#/lib/db';
 
 export default async function Page({
   params,
@@ -18,12 +18,14 @@ export default async function Page({
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   const { category: categorySlug } = await params;
-  const category = getCategoryBySlug(categorySlug);
+  const category = db.category.find({
+    where: { slug: categorySlug },
+  });
   if (!category) {
     notFound();
   }
 
-  const products = getProductsByCategory(category.id);
+  const products = db.product.findMany({ where: { category: category.id } });
 
   return (
     <Boundary label="[section]/[category]/page.tsx">

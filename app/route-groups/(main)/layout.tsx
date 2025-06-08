@@ -1,17 +1,15 @@
 import React from 'react';
 import { Boundary } from '#/ui/boundary';
 import { Tabs } from '#/ui/tabs';
-import { getDemoMeta } from '#/app/_internal/demos';
-import { getSections } from '#/app/_internal/data';
-
-const demo = getDemoMeta('route-groups');
+import db from '#/lib/db';
 
 export default async function Layout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const sections = getSections().slice(0, 1);
+  const demo = db.demo.find({ where: { slug: 'route-groups' } });
+  const sections = db.section.findMany({ limit: 1 });
 
   return (
     <Boundary label="(main)/layout.tsx" className="flex flex-col gap-9">

@@ -1,6 +1,6 @@
-import { getProducts } from '#/app/_internal/data';
+import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
-import { ProductCard } from '#/ui/new/product-card';
+import { ProductCard } from '#/ui/product-card';
 import { connection } from 'next/server';
 
 export default async function Page() {
@@ -12,7 +12,7 @@ export default async function Page() {
   // 2. Add an artificial delay to make the loading state more noticeable:
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  const products = getProducts({ limit: 9 });
+  const products = db.product.findMany({ limit: 9 });
 
   return (
     <Boundary label="page.tsx">

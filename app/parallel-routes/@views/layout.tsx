@@ -1,9 +1,9 @@
-import { getDemoMeta } from '#/app/_internal/demos';
+import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
 import { Tabs } from '#/ui/tabs';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const demo = getDemoMeta('parallel-routes');
+  const demo = db.demo.find({ where: { slug: 'parallel-routes' } });
 
   return (
     <Boundary

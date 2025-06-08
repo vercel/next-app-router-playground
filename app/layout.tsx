@@ -1,4 +1,6 @@
 import '#/styles/globals.css';
+
+import db from '#/lib/db';
 import Byline from '#/ui/byline';
 import { GlobalNav } from '#/ui/global-nav';
 import { Metadata } from 'next';
@@ -38,13 +40,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const demos = db.demo.findMany();
   return (
     <html lang="en" className="[color-scheme:dark]">
       <body
         className={`overflow-y-scroll bg-gray-950 font-sans ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="fixed top-0 z-10 flex w-full flex-col border-b border-gray-800 bg-black lg:bottom-0 lg:z-auto lg:w-72 lg:border-r lg:border-b-0 lg:border-gray-800">
-          <GlobalNav />
+          <GlobalNav items={demos} />
         </div>
 
         <div className="lg:pl-72">

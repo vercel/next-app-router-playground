@@ -1,8 +1,7 @@
 'use cache';
 
 import React from 'react';
-import { getSections } from '#/app/_internal/data';
-import { getDemoMeta } from '#/app/_internal/demos';
+import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
 import { ClickCounter } from '#/ui/click-counter';
 import { Tabs } from '#/ui/tabs';
@@ -11,7 +10,7 @@ import { Mdx } from '#/ui/codehike';
 import readme from './readme.mdx';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const demo = getDemoMeta('layouts');
+  const demo = db.demo.find({ where: { slug: 'layouts' } });
 
   return {
     title: demo.name,
@@ -27,8 +26,8 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  const demo = getDemoMeta('layouts');
-  const sections = getSections();
+  const demo = db.demo.find({ where: { slug: 'layouts' } });
+  const sections = db.section.findMany();
 
   return (
     <>

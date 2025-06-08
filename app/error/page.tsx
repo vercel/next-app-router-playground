@@ -1,12 +1,12 @@
 'use cache';
 
-import { getProducts } from '#/app/_internal/data';
+import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
+import { ProductCard } from '#/ui/product-card';
 import BuggyButton from '#/app/error/_ui/buggy-button';
-import { ProductCard } from '#/ui/new/product-card';
 
 export default async function Page() {
-  const products = getProducts({ limit: 9 });
+  const products = db.product.findMany({ limit: 9 });
 
   return (
     <Boundary label="page.tsx">
@@ -23,6 +23,7 @@ export default async function Page() {
             <BuggyButton />
           </div>
         </div>
+
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />

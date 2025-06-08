@@ -1,16 +1,13 @@
 'use cache';
 
-import {
-  getProductsBySection,
-  getSectionBySlug,
-  getSections,
-} from '#/app/_internal/data';
-import { Boundary } from '#/ui/boundary';
-import { ProductCard } from '#/ui/new/product-card';
 import { notFound } from 'next/navigation';
+import db from '#/lib/db';
+import { Boundary } from '#/ui/boundary';
+import { ProductCard } from '#/ui/product-card';
 
 export async function generateStaticParams() {
-  return getSections().map(({ slug }) => ({ section: slug }));
+  const sections = db.section.findMany();
+  return sections.map(({ slug }) => ({ section: slug }));
 }
 
 export default async function Page({
@@ -19,12 +16,12 @@ export default async function Page({
   params: Promise<{ section: string }>;
 }) {
   const { section: sectionSlug } = await params;
-  const section = getSectionBySlug(sectionSlug);
+  const section = db.section.find({ where: { slug: sectionSlug } });
   if (!section) {
     notFound();
   }
 
-  const products = getProductsBySection(section?.id);
+  const products = db.product.findMany({ where: { section: section.id } });
 
   return (
     <Boundary label="[section]/page.tsx">
