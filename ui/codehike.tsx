@@ -15,9 +15,7 @@ import Image from 'next/image';
 import { JSX } from 'react';
 import { z } from 'zod';
 
-const Schema = Block.extend({
-  col: z.array(Block),
-});
+const Schema = Block.extend({ col: z.array(Block) });
 
 export function Grid(props: unknown) {
   const data = parseProps(props, Schema);

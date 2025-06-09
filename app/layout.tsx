@@ -6,10 +6,7 @@ import { GlobalNav } from '#/ui/global-nav';
 import { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
+const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
@@ -17,10 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: 'Next.js Playground',
-    template: '%s | Next.js Playground',
-  },
+  title: { default: 'Next.js Playground', template: '%s | Next.js Playground' },
   metadataBase: new URL('https://app-router.vercel.app'),
   description:
     'A playground to explore Next.js features such as nested layouts, instant loading states, streaming, and component level data fetching.',
@@ -30,9 +24,7 @@ export const metadata: Metadata = {
       'A playground to explore Next.js features such as nested layouts, instant loading states, streaming, and component level data fetching.',
     images: [`/api/og?title=Next.js Playground`],
   },
-  twitter: {
-    card: 'summary_large_image',
-  },
+  twitter: { card: 'summary_large_image' },
 };
 
 export default function RootLayout({

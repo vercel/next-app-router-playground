@@ -32,82 +32,27 @@ export type Demo = {
   description: string;
 };
 
-export type DemoCategory = {
-  name: string;
-  items: Demo[];
-};
+export type DemoCategory = { name: string; items: Demo[] };
 
 const sections: Section[] = [
-  {
-    id: '1',
-    name: 'Clothing',
-    slug: 'clothing',
-    categories: ['1', '2', '3'],
-  },
+  { id: '1', name: 'Clothing', slug: 'clothing', categories: ['1', '2', '3'] },
   {
     id: '2',
     name: 'Electronics',
     slug: 'electronics',
     categories: ['4', '5', '6'],
   },
-  {
-    id: '3',
-    name: 'Sports',
-    slug: 'sports',
-    categories: ['7', '8', '9'],
-  },
+  { id: '3', name: 'Sports', slug: 'sports', categories: ['7', '8', '9'] },
 ];
 
 const categories: Category[] = [
-  {
-    id: '1',
-    name: 'Tops',
-    slug: 'tops',
-    section: '1',
-    products: ['1'],
-  },
-  {
-    id: '2',
-    name: 'Shorts',
-    slug: 'shorts',
-    section: '1',
-    products: ['2'],
-  },
-  {
-    id: '3',
-    name: 'Shoes',
-    slug: 'shoes',
-    section: '1',
-    products: ['3'],
-  },
-  {
-    id: '4',
-    name: 'Phones',
-    slug: 'phones',
-    section: '2',
-    products: ['4'],
-  },
-  {
-    id: '5',
-    name: 'Laptops',
-    slug: 'laptops',
-    section: '2',
-    products: ['5'],
-  },
-  {
-    id: '6',
-    name: 'Tablets',
-    slug: 'tablets',
-    section: '2',
-    products: ['6'],
-  },
-  {
-    id: '7',
-    name: 'Balls',
-    slug: 'balls',
-    section: '3',
-    products: ['7'],
-  },
+  { id: '1', name: 'Tops', slug: 'tops', section: '1', products: ['1'] },
+  { id: '2', name: 'Shorts', slug: 'shorts', section: '1', products: ['2'] },
+  { id: '3', name: 'Shoes', slug: 'shoes', section: '1', products: ['3'] },
+  { id: '4', name: 'Phones', slug: 'phones', section: '2', products: ['4'] },
+  { id: '5', name: 'Laptops', slug: 'laptops', section: '2', products: ['5'] },
+  { id: '6', name: 'Tablets', slug: 'tablets', section: '2', products: ['6'] },
+  { id: '7', name: 'Balls', slug: 'balls', section: '3', products: ['7'] },
   {
     id: '8',
     name: 'Equipment',
@@ -125,61 +70,16 @@ const categories: Category[] = [
 ];
 
 const products: Product[] = [
-  {
-    id: '1',
-    name: 'Top',
-    image: 'top.png',
-    category: '1',
-  },
-  {
-    id: '2',
-    name: 'Shorts',
-    image: 'shorts.png',
-    category: '2',
-  },
-  {
-    id: '3',
-    name: 'Shoes',
-    image: 'shoes.png',
-    category: '3',
-  },
+  { id: '1', name: 'Top', image: 'top.png', category: '1' },
+  { id: '2', name: 'Shorts', image: 'shorts.png', category: '2' },
+  { id: '3', name: 'Shoes', image: 'shoes.png', category: '3' },
 
-  {
-    id: '4',
-    name: 'Phone',
-    image: 'phone.png',
-    category: '4',
-  },
-  {
-    id: '5',
-    name: 'Laptop',
-    image: 'laptop.png',
-    category: '5',
-  },
-  {
-    id: '6',
-    name: 'Tablet',
-    image: 'tablet.png',
-    category: '6',
-  },
-  {
-    id: '7',
-    name: 'Basketball',
-    image: 'balls.png',
-    category: '7',
-  },
-  {
-    id: '8',
-    name: 'Weights',
-    image: 'weights.png',
-    category: '8',
-  },
-  {
-    id: '9',
-    name: 'Gloves',
-    image: 'gloves.png',
-    category: '9',
-  },
+  { id: '4', name: 'Phone', image: 'phone.png', category: '4' },
+  { id: '5', name: 'Laptop', image: 'laptop.png', category: '5' },
+  { id: '6', name: 'Tablet', image: 'tablet.png', category: '6' },
+  { id: '7', name: 'Basketball', image: 'balls.png', category: '7' },
+  { id: '8', name: 'Weights', image: 'weights.png', category: '8' },
+  { id: '9', name: 'Gloves', image: 'gloves.png', category: '9' },
 ];
 
 const demos = [

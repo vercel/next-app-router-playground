@@ -18,10 +18,7 @@ export type PolymorphicProps<
 
 type ProductCardProps<E extends ElementType> = PolymorphicProps<
   E,
-  {
-    product: Product;
-    animateEnter?: boolean;
-  }
+  { product: Product; animateEnter?: boolean }
 >;
 
 export function ProductCard<E extends ElementType = 'div'>({

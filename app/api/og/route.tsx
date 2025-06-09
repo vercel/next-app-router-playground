@@ -52,14 +52,7 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
       {
         width: 843,
         height: 441,
-        fonts: [
-          {
-            name: 'Inter',
-            data: font,
-            style: 'normal',
-            weight: 400,
-          },
-        ],
+        fonts: [{ name: 'Inter', data: font, style: 'normal', weight: 400 }],
       },
     );
   } catch (e) {
@@ -67,9 +60,7 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
 
     // eslint-disable-next-line no-console
     console.log(e.message);
-    return new Response(`Failed to generate the image`, {
-      status: 500,
-    });
+    return new Response(`Failed to generate the image`, { status: 500 });
   }
 }
 

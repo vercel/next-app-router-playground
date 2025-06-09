@@ -15,14 +15,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         basePath={`/${demo.slug}`}
         items={[
           { text: 'Home' },
-          {
-            text: 'Demographics',
-            slug: 'demographics',
-          },
-          {
-            text: 'Subscribers',
-            slug: 'subscribers',
-          },
+          { text: 'Demographics', slug: 'demographics' },
+          { text: 'Subscribers', slug: 'subscribers' },
         ]}
       />
 

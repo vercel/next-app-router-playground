@@ -9,10 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: demo.name,
-    openGraph: {
-      title: demo.name,
-      images: [`/api/og?title=${demo.name}`],
-    },
+    openGraph: { title: demo.name, images: [`/api/og?title=${demo.name}`] },
   };
 }
 

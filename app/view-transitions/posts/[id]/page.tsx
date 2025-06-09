@@ -16,9 +16,7 @@ import { notFound } from 'next/navigation';
 export async function generateStaticParams() {
   const products = db.product.findMany();
 
-  return products.map((product) => ({
-    id: product.id,
-  }));
+  return products.map((product) => ({ id: product.id }));
 }
 
 export default async function Page({
@@ -27,9 +25,7 @@ export default async function Page({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const product = db.product.find({
-    where: { id },
-  });
+  const product = db.product.find({ where: { id } });
   if (!product) {
     notFound();
   }

@@ -5,11 +5,7 @@ import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
 import { Suspense } from 'react';
 
-export type Item = {
-  text: string;
-  slug?: string;
-  segment?: string;
-};
+export type Item = { text: string; slug?: string; segment?: string };
 
 export function Tabs({ basePath, items }: { basePath: string; items: Item[] }) {
   return (

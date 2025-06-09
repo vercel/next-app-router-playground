@@ -7,10 +7,7 @@ import { ProductCard } from '#/ui/product-card';
 
 export async function generateStaticParams() {
   const categories = db.category.findMany();
-  return categories.map(({ section, slug }) => ({
-    section,
-    category: slug,
-  }));
+  return categories.map(({ section, slug }) => ({ section, category: slug }));
 }
 
 export default async function Page({
@@ -19,9 +16,7 @@ export default async function Page({
   params: Promise<{ section: string; category: string }>;
 }) {
   const { category: categorySlug } = await params;
-  const category = db.category.find({
-    where: { slug: categorySlug },
-  });
+  const category = db.category.find({ where: { slug: categorySlug } });
   if (!category) {
     notFound();
   }

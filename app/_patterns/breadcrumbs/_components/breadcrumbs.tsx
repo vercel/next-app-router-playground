@@ -19,7 +19,7 @@ export function Breadcrumbs({
             <Link
               key={item.href}
               href={item.href}
-              className="capitalize text-white hover:text-gray-500"
+              className="text-white capitalize hover:text-gray-500"
             >
               {item.text}
             </Link>

@@ -182,9 +182,9 @@ type AnimationType = (typeof animationTypes)[number];
  *   'transition-to-list': 'animate-slide-from-left'
  * }
  */
-type TransitionMap = {
-  default: AnimationType;
-} & Partial<Record<Exclude<TransitionType, 'default'>, AnimationType>>;
+type TransitionMap = { default: AnimationType } & Partial<
+  Record<Exclude<TransitionType, 'default'>, AnimationType>
+>;
 
 /**
  * Type for transition class names or transition maps

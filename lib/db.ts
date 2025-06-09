@@ -13,44 +13,21 @@ import {
   type Section,
 } from '../app/_internal/_data';
 
-type ProductWhere = {
-  id?: string;
-  category?: string;
-  section?: string;
-};
+type ProductWhere = { id?: string; category?: string; section?: string };
 
-type ProductFindOptions = {
-  where?: ProductWhere;
-  limit?: number;
-};
+type ProductFindOptions = { where?: ProductWhere; limit?: number };
 
-type SectionWhere = {
-  id?: string;
-  slug?: string;
-};
+type SectionWhere = { id?: string; slug?: string };
 
-type SectionFindOptions = {
-  where?: SectionWhere;
-  limit?: number;
-};
+type SectionFindOptions = { where?: SectionWhere; limit?: number };
 
-type CategoryWhere = {
-  id?: string;
-  slug?: string;
-  section?: string;
-};
+type CategoryWhere = { id?: string; slug?: string; section?: string };
 
-type CategoryFindOptions = {
-  where?: CategoryWhere;
-};
+type CategoryFindOptions = { where?: CategoryWhere };
 
-type DemoWhere = {
-  slug?: DemoSlug;
-};
+type DemoWhere = { slug?: DemoSlug };
 
-type DemoFindOptions = {
-  where?: DemoWhere;
-};
+type DemoFindOptions = { where?: DemoWhere };
 
 const db = {
   product: {

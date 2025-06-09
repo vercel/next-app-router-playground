@@ -8,10 +8,7 @@ const title = 'Client Context';
 
 export const metadata = {
   title,
-  openGraph: {
-    title,
-    images: [`/api/og?title=${title}`],
-  },
+  openGraph: { title, images: [`/api/og?title=${title}`] },
 };
 
 export default async function Layout({

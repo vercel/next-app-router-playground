@@ -12,10 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: demo.name,
-    openGraph: {
-      title: demo.name,
-      images: [`/api/og?title=${demo.name}`],
-    },
+    openGraph: { title: demo.name, images: [`/api/og?title=${demo.name}`] },
   };
 }
 
@@ -43,10 +40,7 @@ export default async function Layout({
           basePath={`/${demo.slug}`}
           items={[
             { text: 'Home' },
-            ...sections.map((x) => ({
-              text: x.name,
-              slug: x.slug,
-            })),
+            ...sections.map((x) => ({ text: x.name, slug: x.slug })),
           ]}
         />
 

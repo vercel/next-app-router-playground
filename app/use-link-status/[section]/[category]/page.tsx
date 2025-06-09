@@ -18,9 +18,7 @@ export default async function Page({
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   const { category: categorySlug } = await params;
-  const category = db.category.find({
-    where: { slug: categorySlug },
-  });
+  const category = db.category.find({ where: { slug: categorySlug } });
   if (!category) {
     notFound();
   }

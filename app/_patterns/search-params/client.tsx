@@ -7,11 +7,7 @@ import { useCallback, useMemo } from 'react';
 export default function Client({
   options,
 }: {
-  options: {
-    name: string;
-    value: string;
-    items: string[];
-  }[];
+  options: { name: string; value: string; items: string[] }[];
 }) {
   const searchParams = useSearchParams()!;
   const pathname = usePathname();
