@@ -5,7 +5,7 @@ import {
   TransitionLink,
   HorizontalTransition,
   SharedTransition,
-} from '#/app/_view-transitions/_ui/transitions';
+} from '#/app/view-transitions/_ui/transitions';
 import { Boundary } from '#/ui/boundary';
 import Image from 'next/image';
 

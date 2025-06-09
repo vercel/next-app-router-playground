@@ -6,7 +6,7 @@ import {
   SharedTransition,
   TransitionButtonLink,
   TransitionLink,
-} from '#/app/_view-transitions/_ui/transitions';
+} from '#/app/view-transitions/_ui/transitions';
 import { Boundary } from '#/ui/boundary';
 import { SkeletonText } from '#/ui/skeleton';
 import { ChevronLeftIcon } from '@heroicons/react/24/solid';
