@@ -1,20 +1,16 @@
 import React from 'react';
 import { type Metadata } from 'next';
-import { getDemoMeta } from '#/app/_internal/demos';
+import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
-import { Prose } from '#/ui/prose';
 import Readme from './readme.mdx';
 import { Mdx } from '#/ui/codehike';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const demo = getDemoMeta('route-groups');
+  const demo = db.demo.find({ where: { slug: 'route-groups' } });
 
   return {
     title: demo.name,
-    openGraph: {
-      title: demo.name,
-      images: [`/api/og?title=${demo.name}`],
-    },
+    openGraph: { title: demo.name, images: [`/api/og?title=${demo.name}`] },
   };
 }
 

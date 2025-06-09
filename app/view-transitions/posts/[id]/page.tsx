@@ -1,5 +1,6 @@
-import { db } from '#/app/_internal/data';
-import { getDemoMeta } from '#/app/_internal/demos';
+'use cache';
+
+import db from '#/lib/db';
 import {
   HorizontalTransition,
   SharedTransition,
@@ -7,10 +8,16 @@ import {
   TransitionLink,
 } from '#/app/view-transitions/_ui/transitions';
 import { Boundary } from '#/ui/boundary';
-import { SkeletonText } from '#/ui/new/skeleton';
+import { SkeletonText } from '#/ui/skeleton';
 import { ChevronLeftIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+
+export async function generateStaticParams() {
+  const products = db.product.findMany();
+
+  return products.map((product) => ({ id: product.id }));
+}
 
 export default async function Page({
   params,
@@ -18,16 +25,14 @@ export default async function Page({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const { data, prev, next } = db.product.find({
-    where: { id },
-  });
-  if (!data) {
+  const product = db.product.find({ where: { id } });
+  if (!product) {
     notFound();
   }
 
-  const demo = getDemoMeta('view-transitions');
-  const prevProduct = `/${demo.slug}/posts/${prev}`;
-  const nextProduct = `/${demo.slug}/posts/${next}`;
+  const demo = db.demo.find({ where: { slug: 'view-transitions' } });
+  const prevProduct = `/${demo.slug}/posts/${product.prev}`;
+  const nextProduct = `/${demo.slug}/posts/${product.next}`;
 
   return (
     <HorizontalTransition
@@ -78,17 +83,17 @@ export default async function Page({
 
           <div className="grid grid-cols-2 gap-8">
             <SharedTransition
-              name={`product-${data.id}`}
+              name={`product-${product.id}`}
               share={{
                 default: 'auto',
                 'transition-to-list': 'animate-morph',
                 'transition-to-detail': 'animate-morph',
               }}
             >
-              <ProductImage src={data.image} alt={data.name} />
+              <ProductImage src={product.image} alt={product.name} />
             </SharedTransition>
 
-            <ProductDetails id={data.id} />
+            <ProductDetails id={product.id} />
           </div>
 
           <SharedTransition name="navigation-pagination">

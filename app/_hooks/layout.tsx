@@ -1,25 +1,27 @@
-import { getCategories } from '#/app/api/categories/getCategories';
 import { LayoutHooks } from '#/app/_hooks/_components/router-context-layout';
+import db from '#/lib/db';
 import { ClickCounter } from '#/ui/click-counter';
 import { Tabs } from '#/ui/tabs';
 import React from 'react';
 
-const title = 'Hooks';
+// export function generateMetadata() {
+//   const demo = db.demo.find({ where: { slug: 'hooks' } });
 
-export const metadata = {
-  title,
-  openGraph: {
-    title,
-    images: [`/api/og?title=${title}`],
-  },
-};
+//   return {
+//     title: demo.name,
+//     openGraph: {
+//       title: demo.name,
+//       images: [`/api/og?title=${demo.name}`],
+//     },
+//   };
+// }
 
 export default async function Layout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const categories = await getCategories();
+  const sections = db.section.findMany();
 
   return (
     <div className="space-y-9">
@@ -28,7 +30,7 @@ export default async function Layout({
           basePath="/hooks"
           items={[
             { text: 'Home' },
-            ...categories.map((x) => ({ text: x.name, slug: x.slug })),
+            ...sections.map((x) => ({ text: x.name, slug: x.slug })),
           ]}
         />
 

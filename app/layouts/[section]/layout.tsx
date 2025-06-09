@@ -1,8 +1,7 @@
 'use cache';
 
 import { notFound } from 'next/navigation';
-import { getDemoMeta } from '#/app/_internal/demos';
-import { getCategoriesBySection, getSectionBySlug } from '#/app/_internal/data';
+import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
 import { Tabs } from '#/ui/tabs';
 
@@ -14,13 +13,13 @@ export default async function Layout({
   params: Promise<{ section: string }>;
 }) {
   const { section: sectionSlug } = await params;
-  const section = getSectionBySlug(sectionSlug);
+  const section = db.section.find({ where: { slug: sectionSlug } });
   if (!section) {
     notFound();
   }
 
-  const demo = getDemoMeta('layouts');
-  const categories = getCategoriesBySection(section?.id);
+  const demo = db.demo.find({ where: { slug: 'layouts' } });
+  const categories = db.category.findMany({ where: { section: section?.id } });
 
   return (
     <Boundary label="[section]/layout.tsx" className="flex flex-col gap-9">

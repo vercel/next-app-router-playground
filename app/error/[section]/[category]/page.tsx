@@ -1,20 +1,14 @@
 'use cache';
 
 import { notFound } from 'next/navigation';
+import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
-import { ProductCard } from '#/ui/new/product-card';
-import {
-  getCategories,
-  getCategoryBySlug,
-  getProductsByCategory,
-} from '#/app/_internal/data';
+import { ProductCard } from '#/ui/product-card';
 import BuggyButton from '#/app/error/_ui/buggy-button';
 
 export async function generateStaticParams() {
-  return getCategories().map(({ section, slug }) => ({
-    section,
-    category: slug,
-  }));
+  const categories = db.category.findMany();
+  return categories.map(({ section, slug }) => ({ section, category: slug }));
 }
 
 export default async function Page({
@@ -23,12 +17,12 @@ export default async function Page({
   params: Promise<{ section: string; category: string }>;
 }) {
   const { category: categorySlug } = await params;
-  const category = getCategoryBySlug(categorySlug);
+  const category = db.category.find({ where: { slug: categorySlug } });
   if (!category) {
     notFound();
   }
 
-  const products = getProductsByCategory(category.id);
+  const products = db.product.findMany({ where: { category: category.id } });
 
   return (
     <Boundary label="[section]/[category]/page.tsx">

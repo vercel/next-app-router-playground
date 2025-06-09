@@ -1,21 +1,18 @@
 'use cache';
 
-import { getDemoMeta } from '#/app/_internal/demos';
 import { Boundary } from '#/ui/boundary';
 import { Mdx } from '#/ui/codehike';
-import { type Metadata } from 'next';
+import { Metadata } from 'next';
 import React from 'react';
 import readme from './readme.mdx';
+import db from '#/lib/db';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const demo = getDemoMeta('view-transitions');
+  const demo = db.demo.find({ where: { slug: 'view-transitions' } });
 
   return {
     title: demo.name,
-    openGraph: {
-      title: demo.name,
-      images: [`/api/og?title=${demo.name}`],
-    },
+    openGraph: { title: demo.name, images: [`/api/og?title=${demo.name}`] },
   };
 }
 

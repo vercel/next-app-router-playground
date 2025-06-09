@@ -1,9 +1,10 @@
-import { navigation } from '#/app/_internal/demos';
+import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
 import { LinkStatus } from '#/ui/link-status';
 import Link from 'next/link';
 
 export default function Page() {
+  const demos = db.demo.findMany();
   return (
     <Boundary
       label="Examples"
@@ -11,7 +12,7 @@ export default function Page() {
       kind="solid"
       className="flex flex-col gap-9"
     >
-      {navigation.map((section) => {
+      {demos.map((section) => {
         return (
           <div key={section.name} className="flex flex-col gap-3">
             <div className="font-mono text-xs font-semibold tracking-wider text-gray-700 uppercase">

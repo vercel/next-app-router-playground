@@ -1,17 +1,18 @@
-import { getCategories } from '#/app/api/categories/getCategories';
+import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
 import { Tabs } from '#/ui/tabs';
 import React from 'react';
 
-const title = 'Breadcrumbs with Parallel Routes';
-
-export const metadata = {
-  title,
-  openGraph: {
-    title,
-    images: [`/api/og?title=${title}`],
-  },
-};
+// export function generateMetadata() {
+//   const demo = db.demo.find({ where: { slug: 'breadcrumbs' } });
+//   return {
+//     title: demo.name,
+//     openGraph: {
+//       title: demo.name,
+//       images: [`/api/og?title=${demo.name}`],
+//     },
+//   };
+// }
 
 export default async function Layout({
   children,
@@ -20,7 +21,7 @@ export default async function Layout({
   children: React.ReactNode;
   breadcrumbs: React.ReactNode;
 }) {
-  const categories = await getCategories();
+  const categories = db.category.findMany();
 
   return (
     <div className="space-y-9">

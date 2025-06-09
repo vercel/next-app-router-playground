@@ -1,9 +1,9 @@
-import { getDemoMeta } from '#/app/_internal/demos';
+import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
 import { Tab } from '#/ui/tabs';
 
-export default function Loading() {
-  const demo = getDemoMeta('not-found');
+export default function NotFound() {
+  const demo = db.demo.find({ where: { slug: 'not-found' } });
 
   return (
     <Boundary label="[section]/not-found.tsx" className="flex flex-col gap-4">

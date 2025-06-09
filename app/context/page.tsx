@@ -1,10 +1,10 @@
-import { getProducts } from '#/app/_internal/data';
 import ContextClickCounter from '#/app/context/context-click-counter';
+import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
-import { ProductCard } from '#/ui/new/product-card';
+import { ProductCard } from '#/ui/product-card';
 
 export default function Page() {
-  const products = getProducts({ limit: 9 });
+  const products = db.product.findMany({ limit: 9 });
 
   return (
     <Boundary label="page.tsx (Server Environment)">

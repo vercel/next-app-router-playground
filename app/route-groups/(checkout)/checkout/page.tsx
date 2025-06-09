@@ -1,10 +1,10 @@
-import { getDemoMeta } from '#/app/_internal/demos';
+import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
 import { Tab } from '#/ui/tabs';
 
-const demo = getDemoMeta('route-groups');
-
 export default function Page() {
+  const demo = db.demo.find({ where: { slug: 'route-groups' } });
+
   return (
     <Boundary label="(checkout)/page.tsx" className="flex flex-col gap-9">
       <div className="flex">

@@ -1,4 +1,6 @@
-import { db } from '#/app/_internal/data';
+'use cache';
+
+import db from '#/lib/db';
 import {
   TransitionLink,
   HorizontalTransition,

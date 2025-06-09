@@ -1,63 +1,112 @@
-import { Product } from '#/app/api/products/product';
-import { ProductBestSeller } from '#/ui/product-best-seller';
-import { ProductEstimatedArrival } from '#/ui/product-estimated-arrival';
-import { ProductLowStockWarning } from '#/ui/product-low-stock-warning';
-import { ProductPrice } from '#/ui/product-price';
-import { ProductRating } from '#/ui/product-rating';
-import { ProductUsedPrice } from '#/ui/product-used-price';
-import { dinero, type DineroSnapshot } from 'dinero.js';
+import { Product } from '#/lib/db';
+import clsx from 'clsx';
 import Image from 'next/image';
-import Link from 'next/link';
 
-export const ProductCard__DEPRECATED = ({
+import {
+  ElementType,
+  ComponentPropsWithoutRef,
+  PropsWithChildren,
+} from 'react';
+
+export type PolymorphicProps<
+  E extends ElementType,
+  P = {},
+> = PropsWithChildren<P> & { as?: E } & Omit<
+    ComponentPropsWithoutRef<E>,
+    keyof P | 'as' | 'children'
+  >;
+
+type ProductCardProps<E extends ElementType> = PolymorphicProps<
+  E,
+  { product: Product; animateEnter?: boolean }
+>;
+
+export function ProductCard<E extends ElementType = 'div'>({
+  as,
   product,
-  href,
-}: {
-  product: Product;
-  href: string;
-}) => {
-  const price = dinero(product.price as DineroSnapshot<number>);
-
+  animateEnter,
+  ...rest
+}: ProductCardProps<E>) {
+  const Component = as || 'div';
   return (
-    <Link href={href} className="group block">
-      <div className="space-y-2">
-        <div className="relative">
-          {product.isBestSeller ? (
-            <div className="absolute top-2 left-2 z-10 flex">
-              <ProductBestSeller />
-            </div>
-          ) : null}
-          <Image
-            src={`/${product.image}`}
-            width={400}
-            height={400}
-            className="rounded-xl grayscale group-hover:opacity-80"
-            alt={product.name}
-            placeholder="blur"
-            blurDataURL={product.imageBlur}
-          />
-        </div>
-
-        <div className="truncate text-sm font-medium text-white group-hover:text-cyan-400">
-          {product.name}
-        </div>
-
-        {product.rating ? <ProductRating rating={product.rating} /> : null}
-
-        <ProductPrice price={price} discount={product.discount} />
-
-        {/* <ProductSplitPayments price={price} /> */}
-
-        {product.usedPrice ? (
-          <ProductUsedPrice usedPrice={product.usedPrice} />
-        ) : null}
-
-        <ProductEstimatedArrival leadTime={product.leadTime} />
-
-        {product.stock <= 1 ? (
-          <ProductLowStockWarning stock={product.stock} />
-        ) : null}
+    <Component className="group flex flex-col gap-2.5" {...rest}>
+      <div className="overflow-hidden rounded-md bg-gray-900/50 p-8 group-hover:bg-gray-900">
+        <Image
+          className={clsx(animateEnter && 'transition-enter')}
+          src={`/shop/${product.image}`}
+          alt={product.name}
+          quality={90}
+          width={400}
+          height={400}
+        />
       </div>
-    </Link>
+
+      <div className="flex flex-col gap-2">
+        <div className="h-2 w-4/5 rounded-full bg-gray-800" />
+        <div className="h-2 w-1/3 rounded-full bg-gray-800" />
+      </div>
+    </Component>
   );
-};
+}
+
+export function ProductCardSkeleton() {
+  return (
+    <div className="group flex flex-col gap-2.5">
+      <div
+        className={clsx(
+          'aspect-square overflow-hidden rounded-md bg-gray-900/50',
+          'relative before:absolute before:inset-0',
+          'before:bg-gradient-to-r before:from-transparent before:via-white/5 before:to-transparent',
+          'before:translate-x-[-50%] before:opacity-0',
+          'before:animate-shimmer',
+        )}
+      />
+
+      <div className="flex flex-col gap-2">
+        <div className="h-2 w-4/5 rounded-full bg-gray-800" />
+        <div className="h-2 w-1/3 rounded-full bg-gray-800" />
+      </div>
+    </div>
+  );
+}
+
+export function ProductList({
+  children,
+  title,
+  count,
+}: {
+  children: React.ReactNode;
+  title: string;
+  count: number;
+}) {
+  return (
+    <div className="flex flex-col gap-4">
+      <h1 className="flex items-center gap-2 text-xl font-medium text-gray-300">
+        <div>{title}</div>
+        <span className="font-mono tracking-tighter text-gray-600">
+          ({count})
+        </span>
+      </h1>
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">{children}</div>
+    </div>
+  );
+}
+
+export function ProductListSkeleton({
+  title,
+  count = 3,
+}: {
+  title: string;
+  count?: number;
+}) {
+  return (
+    <div className="flex flex-col gap-4">
+      <h1 className="text-xl font-medium text-gray-600">{title}</h1>
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        {Array.from({ length: count }).map((_, i) => (
+          <ProductCardSkeleton key={i} />
+        ))}
+      </div>
+    </div>
+  );
+}

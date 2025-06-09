@@ -1,9 +1,7 @@
 'use cache';
 
-import { getSections } from '#/app/_internal/data';
-import { getDemoMeta } from '#/app/_internal/demos';
+import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
-import { Prose } from '#/ui/prose';
 import { Tabs } from '#/ui/tabs';
 import { type Metadata } from 'next';
 import React from 'react';
@@ -11,14 +9,11 @@ import Readme from './readme.mdx';
 import { Mdx } from '#/ui/codehike';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const demo = getDemoMeta('not-found');
+  const demo = db.demo.find({ where: { slug: 'not-found' } });
 
   return {
     title: demo.name,
-    openGraph: {
-      title: demo.name,
-      images: [`/api/og?title=${demo.name}`],
-    },
+    openGraph: { title: demo.name, images: [`/api/og?title=${demo.name}`] },
   };
 }
 
@@ -27,8 +22,8 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  const demo = getDemoMeta('not-found');
-  const sections = getSections().slice(0, 1);
+  const demo = db.demo.find({ where: { slug: 'not-found' } });
+  const sections = db.section.findMany({ limit: 1 });
 
   return (
     <>
@@ -46,10 +41,7 @@ export default async function Layout({
           basePath={`/${demo.slug}`}
           items={[
             { text: 'Home' },
-            ...sections.map((x) => ({
-              text: x.name,
-              slug: x.slug,
-            })),
+            ...sections.map((x) => ({ text: x.name, slug: x.slug })),
             { text: 'Does Not Exist', slug: 'does-not-exist' },
           ]}
         />

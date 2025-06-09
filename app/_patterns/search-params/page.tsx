@@ -5,21 +5,9 @@ import ActiveLink from './active-link';
 import Client from './client';
 
 const options = [
-  {
-    name: 'Sort',
-    value: 'sort',
-    items: ['asc', 'desc'],
-  },
-  {
-    name: 'Page',
-    value: 'page',
-    items: ['1', '2', '3'],
-  },
-  {
-    name: 'Items Per Page',
-    value: 'perPage',
-    items: ['10', '25', '100'],
-  },
+  { name: 'Sort', value: 'sort', items: ['asc', 'desc'] },
+  { name: 'Page', value: 'page', items: ['1', '2', '3'] },
+  { name: 'Items Per Page', value: 'perPage', items: ['10', '25', '100'] },
 ];
 
 export const dynamic = 'force-dynamic';
