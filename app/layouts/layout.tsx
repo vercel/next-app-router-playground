@@ -1,58 +1,34 @@
-'use cache';
+import Link from "next/link";
 
-import React from 'react';
-import db from '#/lib/db';
-import { Boundary } from '#/ui/boundary';
-import { ClickCounter } from '#/ui/click-counter';
-import { Tabs } from '#/ui/tabs';
-import { type Metadata } from 'next';
-import { Mdx } from '#/ui/codehike';
-import readme from './readme.mdx';
-
-export async function generateMetadata(): Promise<Metadata> {
-  const demo = db.demo.find({ where: { slug: 'layouts' } });
-
-  return {
-    title: demo.name,
-    openGraph: { title: demo.name, images: [`/api/og?title=${demo.name}`] },
-  };
-}
-
-export default async function Layout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const demo = db.demo.find({ where: { slug: 'layouts' } });
-  const sections = db.section.findMany();
-
   return (
-    <>
-      <Boundary label="Demo" kind="solid" animateRerendering={false}>
-        <Mdx source={readme} collapsed={true} />
-      </Boundary>
-      <Boundary
-        label="layout.tsx"
-        kind="solid"
-        animateRerendering={false}
-        className="flex flex-col gap-9"
-      >
-        <div className="flex justify-between">
-          <Tabs
-            basePath={`/${demo.slug}`}
-            items={[
-              { text: 'Home' },
-              ...sections.map((x) => ({ text: x.name, slug: x.slug })),
-            ]}
-          />
+    <html lang="en">
+      <body style={{ fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial", margin: 0 }}>
+        {/* Simple global header nav */}
+        <header style={{ borderBottom: "1px solid #e5e7eb", background: "#fff" }}>
+          <nav style={{ maxWidth: 1024, margin: "0 auto", display: "flex", gap: 16, alignItems: "center", padding: "12px 16px" }}>
+            <Link href="/" style={{ fontWeight: 700, textDecoration: "none" }}>
+              ScoutLine Beta
+            </Link>
+            <span style={{ marginLeft: "auto", display: "flex", gap: 12 }}>
+              <Link href="/" style={{ textDecoration: "none" }}>Home</Link>
+              <Link href="/admin" style={{ textDecoration: "none" }}>Admin</Link>
+              <Link href="/player" style={{ textDecoration: "none" }}>Player</Link>
+              <Link href="/coach" style={{ textDecoration: "none" }}>Coach</Link>
+            </span>
+          </nav>
+        </header>
 
-          <div className="self-start">
-            <ClickCounter />
-          </div>
-        </div>
+        <main style={{ padding: 24, maxWidth: 1024, margin: "0 auto" }}>{children}</main>
 
-        {children}
-      </Boundary>
-    </>
+        <footer style={{ borderTop: "1px solid #e5e7eb", padding: "12px 16px", color: "#6b7280", fontSize: 12, textAlign: "center" }}>
+          © {new Date().getFullYear()} ScoutLine • Beta
+        </footer>
+      </body>
+    </html>
   );
 }
