@@ -45,8 +45,8 @@ export default async function Page() {
 ### Demo
 
 - **Product data** is fetched with `use cache` in `getData()` - cached in the static shell.
-- **Price data** is fetched with `use cache: remote` in `getProductPrice()` - accessed after `connection()`, so it's cached in a remote cache at runtime.
-- Each price component calls `connection()` to ensure it's never included in the static shell.
+- **Price data** is fetched with `use cache: remote` in `getProductPrice()` - accessed after `await connection()`, so it's cached in a remote cache at runtime.
+- Each price component calls `await connection()` to ensure it's never included in the static shell.
 - The price data function uses `cacheTag()` for targeted cache invalidation.
 - Artificial delays (1s for products, 1s for prices) make caching behavior visible.
 - Notice how product data loads once, while price data streams in per product, but is cached for subsequent requests.
