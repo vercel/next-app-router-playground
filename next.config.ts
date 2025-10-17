@@ -5,7 +5,9 @@ import { type CodeHikeConfig } from 'codehike/mdx';
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   experimental: {
-    inlineCss: true,
+    // Disabled due to font error that's causing them not to be loaded
+    // correctly in the browser.
+    // inlineCss: true,
     cacheComponents: true,
     viewTransition: true,
     prerenderEarlyExit: false,
