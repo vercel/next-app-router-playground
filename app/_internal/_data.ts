@@ -176,6 +176,12 @@ const demos = [
         description:
           'Cache data at runtime with use cache: remote in dynamic contexts',
       },
+      {
+        slug: 'private-cache',
+        name: 'Private Cache',
+        description:
+          'Cache user-specific data with use cache: private using cookies and headers',
+      },
     ],
   },
   {
