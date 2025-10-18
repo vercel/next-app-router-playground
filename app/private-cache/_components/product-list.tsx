@@ -5,12 +5,12 @@ import { cacheTag } from 'next/cache';
 import Link from 'next/link';
 import SessionButton from './session-button';
 
-export async function ProductGrid() {
+export async function ProductList() {
   const products = await getProducts();
 
   return (
     <Boundary
-      label="<ProductGrid> (statically inferred)"
+      label="<ProductList> (statically inferred)"
       size="small"
       animateRerendering={false}
     >
@@ -64,7 +64,7 @@ export async function ProductGrid() {
 export function ProductListSkeleton() {
   return (
     <Boundary
-      label="<ProductGrid> (statically inferred)"
+      label="<ProductList> (statically inferred)"
       size="small"
       color="blue"
       animateRerendering={false}

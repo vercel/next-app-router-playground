@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { ProductGrid, ProductListSkeleton } from './_components/product-grid';
+import { ProductList, ProductListSkeleton } from './_components/product-list';
 import { Boundary } from '#/ui/boundary';
 
 export default function Page() {
@@ -7,7 +7,7 @@ export default function Page() {
     <Boundary label="page.tsx (statically inferred)" animateRerendering={false}>
       <div className="flex flex-col gap-8">
         <Suspense fallback={<ProductListSkeleton />}>
-          <ProductGrid />
+          <ProductList />
         </Suspense>
       </div>
     </Boundary>
