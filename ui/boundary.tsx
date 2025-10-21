@@ -14,6 +14,7 @@ export const Boundary = ({
   animateRerendering = true,
   corners,
   className,
+  pulse = false,
 }: {
   children: React.ReactNode;
   label?: string | string[];
@@ -23,6 +24,7 @@ export const Boundary = ({
   animateRerendering?: boolean;
   corners?: boolean;
   className?: string;
+  pulse?: boolean;
 }) => {
   return (
     <div
@@ -36,6 +38,7 @@ export const Boundary = ({
         'border-orange-900': color === 'orange',
         'border-red-900': color === 'red',
         'animate-[rerender_1s_ease-in-out_1] text-blue-600': animateRerendering,
+        'animate-pulse': pulse,
       })}
     >
       {corners && (

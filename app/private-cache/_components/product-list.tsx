@@ -4,6 +4,7 @@ import { ProductCard } from '#/ui/product-card';
 import { cacheTag } from 'next/cache';
 import Link from 'next/link';
 import SessionButton from './session-button';
+import ProductLink from './product-link';
 
 export async function ProductList() {
   const products = await getProducts();
@@ -32,27 +33,20 @@ export async function ProductList() {
           {products.map((product, index) => {
             // First half uses private cache (with runtime prefetch)
             // Second half uses remote cache (no prefetch)
-            const usePrivate = index < products.length / 2;
+            const privateCache = index < products.length / 2;
 
             return (
-              <Link
+              <ProductLink
                 href={
-                  usePrivate
+                  privateCache
                     ? `/private-cache/product/${product.id}/with-private`
                     : `/private-cache/product/${product.id}/without-private`
                 }
+                privateCache={privateCache}
                 key={product.id}
-                // className="group p-2"
               >
-                <Boundary
-                  label={`<Link> (${usePrivate ? 'Private Cache' : 'No Private Cache'})`}
-                  size="small"
-                  color={usePrivate ? 'blue' : undefined}
-                  animateRerendering={false}
-                >
-                  <ProductCard product={product} animateEnter={true} />
-                </Boundary>
-              </Link>
+                <ProductCard product={product} animateEnter={true} />
+              </ProductLink>
             );
           })}
         </div>
