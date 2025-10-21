@@ -1,11 +1,7 @@
 'use client';
 
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
-import {
-  unstable_addTransitionType as addTransitionType,
-  startTransition,
-  unstable_ViewTransition as ViewTransition,
-} from 'react';
+import { addTransitionType, startTransition, ViewTransition } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';

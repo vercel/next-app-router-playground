@@ -8,6 +8,7 @@ export type Product = {
   name: string;
   image: string;
   category: string;
+  price: number;
 };
 
 export type Section = {
@@ -70,16 +71,40 @@ const categories: Category[] = [
 ];
 
 const products: Product[] = [
-  { id: '1', name: 'Top', image: 'top.png', category: '1' },
-  { id: '2', name: 'Shorts', image: 'shorts.png', category: '2' },
-  { id: '3', name: 'Shoes', image: 'shoes.png', category: '3' },
+  { id: '1', name: 'Top', image: 'top.png', category: '1', price: 29.99 },
+  { id: '2', name: 'Shorts', image: 'shorts.png', category: '2', price: 39.99 },
+  { id: '3', name: 'Shoes', image: 'shoes.png', category: '3', price: 89.99 },
 
-  { id: '4', name: 'Phone', image: 'phone.png', category: '4' },
-  { id: '5', name: 'Laptop', image: 'laptop.png', category: '5' },
-  { id: '6', name: 'Tablet', image: 'tablet.png', category: '6' },
-  { id: '7', name: 'Basketball', image: 'balls.png', category: '7' },
-  { id: '8', name: 'Weights', image: 'weights.png', category: '8' },
-  { id: '9', name: 'Gloves', image: 'gloves.png', category: '9' },
+  { id: '4', name: 'Phone', image: 'phone.png', category: '4', price: 699.99 },
+  {
+    id: '5',
+    name: 'Laptop',
+    image: 'laptop.png',
+    category: '5',
+    price: 1299.99,
+  },
+  {
+    id: '6',
+    name: 'Tablet',
+    image: 'tablet.png',
+    category: '6',
+    price: 499.99,
+  },
+  {
+    id: '7',
+    name: 'Basketball',
+    image: 'balls.png',
+    category: '7',
+    price: 24.99,
+  },
+  {
+    id: '8',
+    name: 'Weights',
+    image: 'weights.png',
+    category: '8',
+    price: 149.99,
+  },
+  { id: '9', name: 'Gloves', image: 'gloves.png', category: '9', price: 19.99 },
 ];
 
 const demos = [
@@ -144,6 +169,18 @@ const demos = [
         slug: 'cached-functions',
         name: 'Cached Functions',
         description: 'Cache the computed result of a regular function',
+      },
+      {
+        slug: 'remote-cache',
+        name: 'Remote Cache',
+        description:
+          'Cache data at runtime with use cache: remote in dynamic contexts',
+      },
+      {
+        slug: 'private-cache',
+        name: 'Private Cache',
+        description:
+          'Cache user-specific data with use cache: private using cookies and headers',
       },
     ],
   },

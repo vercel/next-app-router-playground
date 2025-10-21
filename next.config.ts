@@ -2,17 +2,18 @@ import type { NextConfig } from 'next';
 import createMDX from '@next/mdx';
 import { type CodeHikeConfig } from 'codehike/mdx';
 
-const nextConfig = {
+const nextConfig: NextConfig = {
+  cacheComponents: true,
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   experimental: {
-    inlineCss: true,
-    dynamicIO: true,
-    clientSegmentCache: true,
+    // Disabled due to font error that's causing them not to be loaded
+    // correctly in the browser.
+    // inlineCss: true,
     viewTransition: true,
     prerenderEarlyExit: false,
     routerBFCache: true,
   },
-} satisfies NextConfig;
+};
 
 const codeHikeConfig = {
   components: { code: 'MyCode', inlineCode: 'MyInlineCode' },
