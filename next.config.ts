@@ -11,7 +11,6 @@ const nextConfig: NextConfig = {
     // inlineCss: true,
     viewTransition: true,
     prerenderEarlyExit: false,
-    routerBFCache: true,
   },
 };
 
