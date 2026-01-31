@@ -95,4 +95,14 @@ export const demos: { name: string; items: Item[] }[] = [
       },
     ],
   },
+  {
+    name: 'Games',
+    items: [
+      {
+        name: 'Snake Game',
+        slug: 'snake',
+        description: 'Classic snake game built with React',
+      },
+    ],
+  },
 ];
