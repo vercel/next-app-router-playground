@@ -1,37 +1,10 @@
-'use client';
-
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
-import { addTransitionType, startTransition, ViewTransition } from 'react';
+import { ViewTransition } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 /**
- * Extended Link component that adds a type to a navigation transition.
- * Allows <ViewTransition> to set transition classes by type.
- *
- * @example
- * <TransitionLink href="/products/1" type="transition-backwards">
- *   View Product
- * </TransitionLink>
- */
-export function TransitionLink({ type, ...props }: TransitionLinkProps) {
-  const router = useRouter();
-
-  const handleNavigate: TransitionLinkProps['onNavigate'] = (event) => {
-    event.preventDefault();
-
-    startTransition(() => {
-      addTransitionType(type);
-      router.push(props.href);
-    });
-  };
-
-  return <Link onNavigate={handleNavigate} {...props} />;
-}
-
-/**
- * Button variant of TransitionLink with directional chevrons.
+ * Styled navigation button with directional chevrons and transition types.
  *
  * @example
  * <TransitionButtonLink type="transition-backwards" href="/products">
@@ -43,10 +16,10 @@ export function TransitionButtonLink({
   children,
   className,
   ...props
-}: TransitionLinkProps) {
+}: TransitionButtonLinkProps) {
   return (
-    <TransitionLink
-      type={type}
+    <Link
+      transitionTypes={[type]}
       className={clsx(
         'flex w-fit items-center gap-1 rounded-md bg-gray-700 px-3 py-1 text-sm font-medium text-gray-100 hover:bg-gray-500 hover:text-white',
         className,
@@ -62,7 +35,7 @@ export function TransitionButtonLink({
       {type === 'transition-forwards' && (
         <ChevronRightIcon className="size-5 opacity-40" />
       )}
-    </TransitionLink>
+    </Link>
   );
 }
 
@@ -194,14 +167,12 @@ type ViewTransitionClass = AnimationType | TransitionMap;
 type TransitionId = (typeof transitionIds)[number] | `product-${string}`;
 
 /**
- * Props for TransitionLink component
- * Extends Next.js Link props with transition type
+ * Props for TransitionButtonLink component
  */
-type TransitionLinkProps = Omit<React.ComponentProps<typeof Link>, 'href'> & {
+type TransitionButtonLinkProps = Omit<
+  React.ComponentProps<typeof Link>,
+  'href'
+> & {
   type: TransitionType;
-  /**
-   * Target URL for navigation
-   * Overwite Next's href that can also be an object
-   */
   href: string;
 };
