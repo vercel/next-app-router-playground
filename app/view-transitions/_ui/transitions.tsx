@@ -172,7 +172,4 @@ type TransitionId = (typeof transitionIds)[number] | `product-${string}`;
 type TransitionButtonLinkProps = Omit<
   React.ComponentProps<typeof Link>,
   'href'
-> & {
-  type: TransitionType;
-  href: string;
-};
+> & { type: TransitionType; href: string };
