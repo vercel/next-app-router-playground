@@ -5,12 +5,12 @@ import {
   HorizontalTransition,
   SharedTransition,
   TransitionButtonLink,
-  TransitionLink,
 } from '#/app/view-transitions/_ui/transitions';
 import { Boundary } from '#/ui/boundary';
 import { SkeletonText } from '#/ui/skeleton';
 import { ChevronLeftIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
@@ -53,9 +53,9 @@ export default async function Page({
     >
       <Boundary label="posts/[id]/page.tsx" animateRerendering={true}>
         <div className="grid gap-4">
-          <TransitionLink
+          <Link
             href={`/${demo.slug}`}
-            type="transition-to-list"
+            transitionTypes={['transition-to-list']}
             className="flex items-center gap-2 font-medium text-gray-300 hover:text-white"
           >
             <SharedTransition
@@ -79,7 +79,7 @@ export default async function Page({
             >
               <div>Shop</div>
             </SharedTransition>
-          </TransitionLink>
+          </Link>
 
           <div className="grid grid-cols-2 gap-8">
             <SharedTransition

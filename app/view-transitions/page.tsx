@@ -2,12 +2,12 @@
 
 import db from '#/lib/db';
 import {
-  TransitionLink,
   HorizontalTransition,
   SharedTransition,
 } from '#/app/view-transitions/_ui/transitions';
 import { Boundary } from '#/ui/boundary';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default async function Page() {
   const products = db.product.findMany();
@@ -37,10 +37,10 @@ export default async function Page() {
           </div>
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             {products.map((product) => (
-              <TransitionLink
+              <Link
                 key={product.id}
                 href={`/view-transitions/posts/${product.id}`}
-                type="transition-to-detail"
+                transitionTypes={['transition-to-detail']}
                 className="group flex flex-col gap-2.5"
               >
                 <SharedTransition
@@ -67,7 +67,7 @@ export default async function Page() {
                   <div className="h-2 w-4/5 rounded-full bg-gray-800" />
                   <div className="h-2 w-1/3 rounded-full bg-gray-800" />
                 </div>
-              </TransitionLink>
+              </Link>
             ))}
           </div>
         </div>
