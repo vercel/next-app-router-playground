@@ -35,3 +35,5 @@ const nextConfig = {
 ### Notes
 
 - This demo uses the experimental `partialFallbacks` flag.
+- Product detail pages use `cacheLife({ revalidate: 3600 })` (1 hour) so the cache expires and the streaming behavior can be re-demonstrated.
+- This demo uses the `use cache` directive.

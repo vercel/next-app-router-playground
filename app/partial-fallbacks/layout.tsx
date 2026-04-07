@@ -25,7 +25,7 @@ export default async function Layout({
       </Boundary>
 
       <Boundary
-        label="layout.tsx (Cacheable)"
+        label="layout.tsx (statically inferred)"
         kind="solid"
         animateRerendering={false}
       >

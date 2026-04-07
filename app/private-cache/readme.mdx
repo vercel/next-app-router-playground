@@ -69,6 +69,6 @@ export const unstable_prefetch = {
 
 ### Notes
 
-- This demo uses the experimental `use cache` directive and describes caching behavior once stable.
+- This demo uses the `use cache` directive.
 - `use cache: private` enables runtime prefetching of dynamic content by allowing `cookies()` and `headers()` inside cached functions.
 - Requires `unstable_prefetch` export with `mode: 'runtime'` and `cacheLife({ stale: 60 })` (≥30s).

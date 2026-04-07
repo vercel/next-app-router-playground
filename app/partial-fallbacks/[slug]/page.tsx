@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
 import { ProductCard, ProductCardSkeleton } from '#/ui/product-card';
+import { cacheLife } from 'next/cache';
 import Link from 'next/link';
 
 export async function generateStaticParams() {
@@ -29,6 +30,7 @@ export default async function Page({
 
 async function ProductDetail({ slug }: { slug: string }) {
   'use cache';
+  cacheLife({ revalidate: 3600 });
 
   await new Promise((resolve) => setTimeout(resolve, 2000));
 
