@@ -50,27 +50,30 @@ export const lineNumbers: AnnotationHandler = {
   },
 };
 
+const markColors = {
+  red: 'border-l-red-600 bg-red-600/10',
+  blue: 'border-l-blue-600 bg-blue-600/10',
+  green: 'border-l-green-600 bg-green-600/10',
+  yellow: 'border-l-yellow-600 bg-yellow-600/10',
+  amber: 'border-l-amber-600 bg-amber-600/10',
+  purple: 'border-l-purple-600 bg-purple-600/10',
+  orange: 'border-l-orange-600 bg-orange-600/10',
+  pink: 'border-l-pink-600 bg-pink-600/10',
+} as const;
+
+const markColorSchema = z
+  .enum(Object.keys(markColors) as [keyof typeof markColors])
+  .catch('blue');
+
 const mark: AnnotationHandler = {
   name: 'mark',
   Line: ({ annotation, ...props }) => {
-    const colors = {
-      red: 'border-l-red-600 bg-red-600/10',
-      blue: 'border-l-blue-600 bg-blue-600/10',
-      green: 'border-l-green-600 bg-green-600/10',
-      yellow: 'border-l-yellow-600 bg-yellow-600/10',
-      amber: 'border-l-amber-600 bg-amber-600/10',
-      purple: 'border-l-purple-600 bg-purple-600/10',
-      orange: 'border-l-orange-600 bg-orange-600/10',
-      pink: 'border-l-pink-600 bg-pink-600/10',
-    };
-
-    // TODO: setup zod
-    const color = (annotation?.query || 'blue') as keyof typeof colors;
+    const color = markColorSchema.parse(annotation?.query);
 
     return (
       <div
         className={clsx('border-l-2 border-transparent', {
-          [colors[color]]: annotation,
+          [markColors[color]]: annotation,
         })}
       >
         <InnerLine merge={props} className="px-[2ch]" />

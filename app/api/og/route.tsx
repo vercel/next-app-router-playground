@@ -58,8 +58,7 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
   } catch (e) {
     if (!(e instanceof Error)) throw e;
 
-    // eslint-disable-next-line no-console
-    console.log(e.message);
+    console.error(e.message);
     return new Response(`Failed to generate the image`, { status: 500 });
   }
 }
