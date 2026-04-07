@@ -34,7 +34,8 @@ async function ProductDetail({ slug }: { slug: string }) {
 
   await new Promise((resolve) => setTimeout(resolve, 2000));
 
-  const product = db.product.find({ where: { id: slug } });
+  const productId = slug.split('-')[0];
+  const product = db.product.find({ where: { id: productId } });
   if (!product) {
     notFound();
   }

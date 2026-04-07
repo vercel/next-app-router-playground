@@ -5,9 +5,7 @@ const nextConfig = {
   cacheComponents: true,
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   experimental: {
-    // Disabled due to font error that's causing them not to be loaded
-    // correctly in the browser.
-    // inlineCss: true,
+    inlineCss: true,
     viewTransition: true,
     prerenderEarlyExit: false,
     partialFallbacks: true,

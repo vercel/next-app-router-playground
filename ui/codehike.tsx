@@ -64,8 +64,17 @@ const mark: AnnotationHandler = {
       pink: 'border-l-pink-600 bg-pink-600/10',
     };
 
-    // TODO: setup zod
-    const color = (annotation?.query || 'blue') as keyof typeof colors;
+    const colorSchema = z.enum([
+      'red',
+      'blue',
+      'green',
+      'yellow',
+      'amber',
+      'purple',
+      'orange',
+      'pink',
+    ]);
+    const color = colorSchema.catch('blue').parse(annotation?.query);
 
     return (
       <div

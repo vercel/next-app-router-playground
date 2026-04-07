@@ -29,11 +29,12 @@ const nextConfig = {
 
 - A product catalog with 9 products. Only 3 are in `generateStaticParams`.
 - Pre-rendered products (1–3) load instantly with no fallback.
-- Runtime-discovered products (4–9) show a skeleton while the page generates.
-- With `partialFallbacks: true`, runtime products get an instant shell and stream in. Refreshing shows the page is now fully static.
+- Runtime-discovered products (4–9) use a random slug on each click, guaranteeing a fresh cache miss every time.
+- With `partialFallbacks: true`, runtime products get an instant shell and stream in. Visiting the same URL again loads instantly from cache.
 
 ### Notes
 
 - This demo uses the experimental `partialFallbacks` flag.
-- Product detail pages use `cacheLife({ revalidate: 3600 })` (1 hour) so the cache expires and the streaming behavior can be re-demonstrated.
+- Runtime product links generate a random suffix (e.g., `/partial-fallbacks/4-x8k2m`) so each click from the list triggers a fresh runtime discovery.
+- Product detail pages use `cacheLife({ revalidate: 3600 })` (1 hour) so the cache eventually expires.
 - This demo uses the `use cache` directive.
