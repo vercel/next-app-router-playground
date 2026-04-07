@@ -21,9 +21,9 @@ export default async function Page() {
           </span>
         </h1>
         <p className="text-sm text-gray-500">
-          Products 1–3 are pre-rendered via{' '}
+          Products 1–3 are generated at build time via{' '}
           <code className="text-gray-400">generateStaticParams</code>. Products
-          4–9 use a random slug so each click is a fresh cache miss.
+          4–9 are discovered at request time.
         </p>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           {products.map((product) =>
@@ -39,7 +39,7 @@ export default async function Page() {
                     {product.name}
                   </span>
                   <span className="rounded-full bg-green-900/50 px-2 py-0.5 text-[10px] font-medium text-green-400">
-                    pre-rendered
+                    build time
                   </span>
                 </div>
               </Link>

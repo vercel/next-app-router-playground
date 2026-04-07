@@ -22,7 +22,7 @@ export function RuntimeLink({ product }: { product: Product }) {
           {product.name}
         </span>
         <span className="rounded-full bg-orange-900/50 px-2 py-0.5 text-[10px] font-medium text-orange-400">
-          runtime
+          request time
         </span>
       </div>
     </Link>
