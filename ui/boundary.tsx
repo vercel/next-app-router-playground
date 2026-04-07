@@ -79,8 +79,8 @@ export const Boundary = ({
 
       <div
         className={clsx(className, {
-          'p-3 lg:p-5': size === 'small',
-          'p-4 lg:p-9': size === 'medium',
+          'px-3 pt-5 pb-3 lg:p-5': size === 'small',
+          'px-4 pt-6 pb-4 lg:p-9': size === 'medium',
         })}
       >
         {children}

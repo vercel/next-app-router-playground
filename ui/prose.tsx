@@ -37,7 +37,7 @@ export function Prose({
           onClick={() => setIsCollapsed(!isCollapsed)}
           aria-controls={contentId}
           aria-expanded={!isCollapsed}
-          className="mt-4 rounded-sm bg-gray-800 px-1.5 py-1 text-xs leading-none font-semibold whitespace-nowrap text-gray-300 tabular-nums hover:bg-gray-500 hover:text-white"
+          className="mt-4 rounded-sm bg-gray-800 px-3 py-2 text-sm leading-none font-semibold whitespace-nowrap text-gray-300 tabular-nums hover:bg-gray-500 hover:text-white md:px-1.5 md:py-1 md:text-xs"
         >
           {isCollapsed ? 'More' : 'Less'}
         </button>

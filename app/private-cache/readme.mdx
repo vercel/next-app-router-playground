@@ -9,11 +9,9 @@ export const demo = db.demo.find({ where: { slug: 'private-cache' } });
 
 # !!col
 
-- Enable **runtime prefetching** of personalized content by including it in prefetch requests.
-- Use `use cache: private` when you need to cache **user-specific data** that depends on cookies, headers, or search params.
-- Unlike regular `use cache`, private caches can access request-specific APIs like `cookies()` and `headers()` directly inside the cached function.
-- Private caches are **never persisted** to cache handlers - they're only used to mark the dynamic content as runtime prefetchable.
-- Without `use cache: private`, personalized content cannot be prefetched and must wait until navigation occurs.
+- Unlike regular `use cache`, `use cache: private` can access runtime request APIs like `cookies()`, `headers()`, and `searchParams` directly inside the cached function.
+- Results are **never stored on the server** — they're cached only in the browser's memory and do not persist across page reloads.
+- When combined with `unstable_instant` and `prefetch: 'runtime'`, private cached content can be **runtime prefetched** — fetched ahead of navigation using the user's real session data.
 
 # !!col
 
@@ -44,8 +42,8 @@ async function Recommendations({ productId }: { productId: string }) {
   );
 }
 
-export const unstable_prefetch = {
-  mode: 'runtime',
+export const unstable_instant = {
+  prefetch: 'runtime',
   samples: [
     { params: { id: '1' }, cookies: [{ name: 'session-id', value: '1' }] },
   ],
@@ -69,6 +67,4 @@ export const unstable_prefetch = {
 
 ### Notes
 
-- This demo uses the `use cache` directive.
-- `use cache: private` enables runtime prefetching of dynamic content by allowing `cookies()` and `headers()` inside cached functions.
-- Requires `unstable_prefetch` export with `mode: 'runtime'` and `cacheLife({ stale: 60 })` (≥30s).
+- This demo uses the `use cache` directive. `use cache: private` is currently experimental.

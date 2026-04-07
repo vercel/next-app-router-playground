@@ -9,10 +9,9 @@ export const demo = db.demo.find({ where: { slug: 'remote-cache' } });
 
 # !!col
 
-- Use `use cache: remote` when the cache key depends on something **private or dynamic**, or it's always accessed **after dynamic data** is read.
-- Regular `use cache` will not cache in dynamic contexts (after `await connection()`, `await cookies()`, `await headers()`, etc.).
-- `use cache: remote` caches at runtime in a remote cache, reducing origin load even in dynamic contexts.
-- Perfect for user-specific data, frequently changing data, or data accessed per-request.
+- Use `use cache: remote` to store cache entries in a remote handler (e.g. Redis or KV), providing **durable, shared caching** across all server instances.
+- Regular `use cache` stores entries in-memory, which works for static shell content but may have low hit rates at runtime in serverless environments.
+- Most useful for data accessed after `await connection()`, where remote caching reduces load on rate-limited APIs, slow backends, or expensive operations.
 
 # !!col
 
@@ -54,4 +53,3 @@ export default async function Page() {
 ### Notes
 
 - This demo uses the `use cache` directive.
-- `use cache: remote` is essential for caching in dynamic contexts where regular `use cache` won't work.
