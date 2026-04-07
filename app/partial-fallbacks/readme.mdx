@@ -14,13 +14,26 @@ export const demo = db.demo.find({ where: { slug: 'partial-fallbacks' } });
 
 # !!col
 
-```ts next.config.ts
-const nextConfig = {
-  experimental: {
+```tsx app/partial-fallbacks/[slug]/page.tsx
+'use cache';
+
+import { Suspense } from 'react';
+
+// !mark
+export async function generateStaticParams() {
+  return [{ slug: '1' }, { slug: '2' }, { slug: '3' }];
+}
+
+export default async function Page({ params }) {
+  const { slug } = await params;
+
+  return (
     // !mark
-    partialFallbacks: true,
-  },
-};
+    <Suspense fallback={<ProductSkeleton />}>
+      <ProductDetail slug={slug} />
+    </Suspense>
+  );
+}
 ```
 
 </Grid>
