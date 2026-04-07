@@ -15,7 +15,7 @@ export const demo = db.demo.find({ where: { slug: 'remote-cache' } });
 
 # !!col
 
-```tsx app/page.tsx
+```tsx app/remote-cache/page.tsx
 async function getProductPrice(id: string) {
   // !mark
   'use cache: remote';
