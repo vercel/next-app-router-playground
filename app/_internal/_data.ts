@@ -182,6 +182,12 @@ const demos = [
         description:
           'Cache user-specific data with use cache: private using cookies and headers',
       },
+      {
+        slug: 'partial-fallbacks',
+        name: 'Partial Fallbacks',
+        description:
+          'Serve instant shells for runtime-discovered slugs that upgrade to fully static after the first visit',
+      },
     ],
   },
   {

@@ -1,4 +1,4 @@
-import type { NextConfig } from 'next';
+import type NextConfig from 'next';
 import createMDX from '@next/mdx';
 import { type CodeHikeConfig } from 'codehike/mdx';
 
@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
     // inlineCss: true,
     viewTransition: true,
     prerenderEarlyExit: false,
+    partialFallbacks: true,
   },
 };
 

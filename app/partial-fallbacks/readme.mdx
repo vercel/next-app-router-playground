@@ -1,0 +1,37 @@
+import db from '#/lib/db';
+import { Grid } from '#/ui/codehike';
+
+export const demo = db.demo.find({ where: { slug: 'partial-fallbacks' } });
+
+# {demo.name}
+
+<Grid>
+
+# !!col
+
+- High-cardinality sites can't pre-render every slug. Without `generateStaticParams`, every visit shows a Suspense fallback. With it, unknown slugs block while generating.
+- `experimental.partialFallbacks` gives unknown slugs an instant shell from CDN while dynamic data streams in. After the first visit, the page is upgraded to fully static.
+
+# !!col
+
+```ts next.config.ts
+const nextConfig = {
+  experimental: {
+    // !mark
+    partialFallbacks: true,
+  },
+};
+```
+
+</Grid>
+
+### Demo
+
+- A product catalog with 9 products. Only 3 are in `generateStaticParams`.
+- Pre-rendered products (1–3) load instantly with no fallback.
+- Runtime-discovered products (4–9) show a skeleton while the page generates.
+- With `partialFallbacks: true`, runtime products get an instant shell and stream in. Refreshing shows the page is now fully static.
+
+### Notes
+
+- This demo uses the experimental `partialFallbacks` flag.
