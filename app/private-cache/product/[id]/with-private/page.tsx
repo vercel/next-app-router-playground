@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
-import { ProductCard } from '#/ui/product-card';
+import { ProductCard, ProductCardSkeleton } from '#/ui/product-card';
 import { cacheLife, cacheTag } from 'next/cache';
 import { cookies } from 'next/headers';
 import { getPersonalizedRecommendations } from '../../../_components/recommendations';
@@ -11,8 +11,8 @@ import Link from 'next/link';
 import { ChevronLeftIcon } from '@heroicons/react/24/solid';
 
 // CRITICAL: This enables runtime prefetching!
-export const unstable_prefetch = {
-  mode: 'runtime',
+export const unstable_instant = {
+  prefetch: 'runtime',
   samples: [
     { params: { id: '1' }, cookies: [{ name: 'session-id', value: '1' }] },
   ],
@@ -105,10 +105,7 @@ function RecommendationsSkeleton() {
         <h2 className="text-lg font-semibold text-gray-300">Recommendations</h2>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
           {[1, 2, 3].map((i) => (
-            <div
-              key={i}
-              className="h-48 animate-pulse rounded-lg bg-gray-800"
-            />
+            <ProductCardSkeleton key={i} />
           ))}
         </div>
       </div>

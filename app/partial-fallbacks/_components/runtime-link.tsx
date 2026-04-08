@@ -5,11 +5,20 @@ import { ProductCard } from '#/ui/product-card';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
+const STORAGE_KEY = 'partial-fallbacks-suffix';
+
 export function RuntimeLink({ product }: { product: Product }) {
   const [suffix, setSuffix] = useState('');
 
   useEffect(() => {
-    setSuffix(Math.random().toString(36).slice(2, 8));
+    const stored = sessionStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      setSuffix(stored);
+    } else {
+      const next = Math.random().toString(36).slice(2, 8);
+      sessionStorage.setItem(STORAGE_KEY, next);
+      setSuffix(next);
+    }
   }, []);
 
   const slug = suffix ? `${product.id}-${suffix}` : product.id;
