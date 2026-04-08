@@ -1,9 +1,7 @@
-import { Suspense } from 'react';
 import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
 import { ProductCard } from '#/ui/product-card';
 import { cacheTag } from 'next/cache';
-import { cookies } from 'next/headers';
 
 export default async function Page() {
   return (
@@ -34,9 +32,7 @@ async function ProductList() {
           {products.map((product) => (
             <div key={product.id} className="flex flex-col gap-3">
               <ProductCard product={product} animateEnter={true} />
-              <Suspense fallback={<ProductPriceSkeleton />}>
-                <ProductPrice productId={product.id} />
-              </Suspense>
+              <ProductPrice productId={product.id} />
             </div>
           ))}
         </div>
@@ -64,40 +60,14 @@ async function getData() {
   return products;
 }
 
-function validateCurrency(value: string | undefined): 'USD' | 'EUR' {
-  return value === 'EUR' ? 'EUR' : 'USD';
-}
-
-// cookies() makes this dynamic. The price is still cached via "use cache: remote"
-// in getProductPrice(), avoiding a re-fetch on every request.
 async function ProductPrice({ productId }: { productId: string }) {
-  const currency = validateCurrency((await cookies()).get('currency')?.value);
   const price = await getProductPrice(productId);
-  const formatted =
-    currency === 'EUR'
-      ? `€${(price * 0.92).toFixed(2)}`
-      : `$${price.toFixed(2)}`;
 
   return (
     <Boundary label="<ProductPrice> (Remote Cacheable)" size="small">
       <div className="text-center text-sm">
         <span className="text-gray-400">Price: </span>
-        <span className="font-semibold text-green-400">{formatted}</span>
-      </div>
-    </Boundary>
-  );
-}
-
-function ProductPriceSkeleton() {
-  return (
-    <Boundary
-      label="<ProductPrice> (Remote Cacheable)"
-      size="small"
-      color="blue"
-      animateRerendering={false}
-    >
-      <div className="text-center text-sm">
-        <span className="inline-block h-3.5 w-24 animate-pulse rounded bg-gray-800" />
+        <span className="font-semibold text-green-400">${price}</span>
       </div>
     </Boundary>
   );
