@@ -93,7 +93,7 @@ function ProductPriceSkeleton() {
       animateRerendering={false}
     >
       <div className="text-center text-sm">
-        <div className="inline-block h-5 w-24 animate-pulse rounded bg-gray-800" />
+        <div className="inline-block h-[18px] w-24 animate-pulse rounded bg-gray-800" />
       </div>
     </Boundary>
   );
