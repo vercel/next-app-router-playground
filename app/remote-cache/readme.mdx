@@ -27,7 +27,7 @@ async function getProductPrice(productId: string) {
 // !mark
 // cookies() makes this component dynamic
 async function ProductPrice({ productId }: { productId: string }) {
-  const currency = (await cookies()).get('currency')?.value;
+  const currency = validateCurrency((await cookies()).get('currency')?.value);
   const price = await getProductPrice(productId);
   return <div>Price: {format(price, currency)}</div>;
 }

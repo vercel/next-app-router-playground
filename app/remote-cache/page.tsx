@@ -64,11 +64,14 @@ async function getData() {
   return products;
 }
 
+function validateCurrency(value: string | undefined): 'USD' | 'EUR' {
+  return value === 'EUR' ? 'EUR' : 'USD';
+}
+
 // cookies() makes this dynamic. The price is still cached via "use cache: remote"
 // in getProductPrice(), avoiding a re-fetch on every request.
 async function ProductPrice({ productId }: { productId: string }) {
-  const currency =
-    (await cookies()).get('currency')?.value === 'EUR' ? 'EUR' : 'USD';
+  const currency = validateCurrency((await cookies()).get('currency')?.value);
   const price = await getProductPrice(productId);
   const formatted =
     currency === 'EUR'
@@ -94,7 +97,7 @@ function ProductPriceSkeleton() {
       animateRerendering={false}
     >
       <div className="text-center text-sm">
-        <span className="inline-block h-5 w-24 animate-pulse rounded bg-gray-800" />
+        <span className="inline-block h-4 w-24 animate-pulse rounded bg-gray-800" />
       </div>
     </Boundary>
   );
