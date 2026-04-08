@@ -3,11 +3,10 @@
 import { Product } from '#/lib/db';
 import { ProductCard } from '#/ui/product-card';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { useSuffix } from './suffix-input';
 
 export function RuntimeProducts({ products }: { products: Product[] }) {
-  const searchParams = useSearchParams();
-  const suffix = searchParams.get('suffix') ?? '';
+  const suffix = useSuffix();
 
   return (
     <>
