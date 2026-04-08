@@ -42,7 +42,7 @@ export default async function Page({ params }) {
 
 - A product catalog with 9 products. Only 3 are in `generateStaticParams`.
 - Build-time products (1–3) load instantly with no fallback.
-- Request-time products (4–9) use a typed suffix to form their slug (e.g. `/partial-fallbacks/4-mysuffix`). Change the suffix to see the streaming fallback; revisit the same suffix to see the cached result.
+- Request-time products (4–9) get a unique slug suffix on page load (persisted in session). Click one to see the streaming fallback, then click it again to see the cached result. Press "Regenerate" to get new slugs.
 - An artificial 2 second delay makes the difference more noticeable.
 
 ### Notes
