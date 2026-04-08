@@ -3,7 +3,7 @@ import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
 import { ProductCard } from '#/ui/product-card';
 import { cacheTag } from 'next/cache';
-import { connection } from 'next/server';
+import { cookies } from 'next/headers';
 
 export default async function Page() {
   return (
@@ -64,21 +64,22 @@ async function getData() {
   return products;
 }
 
+// cookies() makes this dynamic. The price is still cached via "use cache: remote"
+// in getProductPrice(), avoiding a re-fetch on every request.
 async function ProductPrice({ productId }: { productId: string }) {
-  // DEMO: Ensure this component is never cached in the static shell
-  // by requiring a connection. This makes it dynamic.
-  await connection();
-
-  // DEMO: Since we're accessing this after connection() (dynamic context),
-  // using "use cache" would NOT cache at all. We need "use cache: remote"
-  // to cache at runtime with a remote cache.
+  const currency =
+    (await cookies()).get('currency')?.value === 'EUR' ? 'EUR' : 'USD';
   const price = await getProductPrice(productId);
+  const formatted =
+    currency === 'EUR'
+      ? `€${(price * 0.92).toFixed(2)}`
+      : `$${price.toFixed(2)}`;
 
   return (
     <Boundary label="<ProductPrice> (Remote Cacheable)" size="small">
       <div className="text-center text-sm">
         <span className="text-gray-400">Price: </span>
-        <span className="font-semibold text-green-400">${price}</span>
+        <span className="font-semibold text-green-400">{formatted}</span>
       </div>
     </Boundary>
   );
