@@ -117,7 +117,7 @@ async function getProductPrice(productId: string) {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   // DEMO: Query the database for the product price
-  const product = db.product.find({ where: { id: productId } });
+  const product = await db.product.find({ where: { id: productId } });
 
   if (!product) {
     throw new Error(`Product not found: ${productId}`);

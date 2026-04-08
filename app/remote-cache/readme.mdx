@@ -11,7 +11,7 @@ export const demo = db.demo.find({ where: { slug: 'remote-cache' } });
 
 - Use `use cache: remote` to store cache entries in a remote handler (e.g. Redis or KV), providing **durable, shared caching** across all server instances.
 - Regular `use cache` stores entries in-memory, which works for static shell content but may have low hit rates at runtime in serverless environments.
-- Most useful for data accessed at runtime in dynamic components (e.g. those reading `cookies()`, `headers()`, or `connection()`), where remote caching reduces load on rate-limited APIs, slow backends, or expensive operations.
+- Most useful for data that would otherwise be re-fetched on every request, where remote caching reduces load on rate-limited APIs, slow backends, or expensive operations.
 
 # !!col
 
@@ -20,16 +20,8 @@ async function getProductPrice(productId: string) {
   // !mark
   'use cache: remote';
   cacheTag(`product-price-${productId}`);
-  const product = db.product.find({ where: { id: productId } });
+  const product = await db.product.find({ where: { id: productId } });
   return product.price;
-}
-
-// !mark
-// cookies() makes this component dynamic
-async function ProductPrice({ productId }: { productId: string }) {
-  const currency = validateCurrency((await cookies()).get('currency')?.value);
-  const price = await getProductPrice(productId);
-  return <div>Price: {format(price, currency)}</div>;
 }
 ```
 
@@ -38,7 +30,7 @@ async function ProductPrice({ productId }: { productId: string }) {
 ### Demo
 
 - **Product data** is fetched with `use cache` in `getData()` - cached in the static shell.
-- **Price data** is fetched with `use cache: remote` in `getProductPrice()` - the component reads `cookies()` making it dynamic, so the price is cached in a remote cache at runtime.
+- **Price data** is fetched with `use cache: remote` in `getProductPrice()` - stored durably in a remote cache, shared across all server instances.
 - The price data function uses `cacheTag()` for targeted cache invalidation.
 - Artificial delays (1s for products, 1s for prices) make caching behavior visible.
 - Notice how product data loads once, while price data streams in per product, but is cached for subsequent requests.
