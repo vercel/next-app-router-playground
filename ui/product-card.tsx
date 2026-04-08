@@ -42,8 +42,8 @@ export function ProductCard<E extends ElementType = 'div'>({
       </div>
 
       <div className="flex flex-col gap-2">
-        <div className="h-2 w-4/5 rounded-full bg-gray-800" />
-        <div className="h-2 w-1/3 rounded-full bg-gray-800" />
+        <div className="h-2 w-4/5 rounded-full bg-gray-900" />
+        <div className="h-2 w-1/3 rounded-full bg-gray-900" />
       </div>
     </Component>
   );
