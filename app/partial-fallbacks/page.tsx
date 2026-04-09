@@ -5,6 +5,7 @@ import { Boundary } from '#/ui/boundary';
 import { ProductCard } from '#/ui/product-card';
 import Link from 'next/link';
 import { RuntimeLink } from './_components/runtime-link';
+import { SessionSuffix } from './_components/session-suffix';
 
 const PRE_RENDERED_IDS = ['1', '2', '3'];
 
@@ -25,6 +26,7 @@ export default async function Page() {
           <code className="text-gray-400">generateStaticParams</code>. Products
           4–9 are discovered at request time.
         </p>
+        <SessionSuffix />
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           {products.map((product) =>
             PRE_RENDERED_IDS.includes(product.id) ? (
