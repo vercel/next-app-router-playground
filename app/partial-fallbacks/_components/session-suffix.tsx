@@ -21,7 +21,7 @@ export function SessionSuffix() {
   function regenerate() {
     const next = Math.random().toString(36).slice(2, 8);
     sessionStorage.setItem(STORAGE_KEY, next);
-    setSuffix(next);
+    window.location.reload();
   }
 
   if (!suffix) return null;
