@@ -6,6 +6,9 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   experimental: {
     inlineCss: true,
+    optimisticRouting: true,
+    varyParams: true,
+    cachedNavigations: true,
     viewTransition: true,
     prerenderEarlyExit: false,
   },
