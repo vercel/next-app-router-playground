@@ -8,7 +8,6 @@ const nextConfig = {
     inlineCss: true,
     viewTransition: true,
     prerenderEarlyExit: false,
-    partialFallbacks: true,
   },
 };
 

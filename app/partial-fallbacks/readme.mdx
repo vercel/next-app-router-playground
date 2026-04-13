@@ -10,16 +10,17 @@ export const demo = db.demo.find({ where: { slug: 'partial-fallbacks' } });
 # !!col
 
 - High-cardinality sites can't pre-render every slug. Without `generateStaticParams`, every visit shows a Suspense fallback. With it, unknown slugs block while generating.
-- `experimental.partialFallbacks` gives unknown slugs an instant shell from CDN while dynamic data streams in. After the first visit, the page is upgraded to fully static.
+- Partial fallbacks gives unknown slugs an instant shell from CDN while dynamic data streams in. After the first visit, the page is upgraded to fully static. This behavior is enabled by default with `cacheComponents`.
 
 # !!col
 
 ```ts next.config.ts
 const nextConfig = {
-  experimental: {
-    // !mark
-    partialFallbacks: true,
-  },
+  // !mark
+  cacheComponents: true,
+  // Partial fallbacks is enabled by default
+  // with cacheComponents; set to false to opt out
+  // partialFallbacks: false,
 };
 ```
 
@@ -34,4 +35,4 @@ const nextConfig = {
 
 ### Notes
 
-- This demo uses the experimental `partialFallbacks` flag and the `use cache` directive.
+- This demo relies on partial fallbacks (enabled by default with `cacheComponents`) and the `use cache` directive.
