@@ -1,0 +1,3 @@
+{
+  "installCommand": "corepack pnpm install --frozen-lockfile"
+}
