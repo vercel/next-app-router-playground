@@ -8,8 +8,8 @@
   },
   "dependencies": {
     "@heroicons/react": "2.2.0",
-    "@mdx-js/loader": "3.1.0",
-    "@mdx-js/react": "3.1.0",
+    "@mdx-js/loader": "3.1.1",
+    "@mdx-js/react": "3.1.1",
     "@next/mdx": "16.2.2",
     "@types/mdx": "2.0.13",
     "clsx": "2.1.1",
@@ -35,10 +35,11 @@
     "@types/node": "22.13.1",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
-    "postcss": "8.5.3",
+    "postcss": "8.5.14",
     "prettier": "3.5.3",
     "prettier-plugin-tailwindcss": "0.6.12",
     "tailwindcss": "4.1.4",
     "typescript": "5.7.3"
-  }
+  },
+  "packageManager": "pnpm@10.33.0"
 }

@@ -1,0 +1,14 @@
+packages:
+  - .
+
+minimumReleaseAge: 2880 # 48 hrs
+minimumReleaseAgeExclude:
+  - '@next/*'
+  - eslint-config-next
+  - next
+onlyBuiltDependencies:
+  - sharp
+overrides:
+  diff: 5.2.2
+  mdast-util-to-hast: 13.2.1
+  postcss: 8.5.14
