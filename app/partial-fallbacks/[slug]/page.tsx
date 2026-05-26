@@ -57,9 +57,8 @@ async function ProductDetail({ slug }: { slug: string }) {
             <p className="text-sm text-gray-500">
               This page was rendered with a 2 second artificial delay. If this
               product was pre-rendered, it loaded instantly. If it was
-              runtime-discovered, the behavior depends on whether{' '}
-              <code className="text-gray-400">partialFallbacks</code> is
-              enabled.
+              runtime-discovered, partial fallbacks streamed an instant shell
+              while the data loaded in the background.
             </p>
           </div>
         </div>
