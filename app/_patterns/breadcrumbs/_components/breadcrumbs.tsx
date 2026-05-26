@@ -17,7 +17,6 @@ export function Breadcrumbs({
             )}
 
             <Link
-              key={item.href}
               href={item.href}
               className="text-white capitalize hover:text-gray-500"
             >
