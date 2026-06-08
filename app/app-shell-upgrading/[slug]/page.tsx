@@ -57,8 +57,8 @@ async function ProductDetail({ slug }: { slug: string }) {
             <p className="text-sm text-gray-500">
               This page was rendered with a 2 second artificial delay. If this
               product was pre-rendered, it loaded instantly. If it was
-              runtime-discovered, the App Shell streams an instant shell while
-              the data loads in the background.
+              runtime-discovered, an App Shell was streamed instantly while the
+              data loaded in the background.
             </p>
           </div>
         </div>

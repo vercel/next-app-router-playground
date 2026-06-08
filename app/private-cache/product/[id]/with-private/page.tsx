@@ -10,6 +10,9 @@ import { ProductDetails } from '#/app/private-cache/_components/product-detail';
 import Link from 'next/link';
 import { ChevronLeftIcon } from '@heroicons/react/24/solid';
 
+// Enable runtime prefetching for private cached content
+export const unstable_prefetch = 'force-runtime';
+
 export default async function Page({
   params,
 }: {
@@ -36,7 +39,7 @@ export default async function Page({
         {/* Static Product Details */}
         <ProductDetails product={product} />
 
-        {/* Private Cache - automatically runtime prefetched */}
+        {/* Private Cache - runtime prefetched with force-runtime */}
         <Suspense fallback={<RecommendationsSkeleton />}>
           <Recommendations productId={id} />
         </Suspense>
@@ -50,7 +53,7 @@ async function Recommendations({ productId }: { productId: string }) {
 
   return (
     <Boundary
-      label="<Recommendations> (Private Cacheable + Runtime Prefetch)"
+      label="<Recommendations> (Private Cacheable)"
       size="small"
       animateRerendering={false}
     >
@@ -72,11 +75,10 @@ async function Recommendations({ productId }: { productId: string }) {
   );
 }
 
-// Private cache - automatically runtime prefetched
 async function getRecommendations(productId: string) {
   'use cache: private';
   cacheTag(`recommendations-${productId}`);
-  cacheLife({ stale: 60 }); // 60s stale time (≥30s required for runtime prefetch)
+  cacheLife({ stale: 60 });
 
   // Can call cookies() inside private cache!
   const sessionId = (await cookies()).get('session-id')?.value || 'guest';
@@ -88,7 +90,7 @@ async function getRecommendations(productId: string) {
 function RecommendationsSkeleton() {
   return (
     <Boundary
-      label="<Recommendations> (Private Cacheable + Runtime Prefetch)"
+      label="<Recommendations> (Private Cacheable)"
       size="small"
       color="blue"
       animateRerendering={false}
