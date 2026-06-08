@@ -13,7 +13,7 @@ export default function ProductLink({
   privateCache: boolean;
 }) {
   return (
-    <Link href={href}>
+    <Link href={href} prefetch={privateCache ? true : undefined}>
       <Boundary
         label={
           privateCache
