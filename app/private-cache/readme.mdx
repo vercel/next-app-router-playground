@@ -49,10 +49,8 @@ async function Recommendations({ productId }: { productId: string }) {
 
 ### Demo
 
-- Products labeled **"Private Cache"** link to pages that use `use cache: private` with `unstable_prefetch = 'force-runtime'` to enable runtime prefetching of personalized content.
-- Products labeled **"No Private Cache"** link to pages without `use cache: private`, meaning their recommendations are fetched on every navigation.
-- **With Private Cache**: Personalized recommendations are runtime prefetched and appear instantly.
-- **Without Private Cache**: Recommendations show a loading skeleton, then appear after they're finished loading.
+- Products with a **blue border** use `use cache: private` with `unstable_prefetch = 'force-runtime'`. Their personalized recommendations are runtime prefetched and appear instantly on navigation.
+- Products with a **gray border** don't use `use cache: private`. Their recommendations show a loading skeleton, then stream in after navigation.
 - Click "Change Session" to get different personalized recommendations.
 
 ### Notes
