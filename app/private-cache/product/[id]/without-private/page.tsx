@@ -35,7 +35,7 @@ export default async function Page({
         {/* Static Product Details */}
         <ProductDetails product={product} />
 
-        {/* Pure Dynamic */}
+        {/* Pure Dynamic - NOT RUNTIME PREFETCHABLE */}
         <Suspense fallback={<RecommendationsSkeleton />}>
           <Recommendations productId={id} />
         </Suspense>
@@ -67,10 +67,11 @@ async function Recommendations({ productId }: { productId: string }) {
   );
 }
 
-// Pure Dynamic
+// Pure Dynamic - NOT RUNTIME PREFETCHABLE
 async function getRecommendations(productId: string) {
-  // Without using `use cache: private`, this function runs on every
-  // navigation — the call to cookies() happens after the user clicks.
+  // Without using `use cache: private`, we can't mark this function as runtime
+  // prefetchable, so the following call to cookies will actually only occur
+  // after the user has clicked a link to navigate to this page.
   const sessionId = (await cookies()).get('session-id')?.value || 'guest';
 
   return getPersonalizedRecommendations(productId, sessionId);

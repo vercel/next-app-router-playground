@@ -39,7 +39,7 @@ export default async function Page({
         {/* Static Product Details */}
         <ProductDetails product={product} />
 
-        {/* Private Cache - runtime prefetched with force-runtime */}
+        {/* Private Cache - RUNTIME PREFETCHABLE! */}
         <Suspense fallback={<RecommendationsSkeleton />}>
           <Recommendations productId={id} />
         </Suspense>
@@ -75,11 +75,11 @@ async function Recommendations({ productId }: { productId: string }) {
   );
 }
 
-// Runtime prefetched via unstable_prefetch = 'force-runtime'
+// Private cache - RUNTIME PREFETCHABLE!
 async function getRecommendations(productId: string) {
   'use cache: private';
   cacheTag(`recommendations-${productId}`);
-  cacheLife({ stale: 60 });
+  cacheLife({ stale: 60 }); // 60s stale time (≥30s required for runtime prefetch)
 
   // Can call cookies() inside private cache!
   const sessionId = (await cookies()).get('session-id')?.value || 'guest';
