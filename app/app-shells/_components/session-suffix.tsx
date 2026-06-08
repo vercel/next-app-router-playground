@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-const STORAGE_KEY = 'partial-fallbacks-suffix';
+const STORAGE_KEY = 'app-shells-suffix';
 
 export function SessionSuffix() {
   const [suffix, setSuffix] = useState('');
@@ -29,8 +29,7 @@ export function SessionSuffix() {
   return (
     <div className="flex items-center gap-3">
       <span className="text-xs text-gray-500">
-        Session suffix:{' '}
-        <code className="text-gray-400">{suffix}</code>
+        Session suffix: <code className="text-gray-400">{suffix}</code>
       </span>
       <button
         onClick={regenerate}

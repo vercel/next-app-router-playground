@@ -5,7 +5,7 @@ import React from 'react';
 import readme from './readme.mdx';
 
 export function generateMetadata() {
-  const demo = db.demo.find({ where: { slug: 'partial-fallbacks' } });
+  const demo = db.demo.find({ where: { slug: 'app-shells' } });
 
   return {
     title: demo.name,

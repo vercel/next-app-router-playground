@@ -32,7 +32,7 @@ export default async function Page() {
             PRE_RENDERED_IDS.includes(product.id) ? (
               <Link
                 key={product.id}
-                href={`/partial-fallbacks/${product.id}`}
+                href={`/app-shells/${product.id}`}
                 className="group"
               >
                 <ProductCard product={product} animateEnter={true} />

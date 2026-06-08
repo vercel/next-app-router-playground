@@ -183,10 +183,10 @@ const demos = [
           'Cache user-specific data with use cache: private using cookies and headers',
       },
       {
-        slug: 'partial-fallbacks',
-        name: 'Partial Fallbacks',
+        slug: 'app-shells',
+        name: 'App Shells',
         description:
-          'Serve instant shells for runtime-discovered slugs that upgrade to fully static after the first visit',
+          'Serve instant shells for runtime-discovered slugs that self-upgrade to fully static after the first visit',
       },
     ],
   },

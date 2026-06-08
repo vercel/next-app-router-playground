@@ -5,7 +5,7 @@ import { ProductCard } from '#/ui/product-card';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-const STORAGE_KEY = 'partial-fallbacks-suffix';
+const STORAGE_KEY = 'app-shells-suffix';
 
 export function RuntimeLink({ product }: { product: Product }) {
   const [suffix, setSuffix] = useState('');
@@ -24,7 +24,7 @@ export function RuntimeLink({ product }: { product: Product }) {
   const slug = suffix ? `${product.id}-${suffix}` : product.id;
 
   return (
-    <Link href={`/partial-fallbacks/${slug}`} className="group">
+    <Link href={`/app-shells/${slug}`} className="group">
       <ProductCard product={product} animateEnter={true} />
       <div className="mt-2 flex items-center gap-2">
         <span className="text-sm font-medium text-gray-300 group-hover:text-gray-100">
