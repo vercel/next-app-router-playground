@@ -22,38 +22,40 @@ function subscribe(callback: () => void) {
   };
 }
 
-// DEMO: Fetch patching for visualization purposes only. This code intercepts
-// Next.js runtime prefetch requests to track their loading states and provide
-// visual feedback in the UI. DO NOT use this pattern in production apps - it's
-// solely for demonstrating how runtime prefetching works with private cache.
-if (typeof window !== 'undefined') {
-  const originalFetch = globalThis.fetch;
-  globalThis.fetch = (...args: Parameters<typeof fetch>) => {
-    // Ensure that we only monitor runtime prefetch requests.
-    if (
-      args[0] instanceof URL &&
-      (args[1]?.headers as Record<string, string>)?.['next-router-prefetch'] ===
-        '2'
-    ) {
-      const url = args[0];
-      console.log('Monitoring fetch for', url.pathname);
-      const promise = originalFetch(url, args[1]);
+// DEMO: Network observation for visualization purposes only. This code uses
+// PerformanceObserver to detect runtime prefetch requests and track their
+// loading states, enabling the visual feedback (pink pulsing border while
+// prefetching, blue border when complete) shown in this demo.
+// DO NOT use this pattern in production apps.
+if (typeof window !== 'undefined' && typeof PerformanceObserver !== 'undefined') {
+  const observer = new PerformanceObserver((list) => {
+    for (const entry of list.getEntries()) {
+      const url = entry.name;
 
-      loadingState.set(url.pathname, 'prefetching');
-      notifySubscribers();
+      // Match RSC prefetch requests for private-cache product routes
+      if (
+        !url.includes('/private-cache/product/') ||
+        !url.includes('_rsc=')
+      )
+        continue;
 
-      promise.then(() => {
-        loadingState.set(url.pathname, 'prefetched');
+      // Extract the pathname (before the query string)
+      const pathname = new URL(url).pathname;
+
+      if (!loadingState.has(pathname)) {
+        loadingState.set(pathname, 'prefetching');
         notifySubscribers();
-      });
+      }
 
-      return promise;
+      // When duration > 0 the request has completed
+      if (entry.duration > 0) {
+        loadingState.set(pathname, 'prefetched');
+        notifySubscribers();
+      }
     }
+  });
 
-    return originalFetch(...args);
-  };
-
-  console.log('Fetch patched');
+  observer.observe({ type: 'resource', buffered: true });
 }
 
 function getSnapshot(pathname: string): 'prefetching' | 'prefetched' | 'idle' {
@@ -83,12 +85,14 @@ export default function ProductLink({
   let color: 'pink' | 'blue' | undefined;
   let label: string;
 
-  if (state !== 'prefetched' && privateCache) {
+  if (state === 'prefetching' && privateCache) {
     color = 'pink';
     label = '<Link> (Prefetching Private Cache...)';
   } else if (state === 'prefetched') {
     color = 'blue';
     label = '<Link> (Prefetched Private Cache)';
+  } else if (privateCache) {
+    label = '<Link> (Private Cache)';
   } else {
     label = `<Link> (No Private Cache)`;
   }
