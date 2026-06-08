@@ -39,7 +39,7 @@ async function ProductDetail({ slug }: { slug: string }) {
     <Boundary label="<ProductDetail> (Cacheable)" size="small">
       <div className="flex flex-col gap-6">
         <Link
-          href="/app-shells"
+          href="/app-shell-upgrading"
           className="text-sm text-gray-500 hover:text-gray-300"
         >
           ← Back to products

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-const STORAGE_KEY = 'app-shells-suffix';
+const STORAGE_KEY = 'app-shell-upgrading-suffix';
 
 export function SessionSuffix() {
   const [suffix, setSuffix] = useState('');

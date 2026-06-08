@@ -1,7 +1,7 @@
 import db from '#/lib/db';
 import { Grid } from '#/ui/codehike';
 
-export const demo = db.demo.find({ where: { slug: 'app-shells' } });
+export const demo = db.demo.find({ where: { slug: 'app-shell-upgrading' } });
 
 # {demo.name}
 
@@ -14,7 +14,7 @@ export const demo = db.demo.find({ where: { slug: 'app-shells' } });
 
 # !!col
 
-```tsx app/app-shells/[slug]/page.tsx
+```tsx app/app-shell-upgrading/[slug]/page.tsx
 // !mark
 'use cache';
 

@@ -183,7 +183,7 @@ const demos = [
           'Cache user-specific data with use cache: private using cookies and headers',
       },
       {
-        slug: 'app-shells',
+        slug: 'app-shell-upgrading',
         name: 'App Shell Upgrading',
         description:
           'Navigate instantly to pages that have never been rendered before, then self-upgrade to fully static after the first visit',
