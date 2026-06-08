@@ -11,7 +11,7 @@ export const demo = db.demo.find({ where: { slug: 'private-cache' } });
 
 - Unlike regular `use cache`, `use cache: private` can access runtime request APIs like `cookies()`, `headers()`, and `searchParams` directly inside the cached function.
 - Results are **never stored on the server** — they're cached only in the browser's memory and do not persist across page reloads.
-- When combined with `unstable_instant` and `prefetch: 'runtime'`, private cached content can be **runtime prefetched** — fetched ahead of navigation using the user's real session data.
+- Private cached content is automatically **runtime prefetched** — fetched ahead of navigation using the user's real session data.
 
 # !!col
 
@@ -30,7 +30,7 @@ async function getRecommendations(productId: string) {
 }
 
 async function Recommendations({ productId }: { productId: string }) {
-  // This will be runtime prefetched automatically
+  // Runtime prefetched automatically
   const recommendations = await getRecommendations(productId);
 
   return (
@@ -41,13 +41,6 @@ async function Recommendations({ productId }: { productId: string }) {
     </div>
   );
 }
-
-export const unstable_instant = {
-  prefetch: 'runtime',
-  samples: [
-    { params: { id: '1' }, cookies: [{ name: 'session-id', value: '1' }] },
-  ],
-};
 ```
 
 </Grid>
@@ -67,4 +60,4 @@ export const unstable_instant = {
 
 ### Notes
 
-- This demo uses the `use cache` directive. `use cache: private` is currently experimental.
+- This demo uses `use cache: private` (currently experimental). Runtime prefetching of private cached content is automatic in dev mode.

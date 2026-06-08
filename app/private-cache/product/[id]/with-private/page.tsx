@@ -36,7 +36,7 @@ export default async function Page({
         {/* Static Product Details */}
         <ProductDetails product={product} />
 
-        {/* Private Cache - RUNTIME PREFETCHABLE! */}
+        {/* Private Cache - automatically runtime prefetched */}
         <Suspense fallback={<RecommendationsSkeleton />}>
           <Recommendations productId={id} />
         </Suspense>
@@ -72,7 +72,7 @@ async function Recommendations({ productId }: { productId: string }) {
   );
 }
 
-// Private cache - RUNTIME PREFETCHABLE!
+// Private cache - automatically runtime prefetched
 async function getRecommendations(productId: string) {
   'use cache: private';
   cacheTag(`recommendations-${productId}`);

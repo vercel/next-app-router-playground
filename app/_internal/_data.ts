@@ -184,9 +184,9 @@ const demos = [
       },
       {
         slug: 'app-shells',
-        name: 'App Shells',
+        name: 'App Shell Upgrading',
         description:
-          'Serve instant shells for runtime-discovered slugs that self-upgrade to fully static after the first visit',
+          'Navigate instantly to pages that have never been rendered before, then self-upgrade to fully static after the first visit',
       },
     ],
   },
