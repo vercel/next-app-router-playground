@@ -9,7 +9,6 @@ const nextConfig = {
     cachedNavigations: true,
     appShells: true,
     viewTransition: true,
-    prerenderEarlyExit: false,
   },
 };
 
