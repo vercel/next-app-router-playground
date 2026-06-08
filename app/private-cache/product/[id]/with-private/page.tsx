@@ -53,7 +53,7 @@ async function Recommendations({ productId }: { productId: string }) {
 
   return (
     <Boundary
-      label="<Recommendations> (Private Cacheable)"
+      label="<Recommendations> (Private Cacheable + Runtime Prefetch)"
       size="small"
       animateRerendering={false}
     >
@@ -75,6 +75,7 @@ async function Recommendations({ productId }: { productId: string }) {
   );
 }
 
+// Runtime prefetched via unstable_prefetch = 'force-runtime'
 async function getRecommendations(productId: string) {
   'use cache: private';
   cacheTag(`recommendations-${productId}`);
@@ -90,7 +91,7 @@ async function getRecommendations(productId: string) {
 function RecommendationsSkeleton() {
   return (
     <Boundary
-      label="<Recommendations> (Private Cacheable)"
+      label="<Recommendations> (Private Cacheable + Runtime Prefetch)"
       size="small"
       color="blue"
       animateRerendering={false}

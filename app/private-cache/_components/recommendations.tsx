@@ -25,7 +25,7 @@ export async function getPersonalizedRecommendations(
 export function RecommendationsSkeleton() {
   return (
     <Boundary
-      label="<Recommendations> (Private Cacheable)"
+      label="<Recommendations> (Private Cacheable + Runtime Prefetch)"
       size="small"
       color="blue"
       animateRerendering={false}

@@ -31,7 +31,7 @@ export async function ProductList() {
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {products.map((product, index) => {
-            // First half uses private cache
+            // First half uses private cache (with runtime prefetch)
             // Second half uses remote cache (no prefetch)
             const privateCache = index < products.length / 2;
 
