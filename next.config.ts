@@ -3,6 +3,7 @@ import { type CodeHikeConfig } from 'codehike/mdx';
 
 const nextConfig = {
   cacheComponents: true,
+  partialPrefetching: true,
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   experimental: {
     inlineCss: true,
