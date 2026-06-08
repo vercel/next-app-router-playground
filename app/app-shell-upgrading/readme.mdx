@@ -40,4 +40,4 @@ export default async function Page({ params }) {
 
 ### Notes
 
-- App Shell Upgrading is a built-in behavior of `cacheComponents` — there is no separate flag. Combine `'use cache'` with `generateStaticParams` and a `loading.tsx` to get a self-upgrading shell for unknown slugs.
+- App Shell Upgrading requires `experimental.appShells` in `next.config.ts`. Combine `'use cache'` with `generateStaticParams` and a `loading.tsx` to get a self-upgrading shell for unknown slugs.

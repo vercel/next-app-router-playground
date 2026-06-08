@@ -16,9 +16,7 @@ export default function ProductLink({
     <Link href={href} prefetch={privateCache ? true : undefined}>
       <Boundary
         label={
-          privateCache
-            ? '<Link> (Private Cache)'
-            : '<Link> (No Private Cache)'
+          privateCache ? '<Link> (Private Cache)' : '<Link> (No Private Cache)'
         }
         size="small"
         color={privateCache ? 'blue' : undefined}
