@@ -11,7 +11,7 @@ export const demo = db.demo.find({ where: { slug: 'partial-prefetching' } });
 
 - With `partialPrefetching: true` (this playground's default), a default `<Link>` only prefetches the App Shell of its destination.
 - `<Link prefetch={true}>` upgrades the prefetch to include the destination's cached page content alongside the shell.
-- A route can export `prefetch = 'allowRuntime'` to opt every visible link to it into a runtime prerender that resolves cookies, headers, and search params at prefetch time.
+- A route can export `prefetch = 'allow-runtime'` to opt every visible link to it into a runtime prerender that resolves cookies, headers, and search params at prefetch time.
 
 # !!col
 
@@ -56,4 +56,4 @@ Open DevTools &rarr; Network and filter on `_rsc=` to watch the prefetches as ea
 ### Notes
 
 - Routes are distinct (`/streaming`, `/cached`, `/allow-runtime`) so each gets its own App Shell entry. A single `<Link>` per route still produces a single prefetch.
-- The page exports use `unstable_prefetch = 'force-runtime'` in this canary build. The stable name (post-stabilization) will be `prefetch = 'allowRuntime'`.
+- The page exports use `unstable_prefetch = 'force-runtime'` in this canary build. The stable name (post-stabilization) will be `prefetch = 'allow-runtime'`.

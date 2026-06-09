@@ -21,12 +21,12 @@ export function getStatic(page: string) {
 
 // -- cached ----------------------------------------------------------------
 
-export async function getCached(page: string) {
+export async function getCached(page: string, id: string) {
   'use cache';
   await delay(RENDER_DELAY_MS);
   const ts = now();
-  console.log(`[partial-prefetching/${page}] CACHED RAN at ${ts}`);
-  return { page, id: Math.floor(Math.random() * 1_000_000), at: ts };
+  console.log(`[partial-prefetching/${page}] CACHED RAN at ${ts} id=${id}`);
+  return { page, id, value: Math.floor(Math.random() * 1_000_000), at: ts };
 }
 
 // -- private (per-user) ----------------------------------------------------

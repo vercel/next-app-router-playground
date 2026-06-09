@@ -15,7 +15,7 @@ import {
 async function StaticSection({ page }: { page: string }) {
   const data = getStatic(page);
   return (
-    <SectionCard tone="static" title="Static">
+    <SectionCard tone="static">
       <SectionValue
         label="Generated at"
         value={data.generatedAt}
@@ -25,14 +25,21 @@ async function StaticSection({ page }: { page: string }) {
   );
 }
 
-async function CachedSection({ page }: { page: string }) {
-  const data = await getCached(page);
+async function CachedSection({
+  page,
+  searchParams,
+}: {
+  page: string;
+  searchParams: Promise<{ id?: string }>;
+}) {
+  const { id = '1' } = await searchParams;
+  const data = await getCached(page, id);
   return (
-    <SectionCard tone="cached" title="Cached">
+    <SectionCard tone="cached">
       <SectionValue
-        label={`Cache id (${page})`}
-        value={`#${data.id}`}
-        hint={`Generated at ${data.at} · shared across visitors`}
+        label={`Cache id=${data.id}`}
+        value={`#${data.value}`}
+        hint={`Generated at ${data.at} · keyed by ?id=${data.id}`}
       />
     </SectionCard>
   );
@@ -41,7 +48,7 @@ async function CachedSection({ page }: { page: string }) {
 async function PrivateSection({ page }: { page: string }) {
   const data = await getPrivate(page);
   return (
-    <SectionCard tone="private" title="Private cache">
+    <SectionCard tone="private">
       <SectionValue
         label={`Session (${page})`}
         value={data.session}
@@ -54,7 +61,7 @@ async function PrivateSection({ page }: { page: string }) {
 async function UncachedSection({ page }: { page: string }) {
   const data = await getUncached(page);
   return (
-    <SectionCard tone="uncached" title="Uncached">
+    <SectionCard tone="uncached">
       <SectionValue
         label={`Live (${page})`}
         value={`#${data.value}`}
@@ -67,33 +74,42 @@ async function UncachedSection({ page }: { page: string }) {
 export function PageBody({
   page,
   linkLabel,
+  routeConfig,
   intro,
+  searchParams,
 }: {
   page: string;
   linkLabel: string;
+  routeConfig?: string;
   intro: React.ReactNode;
+  searchParams: Promise<{ id?: string }>;
 }) {
   return (
     <Boundary label="page.tsx">
       <div className="flex flex-col gap-4">
-        <h1 className="font-mono text-xl font-semibold text-gray-200">
-          {linkLabel}
-        </h1>
+        <div className="flex flex-col gap-1">
+          <h1 className="font-mono text-xl font-semibold text-gray-200">
+            {linkLabel}
+          </h1>
+          {routeConfig ? (
+            <p className="font-mono text-xs text-gray-500">
+              route exports <span className="text-gray-300">{routeConfig}</span>
+            </p>
+          ) : null}
+        </div>
         <p className="text-sm text-gray-500">{intro}</p>
 
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <Suspense fallback={<SectionFallback>Static</SectionFallback>}>
+          <Suspense fallback={<SectionFallback tone="static" />}>
             <StaticSection page={page} />
           </Suspense>
-          <Suspense fallback={<SectionFallback>Cached</SectionFallback>}>
-            <CachedSection page={page} />
+          <Suspense fallback={<SectionFallback tone="cached" />}>
+            <CachedSection page={page} searchParams={searchParams} />
           </Suspense>
-          <Suspense
-            fallback={<SectionFallback>Private cache</SectionFallback>}
-          >
+          <Suspense fallback={<SectionFallback tone="private" />}>
             <PrivateSection page={page} />
           </Suspense>
-          <Suspense fallback={<SectionFallback>Uncached</SectionFallback>}>
+          <Suspense fallback={<SectionFallback tone="uncached" />}>
             <UncachedSection page={page} />
           </Suspense>
         </div>

@@ -17,9 +17,9 @@ const variants = [
   {
     href: '/partial-prefetching/allow-runtime',
     prefetch: true as const,
-    name: "<Link prefetch={true}> + prefetch = 'allowRuntime'",
+    name: "<Link prefetch={true}> + prefetch = 'allow-runtime'",
     description:
-      "App Shell plus a runtime prerender. Destination exports prefetch = 'allowRuntime' so the prefetch resolves cookies, headers, and search params on the server.",
+      "App Shell plus a runtime prerender. Destination exports prefetch = 'allow-runtime' so the prefetch resolves cookies, headers, and search params on the server.",
   },
 ];
 

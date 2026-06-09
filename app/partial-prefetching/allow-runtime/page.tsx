@@ -4,17 +4,18 @@ import { PageBody } from '../_components/page-body';
 // prefetches a runtime prerender that includes cookies, headers, and search
 // params.
 //
-// Stable: `prefetch = 'allowRuntime'`. Until then: `unstable_prefetch = 'force-runtime'`.
+// Stable: `prefetch = 'allow-runtime'`. Until then: `unstable_prefetch = 'force-runtime'`.
 export const unstable_prefetch = 'force-runtime';
 
 export default function Page() {
   return (
     <PageBody
       page="allow-runtime"
-      linkLabel="prefetch={true}"
+      linkLabel="<Link prefetch={true}>"
+      routeConfig="prefetch = 'allow-runtime'"
       intro={
         <>
-          The page exports <code>prefetch = &apos;allowRuntime&apos;</code>,
+          The page exports <code>prefetch = &apos;allow-runtime&apos;</code>,
           so a <code>{'<Link prefetch={true}>'}</code> to it prefetches a
           runtime prerender. The <code>{"'use cache: private'"}</code>{' '}
           section resolves with cookies/headers ahead of the click. Static
