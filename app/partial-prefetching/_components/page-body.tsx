@@ -1,4 +1,5 @@
 import { Boundary } from '#/ui/boundary';
+import Link from 'next/link';
 import { Suspense } from 'react';
 import {
   getStatic,
@@ -87,6 +88,12 @@ export function PageBody({
   return (
     <Boundary label="page.tsx">
       <div className="flex flex-col gap-4">
+        <Link
+          href="/partial-prefetching"
+          className="text-sm text-gray-500 hover:text-gray-300"
+        >
+          ← Back
+        </Link>
         <div className="flex flex-col gap-1">
           <h1 className="font-mono text-xl font-semibold text-gray-200">
             {linkLabel}

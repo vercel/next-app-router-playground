@@ -31,20 +31,25 @@ export default function Page() {
           decides what arrives in the prefetch.
         </p>
 
-        <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
+        <div className="flex flex-col gap-4">
           {variants.map((variant) => (
             <Link
               key={variant.name}
               href={variant.href}
               prefetch={variant.prefetch}
-              className="group flex flex-col gap-1 rounded-lg bg-gray-900 px-5 py-3 hover:bg-gray-800"
+              className="group block"
             >
-              <div className="font-mono text-[13px] font-medium text-gray-200 group-hover:text-gray-50">
-                {variant.name}
-              </div>
-              <div className="text-[13px] text-gray-500 group-hover:text-gray-300">
-                {variant.description}
-              </div>
+              <Boundary
+                label={variant.name}
+                kind="solid"
+                size="small"
+                animateRerendering={false}
+                className="transition group-hover:border-gray-600"
+              >
+                <p className="text-[13px] text-gray-500 group-hover:text-gray-300">
+                  {variant.description}
+                </p>
+              </Boundary>
             </Link>
           ))}
         </div>
