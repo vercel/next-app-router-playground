@@ -3,23 +3,25 @@ import Link from 'next/link';
 
 const variants = [
   {
-    href: '/partial-prefetching/streaming',
+    href: '/partial-prefetching/streaming?id=1',
     prefetch: undefined,
     name: '<Link>',
-    description: 'Default prefetch. App Shell only.',
+    description:
+      'Default prefetch. App Shell only. The cached section is keyed by ?id, so it cannot live in the shell either.',
   },
   {
-    href: '/partial-prefetching/cached',
+    href: '/partial-prefetching/cached?id=2',
     prefetch: true as const,
     name: '<Link prefetch={true}>',
-    description: 'App Shell plus the cached page content.',
+    description:
+      'Upgraded prefetch. App Shell plus static cached content — but ?id-dependent cached data still streams.',
   },
   {
-    href: '/partial-prefetching/allow-runtime',
+    href: '/partial-prefetching/allow-runtime?id=3',
     prefetch: true as const,
     name: "<Link prefetch={true}> + prefetch = 'allow-runtime'",
     description:
-      "App Shell plus a runtime prerender. Destination exports prefetch = 'allow-runtime' so the prefetch resolves cookies, headers, and search params on the server.",
+      "Runtime prerender. Destination exports prefetch = 'allow-runtime', so the prefetch resolves cookies, headers, and ?id on the server. Only uncached streams.",
   },
 ];
 

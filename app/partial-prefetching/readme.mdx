@@ -45,9 +45,14 @@ import Link from 'next/link';
 All three destinations render the same four sections:
 
 - **Static** &mdash; pure, deterministic, always in the shell.
-- **Cached** &mdash; `'use cache'`, shared across visitors.
+- **Cached** &mdash; `'use cache'` keyed by `?id`, shared across visitors.
 - **Private cache** &mdash; `'use cache: private'`, per-user, cached in the browser.
 - **Uncached** &mdash; reads `connection()`, fresh on every request.
+
+The hub links pass a distinct `?id` to each destination so the `'use cache'`
+section actually depends on a runtime value. Without that, the cached
+content is free to live in the shell — and the difference between `<Link>`
+and `<Link prefetch={true}>` is invisible.
 
 Each section has a 2&nbsp;second delay so you can see what arrives in the prefetch and what streams in after the click.
 
@@ -55,5 +60,6 @@ Open DevTools &rarr; Network and filter on `_rsc=` to watch the prefetches as ea
 
 ### Notes
 
-- Routes are distinct (`/streaming`, `/cached`, `/allow-runtime`) so each gets its own App Shell entry. A single `<Link>` per route still produces a single prefetch.
+- Routes are distinct (`/streaming`, `/cached`, `/allow-runtime`) so each gets its own App Shell entry.
+- The hub passes `?id=1`, `?id=2`, `?id=3` so the `'use cache'` section's key is runtime-dependent. That's what makes the prefetch differences observable.
 - The page exports use `unstable_prefetch = 'force-runtime'` in this canary build. The stable name (post-stabilization) will be `prefetch = 'allow-runtime'`.
