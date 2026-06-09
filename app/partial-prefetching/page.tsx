@@ -1,27 +1,25 @@
 import { Boundary } from '#/ui/boundary';
-import { LinkStatus } from '#/ui/link-status';
 import Link from 'next/link';
 
 const variants = [
   {
     href: '/partial-prefetching/streaming',
     prefetch: undefined,
-    name: '/streaming',
-    description: 'Default <Link>. Prefetch covers only the App Shell.',
+    name: '<Link>',
+    description: 'Default prefetch. App Shell only.',
   },
   {
     href: '/partial-prefetching/cached',
     prefetch: true as const,
-    name: '/cached',
-    description:
-      '<Link prefetch={true}>. Prefetch covers the App Shell plus the cached page content.',
+    name: '<Link prefetch={true}>',
+    description: 'App Shell plus the cached page content.',
   },
   {
     href: '/partial-prefetching/allow-runtime',
-    prefetch: undefined,
-    name: '/allow-runtime',
+    prefetch: true as const,
+    name: "<Link prefetch={true}> + prefetch = 'allowRuntime'",
     description:
-      "Page exports prefetch = 'allowRuntime'. Prefetch is a runtime prerender that resolves cookies, headers, and search params.",
+      "App Shell plus a runtime prerender. Destination exports prefetch = 'allowRuntime' so the prefetch resolves cookies, headers, and search params on the server.",
   },
 ];
 
@@ -30,9 +28,8 @@ export default function Page() {
     <Boundary label="page.tsx">
       <div className="flex flex-col gap-4">
         <p className="text-sm text-gray-500">
-          Three routes with the same four sections (static, cached, private
-          cache, uncached). The link to each route uses a different
-          configuration so you can compare what arrives in the prefetch.
+          The same four sections loaded three different ways. The link config
+          decides what arrives in the prefetch.
         </p>
 
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
@@ -43,10 +40,10 @@ export default function Page() {
               prefetch={variant.prefetch}
               className="group flex flex-col gap-1 rounded-lg bg-gray-900 px-5 py-3 hover:bg-gray-800"
             >
-              <div className="flex items-center justify-between font-medium text-gray-200 group-hover:text-gray-50">
-                {variant.name} <LinkStatus />
+              <div className="font-mono text-[13px] font-medium text-gray-200 group-hover:text-gray-50">
+                {variant.name}
               </div>
-              <div className="line-clamp-3 text-[13px] text-gray-500 group-hover:text-gray-300">
+              <div className="text-[13px] text-gray-500 group-hover:text-gray-300">
                 {variant.description}
               </div>
             </Link>

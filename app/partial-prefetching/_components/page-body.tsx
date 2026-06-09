@@ -66,15 +66,19 @@ async function UncachedSection({ page }: { page: string }) {
 
 export function PageBody({
   page,
+  linkLabel,
   intro,
 }: {
   page: string;
+  linkLabel: string;
   intro: React.ReactNode;
 }) {
   return (
     <Boundary label="page.tsx">
       <div className="flex flex-col gap-4">
-        <h1 className="text-xl font-semibold text-gray-300">/{page}</h1>
+        <h1 className="font-mono text-xl font-semibold text-gray-200">
+          {linkLabel}
+        </h1>
         <p className="text-sm text-gray-500">{intro}</p>
 
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">

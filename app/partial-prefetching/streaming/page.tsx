@@ -4,13 +4,13 @@ export default function Page() {
   return (
     <PageBody
       page="streaming"
+      linkLabel="<Link>"
       intro={
         <>
-          The base page. No page-level <code>{"'use cache'"}</code>, no{' '}
-          <code>prefetch</code> segment config. Each section lives in its own{' '}
-          <code>{'<Suspense>'}</code> boundary. With a default{' '}
-          <code>{'<Link>'}</code>, the prefetch only includes the App Shell:
-          all four fallbacks show on click, then each section streams in.
+          The hub link to this page is a default <code>{'<Link>'}</code> (no{' '}
+          <code>prefetch</code> prop). The prefetch only includes the App
+          Shell. All four sections show their <code>{'<Suspense>'}</code>{' '}
+          fallback on click, then stream in.
         </>
       }
     />
