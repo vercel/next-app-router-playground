@@ -9,9 +9,9 @@ export const demo = db.demo.find({ where: { slug: 'partial-prefetching' } });
 
 # !!col
 
-- With `partialPrefetching: true` (this playground's default), a `<Link>` prefetches the App Shell of its destination, not the page render. The shell is loaded once per filesystem route and shared across every `<Link>` to that route.
-- `<Link prefetch={true}>` upgrades that link to also prefetch the cached page render.
-- A route can export `unstable_prefetch = 'force-runtime'` to opt every visible link to it into a runtime prerender — a server-side prerender that resolves cookies, headers, and search params at prefetch time, ahead of the click.
+- With `partialPrefetching: true` (this playground's default), a default `<Link>` only prefetches the App Shell of its destination.
+- `<Link prefetch={true}>` upgrades the prefetch to include the destination's cached page content alongside the shell.
+- A route can export `prefetch = 'allowRuntime'` to opt every visible link to it into a runtime prerender that resolves cookies, headers, and search params at prefetch time.
 
 # !!col
 
@@ -27,33 +27,33 @@ const nextConfig = {
 ```tsx app/partial-prefetching/page.tsx
 import Link from 'next/link';
 
-// A: shell only
-<Link href="/cached" />;
+// App Shell only
+<Link href="/streaming" />;
 
-// B: shell + cached page content
+// App Shell + cached page content
 // !mark
 <Link href="/cached" prefetch={true} />;
 
-// C: shell only (Suspense fallback paints on click)
-<Link href="/streaming" />;
-
-// D: runtime prerender
-// !mark
-// (route exports unstable_prefetch = 'force-runtime')
-<Link href="/runtime" />;
+// Runtime prerender (route opts in)
+<Link href="/allow-runtime" />;
 ```
 
 </Grid>
 
 ### Demo
 
-- Open DevTools → Network and filter on `_rsc=`.
-- Each link contributes a small route-tree prefetch when it enters the viewport.
-- Links B and D additionally fetch a larger payload that includes the destination's content.
-- Link A produces no second payload because the destination is fully cached: the shell already covers everything.
-- Click each link and notice whether the body appears instantly (A, B, D) or behind a fallback (C).
+All three destinations render the same four sections:
+
+- **Static** &mdash; pure, deterministic, always in the shell.
+- **Cached** &mdash; `'use cache'`, shared across visitors.
+- **Private cache** &mdash; `'use cache: private'`, per-user, cached in the browser.
+- **Uncached** &mdash; reads `connection()`, fresh on every request.
+
+Each section has a 2&nbsp;second delay so you can see what arrives in the prefetch and what streams in after the click.
+
+Open DevTools &rarr; Network and filter on `_rsc=` to watch the prefetches as each card enters the viewport. Then click through and notice which sections paint instantly and which fall back to the streaming placeholder.
 
 ### Notes
 
-- All four `<Link>`s share the same App Shell prefetch per destination route. Render dozens of them on a page and the network cost grows by route, not by link.
-- `unstable_prefetch = 'force-runtime'` costs one server invocation per visible link to the route. Reach for it only when the prefetched content is worth the cost.
+- Routes are distinct (`/streaming`, `/cached`, `/allow-runtime`) so each gets its own App Shell entry. A single `<Link>` per route still produces a single prefetch.
+- The page exports use `unstable_prefetch = 'force-runtime'` in this canary build. The stable name (post-stabilization) will be `prefetch = 'allowRuntime'`.
