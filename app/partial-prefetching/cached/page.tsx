@@ -10,16 +10,7 @@ export default function Page({
       page="cached"
       linkLabel="<Link prefetch={true}>"
       searchParams={searchParams}
-      intro={
-        <>
-          The hub link to this page sets <code>prefetch={'{true}'}</code>.
-          The prefetch upgrades to include cached content alongside the App
-          Shell — but the <code>{"'use cache'"}</code> section is keyed by{' '}
-          <code>?id</code>, so it still has to be resolved at request time
-          and will stream in. <code>{"'use cache: private'"}</code> and the
-          uncached section also stream.
-        </>
-      }
+      intro="App Shell + static cached content. ?id-keyed cache, private cache, and uncached still stream."
     />
   );
 }
