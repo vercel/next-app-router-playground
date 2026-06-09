@@ -188,6 +188,12 @@ const demos = [
         description:
           'Navigate instantly to pages that have never been rendered before, then self-upgrade to fully static after the first visit',
       },
+      {
+        slug: 'partial-prefetching',
+        name: 'Partial Prefetching',
+        description:
+          'Compare link variants under partialPrefetching: shell-only by default, prefetch={true} for cached content, allow-runtime for runtime prerenders',
+      },
     ],
   },
   {
