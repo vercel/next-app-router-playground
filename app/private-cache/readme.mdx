@@ -11,13 +11,13 @@ export const demo = db.demo.find({ where: { slug: 'private-cache' } });
 
 - Unlike regular `use cache`, `use cache: private` can access runtime request APIs like `cookies()`, `headers()`, and `searchParams` directly inside the cached function.
 - Results are **never stored on the server** — they're cached only in the browser's memory and do not persist across page reloads.
-- When combined with `unstable_prefetch = 'force-runtime'` on the page and `<Link prefetch={true}>`, private cached content can be **runtime prefetched** — fetched ahead of navigation using the user's real session data.
+- When combined with `prefetch = 'allow-runtime'` on the page and `<Link prefetch={true}>`, private cached content can be **runtime prefetched** — fetched ahead of navigation using the user's real session data.
 
 # !!col
 
 ```tsx app/private-cache/product/[id]/with-private/page.tsx
 // !mark
-export const unstable_prefetch = 'force-runtime';
+export const prefetch = 'allow-runtime';
 
 async function getRecommendations(productId: string) {
   // !mark
