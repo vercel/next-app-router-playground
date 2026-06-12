@@ -4,7 +4,7 @@ import { PageBody } from '../_components/page-body';
 // `unstable_prefetch = 'force-runtime'` makes every prefetch for this route
 // fetch a runtime prerender — cookies, headers, and searchParams are
 // resolved on the server ahead of the click.
-export const unstable_prefetch = 'force-runtime';
+export const prefetch = 'allow-runtime';
 
 export default function Page({
   searchParams,
@@ -13,9 +13,9 @@ export default function Page({
 }) {
   return (
     <PageBody
-      page="force-runtime"
+      page="allow-runtime"
       linkLabel="<Link prefetch={true}>"
-      routeConfig="unstable_prefetch = 'force-runtime'"
+      routeConfig="prefetch = 'allow-runtime'"
       searchParams={searchParams}
       intro={
         <>
@@ -23,10 +23,9 @@ export default function Page({
           <code>unstable_prefetch = &apos;force-runtime&apos;</code>, so a{' '}
           <code>{'<Link prefetch={true}>'}</code> to it prefetches a runtime
           prerender. <code>?id</code> is resolved on the server ahead of the
-          click, so the <code>{"'use cache'"}</code> section is in the
-          prerender too. <code>{"'use cache: private'"}</code> reads cookies
-          and is also included. Only the uncached section streams after
-          navigation.
+          click, so the <code>{"'use cache'"}</code> section is in the prerender
+          too. <code>{"'use cache: private'"}</code> reads cookies and is also
+          included. Only the uncached section streams after navigation.
         </>
       }
     />
