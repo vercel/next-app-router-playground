@@ -8,7 +8,6 @@ const nextConfig = {
   experimental: {
     inlineCss: true,
     cachedNavigations: true,
-    appShells: true,
     viewTransition: true,
   },
 };
