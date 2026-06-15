@@ -22,7 +22,7 @@ export function listProducts(limit = 9): Product[] {
   return db.product.findMany({ limit });
 }
 
-// /product/[id] — cached, keyed by the product id (which is in the URL).
+// /product/[id]. Cached, keyed by the product id (which is in the URL).
 // A `<Link prefetch={true}>` can include this in the prefetch payload.
 export async function getProductCopy(productId: string) {
   'use cache';
@@ -32,7 +32,7 @@ export async function getProductCopy(productId: string) {
   const product = findProduct(productId);
   return {
     headline: product
-      ? `${product.name} — built for everyday use`
+      ? `${product.name}: built for everyday use`
       : 'Unknown product',
     body: 'Crafted from premium materials with a one-year warranty. Ships free over $50. Reviewed weekly by our editorial team.',
     reviewCount: 80 + (((Number(productId) || 1) * 17) % 220),
@@ -42,7 +42,7 @@ export async function getProductCopy(productId: string) {
   };
 }
 
-// /for-you/[id] — private cache that reads the session cookie. Only
+// /for-you/[id]. Private cache that reads the session cookie. Only
 // included in the prefetch when the destination route exports
 // `prefetch = 'allow-runtime'`.
 export async function getRecommendationsForViewer(productId: string) {
@@ -60,7 +60,7 @@ export async function getRecommendationsForViewer(productId: string) {
   return { items: all.slice(start, start + 3), sessionId, builtAt: now() };
 }
 
-// Live stock & viewers for a given product. Uncached on purpose — never
+// Live stock & viewers for a given product. Uncached on purpose: never
 // part of any prefetch payload, always streams in after the click.
 export async function getLiveStock(productId: string) {
   await delay(SLOW_MS);

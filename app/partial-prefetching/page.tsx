@@ -8,7 +8,7 @@ import SessionButton from './_components/session-button';
 import { SessionBadge } from './_components/session-badge';
 
 // The hub picks a single featured product so the three entry points
-// below all point at the same id — the only thing that changes between
+// below all point at the same id. The only thing that changes between
 // them is the link style and what the destination route prefetches.
 const FEATURED_ID = '1';
 
@@ -37,7 +37,7 @@ export default function Page() {
             href={`/partial-prefetching/live/${featured.id}`}
             kicker="Live"
             sub="<Link>"
-            note="Uncached body. Shell only — streams in on click."
+            note="Uncached body. Shell only, streams in on click."
           >
             <ProductCard product={featured} />
           </EntryCard>
@@ -50,7 +50,7 @@ export default function Page() {
             prefetch
             kicker="Details"
             sub="<Link prefetch={true}>"
-            note="'use cache' body keyed by id — in the prefetch."
+            note="'use cache' body keyed by id, included in the prefetch."
           >
             <ProductCard product={featured} animateEnter={true} />
           </EntryCard>
@@ -64,7 +64,7 @@ export default function Page() {
             prefetch
             kicker="For you"
             sub="<Link prefetch={true}> + prefetch = 'allow-runtime'"
-            note="'use cache: private' body reading the session cookie — in the prefetch."
+            note="'use cache: private' body reading the session cookie, included in the prefetch."
           >
             <ProductCard product={featured} />
           </EntryCard>
