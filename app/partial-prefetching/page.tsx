@@ -1,59 +1,107 @@
 import { Boundary } from '#/ui/boundary';
+import { ProductCard } from '#/ui/product-card';
+import { ChevronRightIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
+import { Suspense } from 'react';
+import { listProducts } from './_components/data';
+import SessionButton from './_components/session-button';
+import { SessionBadge } from './_components/session-badge';
 
-const variants = [
-  {
-    href: '/partial-prefetching/streaming?id=1',
-    prefetch: undefined,
-    name: '<Link>',
-    description: 'App Shell only.',
-  },
-  {
-    href: '/partial-prefetching/cached?id=2',
-    prefetch: true as const,
-    name: '<Link prefetch={true}>',
-    description: 'App Shell + static cached content.',
-  },
-  {
-    href: '/partial-prefetching/allow-runtime?id=3',
-    prefetch: true as const,
-    name: "<Link prefetch={true}> + prefetch = 'allow-runtime'",
-    description: 'Runtime prerender. Resolves cookies, headers, and ?id ahead of the click.',
-  },
-];
+// The hub picks a single featured product so the three entry points
+// below all point at the same id — the only thing that changes between
+// them is the link style and what the destination route prefetches.
+const FEATURED_ID = '1';
 
 export default function Page() {
-  return (
-    <Boundary label="page.tsx">
-      <div className="flex flex-col gap-4">
-        <p className="text-sm text-gray-500">
-          The same four sections loaded three different ways. The link config
-          decides what arrives in the prefetch.
-        </p>
+  const featured = listProducts().find((p) => p.id === FEATURED_ID)!;
 
-        <div className="flex flex-col gap-4">
-          {variants.map((variant) => (
-            <Link
-              key={variant.name}
-              href={variant.href}
-              prefetch={variant.prefetch}
-              className="group block"
-            >
-              <Boundary
-                label={variant.name}
-                kind="solid"
-                size="small"
-                animateRerendering={false}
-                className="transition group-hover:border-gray-600"
-              >
-                <p className="text-[13px] text-gray-500 group-hover:text-gray-300">
-                  {variant.description}
-                </p>
-              </Boundary>
-            </Link>
-          ))}
+  return (
+    <Boundary label="page.tsx (statically inferred)" animateRerendering={false}>
+      <div className="flex flex-col gap-8">
+        <div className="flex items-center justify-between">
+          <h1 className="text-xl font-semibold text-gray-300">
+            Today&rsquo;s pick
+          </h1>
+          <div className="flex items-center gap-3">
+            <Suspense fallback={null}>
+              <SessionBadge />
+            </Suspense>
+            <SessionButton />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+          {/* 1. Bare <Link>. Only the App Shell is prefetched; every
+              section on the destination streams after the click. */}
+          <EntryCard
+            href={`/partial-prefetching/live/${featured.id}`}
+            kicker="Live"
+            sub="<Link>"
+            note="Shell only. Stock, details and recs all stream."
+          >
+            <ProductCard product={featured} />
+          </EntryCard>
+
+          {/* 2. <Link prefetch={true}>. Destination has no extra prefetch
+              config, so 'use cache' (keyed by id) comes down in the
+              prefetch but 'use cache: private' (cookies) does not. */}
+          <EntryCard
+            href={`/partial-prefetching/details/${featured.id}`}
+            prefetch
+            kicker="Details"
+            sub="<Link prefetch={true}>"
+            note="Cached details prefetched. Stock and recs still stream."
+          >
+            <ProductCard product={featured} animateEnter={true} />
+          </EntryCard>
+
+          {/* 3. <Link prefetch={true}> to a route that exports
+              prefetch = 'allow-runtime'. Now 'use cache: private' (which
+              reads the session cookie) is also in the prefetch. Only
+              the uncached <Stock> streams. */}
+          <EntryCard
+            href={`/partial-prefetching/for-you/${featured.id}`}
+            prefetch
+            kicker="For you"
+            sub="<Link prefetch={true}> + prefetch = 'allow-runtime'"
+            note="Details and recs prefetched. Only stock streams."
+          >
+            <ProductCard product={featured} />
+          </EntryCard>
         </div>
       </div>
     </Boundary>
+  );
+}
+
+function EntryCard({
+  href,
+  prefetch,
+  kicker,
+  sub,
+  note,
+  children,
+}: {
+  href: string;
+  prefetch?: boolean;
+  kicker: string;
+  sub: string;
+  note: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link href={href} prefetch={prefetch} className="group block">
+      <div className="flex flex-col gap-3 rounded-md border border-gray-800 p-4 transition group-hover:border-gray-600">
+        {children}
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center gap-1 text-base font-medium text-gray-200 group-hover:text-gray-100">
+            {kicker}
+            <ChevronRightIcon className="size-4 text-gray-500 transition group-hover:translate-x-0.5 group-hover:text-gray-300" />
+          </div>
+          <code className="font-mono text-[11px] text-gray-500">{sub}</code>
+          <p className="text-xs text-gray-500">{note}</p>
+        </div>
+      </div>
+    </Link>
   );
 }

@@ -192,7 +192,7 @@ const demos = [
         slug: 'partial-prefetching',
         name: 'Partial Prefetching',
         description:
-          "Compare link variants: shell-only, prefetch={true}, and prefetch = 'allow-runtime'.",
+          'Match each page to the right Link variant: bare for dynamic pages, prefetch={true} for url-keyed caches, allow-runtime for cookie-aware caches.',
       },
     ],
   },

@@ -5,11 +5,7 @@ const nextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
-  experimental: {
-    inlineCss: true,
-    cachedNavigations: true,
-    viewTransition: true,
-  },
+  experimental: { inlineCss: true, viewTransition: true },
 };
 
 const codeHikeConfig = {

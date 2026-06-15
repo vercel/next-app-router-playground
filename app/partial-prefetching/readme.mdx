@@ -10,33 +10,33 @@ export const demo = db.demo.find({ where: { slug: 'partial-prefetching' } });
 # !!col
 
 - `<Link>` prefetches the App Shell only.
-- `<Link prefetch={true}>` adds static cached content. Runtime-dependent content still streams.
-- `prefetch = 'allow-runtime'` on the destination prefetches a runtime prerender (cookies, headers, search params resolved ahead of the click).
+- `<Link prefetch={true}>` also includes any `'use cache'` boundaries the route can resolve from the URL.
+- A route that exports `prefetch = 'allow-runtime'` lets that same `<Link prefetch={true}>` include `'use cache: private'` boundaries that read cookies or headers.
 
 # !!col
 
-```ts next.config.ts
-const nextConfig = {
-  cacheComponents: true,
-  // !mark
-  partialPrefetching: true,
-  experimental: {
-    // !mark
-    appShells: true,
-  },
-};
+```tsx app/partial-prefetching/page.tsx
+<Link href={`/live/${id}`} />
+<Link href={`/details/${id}`} prefetch />
+<Link href={`/for-you/${id}`} prefetch />
 ```
 
-```tsx app/partial-prefetching/page.tsx
-<Link href="/streaming?id=1" />
-<Link href="/cached?id=2" prefetch={true} />
-<Link href="/allow-runtime?id=3" prefetch={true} />
+```tsx app/partial-prefetching/for-you/[id]/page.tsx
+// !mark
+export const prefetch = 'allow-runtime';
 ```
 
 </Grid>
 
 ### Demo
 
-Each destination renders the same four sections: **static**, `'use cache'`, `'use cache: private'`, and uncached (`connection()`). The hub passes a distinct `?id` so the `'use cache'` key depends on a runtime value — otherwise the difference between `<Link>` and `<Link prefetch={true}>` is invisible.
+Each tile opens a different route whose body uses the boundary type that its link can prefetch. Click each and watch which content shows immediately versus skeleton-flashes.
 
-Open DevTools → Network, filter `_rsc=`, and watch what arrives in the prefetch vs. what streams after the click.
+- **Live** → bare `<Link>`. The body is uncached (`connection()`), so only the App Shell is prefetched and the card streams in on click.
+- **Details** → `<Link prefetch={true}>`. The body is `'use cache'` keyed by id, so the rendered card is included in the prefetch and lands immediately on click.
+- **For you** → `<Link prefetch={true}>` to a route that exports `prefetch = 'allow-runtime'`. The body is `'use cache: private'` (reads the session cookie), so the personalised card is included in the prefetch.
+- 1.5s artificial delay on the cached functions, 3s on the private cache, so the difference is easy to see.
+
+### Notes
+
+- This demo uses the `use cache` directive. `use cache: private` is currently experimental.
