@@ -35,7 +35,7 @@ export default function Page() {
               section on the destination streams after the click. */}
           <EntryCard
             href={`/partial-prefetching/live/${featured.id}`}
-            kicker="Live"
+            kicker="Shell only"
             sub="<Link>"
             note="App Shell only. All three sections stream in on click."
           >
@@ -48,9 +48,9 @@ export default function Page() {
           <EntryCard
             href={`/partial-prefetching/details/${featured.id}`}
             prefetch
-            kicker="Details"
+            kicker="Prefetched"
             sub="<Link prefetch={true}>"
-            note="Hero ('use cache') is in the prefetch. Stock and For you stream."
+            note="Hero ('use cache') is in the prefetch. Stock and recommendations stream."
           >
             <ProductCard product={featured} animateEnter={true} />
           </EntryCard>
@@ -62,9 +62,9 @@ export default function Page() {
           <EntryCard
             href={`/partial-prefetching/for-you/${featured.id}`}
             prefetch
-            kicker="For you"
+            kicker="Runtime prefetched"
             sub="<Link prefetch={true}> + prefetch = 'allow-runtime'"
-            note="Hero and For you are in the prefetch. Only Stock streams."
+            note="Hero and recommendations are in the prefetch. Only stock streams."
           >
             <ProductCard product={featured} />
           </EntryCard>

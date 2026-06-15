@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import {
-  findProduct,
   getLiveStock,
   getProductCopy,
   getRecommendationsForViewer,
@@ -49,9 +48,8 @@ export function ProductDetail({ params }: { params: Promise<{ id: string }> }) {
 
 async function Hero({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const product = findProduct(id);
-  if (!product) notFound();
   const copy = await getProductCopy(id);
+  if (!copy) notFound();
 
   return (
     <Boundary
@@ -63,8 +61,8 @@ async function Hero({ params }: { params: Promise<{ id: string }> }) {
         <div className="overflow-hidden rounded-md bg-gray-900/50 p-12">
           <Image
             className="brightness-150"
-            src={`/shop/${product.image}`}
-            alt={product.name}
+            src={`/shop/${copy.image}`}
+            alt={copy.name}
             quality={90}
             width={400}
             height={400}
@@ -72,11 +70,9 @@ async function Hero({ params }: { params: Promise<{ id: string }> }) {
         </div>
 
         <div className="flex flex-col gap-4">
-          <h1 className="text-2xl font-semibold text-gray-200">
-            {product.name}
-          </h1>
+          <h1 className="text-2xl font-semibold text-gray-200">{copy.name}</h1>
           <span className="font-mono text-xl text-gray-300">
-            ${product.price.toFixed(2)}
+            ${copy.price.toFixed(2)}
           </span>
           <div className="flex items-center gap-3">
             <StarIcon className="size-5 text-yellow-400" />

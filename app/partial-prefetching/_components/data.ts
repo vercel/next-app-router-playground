@@ -30,10 +30,13 @@ export async function getProductCopy(productId: string) {
   cacheLife({ stale: 60 });
   await delay(SLOW_MS);
   const product = findProduct(productId);
+  if (!product) return null;
   return {
-    headline: product
-      ? `${product.name}: built for everyday use`
-      : 'Unknown product',
+    id: product.id,
+    name: product.name,
+    image: product.image,
+    price: product.price,
+    headline: `${product.name}: built for everyday use`,
     body: 'Crafted from premium materials with a one-year warranty. Ships free over $50. Reviewed weekly by our editorial team.',
     reviewCount: 80 + (((Number(productId) || 1) * 17) % 220),
     avgRating: Number(
