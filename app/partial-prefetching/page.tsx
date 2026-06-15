@@ -37,7 +37,7 @@ export default function Page() {
             href={`/partial-prefetching/live/${featured.id}`}
             kicker="Live"
             sub="<Link>"
-            note="Uncached body. Shell only, streams in on click."
+            note="App Shell only. All three sections stream in on click."
           >
             <ProductCard product={featured} />
           </EntryCard>
@@ -50,7 +50,7 @@ export default function Page() {
             prefetch
             kicker="Details"
             sub="<Link prefetch={true}>"
-            note="'use cache' body keyed by id, included in the prefetch."
+            note="Hero ('use cache') is in the prefetch. Stock and For you stream."
           >
             <ProductCard product={featured} animateEnter={true} />
           </EntryCard>
@@ -64,7 +64,7 @@ export default function Page() {
             prefetch
             kicker="For you"
             sub="<Link prefetch={true}> + prefetch = 'allow-runtime'"
-            note="'use cache: private' body reading the session cookie, included in the prefetch."
+            note="Hero and For you are in the prefetch. Only Stock streams."
           >
             <ProductCard product={featured} />
           </EntryCard>

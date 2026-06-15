@@ -30,10 +30,10 @@ export const prefetch = 'allow-runtime';
 
 ### Demo
 
-- Each tile opens a different route whose body uses the boundary type that its link can prefetch.
-- **Live**: bare `<Link>`. The body is uncached, so only the App Shell is prefetched and the card streams in on click.
-- **Details**: `<Link prefetch={true}>`. The body is `'use cache'` keyed by id, so the rendered card is included in the prefetch and lands immediately on click.
-- **For you**: `<Link prefetch={true}>` to a route that exports `prefetch = 'allow-runtime'`. The body is `'use cache: private'` and reads the session cookie, so the personalised card is included in the prefetch.
+- All three tiles open the same page, which renders three Suspense boundaries: `<Hero>` (`'use cache'`), `<Stock>` (uncached), `<Recommendations>` (`'use cache: private'`).
+- **Live**: bare `<Link>`. Only the App Shell is prefetched. All three sections stream in on click.
+- **Details**: `<Link prefetch={true}>`. `<Hero>` is included in the prefetch and lands immediately. `<Stock>` and `<Recommendations>` still stream.
+- **For you**: `<Link prefetch={true}>` to a route that exports `prefetch = 'allow-runtime'`. `<Hero>` and `<Recommendations>` are in the prefetch. Only `<Stock>` streams.
 - A 1.5 second artificial delay is added to the cached functions, 3 seconds to the private cache, to make the difference visible.
 
 ### Notes
