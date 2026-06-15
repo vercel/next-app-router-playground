@@ -32,7 +32,7 @@ export const prefetch = 'allow-runtime';
 
 Each tile opens a different route whose body uses the boundary type that its link can prefetch. Click each and watch which content shows immediately versus skeleton-flashes.
 
-- **Live** → bare `<Link>`. The body is uncached (`connection()`), so only the App Shell is prefetched and the card streams in on click.
+- **Live** → bare `<Link>`. The body is uncached, so only the App Shell is prefetched and the card streams in on click.
 - **Details** → `<Link prefetch={true}>`. The body is `'use cache'` keyed by id, so the rendered card is included in the prefetch and lands immediately on click.
 - **For you** → `<Link prefetch={true}>` to a route that exports `prefetch = 'allow-runtime'`. The body is `'use cache: private'` (reads the session cookie), so the personalised card is included in the prefetch.
 - 1.5s artificial delay on the cached functions, 3s on the private cache, so the difference is easy to see.

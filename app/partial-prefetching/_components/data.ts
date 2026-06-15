@@ -1,6 +1,5 @@
 import 'server-only';
 import { cookies } from 'next/headers';
-import { connection } from 'next/server';
 import { cacheLife, cacheTag } from 'next/cache';
 import db, { type Product } from '#/lib/db';
 
@@ -64,7 +63,6 @@ export async function getRecommendationsForViewer(productId: string) {
 // Live stock & viewers for a given product. Uncached on purpose — never
 // part of any prefetch payload, always streams in after the click.
 export async function getLiveStock(productId: string) {
-  await connection();
   await delay(SLOW_MS);
   const seed = Number(productId) || 1;
   return {

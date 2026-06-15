@@ -36,7 +36,7 @@ async function LiveCard({ params }: { params: Promise<{ id: string }> }) {
 
   return (
     <Boundary
-      label="<LiveCard> (uncached · connection())"
+      label="<LiveCard> (uncached)"
       size="small"
       animateRerendering={false}
     >
@@ -75,7 +75,7 @@ async function LiveCard({ params }: { params: Promise<{ id: string }> }) {
 function LiveCardSkeleton() {
   return (
     <Boundary
-      label="<LiveCard> (uncached · connection())"
+      label="<LiveCard> (uncached)"
       size="small"
       color="blue"
       animateRerendering={false}
