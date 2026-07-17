@@ -1,0 +1,41 @@
+import db from '#/lib/db';
+import { Grid } from '#/ui/codehike';
+
+export const demo = db.demo.find({ where: { slug: 'en/root-params' } });
+
+# {demo.name}
+
+<Grid>
+
+# !!col
+
+- Root params are dynamic segments above a root layout, such as `[locale]/layout.tsx`.
+- `next/root-params` lets Server Components and cached functions read those values without threading props through every layer.
+- Nested `generateStaticParams` can also read root params provided by a parent segment.
+
+# !!col
+
+```tsx app/[locale]/root-params/page.tsx
+import { locale } from 'next/root-params';
+
+async function getLocalizedCatalog() {
+  // !mark
+  'use cache';
+  // !mark
+  const currentLocale = await locale();
+  return getCatalog(currentLocale);
+}
+```
+
+</Grid>
+
+### Demo
+
+- Switch between English and French to see the shell copy, generated params, and cached function vary by root param. The product data stays shared on purpose.
+- Open a product detail page to see a nested route whose `generateStaticParams` uses `locale()`.
+- The root layout reads the same `locale()` value for the document language.
+
+### Links
+
+- [`next/root-params` reference](/docs/app/api-reference/functions/next-root-params)
+- [Cache Components migration guide](/docs/app/guides/migrating-to-cache-components)

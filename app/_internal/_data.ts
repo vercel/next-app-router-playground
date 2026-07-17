@@ -147,6 +147,16 @@ const demos = [
         name: 'Not Found',
         description: 'Create Not Found UI for specific parts of an app',
       },
+      {
+        slug: 'unauthorized',
+        name: 'Unauthorized',
+        description: 'Create Unauthorized UI for unauthenticated users',
+      },
+      {
+        slug: 'forbidden',
+        name: 'Forbidden',
+        description: 'Create Forbidden UI for unauthorized users',
+      },
     ],
   },
   {
@@ -194,6 +204,11 @@ const demos = [
     name: 'APIs',
     items: [
       {
+        slug: 'en/root-params',
+        name: 'Root Params',
+        description: 'Read params above a root layout with next/root-params',
+      },
+      {
         slug: 'use-link-status',
         name: 'useLinkStatus',
         description: 'Create inline visual feedback for link interactions',
@@ -214,6 +229,12 @@ const demos = [
         name: 'Client Context',
         description:
           'Pass context between Client Components that cross Server/Client Component boundary',
+      },
+      {
+        slug: 'error-recovery',
+        name: 'Error Recovery',
+        description:
+          'Recover Server Component errors with catchError and retry',
       },
     ],
   },

@@ -9,6 +9,7 @@ const nextConfig = {
     inlineCss: true,
     cachedNavigations: true,
     viewTransition: true,
+    authInterrupts: true,
   },
 };
 

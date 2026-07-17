@@ -13,7 +13,9 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
       ? searchParams.get('title')
       : 'App Router Playground';
 
-    const file = await readFile(join(process.cwd(), './Inter-SemiBold.ttf'));
+    const file = await readFile(
+      join(process.cwd(), './app/api/og/Inter-SemiBold.ttf'),
+    );
     const font = Uint8Array.from(file).buffer;
 
     return new ImageResponse(
