@@ -1,20 +1,27 @@
 import { notFound } from 'next/navigation';
-import { connection } from 'next/server';
 import { Boundary } from '#/ui/boundary';
 import { ProductCard } from '#/ui/product-card';
 import db from '#/lib/db';
+
+export async function generateStaticParams() {
+  const categories = db.category.findMany();
+  return categories.map((category) => {
+    const section = db.section.find({ where: { id: category.section } });
+    if (!section) {
+      throw new Error(`Missing section for category "${category.slug}"`);
+    }
+
+    return { section: section.slug, category: category.slug };
+  });
+}
 
 export default async function Page({
   params,
 }: {
   params: Promise<{ section: string; category: string }>;
 }) {
-  // DEMO:
-  // This page would normally be prerendered at build time because it doesn't use dynamic APIs.
-  // That means the loading state wouldn't show. To force one:
-  // 1. We indicate that we require a user Request before continuing:
-  await connection();
-  // 2. Add an artificial delay to make the loading state more noticeable:
+  'use cache';
+
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   const { category: categorySlug } = await params;

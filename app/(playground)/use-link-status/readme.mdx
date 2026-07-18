@@ -5,7 +5,7 @@
 `useLinkStatus` is useful when:
 
 - Prefetching is disabled or in progress.
-- The destination route is dynamic **and** doesn't include a `loading.js` file that would allow an instant navigation.
+- A navigation still needs a moment to complete and you want feedback before the URL changes.
 
 **Note:** We recommend using `loading.js` and not disabling prefetching. This allows Next.js to [instantly navigate](/loading) to the new route and show a loading state while the rest of the page loads.
 
@@ -16,7 +16,7 @@
 
 #### Notes
 
-- Sub-category pages include an artificial delay and do not include a `loading.js` file to make the pending state more noticeable.
+- Sub-category pages include an artificial delay to make the pending state more noticeable.
 
 ## Links
 
