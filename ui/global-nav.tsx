@@ -6,7 +6,7 @@ import { NextLogoDark } from '#/ui/logo-next';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { useSelectedLayoutSegment } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { Suspense, useState } from 'react';
 
 export function GlobalNav({ items }: { items: DemoCategory[] }) {
@@ -88,8 +88,9 @@ function DynamicNavItem({
   item: Demo;
   close: () => false | void;
 }) {
-  const segment = useSelectedLayoutSegment();
-  const isActive = item.slug === segment;
+  const pathname = usePathname();
+  const isActive =
+    pathname === `/${item.slug}` || pathname.startsWith(`/${item.slug}/`);
 
   return <NavItem item={item} close={close} isActive={isActive} />;
 }

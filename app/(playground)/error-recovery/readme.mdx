@@ -1,0 +1,49 @@
+import db from '#/lib/db';
+import { Grid } from '#/ui/codehike';
+
+export const demo = db.demo.find({ where: { slug: 'error-recovery' } });
+
+# {demo.name}
+
+<Grid>
+
+# !!col
+
+- `catchError` creates a framework-aware component boundary for Server Component subtrees.
+- `error.tsx` creates the route segment boundary that Next.js wraps around the segment.
+- Both receive `retry()`, which re-fetches and re-renders the crashed Server Component tree.
+
+# !!col
+
+```tsx app/error-boundary.tsx
+'use client';
+
+import { catchError, type ErrorInfo } from 'next/error';
+
+function ErrorFallback(props, { retry }: ErrorInfo) {
+  return <button onClick={() => retry()}>Try again</button>;
+}
+
+export default catchError(ErrorFallback);
+```
+
+</Grid>
+
+### Demo
+
+- **Component-level recovery** uses `catchError` to recover only the crashed analytics card.
+- **Route-level recovery** uses `error.tsx` to recover the whole route segment.
+- Each demo uses a server read that fails once, then succeeds after `retry()`.
+
+### Error Handling Shape
+
+- Return expected errors to local UI when the user can keep working, for example validation messages or toast-worthy save failures.
+- Use framework interrupts like `notFound()`, `redirect()`, `unauthorized()`, and `forbidden()` when navigation or HTTP semantics should change.
+- Use `error.tsx` for uncaught route-segment failures.
+- Use `catchError` for component-level recovery around Server Component subtrees.
+
+### Links
+
+- [Next.js error handling guide](/docs/app/getting-started/error-handling)
+- [catchError API reference](/docs/app/api-reference/functions/catchError)
+- [Root Params demo](/en/root-params)
