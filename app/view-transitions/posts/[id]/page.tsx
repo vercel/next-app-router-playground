@@ -1,5 +1,3 @@
-'use cache';
-
 import db from '#/lib/db';
 import {
   HorizontalTransition,
@@ -12,6 +10,7 @@ import { ChevronLeftIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
 
 export async function generateStaticParams() {
   const products = db.product.findMany();
@@ -24,16 +23,6 @@ export default async function Page({
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const { id } = await params;
-  const product = db.product.find({ where: { id } });
-  if (!product) {
-    notFound();
-  }
-
-  const demo = db.demo.find({ where: { slug: 'view-transitions' } });
-  const prevProduct = `/${demo.slug}/posts/${product.prev}`;
-  const nextProduct = `/${demo.slug}/posts/${product.next}`;
-
   return (
     <HorizontalTransition
       enter={{
@@ -52,69 +41,101 @@ export default async function Page({
       }}
     >
       <Boundary label="posts/[id]/page.tsx" animateRerendering={true}>
-        <div className="grid gap-4">
-          <Link
-            href={`/${demo.slug}`}
-            transitionTypes={['transition-to-list']}
-            className="flex items-center gap-2 font-medium text-gray-300 hover:text-white"
-          >
-            <SharedTransition
-              name="navigation-icon"
-              share={{
-                default: 'auto',
-                'transition-to-list': 'animate-morph',
-                'transition-to-detail': 'animate-morph',
-              }}
-            >
-              <ChevronLeftIcon className="size-6 text-gray-600" />
-            </SharedTransition>
-
-            <SharedTransition
-              name="navigation-title"
-              share={{
-                default: 'auto',
-                'transition-to-list': 'animate-morph',
-                'transition-to-detail': 'animate-morph',
-              }}
-            >
-              <div>Shop</div>
-            </SharedTransition>
-          </Link>
-
-          <div className="grid grid-cols-2 gap-8">
-            <SharedTransition
-              name={`product-${product.id}`}
-              share={{
-                default: 'auto',
-                'transition-to-list': 'animate-morph',
-                'transition-to-detail': 'animate-morph',
-              }}
-            >
-              <ProductImage src={product.image} alt={product.name} />
-            </SharedTransition>
-
-            <ProductDetails id={product.id} />
-          </div>
-
-          <SharedTransition name="navigation-pagination">
-            <div className="flex justify-between gap-4">
-              <TransitionButtonLink
-                href={prevProduct}
-                type="transition-backwards"
-              >
-                Previous
-              </TransitionButtonLink>
-              <TransitionButtonLink
-                href={nextProduct}
-                type="transition-forwards"
-              >
-                Next
-              </TransitionButtonLink>
-            </div>
-          </SharedTransition>
-        </div>
+        <Suspense fallback={<ProductSkeleton />}>
+          <Product params={params} />
+        </Suspense>
       </Boundary>
     </HorizontalTransition>
+  );
+}
+
+async function Product({ params }: { params: Promise<{ id: string }> }) {
+  'use cache';
+  const { id } = await params;
+  const product = db.product.find({ where: { id } });
+  if (!product) {
+    notFound();
+  }
+
+  const demo = db.demo.find({ where: { slug: 'view-transitions' } });
+  const prevProduct = `/${demo.slug}/posts/${product.prev}`;
+  const nextProduct = `/${demo.slug}/posts/${product.next}`;
+
+  return (
+    <div className="grid gap-4">
+      <Link
+        href={`/${demo.slug}`}
+        transitionTypes={['transition-to-list']}
+        className="flex items-center gap-2 font-medium text-gray-300 hover:text-white"
+      >
+        <SharedTransition
+          name="navigation-icon"
+          share={{
+            default: 'auto',
+            'transition-to-list': 'animate-morph',
+            'transition-to-detail': 'animate-morph',
+          }}
+        >
+          <ChevronLeftIcon className="size-6 text-gray-600" />
+        </SharedTransition>
+
+        <SharedTransition
+          name="navigation-title"
+          share={{
+            default: 'auto',
+            'transition-to-list': 'animate-morph',
+            'transition-to-detail': 'animate-morph',
+          }}
+        >
+          <div>Shop</div>
+        </SharedTransition>
+      </Link>
+
+      <div className="grid grid-cols-2 gap-8">
+        <SharedTransition
+          name={`product-${product.id}`}
+          share={{
+            default: 'auto',
+            'transition-to-list': 'animate-morph',
+            'transition-to-detail': 'animate-morph',
+          }}
+        >
+          <ProductImage src={product.image} alt={product.name} />
+        </SharedTransition>
+
+        <ProductDetails id={product.id} />
+      </div>
+
+      <SharedTransition name="navigation-pagination">
+        <div className="flex justify-between gap-4">
+          <TransitionButtonLink href={prevProduct} type="transition-backwards">
+            Previous
+          </TransitionButtonLink>
+          <TransitionButtonLink href={nextProduct} type="transition-forwards">
+            Next
+          </TransitionButtonLink>
+        </div>
+      </SharedTransition>
+    </div>
+  );
+}
+
+function ProductSkeleton() {
+  return (
+    <div className="grid gap-4">
+      <div className="flex items-center gap-2 font-medium text-gray-300">
+        <ChevronLeftIcon className="size-6 text-gray-600" />
+        <div>Shop</div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-8">
+        <div className="overflow-hidden rounded-md bg-gray-900/50 p-12">
+          <div className="aspect-square w-full animate-pulse rounded bg-gray-800" />
+        </div>
+
+        <ProductDetails id="skeleton" />
+      </div>
+    </div>
   );
 }
 
