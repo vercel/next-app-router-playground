@@ -4,3 +4,40 @@ import { Grid } from '#/ui/codehike';
 export const demo = db.demo.find({ where: { slug: 'view-transitions' } });
 
 # {demo.name}
+
+<Grid>
+
+# !!col
+
+- Animate between routes with React's `<ViewTransition>` combined with the `transitionTypes` prop on `<Link>`, which drives the browser's native View Transitions API.
+- Give a `<ViewTransition>` a `name` to morph a shared element (like the product image) across views. Use `enter`/`exit` classes keyed by transition type to slide whole pages in a direction.
+
+# !!col
+
+```tsx app/view-transitions/page.tsx
+import { ViewTransition } from 'react';
+
+<Link
+  href={`/view-transitions/posts/${product.id}`}
+  // !mark
+  transitionTypes={['transition-to-detail']}
+>
+  // !mark
+  <ViewTransition name={`product-${product.id}`} share="animate-morph">
+    <ProductImage />
+  </ViewTransition>
+</Link>;
+```
+
+</Grid>
+
+### Demo
+
+- A shop with a product grid. Clicking a product navigates to its detail page and back.
+- The product image and the "Shop" title morph between the list and detail views, since each side wraps them in a `<ViewTransition>` with a matching `name`.
+- Whole-page slides are directional: list → detail slides in from the right, detail → list from the left, and the Previous/Next pagination slides backwards/forwards. Each `<Link>` picks the animation by passing a `transitionTypes` value.
+
+### Notes
+
+- The detail route reads `params` inside a `<Suspense>` boundary and marks that leaf `use cache`, so the shell stays URL-independent and navigations reuse an instant App Shell while the cached product streams in.
+- View Transitions rely on React's experimental `<ViewTransition>` component and the browser's View Transitions API; animations degrade gracefully where it isn't supported.
