@@ -24,7 +24,7 @@ export default async function Layout({
   return (
     <>
       <Boundary label="Demo" kind="solid" animateRerendering={false}>
-        <Mdx source={readme} collapsed={undefined} />
+        <Mdx source={readme} collapsed={true} />
       </Boundary>
       <Boundary
         label="layout.tsx"
