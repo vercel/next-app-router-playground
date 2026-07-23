@@ -36,8 +36,3 @@ import { ViewTransition } from 'react';
 - A shop with a product grid. Clicking a product navigates to its detail page and back.
 - The product image and the "Shop" title morph between the list and detail views, since each side wraps them in a `<ViewTransition>` with a matching `name`.
 - Whole-page slides are directional: list → detail slides in from the right, detail → list from the left, and the Previous/Next pagination slides backwards/forwards. Each `<Link>` picks the animation by passing a `transitionTypes` value.
-
-### Notes
-
-- The detail route reads `params` inside a `<Suspense>` boundary and marks that leaf `use cache`, so the shell stays URL-independent and navigations reuse an instant App Shell while the cached product streams in.
-- View Transitions rely on React's experimental `<ViewTransition>` component and the browser's View Transitions API; animations degrade gracefully where it isn't supported.
