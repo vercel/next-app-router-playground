@@ -194,6 +194,12 @@ const demos = [
     name: 'APIs',
     items: [
       {
+        slug: 'prefetch-stages',
+        name: 'Prefetch Stages',
+        description:
+          'Choose which content belongs in the App Shell, a full prefetch, or the navigation itself',
+      },
+      {
         slug: 'use-link-status',
         name: 'useLinkStatus',
         description: 'Create inline visual feedback for link interactions',

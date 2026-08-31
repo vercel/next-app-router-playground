@@ -1,0 +1,64 @@
+import db from '#/lib/db';
+import { Grid } from '#/ui/codehike';
+
+export const demo = db.demo.find({ where: { slug: 'prefetch-stages' } });
+
+# {demo.name}
+
+<Grid>
+
+# !!col
+
+- `unstable_navigation()` excludes subsequent content from both the App Shell and per-link prefetches.
+- **Top** uses `<Link prefetch={true}>`, so its product details are prefetched while its cached recommendations wait for navigation.
+
+# !!col
+
+```tsx app/prefetch-stages/await-navigation/[slug]/page.tsx
+async function getRecommendations(id) {
+  // !mark
+  await navigation();
+  return getRecommendationsCached(id);
+}
+```
+
+</Grid>
+
+<Grid>
+
+# !!col
+
+- `unstable_prefetch()` excludes subsequent content from the shared App Shell. `<Link prefetch={true}>` can include it in a per-link prefetch.
+- **Shorts** uses a default `<Link>`, so its cached product details wait for navigation.
+
+# !!col
+
+```tsx app/prefetch-stages/await-prefetch/[slug]/page.tsx
+async function ProductOutsideAppShell({ id }) {
+  // !mark
+  await prefetch();
+  return <ProductCard product={await getProduct(id)} />;
+}
+```
+
+</Grid>
+
+The stage APIs run outside cached functions. Work below each gate can still use `use cache`:
+
+```tsx app/prefetch-stages/_components/product.tsx
+async function getRecommendationsCached(id) {
+  // !mark
+  'use cache';
+  return db.product.findMany({ limit: 3 });
+}
+```
+
+### Demo
+
+- Click **Top** to see prefetched product details render immediately while cached recommendations stream in after navigation.
+- Click **Shorts** to see its App Shell immediately while cached product details stream in after navigation.
+- Each data function includes an artificial delay to make the stages visible. Prefetching only runs in production.
+
+### Notes
+
+- This demo uses the experimental `unstable_navigation()` and `unstable_prefetch()` APIs.
