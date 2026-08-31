@@ -9,8 +9,8 @@ export const demo = db.demo.find({ where: { slug: 'prefetch-stages' } });
 
 # !!col
 
-- `unstable_navigation()` excludes subsequent content from every prefetch.
-- **Top** uses `<Link prefetch={true}>`, but its cached recommendations still wait for navigation.
+- `unstable_navigation()` excludes subsequent content from both the App Shell and per-link prefetches.
+- **Top** uses `<Link prefetch={true}>`, so its product details are prefetched while its cached recommendations wait for navigation.
 
 # !!col
 
@@ -28,7 +28,7 @@ async function getRecommendations(id) {
 
 # !!col
 
-- `unstable_prefetch()` excludes subsequent content from the App Shell.
+- `unstable_prefetch()` excludes subsequent content from the shared App Shell. `<Link prefetch={true}>` can include it in a per-link prefetch.
 - **Shorts** uses a default `<Link>`, so its cached product details wait for navigation.
 
 # !!col
@@ -43,7 +43,7 @@ async function ProductOutsideAppShell({ id }) {
 
 </Grid>
 
-Both stage APIs are called outside the cached functions. The data remains cacheable:
+The stage APIs run outside cached functions. Work below each gate can still use `use cache`:
 
 ```tsx app/prefetch-stages/_components/product.tsx
 async function getRecommendationsCached(id) {
@@ -55,10 +55,10 @@ async function getRecommendationsCached(id) {
 
 ### Demo
 
-- Click **Top** to compare prefetched product details with recommendations that begin at navigation.
-- Click **Shorts** to see product details stream into its prefetched App Shell.
-- Artificial delays make each stage visible. Prefetching only runs in production.
+- Click **Top** to see prefetched product details render immediately while cached recommendations stream in after navigation.
+- Click **Shorts** to see its App Shell immediately while cached product details stream in after navigation.
+- Each data function includes an artificial delay to make the stages visible. Prefetching only runs in production.
 
 ### Notes
 
-- This demo uses the experimental `unstable_prefetch()` and `unstable_navigation()` APIs.
+- This demo uses the experimental `unstable_navigation()` and `unstable_prefetch()` APIs.
