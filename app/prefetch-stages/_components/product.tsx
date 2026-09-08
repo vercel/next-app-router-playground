@@ -71,18 +71,15 @@ export function ProductDetails({
       size="small"
       animateRerendering={false}
     >
-      <div className="flex flex-col gap-4">
-        <div className="text-sm font-medium text-gray-400">App Shell</div>
-        <div className="grid grid-cols-[6rem_minmax(0,1fr)] items-center gap-4">
-          <ProductCard product={product} compact />
-          <div className="flex min-w-0 flex-col justify-center gap-2">
-            <h1 className="text-xl font-semibold text-gray-200">
-              {product.name}
-            </h1>
-            <p className="font-mono text-sm text-gray-400">
-              ${product.price.toFixed(2)}
-            </p>
-          </div>
+      <div className="grid grid-cols-[6rem_minmax(0,1fr)] items-center gap-4">
+        <ProductCard product={product} compact />
+        <div className="flex min-w-0 flex-col justify-center gap-2">
+          <h1 className="text-xl font-semibold text-gray-200">
+            {product.name}
+          </h1>
+          <p className="font-mono text-sm text-gray-400">
+            ${product.price.toFixed(2)}
+          </p>
         </div>
       </div>
     </Boundary>
@@ -93,12 +90,10 @@ export function Recommendations({
   products,
   label = '<Recommendations> (Cacheable + Navigation Only)',
   heading = 'Recommendations',
-  api,
 }: {
   products: Product[];
   label?: string;
   heading?: string;
-  api?: 'navigation' | 'prefetch';
 }) {
   return (
     <Boundary
@@ -108,7 +103,6 @@ export function Recommendations({
       animateRerendering={false}
     >
       <div className="flex flex-col gap-4">
-        {api ? <StageApi name={api} /> : null}
         <h2 className="text-lg font-semibold text-gray-300">{heading}</h2>
         <div className="grid grid-cols-2 gap-3">
           {products.map((product) => (
@@ -124,12 +118,10 @@ export function RecommendationsSkeleton({
   label = '<Recommendations> (Cacheable + Navigation Only)',
   heading = 'Recommendations',
   count = 2,
-  api,
 }: {
   label?: string;
   heading?: string;
   count?: number;
-  api?: 'navigation' | 'prefetch';
 }) {
   return (
     <Boundary
@@ -140,7 +132,6 @@ export function RecommendationsSkeleton({
       animateRerendering={false}
     >
       <div className="flex flex-col gap-4">
-        {api ? <StageApi name={api} /> : null}
         <h2 className="text-lg font-semibold text-gray-300">{heading}</h2>
         <div className="grid grid-cols-2 gap-3">
           {Array.from({ length: count }).map((_, i) => (
@@ -150,8 +141,4 @@ export function RecommendationsSkeleton({
       </div>
     </Boundary>
   );
-}
-
-function StageApi({ name }: { name: 'navigation' | 'prefetch' }) {
-  return <div className="font-mono text-sm text-gray-400">await {name}()</div>;
 }

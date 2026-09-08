@@ -17,9 +17,9 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 
-const productLabel = '<ProductDetails>';
-const moreProductsLabel = '<MoreProducts>';
-const recommendationsLabel = '<Recommendations>';
+const productLabel = 'App Shell';
+const moreProductsLabel = 'await prefetch()';
+const recommendationsLabel = 'await navigation()';
 
 export function StagedProductPage({
   productId,
@@ -36,7 +36,7 @@ export function StagedProductPage({
     >
       <div className="flex flex-col gap-8">
         <BackLink />
-        <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-3">
+        <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-3 [&>*]:min-w-0">
           <AppShellProduct productId={productId} />
           <Suspense fallback={<ContentAfterPrefetchFallback />}>
             <ContentAfterPrefetch productId={productId} example={example} />
@@ -52,7 +52,11 @@ async function AppShellProduct({ productId }: { productId: string }) {
 
   if (!product) notFound();
 
-  return <ProductDetails product={product} label={productLabel} />;
+  return (
+    <div className="md:col-span-2 lg:col-span-1">
+      <ProductDetails product={product} label={productLabel} />
+    </div>
+  );
 }
 
 async function ContentAfterPrefetch({
@@ -72,19 +76,13 @@ async function ContentAfterPrefetch({
           <RecommendationsSkeleton
             label={moreProductsLabel}
             heading="More products"
-            api="prefetch"
           />
         }
       >
         <MoreProducts sessionId={sessionId} example={example} />
       </Suspense>
       <Suspense
-        fallback={
-          <RecommendationsSkeleton
-            label={recommendationsLabel}
-            api="navigation"
-          />
-        }
+        fallback={<RecommendationsSkeleton label={recommendationsLabel} />}
       >
         <ContentAfterNavigation productId={productId} sessionId={sessionId} />
       </Suspense>
@@ -105,7 +103,6 @@ async function MoreProducts({
       products={products}
       label={moreProductsLabel}
       heading="More products"
-      api="prefetch"
     />
   );
 }
@@ -120,13 +117,7 @@ async function ContentAfterNavigation({
   await navigation();
 
   const products = await getSessionRecommendations(productId, sessionId);
-  return (
-    <Recommendations
-      products={products}
-      label={recommendationsLabel}
-      api="navigation"
-    />
-  );
+  return <Recommendations products={products} label={recommendationsLabel} />;
 }
 
 function ContentAfterPrefetchFallback() {
@@ -135,9 +126,8 @@ function ContentAfterPrefetchFallback() {
       <RecommendationsSkeleton
         label={moreProductsLabel}
         heading="More products"
-        api="prefetch"
       />
-      <RecommendationsSkeleton label={recommendationsLabel} api="navigation" />
+      <RecommendationsSkeleton label={recommendationsLabel} />
     </>
   );
 }
