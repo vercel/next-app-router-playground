@@ -9,49 +9,41 @@ export const demo = db.demo.find({ where: { slug: 'prefetch-stages' } });
 
 # !!col
 
-- `unstable_prefetch()` excludes subsequent content from the shared App Shell. A `<Link prefetch={true}>` can still include it in a per-link prefetch.
-- The **await prefetch** example uses this to prefetch its recommendations before navigation.
+- `unstable_prefetch()` removes subsequent content from the shared App Shell. A link with `prefetch={true}` can put it back in a per-link prefetch.
+- `unstable_navigation()` removes subsequent content from both prefetch stages, even when the link uses `prefetch={true}`.
 
 # !!col
 
-```tsx app/prefetch-stages/prefetch/page.tsx
-async function PrefetchedRecommendations() {
-  const sessionId = (await cookies()).get('session-id')?.value;
+```tsx app/prefetch-stages/_components/staged-product.tsx
+async function ContentAfterPrefetch() {
+  const sessionId = (await cookies()).get('session-id')?.value ?? 'guest';
   // !mark
   await prefetch();
-  return getSessionRecommendations('1', sessionId ?? 'guest');
+  return (
+    <>
+      <MoreProducts sessionId={sessionId} />
+      <Suspense fallback={<RecommendationsSkeleton />}>
+        <ContentAfterNavigation sessionId={sessionId} />
+      </Suspense>
+    </>
+  );
 }
-```
 
-</Grid>
-
-<Grid>
-
-# !!col
-
-- `unstable_navigation()` excludes subsequent content from both the shared App Shell and per-link prefetches.
-- The **await navigation** example uses the same product page, but its recommendations start loading only after navigation.
-
-# !!col
-
-```tsx app/prefetch-stages/navigation/page.tsx
-async function NavigationRecommendations() {
-  const sessionId = (await cookies()).get('session-id')?.value;
+async function ContentAfterNavigation({ sessionId }) {
   // !mark
   await navigation();
-  return getSessionRecommendations('2', sessionId ?? 'guest');
+  return <Recommendations />;
 }
 ```
 
 </Grid>
 
-Both stage APIs run outside the cached data function. Content below either gate remains cacheable.
+Both APIs run outside the cached data functions. `MoreProducts` depends on a cookie, not URL data, and uses a private cache. The recommendations after the navigation gate are cached too.
 
 ### Demo
 
-- Both examples use `<Link prefetch={true}>` and the same product-details and recommendations layout.
-- In **await prefetch**, the product details and recommendations are ready when navigation starts.
-- In **await navigation**, only the product details are ready. The recommendations show their fallback and stream in after navigation.
+- `<Link prefetch={true}>` includes the product and more products in the prefetch. Recommendations still stream after navigation.
+- `<Link>` includes only the product. More products and recommendations stream after navigation.
 - Each data function includes an artificial delay to make the stages visible. Prefetching only runs in production.
 
 ### Notes

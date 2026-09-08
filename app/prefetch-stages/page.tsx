@@ -16,19 +16,18 @@ export default function Page() {
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <ProductLink
-            product={products[0]}
-            href="/prefetch-stages/prefetch"
-            label="await prefetch()"
-          >
-            Recommendations are included in the per-link prefetch.
-          </ProductLink>
-          <ProductLink
             product={products[1]}
-            href="/prefetch-stages/navigation"
-            label="await navigation()"
-          >
-            Recommendations wait until navigation.
-          </ProductLink>
+            href="/prefetch-stages/full"
+            label="<Link prefetch={true}>"
+            result="Product + more products"
+            prefetch
+          />
+          <ProductLink
+            product={products[0]}
+            href="/prefetch-stages/auto"
+            label="<Link>"
+            result="Product only"
+          />
         </div>
       </div>
     </Boundary>
@@ -39,26 +38,34 @@ function ProductLink({
   product,
   href,
   label,
-  children,
+  result,
+  prefetch,
 }: {
   product: Product;
   href: string;
   label: string;
-  children: React.ReactNode;
+  result: string;
+  prefetch?: true;
 }) {
-  return (
-    <Link href={href} prefetch={true}>
-      <Boundary label={label} size="small" animateRerendering={false}>
-        <div className="grid grid-cols-[7rem_minmax(0,1fr)] items-center gap-4">
-          <ProductCard product={product} animateEnter={true} compact />
-          <div className="min-w-0">
-            <div className="font-medium text-gray-300 group-hover:text-white">
-              {product.name}
-            </div>
-            <p className="mt-1 text-sm text-gray-500">{children}</p>
+  const card = (
+    <Boundary label={label} size="small" animateRerendering={false}>
+      <div className="grid grid-cols-[8rem_minmax(0,1fr)] items-center gap-5">
+        <ProductCard product={product} animateEnter={true} compact />
+        <div className="min-w-0">
+          <div className="font-medium text-gray-300 group-hover:text-white">
+            {product.name}
           </div>
+          <div className="mt-2 text-sm text-gray-500">{result}</div>
         </div>
-      </Boundary>
+      </div>
+    </Boundary>
+  );
+
+  return prefetch ? (
+    <Link href={href} prefetch={true}>
+      {card}
     </Link>
+  ) : (
+    <Link href={href}>{card}</Link>
   );
 }

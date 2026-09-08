@@ -34,7 +34,7 @@ export function ProductCard<E extends ElementType = 'div'>({
       <div
         className={clsx(
           'overflow-hidden rounded-md bg-gray-900/50 group-hover:bg-gray-900',
-          compact ? 'p-3' : 'p-8',
+          compact ? 'p-2' : 'p-8',
         )}
       >
         <Image
