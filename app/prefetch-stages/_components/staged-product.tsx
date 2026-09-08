@@ -17,9 +17,9 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 
-const productLabel = '<ProductDetails> (app shell)';
-const moreProductsLabel = '<MoreProducts> (prefetch)';
-const recommendationsLabel = '<Recommendations> (navigation)';
+const productLabel = '<ProductDetails>';
+const moreProductsLabel = '<MoreProducts>';
+const recommendationsLabel = '<Recommendations>';
 
 export function StagedProductPage({
   productId,
@@ -30,7 +30,7 @@ export function StagedProductPage({
 }) {
   return (
     <Boundary
-      label="page.tsx (app shell)"
+      label="page.tsx (App Shell)"
       labelCase="normal"
       animateRerendering={false}
     >
@@ -72,13 +72,19 @@ async function ContentAfterPrefetch({
           <RecommendationsSkeleton
             label={moreProductsLabel}
             heading="More products"
+            api="prefetch"
           />
         }
       >
         <MoreProducts sessionId={sessionId} example={example} />
       </Suspense>
       <Suspense
-        fallback={<RecommendationsSkeleton label={recommendationsLabel} />}
+        fallback={
+          <RecommendationsSkeleton
+            label={recommendationsLabel}
+            api="navigation"
+          />
+        }
       >
         <ContentAfterNavigation productId={productId} sessionId={sessionId} />
       </Suspense>
@@ -99,6 +105,7 @@ async function MoreProducts({
       products={products}
       label={moreProductsLabel}
       heading="More products"
+      api="prefetch"
     />
   );
 }
@@ -113,7 +120,13 @@ async function ContentAfterNavigation({
   await navigation();
 
   const products = await getSessionRecommendations(productId, sessionId);
-  return <Recommendations products={products} label={recommendationsLabel} />;
+  return (
+    <Recommendations
+      products={products}
+      label={recommendationsLabel}
+      api="navigation"
+    />
+  );
 }
 
 function ContentAfterPrefetchFallback() {
@@ -122,8 +135,9 @@ function ContentAfterPrefetchFallback() {
       <RecommendationsSkeleton
         label={moreProductsLabel}
         heading="More products"
+        api="prefetch"
       />
-      <RecommendationsSkeleton label={recommendationsLabel} />
+      <RecommendationsSkeleton label={recommendationsLabel} api="navigation" />
     </>
   );
 }
