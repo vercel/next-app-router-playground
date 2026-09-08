@@ -29,15 +29,16 @@ async function getRecommendations(id) {
 # !!col
 
 - `unstable_prefetch()` excludes subsequent content from the shared App Shell. `<Link prefetch={true}>` can include it in a per-link prefetch.
-- **Shorts** uses a default `<Link>`, so its cached product details wait for navigation.
+- **Shorts** uses a default `<Link>`, so its session-driven recommendations wait for navigation.
 
 # !!col
 
-```tsx app/prefetch-stages/await-prefetch/[slug]/page.tsx
-async function ProductOutsideAppShell({ id }) {
+```tsx app/prefetch-stages/await-prefetch/page.tsx
+async function RecommendationsAfterPrefetch() {
+  const sessionId = (await cookies()).get('session-id')?.value ?? 'guest';
   // !mark
   await prefetch();
-  return <ProductCard product={await getProduct(id)} />;
+  return getSessionRecommendations('2', sessionId);
 }
 ```
 
@@ -56,7 +57,7 @@ async function getRecommendationsCached(id) {
 ### Demo
 
 - Click **Top** to see prefetched product details render immediately while cached recommendations stream in after navigation.
-- Click **Shorts** to see its App Shell immediately while cached product details stream in after navigation.
+- Click **Shorts** to see its product details in the App Shell while cached recommendations stream in after navigation.
 - Each data function includes an artificial delay to make the stages visible. Prefetching only runs in production.
 
 ### Notes

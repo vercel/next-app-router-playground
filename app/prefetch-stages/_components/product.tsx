@@ -18,6 +18,29 @@ export async function getRecommendations(productId: string) {
   return getRecommendationsCached(productId);
 }
 
+export async function getSessionRecommendations(
+  productId: string,
+  sessionId: string,
+) {
+  'use cache: private';
+  cacheLife('hours');
+
+  // DEMO: Add a delay to simulate a slow data request
+  await new Promise((resolve) => setTimeout(resolve, 1500));
+
+  const products = db.product
+    .findMany({ limit: 9 })
+    .filter((product) => product.id !== productId);
+  const offset =
+    Math.abs(
+      sessionId.split('').reduce((hash, character) => {
+        return character.charCodeAt(0) + ((hash << 5) - hash);
+      }, 0),
+    ) % products.length;
+
+  return [...products.slice(offset), ...products.slice(0, offset)].slice(0, 3);
+}
+
 async function getRecommendationsCached(productId: string) {
   'use cache';
   cacheLife('hours');
@@ -79,13 +102,15 @@ export function ProductDetailsSkeleton({ label }: { label: string }) {
   );
 }
 
-export function Recommendations({ products }: { products: Product[] }) {
+export function Recommendations({
+  products,
+  label = '<Recommendations> (Cacheable + Navigation Only)',
+}: {
+  products: Product[];
+  label?: string;
+}) {
   return (
-    <Boundary
-      label="<Recommendations> (Cacheable + Navigation Only)"
-      size="small"
-      animateRerendering={false}
-    >
+    <Boundary label={label} size="small" animateRerendering={false}>
       <div className="flex flex-col gap-4">
         <h2 className="text-lg font-semibold text-gray-300">Recommendations</h2>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
@@ -98,10 +123,14 @@ export function Recommendations({ products }: { products: Product[] }) {
   );
 }
 
-export function RecommendationsSkeleton() {
+export function RecommendationsSkeleton({
+  label = '<Recommendations> (Cacheable + Navigation Only)',
+}: {
+  label?: string;
+}) {
   return (
     <Boundary
-      label="<Recommendations> (Cacheable + Navigation Only)"
+      label={label}
       size="small"
       color="blue"
       animateRerendering={false}

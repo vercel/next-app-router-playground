@@ -33,12 +33,12 @@ function ProductLink({
   stage: 'navigation' | 'prefetch';
 }) {
   const isNavigation = stage === 'navigation';
+  const href = isNavigation
+    ? `/prefetch-stages/await-navigation/${product.id}`
+    : '/prefetch-stages/await-prefetch';
 
   return (
-    <Link
-      href={`/prefetch-stages/await-${stage}/${product.id}`}
-      prefetch={isNavigation ? true : undefined}
-    >
+    <Link href={href} prefetch={isNavigation ? true : undefined}>
       <Boundary
         label={isNavigation ? 'await navigation()' : 'await prefetch()'}
         size="small"
@@ -52,7 +52,7 @@ function ProductLink({
           <p className="mt-1 text-sm text-gray-500">
             {isNavigation
               ? '<Link prefetch={true}> prefetches the product, but not its recommendations.'
-              : 'A default <Link> prefetches the App Shell without the product details.'}
+              : 'A default <Link> prefetches the product in the App Shell, but not its recommendations.'}
           </p>
         </div>
       </Boundary>
