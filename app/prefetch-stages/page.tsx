@@ -3,9 +3,7 @@ import { Boundary } from '#/ui/boundary';
 import { ProductCard } from '#/ui/product-card';
 import Link from 'next/link';
 
-export default async function Page() {
-  'use cache';
-
+export default function Page() {
   const products = db.product.findMany({ limit: 2 });
 
   return (
