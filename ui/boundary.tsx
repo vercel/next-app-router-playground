@@ -15,6 +15,7 @@ export const Boundary = ({
   corners,
   className,
   pulse = false,
+  labelCase = 'uppercase',
 }: {
   children: React.ReactNode;
   label?: string | string[];
@@ -25,6 +26,7 @@ export const Boundary = ({
   corners?: boolean;
   className?: string;
   pulse?: boolean;
+  labelCase?: 'normal' | 'uppercase';
 }) => {
   return (
     <div
@@ -70,6 +72,7 @@ export const Boundary = ({
               key={label}
               color={color}
               animateRerendering={animateRerendering}
+              labelCase={labelCase}
             >
               {label}
             </Label>
@@ -95,16 +98,19 @@ const Label = ({
   children,
   animateRerendering,
   color,
+  labelCase,
 }: {
   children: React.ReactNode;
   animateRerendering?: boolean;
   color?: Color;
+  labelCase: 'normal' | 'uppercase';
 }) => {
   return (
     <div
       className={clsx(
-        'px-1.5 font-mono leading-4 font-medium tracking-widest uppercase ring-6 ring-gray-950',
+        'px-1.5 font-mono leading-4 font-medium tracking-widest ring-6 ring-gray-950',
         {
+          uppercase: labelCase === 'uppercase',
           'bg-gray-800 text-gray-500': color === 'gray',
           'bg-pink-600 text-pink-200': color === 'pink',
           'bg-blue-600 text-blue-200': color === 'blue',

@@ -17,9 +17,9 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 
-const productLabel = '<ProductDetails> (App Shell)';
-const moreProductsLabel = '<MoreProducts> (Prefetch)';
-const recommendationsLabel = '<Recommendations> (Navigation)';
+const productLabel = '<ProductDetails> (app shell)';
+const moreProductsLabel = '<MoreProducts> (prefetch)';
+const recommendationsLabel = '<Recommendations> (navigation)';
 
 export function StagedProductPage({
   productId,
@@ -29,7 +29,11 @@ export function StagedProductPage({
   example: 'auto' | 'full';
 }) {
   return (
-    <Boundary label="page.tsx (App Shell)" animateRerendering={false}>
+    <Boundary
+      label="page.tsx (app shell)"
+      labelCase="normal"
+      animateRerendering={false}
+    >
       <div className="flex flex-col gap-8">
         <BackLink />
         <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-3">

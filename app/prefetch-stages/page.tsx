@@ -16,17 +16,17 @@ export default function Page() {
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <ProductLink
-            product={products[1]}
-            href="/prefetch-stages/full"
-            label="<Link prefetch={true}>"
-            result="Product + more products"
-            prefetch
-          />
-          <ProductLink
             product={products[0]}
             href="/prefetch-stages/auto"
-            label="<Link>"
+            linkLabel="<Link>"
             result="Product only"
+          />
+          <ProductLink
+            product={products[1]}
+            href="/prefetch-stages/full"
+            linkLabel="<Link prefetch={true}>"
+            result="Product + more products"
+            prefetch
           />
         </div>
       </div>
@@ -37,22 +37,25 @@ export default function Page() {
 function ProductLink({
   product,
   href,
-  label,
+  linkLabel,
   result,
   prefetch,
 }: {
   product: Product;
   href: string;
-  label: string;
+  linkLabel: string;
   result: string;
   prefetch?: true;
 }) {
   const card = (
-    <Boundary label={label} size="small" animateRerendering={false}>
+    <Boundary size="small" animateRerendering={false}>
       <div className="grid grid-cols-[8rem_minmax(0,1fr)] items-center gap-5">
         <ProductCard product={product} animateEnter={true} compact />
         <div className="min-w-0">
-          <div className="font-medium text-gray-300 group-hover:text-white">
+          <div className="font-mono text-xs whitespace-nowrap text-gray-300">
+            {linkLabel}
+          </div>
+          <div className="mt-3 font-medium text-gray-300 group-hover:text-white">
             {product.name}
           </div>
           <div className="mt-2 text-sm text-gray-500">{result}</div>

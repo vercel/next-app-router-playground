@@ -65,7 +65,12 @@ export function ProductDetails({
   label: string;
 }) {
   return (
-    <Boundary label={label} size="small" animateRerendering={false}>
+    <Boundary
+      label={label}
+      labelCase="normal"
+      size="small"
+      animateRerendering={false}
+    >
       <div className="grid grid-cols-[6rem_minmax(0,1fr)] items-center gap-4">
         <ProductCard product={product} compact />
         <div className="flex min-w-0 flex-col justify-center gap-2">
@@ -91,7 +96,12 @@ export function Recommendations({
   heading?: string;
 }) {
   return (
-    <Boundary label={label} size="small" animateRerendering={false}>
+    <Boundary
+      label={label}
+      labelCase="normal"
+      size="small"
+      animateRerendering={false}
+    >
       <div className="flex flex-col gap-4">
         <h2 className="text-lg font-semibold text-gray-300">{heading}</h2>
         <div className="grid grid-cols-2 gap-3">
@@ -116,6 +126,7 @@ export function RecommendationsSkeleton({
   return (
     <Boundary
       label={label}
+      labelCase="normal"
       size="small"
       color="blue"
       animateRerendering={false}
