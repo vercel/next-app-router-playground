@@ -36,18 +36,6 @@ export async function getSessionRecommendations(
   return [...products.slice(offset), ...products.slice(0, offset)].slice(0, 3);
 }
 
-export async function getMoreProducts(productId: string) {
-  'use cache';
-  cacheLife('hours');
-
-  // DEMO: Add a delay to simulate a slow data request
-  await new Promise((resolve) => setTimeout(resolve, 1500));
-  return db.product
-    .findMany({ limit: 7 })
-    .filter((product) => product.id !== productId)
-    .slice(3, 6);
-}
-
 export function ProductDetails({
   product,
   label,
@@ -57,20 +45,16 @@ export function ProductDetails({
 }) {
   return (
     <Boundary label={label} size="small" animateRerendering={false}>
-      <div className="flex flex-col gap-8">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <ProductCard product={product} />
-          <div className="flex flex-col justify-center gap-4">
-            <h1 className="text-2xl font-semibold text-gray-200">
-              {product.name}
-            </h1>
-            <p className="font-mono text-lg text-gray-400">
-              ${product.price.toFixed(2)}
-            </p>
-            <p className="text-sm text-gray-500">
-              This product was loaded by an async function using use cache.
-            </p>
-          </div>
+      <div className="grid grid-cols-[5rem_minmax(0,1fr)] items-center gap-4">
+        <ProductCard product={product} compact />
+        <div className="flex min-w-0 flex-col justify-center gap-2">
+          <h1 className="text-xl font-semibold text-gray-200">
+            {product.name}
+          </h1>
+          <p className="font-mono text-sm text-gray-400">
+            ${product.price.toFixed(2)}
+          </p>
+          <p className="text-xs text-gray-500">Included in the App Shell.</p>
         </div>
       </div>
     </Boundary>
@@ -85,11 +69,11 @@ export function ProductDetailsSkeleton({ label }: { label: string }) {
       color="blue"
       animateRerendering={false}
     >
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+      <div className="grid grid-cols-[5rem_minmax(0,1fr)] items-center gap-4">
         <ProductCardSkeleton />
-        <div className="flex flex-col justify-center gap-[1.4em] text-sm text-gray-800">
+        <div className="flex flex-col justify-center gap-[1.1em] text-xs text-gray-800">
           <SkeletonText count={1} minLength={3} maxLength={12} />
-          <SkeletonText count={2} minLength={26} maxLength={50} />
+          <SkeletonText count={1} minLength={12} maxLength={18} />
           <SkeletonText count={1} minLength={12} maxLength={18} />
         </div>
       </div>
@@ -110,9 +94,9 @@ export function Recommendations({
     <Boundary label={label} size="small" animateRerendering={false}>
       <div className="flex flex-col gap-4">
         <h2 className="text-lg font-semibold text-gray-300">{heading}</h2>
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+        <div className="grid grid-cols-3 gap-3">
           {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} compact />
           ))}
         </div>
       </div>
@@ -136,7 +120,7 @@ export function RecommendationsSkeleton({
     >
       <div className="flex flex-col gap-4">
         <h2 className="text-lg font-semibold text-gray-300">{heading}</h2>
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+        <div className="grid grid-cols-3 gap-3">
           {[1, 2, 3].map((i) => (
             <ProductCardSkeleton key={i} />
           ))}

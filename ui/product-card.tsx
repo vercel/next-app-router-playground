@@ -18,19 +18,25 @@ export type PolymorphicProps<
 
 type ProductCardProps<E extends ElementType> = PolymorphicProps<
   E,
-  { product: Product; animateEnter?: boolean }
+  { product: Product; animateEnter?: boolean; compact?: boolean }
 >;
 
 export function ProductCard<E extends ElementType = 'div'>({
   as,
   product,
   animateEnter,
+  compact = false,
   ...rest
 }: ProductCardProps<E>) {
   const Component = as || 'div';
   return (
     <Component className="group flex flex-col gap-2.5" {...rest}>
-      <div className="overflow-hidden rounded-md bg-gray-900/50 p-8 group-hover:bg-gray-900">
+      <div
+        className={clsx(
+          'overflow-hidden rounded-md bg-gray-900/50 group-hover:bg-gray-900',
+          compact ? 'p-3' : 'p-8',
+        )}
+      >
         <Image
           className={clsx(animateEnter && 'transition-enter')}
           src={`/shop/${product.image}`}
