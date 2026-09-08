@@ -9,36 +9,23 @@ export const demo = db.demo.find({ where: { slug: 'prefetch-stages' } });
 
 # !!col
 
-- `unstable_navigation()` excludes subsequent content from both the App Shell and per-link prefetches.
-- **Top** uses `<Link prefetch={true}>`, so its product details are prefetched while its cached recommendations wait for navigation.
+- `unstable_prefetch()` moves subsequent content out of the shared App Shell and into a per-link prefetch.
+- `unstable_navigation()` moves subsequent content past both prefetch stages so it runs on navigation.
 
 # !!col
 
-```tsx app/prefetch-stages/await-navigation/[slug]/page.tsx
-async function getRecommendations(id) {
-  // !mark
-  await navigation();
-  return getRecommendationsCached(id);
-}
-```
-
-</Grid>
-
-<Grid>
-
-# !!col
-
-- `unstable_prefetch()` excludes subsequent content from the shared App Shell. `<Link prefetch={true}>` can include it in a per-link prefetch.
-- **Shorts** uses a default `<Link>`, so its session-driven recommendations wait for navigation.
-
-# !!col
-
-```tsx app/prefetch-stages/await-prefetch/page.tsx
-async function RecommendationsAfterPrefetch() {
-  const sessionId = (await cookies()).get('session-id')?.value ?? 'guest';
+```tsx app/prefetch-stages/product/page.tsx
+async function PrefetchedRecommendations() {
+  const sessionId = (await cookies()).get('session-id')?.value;
   // !mark
   await prefetch();
-  return getSessionRecommendations('2', sessionId);
+  return getSessionRecommendations('1', sessionId ?? 'guest');
+}
+
+async function NavigationOnlyProducts() {
+  // !mark
+  await navigation();
+  return getMoreProducts('1');
 }
 ```
 
@@ -47,7 +34,7 @@ async function RecommendationsAfterPrefetch() {
 The stage APIs run outside cached functions. Work below each gate can still use `use cache`:
 
 ```tsx app/prefetch-stages/_components/product.tsx
-async function getRecommendationsCached(id) {
+async function getMoreProducts(id) {
   // !mark
   'use cache';
   return db.product.findMany({ limit: 3 });
@@ -56,10 +43,11 @@ async function getRecommendationsCached(id) {
 
 ### Demo
 
-- Click **Top** to see prefetched product details render immediately while cached recommendations stream in after navigation.
-- Click **Shorts** to see its product details in the App Shell while cached recommendations stream in after navigation.
+- The product details are part of the shared App Shell and are always prefetched.
+- `<Link prefetch={true}>` also includes the private cached recommendations after `unstable_prefetch()`.
+- Click the product to see those two sections immediately while the section after `unstable_navigation()` streams in.
 - Each data function includes an artificial delay to make the stages visible. Prefetching only runs in production.
 
 ### Notes
 
-- This demo uses the experimental `unstable_navigation()` and `unstable_prefetch()` APIs.
+- This demo uses the experimental `unstable_prefetch()` and `unstable_navigation()` APIs.

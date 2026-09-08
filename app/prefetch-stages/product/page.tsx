@@ -3,21 +3,25 @@ import {
   ProductDetailsSkeleton,
   Recommendations,
   RecommendationsSkeleton,
+  getMoreProducts,
   getProduct,
   getSessionRecommendations,
 } from '#/app/prefetch-stages/_components/product';
 import { Boundary } from '#/ui/boundary';
 import { ChevronLeftIcon } from '@heroicons/react/24/solid';
-import { unstable_prefetch as prefetch } from 'next/cache';
+import {
+  unstable_navigation as navigation,
+  unstable_prefetch as prefetch,
+} from 'next/cache';
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 
-const productId = '2';
-const productLabel = '<ProductDetails> (App Shell)';
-const recommendationsLabel =
-  '<Recommendations> (Private Cache + Not in App Shell)';
+const productId = '1';
+const productLabel = '<ProductDetails> (Cacheable + App Shell)';
+const prefetchedLabel = '<Recommendations> (Private Cache + Per-Link Prefetch)';
+const navigationLabel = '<MoreProducts> (Cacheable + Navigation Only)';
 
 export default function Page() {
   return (
@@ -28,9 +32,19 @@ export default function Page() {
           <AppShellProduct />
         </Suspense>
         <Suspense
-          fallback={<RecommendationsSkeleton label={recommendationsLabel} />}
+          fallback={<RecommendationsSkeleton label={prefetchedLabel} />}
         >
-          <RecommendationsAfterPrefetch />
+          <PrefetchedRecommendations />
+        </Suspense>
+        <Suspense
+          fallback={
+            <RecommendationsSkeleton
+              label={navigationLabel}
+              heading="More products"
+            />
+          }
+        >
+          <NavigationOnlyProducts />
         </Suspense>
       </div>
     </Boundary>
@@ -45,12 +59,25 @@ async function AppShellProduct() {
   return <ProductDetails product={product} label={productLabel} />;
 }
 
-async function RecommendationsAfterPrefetch() {
+async function PrefetchedRecommendations() {
   const sessionId = (await cookies()).get('session-id')?.value ?? 'guest';
   await prefetch();
 
   const products = await getSessionRecommendations(productId, sessionId);
-  return <Recommendations products={products} label={recommendationsLabel} />;
+  return <Recommendations products={products} label={prefetchedLabel} />;
+}
+
+async function NavigationOnlyProducts() {
+  await navigation();
+
+  const products = await getMoreProducts(productId);
+  return (
+    <Recommendations
+      products={products}
+      label={navigationLabel}
+      heading="More products"
+    />
+  );
 }
 
 function BackLink() {

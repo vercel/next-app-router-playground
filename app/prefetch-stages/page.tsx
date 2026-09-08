@@ -4,43 +4,29 @@ import { ProductCard } from '#/ui/product-card';
 import Link from 'next/link';
 
 export default function Page() {
-  const products = db.product.findMany({ limit: 2 });
+  const product = db.product.findMany({ limit: 1 })[0];
 
   return (
     <Boundary label="page.tsx (statically inferred)">
       <div className="flex flex-col gap-4">
         <h1 className="text-xl font-semibold text-gray-300">
           Available Products{' '}
-          <span className="font-mono tracking-tighter text-gray-600">
-            ({products.length})
-          </span>
+          <span className="font-mono tracking-tighter text-gray-600">(1)</span>
         </h1>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <ProductLink product={products[0]} stage="navigation" />
-          <ProductLink product={products[1]} stage="prefetch" />
+          <ProductLink product={product} />
         </div>
       </div>
     </Boundary>
   );
 }
 
-function ProductLink({
-  product,
-  stage,
-}: {
-  product: Product;
-  stage: 'navigation' | 'prefetch';
-}) {
-  const isNavigation = stage === 'navigation';
-  const href = isNavigation
-    ? `/prefetch-stages/await-navigation/${product.id}`
-    : '/prefetch-stages/await-prefetch';
-
+function ProductLink({ product }: { product: Product }) {
   return (
-    <Link href={href} prefetch={isNavigation ? true : undefined}>
+    <Link href="/prefetch-stages/product" prefetch={true}>
       <Boundary
-        label={isNavigation ? 'await navigation()' : 'await prefetch()'}
+        label="await prefetch() → await navigation()"
         size="small"
         animateRerendering={false}
       >
@@ -50,9 +36,9 @@ function ProductLink({
             {product.name}
           </div>
           <p className="mt-1 text-sm text-gray-500">
-            {isNavigation
-              ? '<Link prefetch={true}> prefetches the product, but not its recommendations.'
-              : 'A default <Link> prefetches the product in the App Shell, but not its recommendations.'}
+            {
+              '<Link prefetch={true}> includes recommendations, while more products wait for navigation.'
+            }
           </p>
         </div>
       </Boundary>

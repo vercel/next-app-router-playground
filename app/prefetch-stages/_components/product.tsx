@@ -2,7 +2,7 @@ import db, { type Product } from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
 import { ProductCard, ProductCardSkeleton } from '#/ui/product-card';
 import { SkeletonText } from '#/ui/skeleton';
-import { cacheLife, unstable_navigation as navigation } from 'next/cache';
+import { cacheLife } from 'next/cache';
 
 export async function getProduct(id: string) {
   'use cache';
@@ -11,11 +11,6 @@ export async function getProduct(id: string) {
   // DEMO: Add a delay to simulate a slow data request
   await new Promise((resolve) => setTimeout(resolve, 1500));
   return db.product.find({ where: { id } });
-}
-
-export async function getRecommendations(productId: string) {
-  await navigation();
-  return getRecommendationsCached(productId);
 }
 
 export async function getSessionRecommendations(
@@ -29,7 +24,7 @@ export async function getSessionRecommendations(
   await new Promise((resolve) => setTimeout(resolve, 1500));
 
   const products = db.product
-    .findMany({ limit: 9 })
+    .findMany({ limit: 4 })
     .filter((product) => product.id !== productId);
   const offset =
     Math.abs(
@@ -41,16 +36,16 @@ export async function getSessionRecommendations(
   return [...products.slice(offset), ...products.slice(0, offset)].slice(0, 3);
 }
 
-async function getRecommendationsCached(productId: string) {
+export async function getMoreProducts(productId: string) {
   'use cache';
   cacheLife('hours');
 
   // DEMO: Add a delay to simulate a slow data request
   await new Promise((resolve) => setTimeout(resolve, 1500));
   return db.product
-    .findMany({ limit: 4 })
+    .findMany({ limit: 7 })
     .filter((product) => product.id !== productId)
-    .slice(0, 3);
+    .slice(3, 6);
 }
 
 export function ProductDetails({
@@ -105,14 +100,16 @@ export function ProductDetailsSkeleton({ label }: { label: string }) {
 export function Recommendations({
   products,
   label = '<Recommendations> (Cacheable + Navigation Only)',
+  heading = 'Recommendations',
 }: {
   products: Product[];
   label?: string;
+  heading?: string;
 }) {
   return (
     <Boundary label={label} size="small" animateRerendering={false}>
       <div className="flex flex-col gap-4">
-        <h2 className="text-lg font-semibold text-gray-300">Recommendations</h2>
+        <h2 className="text-lg font-semibold text-gray-300">{heading}</h2>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
@@ -125,8 +122,10 @@ export function Recommendations({
 
 export function RecommendationsSkeleton({
   label = '<Recommendations> (Cacheable + Navigation Only)',
+  heading = 'Recommendations',
 }: {
   label?: string;
+  heading?: string;
 }) {
   return (
     <Boundary
@@ -136,7 +135,7 @@ export function RecommendationsSkeleton({
       animateRerendering={false}
     >
       <div className="flex flex-col gap-4">
-        <h2 className="text-lg font-semibold text-gray-300">Recommendations</h2>
+        <h2 className="text-lg font-semibold text-gray-300">{heading}</h2>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
           {[1, 2, 3].map((i) => (
             <ProductCardSkeleton key={i} />
