@@ -1,0 +1,97 @@
+# Workflow for building frontend and running Meticulous tests against static assets
+
+name: Meticulous
+
+# Important: The workflow needs to run both on pushes to your main branch and on
+# pull requests. It needs to run on your main branch because it'll use the results
+# from the base commit of the PR on the main branch to compare against.
+on:
+  push:
+    branches:
+      - main
+  pull_request: {}
+  # Important: We need the workflow to be triggered on workflow_dispatch events,
+  # so that Meticulous can run the workflow on the base commit to compare
+  # against if an existing workflow hasn't run. The meticulous-commit-sha input
+  # lets Meticulous ask for a specific commit (e.g. stacked PRs); without it,
+  # a dispatched run can only build whatever the branch currently points at.
+  workflow_dispatch:
+    inputs:
+      meticulous-commit-sha:
+        description: Commit Meticulous has asked this run to build. Defaults to the branch head.
+        required: false
+
+# Important: The workflow needs all the permissions below.
+# These permissions are mainly needed to post and update the status check and
+# feedback comment on your PR. Meticulous won't work without them.
+permissions:
+  actions: write
+  contents: read
+  issues: write
+  pull-requests: write
+  statuses: read
+
+env:
+  # Prefer the dispatched commit when set; otherwise the PR head. On pull_request github.sha is the merge commit,
+  # not the PR head SHA that Meticulous looks up.
+  METICULOUS_COMMIT_SHA: ${{ github.event.inputs['meticulous-commit-sha'] || (github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha) }}
+
+jobs:
+  test:
+    name: Meticulous
+    runs-on: ubuntu-latest
+
+    steps:
+      # Same workflow file as the upload step — ensure-base dispatches *this*
+      # workflow on the base branch. Run it before checkout/build so the base
+      # can start while this job continues. Needs no checkout. Pass the same
+      # ref as checkout so we pre-warm the base the upload step will ask for.
+      - name: Ensure base tests exist
+        uses: alwaysmeticulous/report-diffs-action/ensure-base@v1
+        with:
+          api-token: ${{ secrets.METICULOUS_API_TOKEN }}
+          ref: ${{ env.METICULOUS_COMMIT_SHA }}
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.METICULOUS_COMMIT_SHA }}
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+          run_install: false
+
+      - name: Use Node.js LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: pnpm
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: node-modules-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            node-modules-${{ runner.os }}
+
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile
+
+      - name: Build project
+        # METICULOUS_BUILD marks this as a build for Meticulous testing.
+        env:
+          METICULOUS_BUILD: "true"
+        run: |
+          pnpm build
+
+      - name: Run Meticulous tests
+        uses: alwaysmeticulous/report-diffs-action/upload-assets@v1
+        with:
+          api-token: ${{ secrets.METICULOUS_API_TOKEN }}
+          # TODO: Update the directory path below to match your app's build output directory
+          # For example, if you're using Vite, this is typically "dist"
+          app-directory: "dist"
