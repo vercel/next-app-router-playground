@@ -1,7 +1,7 @@
 import db from '#/lib/db';
 import { Grid } from '#/ui/codehike';
 
-export const demo = db.demo.find({ where: { slug: 'prefetch-stages' } });
+export const demo = db.demo.find({ where: { slug: 'navigation-stages' } });
 
 # {demo.name}
 
@@ -14,25 +14,28 @@ export const demo = db.demo.find({ where: { slug: 'prefetch-stages' } });
 
 # !!col
 
-```tsx app/prefetch-stages/_components/staged-product.tsx
-async function ContentAfterPrefetch() {
-  const sessionId = (await cookies()).get('session-id')?.value ?? 'guest';
+```tsx app/navigation-stages/_components/staged-product.tsx
+async function ContentAfterPrefetch({ productId, example }) {
   // !mark
   await prefetch();
+  const sessionId = (await cookies()).get('session-id')?.value ?? 'guest';
   return (
     <>
-      <MoreProducts sessionId={sessionId} />
       <Suspense fallback={<RecommendationsSkeleton />}>
-        <ContentAfterNavigation sessionId={sessionId} />
+        <MoreProducts sessionId={sessionId} example={example} />
+      </Suspense>
+      <Suspense fallback={<RecommendationsSkeleton />}>
+        <ContentAfterNavigation productId={productId} sessionId={sessionId} />
       </Suspense>
     </>
   );
 }
 
-async function ContentAfterNavigation({ sessionId }) {
+async function ContentAfterNavigation({ productId, sessionId }) {
   // !mark
   await navigation();
-  return <Recommendations />;
+  const products = await getSessionRecommendations(productId, sessionId);
+  return <Recommendations products={products} />;
 }
 ```
 

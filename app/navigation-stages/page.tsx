@@ -17,13 +17,13 @@ export default function Page() {
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <ProductLink
             product={products[0]}
-            href="/prefetch-stages/auto"
+            href="/navigation-stages/default"
             linkLabel="<Link>"
             result="Product only"
           />
           <ProductLink
             product={products[1]}
-            href="/prefetch-stages/full"
+            href="/navigation-stages/prefetch-true"
             linkLabel="<Link prefetch={true}>"
             result="Product + more products"
             prefetch

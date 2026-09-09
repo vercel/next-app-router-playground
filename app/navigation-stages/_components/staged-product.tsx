@@ -5,7 +5,7 @@ import {
   getMoreProducts,
   getProduct,
   getSessionRecommendations,
-} from '#/app/prefetch-stages/_components/product';
+} from '#/app/navigation-stages/_components/product';
 import { Boundary } from '#/ui/boundary';
 import { ChevronLeftIcon } from '@heroicons/react/24/solid';
 import {
@@ -26,7 +26,7 @@ export function StagedProductPage({
   example,
 }: {
   productId: string;
-  example: 'auto' | 'full';
+  example: 'default' | 'prefetch-true';
 }) {
   return (
     <Boundary
@@ -64,10 +64,10 @@ async function ContentAfterPrefetch({
   example,
 }: {
   productId: string;
-  example: 'auto' | 'full';
+  example: 'default' | 'prefetch-true';
 }) {
-  const sessionId = (await cookies()).get('session-id')?.value ?? 'guest';
   await prefetch();
+  const sessionId = (await cookies()).get('session-id')?.value ?? 'guest';
 
   return (
     <>
@@ -95,7 +95,7 @@ async function MoreProducts({
   example,
 }: {
   sessionId: string;
-  example: 'auto' | 'full';
+  example: 'default' | 'prefetch-true';
 }) {
   const products = await getMoreProducts(sessionId, example);
   return (
@@ -135,7 +135,7 @@ function ContentAfterPrefetchFallback() {
 function BackLink() {
   return (
     <Link
-      href="/prefetch-stages"
+      href="/navigation-stages"
       className="flex items-center gap-2 font-medium text-gray-300 hover:text-white"
     >
       <ChevronLeftIcon className="size-6 text-gray-600" />

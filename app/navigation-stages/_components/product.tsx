@@ -37,7 +37,7 @@ export async function getSessionRecommendations(
 
 export async function getMoreProducts(
   sessionId: string,
-  example: 'auto' | 'full',
+  example: 'default' | 'prefetch-true',
 ) {
   'use cache: private';
   cacheLife('hours');

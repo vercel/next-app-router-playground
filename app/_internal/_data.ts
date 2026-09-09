@@ -194,10 +194,10 @@ const demos = [
     name: 'APIs',
     items: [
       {
-        slug: 'prefetch-stages',
+        slug: 'navigation-stages',
         name: 'Navigation stages',
         description:
-          'Choose which content belongs in the App Shell, a full prefetch, or the navigation itself',
+          'Choose which content belongs in the App Shell, a per-link prefetch, or the navigation itself',
       },
       {
         slug: 'use-link-status',

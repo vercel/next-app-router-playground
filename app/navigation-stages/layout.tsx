@@ -4,7 +4,7 @@ import { Mdx } from '#/ui/codehike';
 import readme from './readme.mdx';
 
 export function generateMetadata() {
-  const demo = db.demo.find({ where: { slug: 'prefetch-stages' } });
+  const demo = db.demo.find({ where: { slug: 'navigation-stages' } });
 
   return {
     title: demo.name,
