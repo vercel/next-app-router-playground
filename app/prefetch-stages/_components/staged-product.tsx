@@ -139,7 +139,7 @@ function BackLink() {
       className="flex items-center gap-2 font-medium text-gray-300 hover:text-white"
     >
       <ChevronLeftIcon className="size-6 text-gray-600" />
-      <div>Prefetch stages</div>
+      <div>Navigation stages</div>
     </Link>
   );
 }

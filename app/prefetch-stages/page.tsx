@@ -10,7 +10,7 @@ export default function Page() {
     <Boundary label="page.tsx (statically inferred)">
       <div className="flex flex-col gap-4">
         <h1 className="text-xl font-semibold text-gray-300">
-          Prefetch Stages{' '}
+          Navigation stages{' '}
           <span className="font-mono tracking-tighter text-gray-600">(2)</span>
         </h1>
 
@@ -48,14 +48,16 @@ function ProductLink({
   prefetch?: true;
 }) {
   const card = (
-    <Boundary size="small" animateRerendering={false}>
-      <div className="grid grid-cols-[8rem_minmax(0,1fr)] items-center gap-5">
+    <Boundary
+      label={linkLabel}
+      labelCase="normal"
+      size="small"
+      animateRerendering={false}
+    >
+      <div className="grid grid-cols-[6rem_minmax(0,1fr)] items-center gap-4 sm:grid-cols-[7rem_minmax(0,1fr)] sm:gap-5">
         <ProductCard product={product} animateEnter={true} compact />
         <div className="min-w-0">
-          <div className="font-mono text-xs whitespace-nowrap text-gray-300">
-            {linkLabel}
-          </div>
-          <div className="mt-3 font-medium text-gray-300 group-hover:text-white">
+          <div className="font-medium text-gray-300 group-hover:text-white">
             {product.name}
           </div>
           <div className="mt-2 text-sm text-gray-500">{result}</div>
@@ -65,10 +67,12 @@ function ProductLink({
   );
 
   return prefetch ? (
-    <Link href={href} prefetch={true}>
+    <Link href={href} prefetch={true} className="group min-w-0">
       {card}
     </Link>
   ) : (
-    <Link href={href}>{card}</Link>
+    <Link href={href} className="group min-w-0">
+      {card}
+    </Link>
   );
 }

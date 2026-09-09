@@ -195,7 +195,7 @@ const demos = [
     items: [
       {
         slug: 'prefetch-stages',
-        name: 'Prefetch Stages',
+        name: 'Navigation stages',
         description:
           'Choose which content belongs in the App Shell, a full prefetch, or the navigation itself',
       },

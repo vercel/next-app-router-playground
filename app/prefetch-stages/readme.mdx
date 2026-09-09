@@ -42,8 +42,8 @@ Both APIs run outside the cached data functions. `MoreProducts` depends on a coo
 
 ### Demo
 
-- `<Link prefetch={true}>` includes the product and more products in the prefetch. Recommendations still stream after navigation.
 - `<Link>` includes only the product. More products and recommendations stream after navigation.
+- `<Link prefetch={true}>` includes the product and more products in the prefetch. Recommendations still stream after navigation.
 - Each data function includes an artificial delay to make the stages visible. Prefetching only runs in production.
 
 ### Notes
