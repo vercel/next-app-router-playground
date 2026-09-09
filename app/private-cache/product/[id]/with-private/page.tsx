@@ -10,9 +10,6 @@ import { ProductDetails } from '#/app/private-cache/_components/product-detail';
 import Link from 'next/link';
 import { ChevronLeftIcon } from '@heroicons/react/24/solid';
 
-// Enable runtime prefetching for private cached content
-export const prefetch = 'allow-runtime';
-
 export default async function Page({
   params,
 }: {
