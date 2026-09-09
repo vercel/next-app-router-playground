@@ -35,6 +35,14 @@ export default function RootLayout({
   const demos = db.demo.findMany();
   return (
     <html lang="en" className="[color-scheme:dark]">
+      <head>
+        {process.env.NODE_ENV === 'development' && (
+          <script
+            data-project-id="k2MbKW5DJfK0noFmrldDojmb4WejAacEgDaFJHuu"
+            src="https://snippet.meticulous.ai/v1/meticulous.js"
+          ></script>
+        )}
+      </head>
       <body
         className={`overflow-y-scroll bg-gray-950 font-sans ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
