@@ -1,0 +1,78 @@
+# Workflow for building the Next.js app and running Meticulous tests against it
+
+name: Meticulous
+
+# Important: The workflow needs to run both on pushes to your main branch and on
+# pull requests. It needs to run on your main branch because it'll use the results
+# from the base commit of the PR on the main branch to compare against.
+on:
+  push:
+    branches:
+      - main
+  pull_request: {}
+  # Important: We need the workflow to be triggered on workflow_dispatch events,
+  # so that Meticulous can run the workflow on the base commit to compare
+  # against if an existing workflow hasn't run. The meticulous-commit-sha input
+  # lets Meticulous ask for a specific commit (e.g. stacked PRs); without it,
+  # a dispatched run can only build whatever the branch currently points at.
+  workflow_dispatch:
+    inputs:
+      meticulous-commit-sha:
+        description: Commit Meticulous has asked this run to build. Defaults to the branch head.
+        required: false
+
+# Important: The workflow needs all the permissions below.
+# These permissions are mainly needed to post and update the status check and
+# feedback comment on your PR. Meticulous won't work without them.
+permissions:
+  actions: write
+  contents: read
+  issues: write
+  pull-requests: write
+  statuses: read
+
+env:
+  # Prefer the dispatched commit when set; otherwise the PR head. On pull_request github.sha is the merge commit,
+  # not the PR head SHA that Meticulous looks up.
+  METICULOUS_COMMIT_SHA: ${{ github.event.inputs['meticulous-commit-sha'] || (github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha) }}
+
+jobs:
+  test:
+    name: Meticulous
+    runs-on: ubuntu-latest
+
+    steps:
+      # Same workflow file as the upload step — ensure-base dispatches *this*
+      # workflow on the base branch. Run it before checkout/build so the base
+      # can start while this job continues. Needs no checkout. Pass the same
+      # ref as checkout so we pre-warm the base the upload step will ask for.
+      - name: Ensure base tests exist
+        uses: alwaysmeticulous/report-diffs-action/ensure-base@v1
+        with:
+          api-token: ${{ secrets.METICULOUS_API_TOKEN }}
+          ref: ${{ env.METICULOUS_COMMIT_SHA }}
+
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ env.METICULOUS_COMMIT_SHA }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build application container
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          load: true
+          platforms: linux/amd64
+          push: false
+          tags: meticulous-next-app:${{ env.METICULOUS_COMMIT_SHA }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Run Meticulous tests
+        uses: alwaysmeticulous/report-diffs-action/upload-container@v1
+        with:
+          api-token: ${{ secrets.METICULOUS_API_TOKEN }}
+          image-tag: meticulous-next-app:${{ env.METICULOUS_COMMIT_SHA }}
