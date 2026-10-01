@@ -194,6 +194,12 @@ const demos = [
     name: 'APIs',
     items: [
       {
+        slug: 'param-matching',
+        name: 'Parameter Matching',
+        description:
+          'Choose whether unlisted route parameters return 404, block on generation, stream a fallback, or stay dynamic',
+      },
+      {
         slug: 'navigation-stages',
         name: 'Navigation stages',
         description:

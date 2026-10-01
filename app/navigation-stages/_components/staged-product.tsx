@@ -8,10 +8,7 @@ import {
 } from '#/app/navigation-stages/_components/product';
 import { Boundary } from '#/ui/boundary';
 import { ChevronLeftIcon } from '@heroicons/react/24/solid';
-import {
-  unstable_navigation as navigation,
-  unstable_prefetch as prefetch,
-} from 'next/cache';
+import { navigation, prefetch } from 'next/cache';
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
