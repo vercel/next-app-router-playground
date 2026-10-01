@@ -5,18 +5,17 @@ export const demo = db.demo.find({ where: { slug: 'param-matching' } });
 
 # {demo.name}
 
-Choose how a route handles parameter values that were not prerendered.
-`generateStaticParams()` supplies examples for the build; `unstable_paramMatching`
-sets the policy for each parameter. Requires Cache Components.
-
 <Grid>
 
 # !!col
 
-- `not-found` accepts only values listed in `generateStaticParams()`.
-- `blocking` waits for generation before serving a new value.
-- `fallback` serves a shell while generating a new value behind `<Suspense>`.
-- `dynamic` resolves the parameter at request time. Omit that parameter from `generateStaticParams()`.
+With Cache Components, `unstable_paramMatching` controls how a route handles
+parameter values not returned by `generateStaticParams()`.
+
+- `not-found` returns 404.
+- `blocking` waits for the page to be generated.
+- `fallback` shows a Suspense fallback while generating the page.
+- `dynamic` resolves the parameter per request instead of prerendering it.
 
 # !!col
 
@@ -35,42 +34,12 @@ export function generateStaticParams() {
 
 </Grid>
 
-### Try a first visit
+### Demo
 
-Each card opens product 2, which exists in the mock database but is absent from
-the build examples. The `not-found` policy rejects it; the other policies admit it.
+- Each card opens the same unlisted product with a different policy.
+- Click **Try again** to use a fresh ID and repeat the first visit.
+- Links have prefetching disabled. Product queries use `use cache` with a 1.5-second delay to make loading visible.
 
-Use **Try again** to repeat a cold visit without clearing caches.
-The suffix changes the route and query cache keys while keeping the same product.
-Prefetching is disabled on these links, and each uncached query includes a 1.5-second delay.
+### Notes
 
-Run `pnpm build` and `pnpm start` to compare blocking generation, fallback
-streaming, and subsequent cached results. Development renders routes on demand.
-
-### Combine policies
-
-The mixed example sets `lang: 'not-found'` in a layout and returns
-`id: 'fallback'` from the page's `unstable_generateParamMatching()` function.
-`/mixed/en/2` can stream a product; `/mixed/fr/1` returns 404 because `fr` is unlisted.
-
-The function takes no arguments. Layout policies are inherited, and a page
-overrides only the parameters it specifies. Explicit policies follow URL order:
-`not-found`, then `blocking`, then `fallback`, then `dynamic`.
-
-### Keep caching and validation separate
-
-All product queries use `use cache`, including the dynamic-parameter example.
-A dynamic parameter does not prevent caching the data read with that value.
-
-Parameter matching controls how values are admitted and generated. A
-complete-route static requirement also checks the server data used by the route.
-It is compatible with `not-found` and `blocking`, and still requires complete
-`generateStaticParams()` results. Suspense remains necessary for work deferred
-by `fallback` or `dynamic` policies.
-
-### Preview package
-
-This demo uses the commit-specific preview from [Next.js PR #97393](https://github.com/vercel/next.js/pull/97393).
-Replace it with a canary containing the API when available. The preview ships
-a Linux compiler; the optional macOS compiler dependency enables local testing
-on Apple Silicon.
+- Run `pnpm build` and `pnpm start` to compare first visits with prerendered results. Development renders routes on demand.
