@@ -1,7 +1,6 @@
 import db from '#/lib/db';
 import { Boundary } from '#/ui/boundary';
 import { Mdx } from '#/ui/codehike';
-import Link from 'next/link';
 import readme from './readme.mdx';
 
 export function generateMetadata() {
@@ -19,15 +18,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <Mdx source={readme} collapsed={true} />
       </Boundary>
       <Boundary label="layout.tsx" kind="solid" animateRerendering={false}>
-        <div className="space-y-6">
-          <Link
-            href="/param-matching"
-            className="text-sm text-gray-400 hover:text-white"
-          >
-            ← All parameter-matching examples
-          </Link>
-          {children}
-        </div>
+        {children}
       </Boundary>
     </>
   );

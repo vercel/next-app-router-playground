@@ -1,5 +1,6 @@
 import type { ParamMatching } from 'next';
 import { Suspense } from 'react';
+import { BackLink } from '../../../_components/example';
 import { Product, ProductSkeleton } from '../../../_components/product';
 
 export async function unstable_generateParamMatching() {
@@ -17,6 +18,7 @@ export default function Page({
 }) {
   return (
     <div className="space-y-6">
+      <BackLink />
       <h1 className="text-xl font-medium text-gray-200">
         Listed language, flexible product IDs
       </h1>

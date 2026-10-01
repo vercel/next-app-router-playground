@@ -1,6 +1,9 @@
+import { BackLink } from './_components/example';
+
 export default function NotFound() {
   return (
     <div className="space-y-2" data-testid="param-not-found">
+      <BackLink />
       <h1 className="text-xl font-medium text-gray-200">
         Parameter not admitted or product not found
       </h1>

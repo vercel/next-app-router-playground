@@ -37,11 +37,10 @@ export function generateStaticParams() {
 
 ### Try a first visit
 
-Open product 1, then product 2 in each example. Product 2 exists in the mock
-database, but is absent from the build examples. The `not-found` policy rejects
-it; the other policies admit it.
+Each card opens product 2, which exists in the mock database but is absent from
+the build examples. The `not-found` policy rejects it; the other policies admit it.
 
-Use **Use a fresh unlisted ID** to repeat a cold visit without clearing caches.
+Use **Try again** to repeat a cold visit without clearing caches.
 The suffix changes the route and query cache keys while keeping the same product.
 Prefetching is disabled on these links, and each uncached query includes a 1.5-second delay.
 
