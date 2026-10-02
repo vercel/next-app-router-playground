@@ -1,0 +1,45 @@
+import db from '#/lib/db';
+import { Grid } from '#/ui/codehike';
+
+export const demo = db.demo.find({ where: { slug: 'param-matching' } });
+
+# {demo.name}
+
+<Grid>
+
+# !!col
+
+With Cache Components, `unstable_paramMatching` controls how a route handles
+parameter values not returned by `generateStaticParams()`.
+
+- `not-found` returns 404.
+- `blocking` waits for the page to be generated.
+- `fallback` shows a Suspense fallback while generating the page.
+- `dynamic` resolves the parameter per request instead of prerendering it.
+
+# !!col
+
+```tsx app/param-matching/fallback/[id]/page.tsx
+import type { ParamMatching } from 'next';
+
+// !mark
+export const unstable_paramMatching = {
+  id: 'fallback',
+} satisfies ParamMatching<'id'>;
+
+export function generateStaticParams() {
+  return [{ id: '1' }];
+}
+```
+
+</Grid>
+
+### Demo
+
+- Each card opens the same unlisted product with a different policy.
+- Click **Try again** to use a fresh ID and repeat the first visit.
+- Links have prefetching disabled. Product queries use `use cache` with a 1.5-second delay to make loading visible.
+
+### Notes
+
+- Run `pnpm build` and `pnpm start` to compare first visits with prerendered results. Development renders routes on demand.
