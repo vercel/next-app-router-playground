@@ -21,8 +21,8 @@ importers:
         specifier: 3.1.1
         version: 3.1.1(@types/react@19.2.14)(react@19.2.4)
       '@next/mdx':
-        specifier: 16.4.0-canary.55
-        version: 16.4.0-canary.55(@mdx-js/loader@3.1.1(acorn@8.14.1))(@mdx-js/react@3.1.1(@types/react@19.2.14)(react@19.2.4))
+        specifier: 16.4.0-canary.57
+        version: 16.4.0-canary.57(@mdx-js/loader@3.1.1(acorn@8.14.1))(@mdx-js/react@3.1.1(@types/react@19.2.14)(react@19.2.4))
       '@types/mdx':
         specifier: 2.0.13
         version: 2.0.13
@@ -42,8 +42,8 @@ importers:
         specifier: 3.0.0-canary.1
         version: 3.0.0-canary.1
       next:
-        specifier: https://vercel-packages.vercel.app/next/commits/93500b8c40f2acc13d7d517d1db6acecc2828749/next
-        version: https://vercel-packages.vercel.app/next/commits/93500b8c40f2acc13d7d517d1db6acecc2828749/next(@types/node@22.13.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 16.4.0-canary.57
+        version: 16.4.0-canary.57(@types/node@22.13.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       react:
         specifier: 19.2.4
         version: 19.2.4
@@ -105,10 +105,6 @@ importers:
       typescript:
         specifier: 5.7.3
         version: 5.7.3
-    optionalDependencies:
-      '@next/swc-darwin-arm64':
-        specifier: 16.4.0-canary.55
-        version: 16.4.0-canary.55
 
 packages:
 
@@ -324,12 +320,11 @@ packages:
       '@types/react': '>=16'
       react: '>=16'
 
-  '@next/env@https://vercel-packages.vercel.app/next/commits/93500b8c40f2acc13d7d517d1db6acecc2828749/@next/env':
-    resolution: {tarball: https://vercel-packages.vercel.app/next/commits/93500b8c40f2acc13d7d517d1db6acecc2828749/@next/env}
-    version: 16.4.0-preview-03ec7242-20260930
+  '@next/env@16.4.0-canary.57':
+    resolution: {integrity: sha512-cV2dli3wU9scYkJpXBBfNm3hwGJpry1esntR9gA0bGwGpKZ2/EaA86KY7KecwK2mPxegOCxWHCpyWymBzcth7A==}
 
-  '@next/mdx@16.4.0-canary.55':
-    resolution: {integrity: sha512-2nK5rPhPJBycAdeoMMsdLOvtwRUugetVG87s9KsyAAPrRVdMUD+VFYxQ8f2v9EuDxDXhWgX5qbgCTrwSka6zXg==}
+  '@next/mdx@16.4.0-canary.57':
+    resolution: {integrity: sha512-PzCq3NuIghWhWGjvh97Vg5+rsU3vVqAaIPhiTmHJdB+De30lfnn+rKH8hMmwF6kKBBJ/dYlUMreQFmM+ulGGNA==}
     peerDependencies:
       '@mdx-js/loader': '>=0.15.0'
       '@mdx-js/react': '>=0.15.0'
@@ -339,18 +334,57 @@ packages:
       '@mdx-js/react':
         optional: true
 
-  '@next/swc-darwin-arm64@16.4.0-canary.55':
-    resolution: {integrity: sha512-VEhneQE9ABHBaGMvdnsdSWLMfZ/SiSAOQ4tFehPBlqlknLklHSBKZDAlEbDDaFKEDcyqNngFgdaq2fLKFo9tLQ==}
+  '@next/swc-darwin-arm64@16.4.0-canary.57':
+    resolution: {integrity: sha512-Q6jqG/GurhmOnDV1HIwznTf0tSoY2QofN2dXVv7UN1dWj2CyTYgQFN7YFe78ohXhVzuUmKlqictR+zi2TjE0yg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
 
-  '@next/swc-linux-x64-gnu@https://vercel-packages.vercel.app/next/commits/93500b8c40f2acc13d7d517d1db6acecc2828749/@next/swc-linux-x64-gnu':
-    resolution: {tarball: https://vercel-packages.vercel.app/next/commits/93500b8c40f2acc13d7d517d1db6acecc2828749/@next/swc-linux-x64-gnu}
-    version: 16.4.0-preview-03ec7242-20260930
+  '@next/swc-darwin-x64@16.4.0-canary.57':
+    resolution: {integrity: sha512-1bk3a31fSy1ntSb6XuUezkY/74lc5iHRlJFb+Ww2bFgKxUDIgCmzKbkgsYj+h7oKp3qQLXnyTzcvjscbDB8vkA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@next/swc-linux-arm64-gnu@16.4.0-canary.57':
+    resolution: {integrity: sha512-xQPzWqRBR2oa4mV+oSPuF3RM6Yxz2Yyff9Z8r+deYnkKYM/UsGZEsyKs0qM0bwW1xkk40glRmbrw6NfQnA9OCg==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+
+  '@next/swc-linux-arm64-musl@16.4.0-canary.57':
+    resolution: {integrity: sha512-AkOwYSHC6XjncHXW5uVN0XiuWxQIiwK9N260EHlBc1f0U26qRsJwEh0zGXHGmUS9M5l0L8KxxGbtZ6DfY5n2tw==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+
+  '@next/swc-linux-x64-gnu@16.4.0-canary.57':
+    resolution: {integrity: sha512-vlhj4CrOQ3plEQAARui1fJEnvzhXhxyUjgrE6i2fBly9z/41m9LPFG3SVazCpe/cfPChqjVZTmOh9k6bd+FUxA==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
+
+  '@next/swc-linux-x64-musl@16.4.0-canary.57':
+    resolution: {integrity: sha512-OepG5qarcbavI7elt8E3TtAWfulDOrNB78an1fcG3+PTQ+1oe5wLBC/qhL1wOqq4BBkiVNqjz4nA0pIQ0Uy3Nw==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+
+  '@next/swc-win32-arm64-msvc@16.4.0-canary.57':
+    resolution: {integrity: sha512-u9TwBPzuZCizeNZZOrUoweRrGWZuuygYQ9qrs/AOczH7qYauvx7ORKKmw38RCLbrTJYjvdNZH0vM1qhAV3BmmQ==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@next/swc-win32-x64-msvc@16.4.0-canary.57':
+    resolution: {integrity: sha512-shQM5rGNCBIEsM3nZopiYPGqNMYwFf9g9Kljlb9ZU2Ej6d0CrxidEFwauYfP3OVLhe4ywWw+G634ajZqvNcbAA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [win32]
 
   '@swc/helpers@0.5.23':
     resolution: {integrity: sha512-5lSsMOTXURePglDfvuAQUqkGek9Hg2kksOYay2m0+XR++b2NWYL/4sWyuvVBIs8oKnJaxkdi9whaL/sqN13afw==}
@@ -898,9 +932,8 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  next@https://vercel-packages.vercel.app/next/commits/93500b8c40f2acc13d7d517d1db6acecc2828749/next:
-    resolution: {tarball: https://vercel-packages.vercel.app/next/commits/93500b8c40f2acc13d7d517d1db6acecc2828749/next}
-    version: 16.4.0-preview-03ec7242-20260930
+  next@16.4.0-canary.57:
+    resolution: {integrity: sha512-GhnlQ3nbKwiVdcIndeag6KTcnmfU5//Rgv4ERF6uvCbVR4KTuNOnQCcsl7nzCcVM7tlpxBhReH4anJlDOXrstA==}
     engines: {node: '>=20.9.0'}
     hasBin: true
     peerDependencies:
@@ -1364,19 +1397,37 @@ snapshots:
       '@types/react': 19.2.14
       react: 19.2.4
 
-  '@next/env@https://vercel-packages.vercel.app/next/commits/93500b8c40f2acc13d7d517d1db6acecc2828749/@next/env': {}
+  '@next/env@16.4.0-canary.57': {}
 
-  '@next/mdx@16.4.0-canary.55(@mdx-js/loader@3.1.1(acorn@8.14.1))(@mdx-js/react@3.1.1(@types/react@19.2.14)(react@19.2.4))':
+  '@next/mdx@16.4.0-canary.57(@mdx-js/loader@3.1.1(acorn@8.14.1))(@mdx-js/react@3.1.1(@types/react@19.2.14)(react@19.2.4))':
     dependencies:
       source-map: 0.7.4
     optionalDependencies:
       '@mdx-js/loader': 3.1.1(acorn@8.14.1)
       '@mdx-js/react': 3.1.1(@types/react@19.2.14)(react@19.2.4)
 
-  '@next/swc-darwin-arm64@16.4.0-canary.55':
+  '@next/swc-darwin-arm64@16.4.0-canary.57':
     optional: true
 
-  '@next/swc-linux-x64-gnu@https://vercel-packages.vercel.app/next/commits/93500b8c40f2acc13d7d517d1db6acecc2828749/@next/swc-linux-x64-gnu':
+  '@next/swc-darwin-x64@16.4.0-canary.57':
+    optional: true
+
+  '@next/swc-linux-arm64-gnu@16.4.0-canary.57':
+    optional: true
+
+  '@next/swc-linux-arm64-musl@16.4.0-canary.57':
+    optional: true
+
+  '@next/swc-linux-x64-gnu@16.4.0-canary.57':
+    optional: true
+
+  '@next/swc-linux-x64-musl@16.4.0-canary.57':
+    optional: true
+
+  '@next/swc-win32-arm64-msvc@16.4.0-canary.57':
+    optional: true
+
+  '@next/swc-win32-x64-msvc@16.4.0-canary.57':
     optional: true
 
   '@swc/helpers@0.5.23':
@@ -2079,9 +2130,9 @@ snapshots:
 
   nanoid@3.3.11: {}
 
-  next@https://vercel-packages.vercel.app/next/commits/93500b8c40f2acc13d7d517d1db6acecc2828749/next(@types/node@22.13.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
+  next@16.4.0-canary.57(@types/node@22.13.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
     dependencies:
-      '@next/env': https://vercel-packages.vercel.app/next/commits/93500b8c40f2acc13d7d517d1db6acecc2828749/@next/env
+      '@next/env': 16.4.0-canary.57
       '@swc/helpers': 0.5.23
       baseline-browser-mapping: 2.10.8
       caniuse-lite: 1.0.30001713
@@ -2090,7 +2141,14 @@ snapshots:
       react-dom: 19.2.4(react@19.2.4)
       styled-jsx: 5.1.6(react@19.2.4)
     optionalDependencies:
-      '@next/swc-linux-x64-gnu': https://vercel-packages.vercel.app/next/commits/93500b8c40f2acc13d7d517d1db6acecc2828749/@next/swc-linux-x64-gnu
+      '@next/swc-darwin-arm64': 16.4.0-canary.57
+      '@next/swc-darwin-x64': 16.4.0-canary.57
+      '@next/swc-linux-arm64-gnu': 16.4.0-canary.57
+      '@next/swc-linux-arm64-musl': 16.4.0-canary.57
+      '@next/swc-linux-x64-gnu': 16.4.0-canary.57
+      '@next/swc-linux-x64-musl': 16.4.0-canary.57
+      '@next/swc-win32-arm64-msvc': 16.4.0-canary.57
+      '@next/swc-win32-x64-msvc': 16.4.0-canary.57
       sharp: 0.35.4(@types/node@22.13.1)
     transitivePeerDependencies:
       - '@babel/core'
