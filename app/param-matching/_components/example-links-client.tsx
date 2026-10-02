@@ -64,33 +64,6 @@ export function ExampleLinksClient({ product }: { product: Product }) {
           Current product ID: {unlistedId}
         </span>
       </div>
-      <details className="space-y-3 text-sm text-gray-400">
-        <summary className="cursor-pointer text-gray-300 hover:text-white">
-          Combine policies across parameters
-        </summary>
-        <p>
-          Require a listed language, but allow new product IDs to show a
-          fallback.
-        </p>
-        <div className="flex flex-wrap gap-4">
-          <Link
-            href={`/param-matching/mixed/en/${unlistedId}`}
-            prefetch={false}
-            className="flex items-center gap-2 text-gray-300 underline decoration-gray-600 underline-offset-4 hover:text-white"
-          >
-            English: show the product
-            <LinkStatus />
-          </Link>
-          <Link
-            href="/param-matching/mixed/fr/1"
-            prefetch={false}
-            className="flex items-center gap-2 text-gray-300 underline decoration-gray-600 underline-offset-4 hover:text-white"
-          >
-            French: return 404
-            <LinkStatus />
-          </Link>
-        </div>
-      </details>
     </div>
   );
 }
